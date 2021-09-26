@@ -125,19 +125,35 @@
 - 클로저
 - 클래스
 - ES6 함수의 추가 기능
-- 배열
-- Number
-- Math
-- Date
-- RegExp
-- String
-- Symbol
-- 이터러블
-- 스프레드(...) 문법
-- 디스트럭처링 할당(구조 분해 할당)
-- 브라우저 렌더링 과정
-- DOM
-- 이벤트
+- [스프레드(...) 문법 🔥](<#스프레드(...)-문법>)
+
+  - spread 문법이 뭔가요?
+  - 어떤 상황에서 사용할 수 있죠?
+
+- [디스트럭처링 할당(구조 분해 할당) 🔥](<#디스트럭처링-할당(구조-분해-할당)>)
+
+  - 구조 분해 할당이 뭔가요?
+  - 구조 분해 할당은 크게 어떤 종류가 있나요?
+
+- [브라우저 렌더링 과정 🔥](#브라우저-렌더링-과정)
+
+  - 브라우저의 렌더링 과정에 대해 설명해보세요
+
+- [DOM 🔥](#DOM)
+
+  - DOM이 뭔가요?
+  - DOM을 구성하는 건 뭐가 있나요?
+
+- [이벤트 🔥](#이벤트)
+
+  - 마우스 이벤트 타입에는 뭐가 있나요? click 말고 클릭을 대체할 수 있는 이벤트가 있나요?
+  - 그 외에 알고 있는 대표적인 이벤트가 있나요?
+  - 이벤트 핸들러를 등록하는 방식에는 어떤 것들이 있나요?
+  - 이벤트 전파(propagation)에 대해서 알고 있나요?
+  - 이벤트 위임(delegation)에 대해서 알고있나요?
+  - e.preventDefault 에 대해 알고 있나요?
+  - e.stopPropagation
+
 - 타이머
 - 비동기 프로그래밍
 - Ajax
@@ -1310,35 +1326,778 @@ this 바인딩은 this(키워드로 분류되지만 식별자 역할을 한다)�
 
 ## 클로저
 
+### 클로저에 대해서 아나요?
+
+클로저는 함수와 그 함수가 선언된 렉시컬 환경과의 조합이다.
+
+해당 함수의 생명 주기가 종료되더라도 함수의 반환된 값이 변수에 의해 아직 참조되고 있다면 생명 주기가 종료되더라도 (실행 컨텍스트 스택에서 푸시되더라도) 렉시컬 환경에 남아 참조가 가능하다
+
+### 클로저를 사용하면 뭐가 좋죠?
+
+클로저는 **상태(state)를 안전하게 변경하고 유지하기 위해 사용한다.**
+
+다시 말해, 상태가 의도치 않게 변경되지 않도록 상태를 안전하게 **은닉(information hiding)하고 특정 함수에게만 상태변경을 허용하기 위해 사용한다.**
+
 ## 클래스
 
 ## ES6 함수의 추가 기능
 
-## 배열
-
-## Number
-
-## Math
-
-## Date
-
-## RegExp
-
-## String
-
-## Symbol
-
-## 이터러블
-
 ## 스프레드(...) 문법
+
+### spread 문법이 뭔가요?
+
+ES6에서 도입된 스프레드 문법(=전개 문법) ...은 **하나로 뭉쳐 있는 여러 값들의 집합을 펼쳐서(전개, 분산하여, spread) 개별적인 값들의 목록으로 만든다. (배열 상태가 아닌 개별적인 값들의 목록 상태이다)**
+
+<br/>
+
+### 코드 요약
+
+```js
+let user = { name: "Mike" };
+let info = { age: 30 };
+let fe = ["js", "react"];
+let lang = ["korean", "english"];
+
+console.log("before user: ", user);
+
+user = {
+  ...user,
+  ...info,
+  skills: [...fe, ...lang],
+};
+
+console.log("after user: ", user);
+
+/*
+before user:  { name: 'Mike' }
+after user:  {
+  name: 'Mike',
+  age: 30,
+  skills: [ 'js', 'react', 'korean', 'english' ]
+}
+*/
+```
+
+<br/>
+
+### 어떤 상황에서 사용할 수 있죠?
+
+스프레드 문법을 사용할 수 있는 대상은 다음과 같이 한정된다.
+
+1. Array
+2. String
+3. Map
+4. Set
+5. DOM 컬렉션
+6. arguments와 같이 for of 문으로 순회할 수 있는 이터러블
+
+```js
+// ...[1, 2, 3]은 [1, 2, 3]을 개별 요소로 분리한다(→ 1, 2, 3)
+console.log(...[1, 2, 3]); // 1 2 3
+
+// 문자열은 이터러블이다.
+console.log(..."Hello"); // H e l l o
+
+/* 이터러블이 아닌 일반 객체는 스프레드 문법의 대상이 될 수 없다. */
+console.log(...{ a: 1, b: 2 });
+// TypeError: Found non-callable @@iterator
+```
+
+위와 같은 대상에 대해 3가지 상황에서 사용할 수 있다.
+
+1. 함수 호출문의 인수 목록에서 사용하는 경우
+
+2. 배열 리터럴 내부에서 사용하는 경우
+
+3. 객체 리터럴 내부에서 사용하는 경우
+
+<details>
+
+<b>① 함수 호출문의 인수 목록에서 사용하는 경우</b>
+
+- 요소들의 집합인 배열을 펼쳐서 개별적인 값들의 목록으로 만든 후, 이를 함수의 인수 목록으로 전달해야 하는 경우에 유용하다.
+
+```js
+const arr = [1, 2, 3];
+
+// 배열 arr의 요소 중에서 최대값을 구하기 위해 Math.max를 사용한다.
+const max = Math.max(arr); // -> NaN
+
+const max = Math.max(...arr); // -> 3
+```
+
+<b>② 배열 리터럴 내부에서 사용하는 경우</b>
+
+스프레드 문법을 배열 리터럴에 사용하면 ES5에서 사용하던 기존의 방식보다 더욱 간결하고 가독성 좋게 표현할 수 있다.
+
+```js
+// ES5
+var arr = [1, 2].concat([3, 4]);
+console.log(arr); // [1, 2, 3, 4]
+
+// ES6
+const arr = [...[1, 2], ...[3, 4]];
+console.log(arr); // [1, 2, 3, 4]
+```
+
+<b>③ 객체 리터럴 내부에서 사용하는 경우</b>
+
+Rest 프로퍼티와 함께 스프레드 프로퍼티를 사용하면 객체 리터럴의 프로퍼티 목록에서도 스프레드 문법을 사용할 수 있다.
+
+```js
+// 스프레드 프로퍼티
+// 객체 복사(얕은 복사)
+const obj = { x: 1, y: 2 };
+const copy = { ...obj };
+console.log(copy); // { x: 1, y: 2 }
+console.log(obj === copy); // false
+
+// 객체 병합
+const merged = { x: 1, y: 2, ...{ a: 3, b: 4 } };
+console.log(merged); // { x: 1, y: 2, a: 3, b: 4 }
+```
+
+</details>
 
 ## 디스트럭처링 할당(구조 분해 할당)
 
+### 구조 분해 할당이 뭔가요?
+
+구조화된 배열과 같은 이터러블 또는 객체를 비구조화, 구조 파괴하여 1개 이상의 변수에 개별적으로 할당하는 것을 말합니다.
+
+배열과 같은 이터러블 또는 객체 리터럴에서 필요한 값만 추출하여 변수에 할당할 때 유용합니다.
+
+### 구조 분해 할당은 크게 어떤 종류가 있나요?
+
+- 1. 배열 구조분해 할당
+- 2. 객체 구조분해 할당
+
+<details>
+
+<b>① 배열 구조분해 할당</b>
+
+ES6의 배열 구조 분해 할당은 배열의 각 요소를 배열로부터 추출하여 1개 이상의 변수에 할당합니다.
+
+이때 배열 구조분해 할당의 대상은 이터러블(순회 가능한 상태)여야 하며, 할당 기준은 배열의 인덱스가 됩니다. 즉 순서대로 할당됩니다.
+
+```js
+const arr = [1, 2, 3];
+
+const [one, two, three] = arr;
+/*
+다음과 같습니다
+
+const one = arr[0]
+const two = arr[1]
+const three = arr[2]
+
+const [one, two, three] = [1,2,3]
+*/
+
+console.log(one, two, three); // 1 2 3
+```
+
+배열 디스트럭처링 할당은 배열과 같은 이터러블에서 필요한 요소만 추출하여 변수에 할당하고 싶을 때 유용합니다.
+
+```js
+const str = "hello-world-2021";
+
+console.log(str.split("-"));
+
+const [one, two, three] = str.split("-");
+
+console.log(one);
+console.log(two);
+console.log(three);
+```
+
+<b>② 객체 구조분해 할당</b>
+
+1. ES6의 객체 디스트럭처링 할당은 객체의 각 프로퍼티를 객체로부터 추출하여 1개 이상의 변수에 할당한다.
+
+이때 객체 디스트럭처링 할당의 대상은 객체이어야 하며, 할당 기준은 프로퍼티 키다. (배열처럼 인덱스가 아니다)
+
+즉, 순서는 의미가 없으며 선언된 변수 이름과 프로퍼티가 일치하면 할당된다.
+
+```js
+var user = { age: 25, name: "junhee" };
+
+var { age, name } = user;
+
+/*
+var { age: age, name: name} = user 와 같은 의미 (프로퍼티 축약 표현)
+*/
+
+console.log(age, name); // 25 junhee
+```
+
+2. 반드시 프로퍼티 키와 변수 이름이 같을 필요는 없다
+
+```js
+var user = { age: 25, name: "junhee" };
+
+var { age: junheeAge, name: junheeName } = user;
+
+/*
+위 처럼 새롭게 이름을 지정한 경우 프로퍼티 키로 접근하면 에러가 발생한다
+console.log(age, name); // ReferenceError: age is not defined
+*/
+
+console.log(junheeAge, junheeName); // 25 junhee
+```
+
+3. 객체 디스트럭처링 할당을 위한 변수에 기본값을 설정할 수 있다 (하지만 넘겨받는 값이 우선이다)
+
+```js
+var user = { age: 25 };
+
+var { age, name = "default" } = user;
+
+console.log(age, name); // 25 default
+```
+
+4. 객체 디스트럭처링 할당은 객체를 인수로 전달받는 함수의 매개변수에도 사용할 수 있다.
+
+```js
+case 1
+
+function printTodo(todo) {
+  console.log(
+    `할일 ${todo.content}은 ${todo.completed ? "완료" : "비완료"} 상태입니다.`
+  );
+}
+
+case 2
+
+function printTodo({ content, completed }) {
+  console.log(`할일 ${content}은 ${completed ? "완료" : "비완료"} 상태입니다.`);
+}
+
+printTodo({ id: 1, content: "HTML", completed: true });
+```
+
+5. 중첩 객체의 경우는 다음과 같이 사용한다.
+
+```js
+const user = {
+  name: "junhee",
+  age: 25,
+  address: {
+    zipCode: 14063,
+    city: "Anyang",
+  },
+};
+
+const {
+  address: { city },
+} = user;
+
+// const city = user.address.city 를 구조 분해 할당하였음
+
+console.log(city); // Anyang
+```
+
+</details>
+
 ## 브라우저 렌더링 과정
+
+### 브라우저의 렌더링 과정에 대해 설명해보세요
+
+1. 클라이언트에서 불러오고 싶은 파일을 서버에 요청한다
+
+- 주소창에 직접 입력하거나, 클릭을 통해 해당 웹 페이지에 접근한다
+- 클라이언트에서 요청한 URI를 DNS를 통해 IP 주소로 변환하고, 해당 IP를 가진 서버에 GET 요청을 보내게 된다
+
+2. 서버에서 응답으로 받은 HTML 데이터를 파싱한다 (바이트 > 문자 > 토큰 > 노드 > DOM)
+
+- 서버에 존재하던 HTML 파일이 브라우저의 요청에 의해 응답된다
+- 이때 서버는 브라우저가 요청한 HTML 파일을 읽어 들여 메모리에 저장한 다음 메모리에 저장된 바이트(2진수)를 인터넷을 경유하여 응답한다
+- 브라우저는 서버가 응답한 HTML 문서를 바이트(2진수) 형태로 응답받는다
+- 따라서 응답된 바이트 형태의 HTML 문서를 meta 태그의 charset 어트리뷰트에 의해 지정된 인코딩 방식을 기준으로 문자열로 변환한다
+- 문자열로 변환된 HTML 문서를 읽어 들여 문법적 의미를 갖는 코드의 최소 단위인 토큰(token)들로 분해한다.
+- 각 토큰들을 객체로 변환하여 노드들을 생성한다 토큰의 내용에 따라 ⑴ 문서 노드 ⑵ 요소 노드 ⑶ 어트리뷰트 노드 ⑷ 텍스트 노드가 생성된다.
+
+3. HTML 마크업을 바탕으로 DOM 트리를 생성한다
+
+- HTML 문서는 HTML 요소들의 집합으로 이루어지며 HTML 요소는 중첩 관계를 갖는다
+- 이떄 HTML 요소 간에는 중첩 관계에 의해 부자(부모자식)관계가 형성된다
+- 이러한 HTML 요소 간의 부자 관계를 반영하여 모든 노드들을 트리 자료구조로 구성한다.
+- 이 노드들로 구성된 트리 자료구조를 DOM이라 부른다.
+
+4. CSS 마크업을 바탕으로 CSSOM 트리를 생성한다 (바이트 > 문자 >토큰 > 노드 > CSSOM)
+
+- HTML 데이터와 마찬가지로 파싱하여 CSSOM 트리 구조로 나타낸다
+
+5. DOM트리와 CSSOM트리를 결합하여 렌더 트리를 형성한다
+
+- 렌더링 엔진에 의해 문서의 처음부터 끝까지 해석이 완료되어 DOM트리와 CSSOM 트리가 완성된다면, 이 둘을 바탕으로 렌더 트리를 생성한다
+
+6. 렌더 트리에서 레이아웃을 실행한다
+
+- 렌더 트리를 기반으로 HTML 요소의 레이아웃(위치와 크기)를 계산합니다.
+
+7. 개별 노드를 화면에 페인트한다
+
+- 이후 레이아웃을 바탕으로 브라우저 화면에 픽셀을 렌더링하는 페인팅(painting)처리에 입력되면 렌더링이 완료되게 됩니다
+
+<details>
+<summary>📚 단어 정리</summary>
+
+1. 파싱
+
+파싱(구문 분석)은 프로그래밍 언어의 문법에 맞게 작성된 텍스트 문서를 읽어 들여 실행하기 위해 텍스트 문서의 문자열을 토큰 단위로 분해하고, 토큰의 문법적 의미와 구조를 반영하여 트리 구조의 자료구조인 파스 트리를 생성하는 일련의 과정을 말한다.
+
+2. 렌더링
+
+렌더링은 HTML, CSS, JS로 작성된 문서를 파싱하여 브라우저에 시각적으로 출력하는 것을 말한다.
+
+3. 리소스
+
+HTTP 요청 대상을 "리소스"라고 부르는데, 그에 대한 본질을 이 이상으로 정의할 수 없습니다.
+
+그것은 문서, 사진 또는 다른 어떤 것이든 될 수 있습니다.
+
+각 리소스는 리소스 식별을 위해 HTTP 전체에서 사용되는 Uniform Resource Identifier (URI)에 의해 식별됩니다.
+
+4. DNS
+
+DNS (Domain Name System)는 인터넷에 연결된 리소스를 위한 계층적이고 분산된 명명 시스템입니다. DNS는 도메인 이름 목록 과 연결된 리소스(예: IP 주소)를 유지 관리 합니다.
+
+</details>
 
 ## DOM
 
+### DOM이 뭔가요?
+
+DOM은 HTML 문서의 계층적 구조와 정보를 표현하며 이를 제어할 수 있는 API, 즉 프로퍼티와 메서드를 제공하는 트리 자료구조다.
+
+### DOM을 구성하는 건 뭐가 있나요?
+
+① HTML 요소는 렌더링 엔진에 의해 파싱되어 ② DOM을 구성하는 요소 노드 객체로 변환된다.
+
+이때 HTML 요소 어트리뷰트는 어트리뷰트 노드로, HTML 요소의 텍스트 콘텐츠는 텍스트 노드로 변환된다.
+
+DOM은 노드 객체의 계층적인 구조로 구성된다. 노드 객체는 종류가 있고 상속 구조를 갖는다.
+
+노드 객체는 총 12개의 종류(노드 타입)가 있다. 이 중에서 중요한 노드 타입은 다음과 같이 4가지다.
+
+1. 문서 노드
+2. 요소 노드
+3. 어트리뷰트 노드
+4. 텍스트 노드
+
+<details>
+
+<b>① 문서 노드</b>
+
+```
+<!DOCTYPE>
+```
+
+문서 노드는 DOM 트리의 최상위에 존재하는 루트 노드로서 document 객체를 가리킨다.
+
+document 객체는 브라우저가 렌더링한 HTML 문서 전체를 가리키는 객체로서 전역 객체 window의 document 프로퍼티에 바인딩되어 있다.
+
+따라서 문서 노드는 window.documnet 또는 document로 참조할 수 있다.
+
+브라우저 환경의 모든 자바스크립트 코드는 script 태그에 의해 분리되어 있어도 하나의 전역 객체 window를 공유한다.
+
+따라서 window의 document 프로퍼티에 바인딩되어 있는 하나의 document 객체를 바라본다. 즉, HTML 문서당 document 객체는 유일하다.
+
+<b>② 요소 노드</b>
+
+```html
+<html> <head> <meta> <link> <body> <ul> <li> <script>
+```
+
+요소 노드는 HTML 요소를 가리키는 객체다. 요소 노드는 HTML 요소 간의 중첩에 의해 부자 관계를 가지며, 이 부자 관계를 통해 정보를 구조화한다.
+
+따라서 요소 노드는 문서의 구조를 표현한다고 할 수 있다.
+
+<b>③ 어트리뷰트 노드</b>
+
+```
+charset="UTF"
+
+rel="stylesheet"
+...
+
+id="apple"
+```
+
+어트리뷰트 노드는 HTML 요소의 어트리뷰트를 가리키는 객체다. 어트리뷰트 노드는 어트리뷰트가 지정된 HTML 요소의 요소 노드와 연결되어 있다.
+
+<b>④ 텍스트 노드</b>
+
+```
+APPLE
+BANANA
+ORANGE
+```
+
+텍스트 노드는 HTML 요소와 텍스트를 가리키는 객체다. 요소 노드가 문서의 구조를 표현한다면 텍스트 노드는 문서의 정보를 표현한다고 할 수 있다.
+
+</details>
+
 ## 이벤트
+
+### 마우스 이벤트 타입에는 뭐가 있나요? click 말고 클릭을 대체할 수 있는 이벤트가 있나요?
+
+> mouseup
+
+| 이벤트 타입 | 이벤트 발생 시점                                      |
+| :---------- | :---------------------------------------------------- |
+| click       | 마우스 버튼을 클릭했을 때                             |
+| dbclick     | 마우스 버튼을 더블 클릭했을 때                        |
+| mousedown   | 마우스 버튼을 누르고 있을 때                          |
+| mouseup     | 누르고 있던 마우스 버튼을 뗄 때                       |
+| mousemove   | 마우스 커서를 움직일 때                               |
+| mouseenter  | 마우스 커서를 HTML 요소 안으로 이동했을 때 (버블링 x) |
+| mouseover   | 마우스 커서를 HTML 요소 안으로 이동했을 때 (버블링 o) |
+| mouseleave  | 마우스 커서를 HTML 요소 밖으로 이동했을 때(버블링x)   |
+| mouseout    | 마우스 커서를 HTML 요소 밖으로 이동했을 때(버블링o)   |
+
+<br/>
+
+### 그 외에 알고 있는 대표적인 이벤트가 있나요?
+
+<details>
+
+### 키보드 이벤트
+
+| 이벤트 타입 | 이벤트 발생 시점                            |
+| :---------- | :------------------------------------------ |
+| keydown     | 키를 누르고 있을 때                         |
+| keypress    | 키를 누르고 뗏을 때 (폐지되었으므로 사용 x) |
+| keyup       | 누르고 있던 키를 뗄 때                      |
+
+### 포커스 이벤트
+
+| 이벤트 타입 | 이벤트 발생 시점                     |
+| :---------- | :----------------------------------- |
+| focus       | 요소가 포커스를 얻었을 때 (버블링 x) |
+| blur        | 요소가 포커스를 잃었을 때 (버블링 x) |
+| focusin     | 요소가 포커스를 얻었을 때 (버블링 o) |
+| foucusout   | 요소가 포커스를 잃었을 때 (버블링 o) |
+
+### 폼 이벤트
+
+| 이벤트 타입 | 이벤트 발생 시점                            |
+| :---------- | :------------------------------------------ |
+| submit      | form을 submit할 때 (버튼 또는 키)           |
+| reset       | reset 버튼을 클릭할 때 (최근에는 사용 안함) |
+
+### 값 변경 이벤트
+
+| 이벤트 타입 | 이벤트 발생 시점                                          |
+| :---------- | :-------------------------------------------------------- |
+| input       | input 또는 textarea 요소의 값이 변경되었을 때             |
+| change      | select box, checkbox, radio button의 상태가 변경되었을 때 |
+
+### DOM 뮤테이션 이벤트
+
+| 이벤트 타입      | 이벤트 발생 시점                                            |
+| :--------------- | :---------------------------------------------------------- |
+| DOMContentLoaded | HTML 문서의 로드와 파싱이 완료되어 DOM 생성이 완료되었을 때 |
+
+### 뷰 이벤트
+
+| 이벤트 타입 | 이벤트 발생 시점                                                |
+| :---------- | :-------------------------------------------------------------- |
+| resize      | 브라우저 윈도우의 크기를 리사이즈할 때 연속적으로 발생          |
+| scroll      | 웹피이지(document) 또는 HTML 요소를 스코롤할 때 연속적으로 발생 |
+
+### 리소스 이벤트
+
+| 이벤트 타입 | 이벤트 발생 시점                                           |
+| :---------- | :--------------------------------------------------------- |
+| load        | DOMContentLoaded 이후, 모든 리소스의 로딩이 완료되었을 때  |
+| unload      | 리소스가 언로드 될 때 (주로 새로운 웹페이지를 요청한 경우) |
+| abort       | 리소스 로딩이 중단되었을 때                                |
+| error       | 리소스 로딩이 실패했을 때                                  |
+
+</details>
+
+<br/>
+
+### 이벤트 핸들러를 등록하는 방식에는 어떤 것들이 있나요?
+
+1. 이벤트 핸들러 어트리뷰트 방식
+
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <button onclick="sayHi('Lee')">Click me!</button>
+    <script>
+      function sayHi(name) {
+        console.log(`Hi! ${name}.`);
+      }
+    </script>
+  </body>
+</html>
+```
+
+2. 이벤트 핸들러 프로퍼티 방식
+
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <button>Click me!</button>
+    <script>
+      const $button = document.querySelector("button");
+
+      // 이벤트 핸들러 프로퍼티에 이벤트 핸들러를 바인딩 (익명 함수로 가능)
+      $button.onclick = function () {
+        console.log("button click");
+      };
+    </script>
+  </body>
+</html>
+```
+
+3. addEventListener 메서드 방식
+
+```html
+<html>
+  <body>
+    <button>Click me!</button>
+    <em></em>
+
+    <script>
+      const $button = document.querySelector("button");
+      const $em = document.querySelector("em");
+
+      $button.addEventListener("click", function () {
+        $em.innerHTML = "Button Cliked 1";
+      });
+    </script>
+  </body>
+</html>
+```
+
+<br/>
+
+### 이벤트 전파(propagation)에 대해서 알고 있나요?
+
+DOM 트리상에 존재하는 모든 DOM 요소 노드에서 발생한 이벤트는 DOM 트리를 통해 전파됩니다. 이를 이벤트 전파라고 합니다.
+
+사용자의 다양한 입력을 통해 동적으로 생성되는 이벤트 객체는 이벤트를 발생시킨 타깃(target)을 중심으로 DOM 트리를 통해 전파됩니다.
+
+전파되는 방향에 따라 3단계로 구분할 수 있습니다.
+
+- 캡처링 단계 : 이벤트가 상위 요소에서 하위 요소 방향으로 전파
+- 타깃 단계 : 이벤트가 이벤트 타깃에 도달
+- 버블링 단계: 이벤트가 하위 요소에서 상위 요소 방향으로 전파
+
+<details>
+<summary>3단계 이미지 보기</summary>
+
+<img src="./images/37_6.jpg" alt="이벤트 전파 3단계"/>
+
+</details>
+
+**브라우저는 기본적으로 이벤트 버블링 단계에서 이벤트를 캐치합니다.**
+
+```html
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>Click me</div>
+  </body>
+  <script>
+    const html = document.querySelector("html");
+    const body = document.querySelector("body");
+    const div = document.querySelector("div");
+
+    html.addEventListener("click", () => console.log("HTML"));
+    body.addEventListener("click", () => console.log("BODY"));
+    div.addEventListener("click", () => console.log("DIV"));
+  </script>
+</html>
+```
+
+```js
+>>>
+
+DIV
+BODY
+HTML
+```
+
+<img src="./images/37_7.png" alt="이벤트 버블링 타깃"/>
+
+이벤트 캡처링 단계라면 HTML > BODY > DIV 순으로 ① 상위 노드에서 ② 하위 노드로 내려오며 이벤트를 캐치할 것입니다.
+
+하지만 브라우저는 기본적으로 이벤트 버블링 단계인 **우리가 클릭하고자 한 이벤트 객체의 타깃인 &lt;div&gt; 에 도달한 후 다시 해당 ② 하위 노드에서 ① 상위 노드로 돌아가는 과정** 에서 이벤트를 캐치하기 때문입니다.
+
+물론 addEventListener 메서드의 세번째 인수(argument)로 옵션인 [, useCaputure] 자리에 boolean 값인 true를 넣어준다면, 캡처링 단계에서도 이벤트 객체를 캐치할 수 있습니다. (기본값으로는 false로, 버블링 단계에서 이벤트 객체를 캐치합니다)
+
+<img src="./images/37_8.png" alt="addEventListener">
+
+```js
+html.addEventListener("click", () => console.log("HTML"), true);
+body.addEventListener("click", () => console.log("BODY"), true);
+div.addEventListener("click", () => console.log("DIV"));
+
+>>>
+
+HTML
+BODY
+DIV
+```
+
+<br/>
+
+### 이벤트 위임(delegation)에 대해서 알고있나요?
+
+**연속되는 태그에 대해서 공통적으로 이벤트를 줘야할 때 우리가 이벤트 핸들러를 바인딩할 해당 요소의 부모 요소에게 이를 위임하여 이벤트를 진행하는 것** 을 이벤트 위임 (event delegation) 이라 합니다.
+
+<details>
+
+<summary>예제 코드 보기</summary>
+
+[예제 코드 실행하기](https://codepen.io/junh0328/pen/abwvZBN)
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>eventDelegation</title>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+      .btn-number {
+        background-color: yellowgreen;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <button class="btn-number">1</button>
+      <button class="btn-number">2</button>
+      <button class="btn-number">3</button>
+      <button class="btn-number">4</button>
+      <button class="btn-number">5</button>
+    </div>
+    <script>
+      const div = document.querySelector("div");
+
+      div.addEventListener("click", (e) => {
+        console.log(e.target.innerHTML);
+      });
+    </script>
+  </body>
+</html>
+```
+
+```
+1
+```
+
+만약 공통되는 button 태그에 대해서 이벤트를 준다면, 버튼별 이벤트 ① onclick 또는 ② addEventListener 메서드를 사용하여 각 버튼에 해당되는 로직을 바인딩해줘야 할 것입니다.
+
+하지만 이벤트 위임(event delegation) 을 통해 부모 요소에 이 작업을 위임하여 현재 클릭하는 타깃 (e.target)에 대한 값을 출력할 수 있습니다.
+
+</details>
+
+<br/>
+
+### e.preventDefault 에 대해 알고 있나요?
+
+e.preventDefault 메서드는 요소 태그의 기본 동작을 중단합니다.
+
+<details>
+<summary>예제 코드 보기</summary>
+
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <a href="https://www.google.com">go</a>
+    <input type="checkbox" />
+    <script>
+      document.querySelector("a").onclick = (e) => {
+        // a 요소의 기본 동작을 중단한다.
+        e.preventDefault();
+      };
+
+      document.querySelector("input[type=checkbox]").onclick = (e) => {
+        // checkbox 요소의 기본 동작을 중단한다.
+        e.preventDefault();
+      };
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+### e.stopPropagation
+
+e.stopPropagation 메서드는 이벤트 전파를 중지시키는 메서드입니다.
+
+이벤트 객체의 경우 상위 태그에도 같은 이벤트가 존재한다면 (예를 들면 click 어트리뷰트가 두 요소 모두 존재하는 경우) 상위 태그의 해당 콜백 함수를 호출하는 특징이 있습니다.
+
+<details>
+<summary> 예제 코드 보기 </summary>
+
+```html
+<!DOCTYPE html>
+<html>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    div {
+      width: 100%;
+      height: 100vh;
+      background-color: tomato;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    button {
+      width: 100px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+  <body>
+    <div>
+      <button>Button</button>
+    </div>
+    <script>
+      const div = document.querySelector("div");
+      const button = document.querySelector("button");
+
+      div.addEventListener("click", () => {
+        console.log("DIV");
+      });
+
+      button.addEventListener("click", (e) => {
+        e.stopPropagation();
+        console.log("BUTTON");
+      });
+    </script>
+  </body>
+</html>
+```
+
+[예제코드보기](https://codepen.io/junh0328/pen/zYzvBzr)
+
+</details>
 
 ## 타이머
 
