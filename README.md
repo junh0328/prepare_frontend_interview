@@ -154,8 +154,20 @@
   - e.preventDefault 에 대해 알고 있나요?
   - e.stopPropagation
 
-- 타이머
-- 비동기 프로그래밍
+- [타이머 🔥](#타이머)
+
+  - 호출 스케쥴링이 무엇인가요?
+  - 타이머 함수에는 어떤 것들이 있나요?
+  - 이벤트가 과도하게 호출되어 성능에 문제를 일으킬 경우에 할 수 있는 어떤 일을 통해 해결할 수 있나요?
+  - 디바운스에 대해서 알고 있나요?
+  - 쓰로틀에 대해서 알고 있나요?
+
+- [비동기 프로그래밍 🔥](#비동기-프로그래밍)
+
+  - 동기와 비동기의 차이점에 대해서 설명해줄 수 있나요?
+    - 한줄 요약
+  - 이벤트 루프와 태스크 큐에 대해서 알고 있나요?
+
 - Ajax
 - REST API
 - Promise
@@ -2109,7 +2121,395 @@ e.stopPropagation 메서드는 이벤트 전파를 중지시키는 메서드입�
 
 ## 타이머
 
+### 호출 스케쥴링이 무엇인가요?
+
+함수를 명시적으로 호출하면 함수가 즉시 실행됩니다.
+
+```js
+function add(a, b) {
+  return a + b;
+}
+
+console.log(add(2, 5)); >>> 7;
+```
+
+만약 함수를 명시적으로 호출하지 않고 일정 시간이 경과된 이후에 호출되도록 함수 호출을 예약하려면, 타이머 함수를 사용해야 합니다.
+
+이렇게 **타이머 함수를 사용하여 명시적으로 호출하지 않고 일정 시간이 경기된 이후에 호출되도록 함수 호출을 예약하는 것** 을 **호출 스케쥴링이라고 합니다.**
+
+### 타이머 함수에는 어떤 것들이 있나요?
+
+1. setTimeout/ clearTimeout
+
+2. setInterval/ clearInterval
+
+<b>① setTimeout/ clearTimeout</b>
+
+setTimeout 함수로 생성한 타이머는 한 번 동작합니다.
+
+<details>
+
+<br/>
+
+```js
+const timeoutdId = setTimeout(func|code[, delay, param1, param2, ...]);
+```
+
+| 매개변수            | 설명                                                                                                                                                         |
+| :------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| func                | 타이머가 만료된 뒤 호출될 콜백 함수 <br/> 콜백 함수 대신 코드를 문자열로 전달할 수 있다. 이때 코드 문자열은 타이머가 만료된 뒤 해석되고 실행된다.            |
+| delay               | 타이머 만료 시간(밀리초(ms) 단위), setTimeout 함수는 delay 시간으로 단 한 번 동작하는 타이머를 생성한다. <br/> 인수 전달을 생략한 경우 기본 값 0이 지정된다. |
+| param1, param2, ... | 호출 스케줄링된 콜백 함수에 전달해야 할 인수가 존재하는 경우 세 번째 이후의 인수로 전달할 수 있다.                                                           |
+
+</details>
+
+setTimeout 함수는 생성된 타이머를 식별할 수 있는 고유한 타이머를 식별할 수 있는 고유한 id를 반환한다.
+
+setTimeout 함수가 반환한 타이머 id는 ① 브라우저 환경일 경우 숫자이며 ② Node.js 환경인 경우 객체다
+
+```js
+// 1초(1000ms) 후 타이머가 만료되면 콜백 함수가 호출된다.
+setTimeout(() => console.log("Hi!"), 1000);
+
+// 세 번째 인수로 문자열 'Lee' 전달
+setTimeout((name) => console.log(`Hi! ${name}.`), 1000, "Lee");
+
+// 두 번째 인수(delay)를 생략하면 기본값 0이 지정된다.
+setTimeout(() => console.log("Hello!"));
+```
+
+setTimeout 함수가 반환한 타이머 id를 clearTimeout 함수의 인수로 전달하여 타이머를 취소할 수 있다.
+
+```js
+const timerId = setTimeout(() => console.log("Hi!"), 1000);
+console.log(timeId);
+
+clearTimeout(timerId);
+```
+
+<b>② setInterval/ clearInterval</b>
+
+setInterval 함수는 두 번째 인수로 전달받은 시간(ms, 1/1000초)으로 반복 동작하는 타이머를 생성한다.
+
+<details>
+
+<br/>
+
+```js
+const timeoutdId = setInterval(func|code[, delay, param1, param2, ...]);
+
+```
+
+</details>
+
+setInterval의 첫 번째 인수인 콜백 함수는 두 번째 인수로 전달받은 시간이 경과할 때마다 반복 실행되도록 호출 스케줄링된다.
+
+```js
+let count = 1;
+
+const timeoutId = setInterval(() => {
+  console.log(count); // 1 2 3 4 5
+
+  if (count++ === 5) clearInterval(timeoutId);
+}, 1000);
+
+console.log("timeoutId: ", timeoutId);
+```
+
+<br/>
+
+### 이벤트가 과도하게 호출되어 성능에 문제를 일으킬 경우에 할 수 있는 어떤 일을 통해 해결할 수 있나요?
+
+scroll, resize, mousemove 같은 이벤트는 짧은 시간 간격으로 연속해서 발생한다.
+
+이러한 이벤트에 바인딩한 이벤트 핸들러는 과도하게 호출되어 성능에 문제를 일으킬 수 있다.
+
+① 디바운스와 ② 쓰로틀은 짧은 시간 간격으로 연속해서 발생하는 이벤트를 그룹화해서 과도한 이벤트 핸들러의 호출을 방지하는 프로그래밍 기법이다.
+
+이렇게 ① 디바운스와 ② 쓰로틀을 사용하여 이벤트가 과도하게 호출되는 것을 막거나, 조절할 수 있다.
+
+### 디바운스에 대해서 알고 있나요?
+
+디바운스(debounce)는 짧은 시간 간격으로 이벤트가 연속해서 발생하면 이벤트 핸들러를 호출(call)하지 않다가 **일정 시간이 경과된 이후에 이벤트 핸들러가 한 번만 호출되도록 한다.**
+
+즉 디바운스는 **짧은 시간 간격으로 발생하는 이벤트를 그룹화해서 마지막에 한 번만 이벤트 핸들러가 호출되도록 한다.**
+
+텍스트 입력 필드에서 input 이벤트가 짧은 시간 간격으로 연속해서 발생하는 경우, 디바운스를 통해 Ajax와 같은 요청의 빈도를 줄여 서버에 부하를 줄일 수 있다.
+
+<details>
+
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <input type="text" />
+    <div class="msg"></div>
+    <script>
+      const $input = document.querySelector("input");
+      const $msg = document.querySelector(".msg");
+
+      const debounce = (callback, delay) => {
+        let timerId;
+        // debounce 함수는 timerId를 기억하는 클로저를 반환한다.
+        return (event) => {
+          // delay가 경과하기 이전에 이벤트가 발생하면 이전 타이머를 취소하고
+          // 새로운 타이머를 재설정한다.
+          // 따라서 delay보다 짧은 간격으로 이벤트가 발생하면 callback은 호출되지 않는다.
+          if (timerId) clearTimeout(timerId);
+          timerId = setTimeout(callback, delay, event);
+        };
+      };
+
+      // debounce 함수가 반환하는 클로저가 이벤트 핸들러로 등록된다.
+      // 300ms보다 짧은 간격으로 input 이벤트가 발생하면 debounce 함수의 콜백 함수는
+      // 호출되지 않다가 300ms 동안 input 이벤트가 더 이상 발생하면 한 번만 호출된다.
+      $input.oninput = debounce((e) => {
+        $msg.textContent = e.target.value;
+      }, 300);
+    </script>
+  </body>
+</html>
+```
+
+### result 💻
+
+<img src="./images/debounce2.gif" alt="debounce">
+
+검색 창에서 매 클릭 이벤트 (e.target.value) 마다 ajax 요청을 보내는 것보다 디바운스를 통해 일정 기간을 바탕으로 마지막 이벤트에 대한 ajax 요청을 보내는 것이 서버의 부하를 줄이는 데 더욱 효율적일 것이다.
+
+</details>
+
+### 쓰로틀에 대해서 알고 있나요?
+
+쓰로틀(throttle)은 짧은 시간 간격으로 이벤트가 연속해서 발생하더라도 일정 시간 간격으로 이벤트 핸들러가 최대 한 번만 호출되도록 한다.
+
+쓰로틀은 짧은 시간 간격으로 연속해서 발생하는 이벤트를 그룹화해서 일정 시간 단위로 이벤트 핸들러가 호출되도록 호출 주기를 만든다.
+
+scroll 이벤트는 사용자가 스크롤할 때 짧은 시간 간격으로 연속해서 발생한다
+
+이처럼 짧은 시간 간격으로 연속해서 발생하는 이벤트의 과도한 이벤트 핸들러의 호출을 방지하기 위해 throttle 함수를 통해 호출 주기를 만든다
+
+쓰로틀은 scroll 이벤트 처리나 무한 스크롤 UI 구현 등에 유용하게 사용된다
+
+<details>
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .container {
+        width: 300px;
+        height: 300px;
+        background-color: rebeccapurple;
+        overflow: scroll;
+      }
+
+      .content {
+        width: 300px;
+        height: 1000vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content"></div>
+    </div>
+    <div>
+      일반 이벤트 핸들러가 scroll 이벤트를 처리한 횟수:
+      <span class="normal-count">0</span>
+    </div>
+    <div>
+      쓰로틀 이벤트 핸들러가 scroll 이벤트를 처리한 횟수:
+      <span class="throttle-count">0</span>
+    </div>
+
+    <script>
+      const $container = document.querySelector(".container");
+      const $normalCount = document.querySelector(".normal-count");
+      const $throttleCount = document.querySelector(".throttle-count");
+
+      const throttle = (callback, delay) => {
+        let timerId;
+        // throttle 함수는 timerId를 기억하는 클로저를 반환한다.
+        return (event) => {
+          // delay가 경과하기 이전에 이벤트가 발생하면 아무것도 하지 않다가
+          // delay가 경과했을 때 이벤트가 발생하면 새로운 타이머를 재설정한다.
+          // 따라서 delay 간격으로 callback이 호출된다.
+          if (timerId) return;
+          timerId = setTimeout(
+            () => {
+              callback(event);
+              timerId = null;
+            },
+            delay,
+            event
+          );
+        };
+      };
+
+      let normalCount = 0;
+      $container.addEventListener("scroll", () => {
+        $normalCount.textContent = ++normalCount;
+      });
+
+      let throttleCount = 0;
+      // throttle 함수가 반환하는 클로저가 이벤트 핸들러로 등록된다.
+      $container.addEventListener(
+        "scroll",
+        throttle(() => {
+          $throttleCount.textContent = ++throttleCount;
+        }, 1000)
+      );
+    </script>
+  </body>
+</html>
+```
+
+### result 💻
+
+<img src="./images/throttle2.gif" alt="throttle">
+
+</details>
+
 ## 비동기 프로그래밍
+
+### 동기와 비동기의 차이점에 대해서 설명해줄 수 있나요?
+
+<details>
+
+자바스크립트 엔진은 기본적으로 함수를 호출하면 함수 코드가 평가되어 함수 실행 컨텍스트가 생성된다.
+
+이때 생성된 함수 실행 컨텍스트는 실행 컨텍스트 스택(콜 스택이라고도 부름)에 푸시되고 함수 코드가 실행된다.
+
+함수 코드의 실행이 종료되면 함수 실행 컨텍스트는 실행 컨텍스트 스택에서 팝되어 제거된다
+
+```js
+const x = 1;
+
+function foo() {
+  const y = 2;
+
+  function bar() {
+    const z = 3;
+    console.log(x + y + z);
+  }
+  bar();
+}
+
+foo(); // 6
+```
+
+<img src="./images/27_2.jpg" alt="실행 컨텍스트 스택 구조">
+
+함수가 실행되려면 ① 함수 코드 평가 과정에서 생성된 함수 실행 컨텍스트가 실행 컨텍스트 스택에 푸시되어야 한다.
+
+다시 말해, **실행 컨텍스트 스택에 함수 실행 컨텍스트가 푸시되는 것은 바로 함수 실행의 시작을 의미한다.**
+
+함수가 호출된 순서대로 순차적으로 실행되는 이유는 **함수가 호출된 순서대로 함수 실행 컨텍스트가 실행 컨텍스트 스택에 푸시되기 때문이다.**
+
+이처럼 **함수의 실행 순서는 실행 컨텍스트 스택이 관리한다.**
+
+#### 스택구조
+
+<img src="./images/39_1.jpg" alt="스택 구조">
+
+자바스크립트 엔진은 단 하나의 실행 컨텍스트 스택 구조를 갖는다.
+
+이는 함수를 실행할 수 있는 창구가 단 하나이며, 동시에 2개 이상의 함수를 실행할 수 없다는 것을 의미한다.
+
+실행 컨텍스트의 최상위 요소인 '실행 중인 실행 컨텍스트'를 제외한 모든 실행 컨텍스트는 모두 실행 대기 중인 태스크들이다.
+
+대기 중인 태스크들은 현재 실행 중인 실행 컨텍스트가 팝(pop)되어 실행 컨택스트 스택에서 제거되면, 비로소 실행되기 시작한다.
+
+#### 태스크
+
+<img src="./images/39_5.png" alt="태스크">
+
+**자바스크립트 엔진은 한 번에 하나의 태스크(작업, 일)만 실행할 수 있는 싱글 스레드 방식으로 동작한다.**
+
+싱글 스레드 방식은 한 번에 하나의 태스크만 실행할 수 있기 때문에 처리에 시간이 걸리는 태스크를 실행하는 경우 블로킹(작업중단)이 발생한다.
+
+#### 동기 코드 예시
+
+```js
+function sleep(func, delay) {
+  const delayUntil = Date.now() + delay;
+
+  // 현재 시간(Date.now())에 delay를 더한 delayUntil이 현재 시간보다 작으면 계속 반복한다.
+  while (Date.now() < delayUntil);
+  // 일정 시간(delay)이 경과한 이후에 콜백 함수(func)를 호출한다.
+  func();
+}
+
+function foo() {
+  console.log("foo");
+}
+
+function bar() {
+  console.log("bar");
+}
+
+sleep(foo, 3000);
+bar();
+```
+
+<img src="./images/sleep.gif" alt="동기함수 sleep">
+
+이처럼 **현재 실행 중인 태스크가 종료될 때까지 다음에 실행될 태스크가 대기하는 방식을 동기(synchronous) 처리 방식이라고 한다.**
+
+동기 처리 방식은 태스크를 순서대로 하나씩 처리하므로 실행 순서가 보장된다는 장점이 있지만, 앞선 태스크가 종료할 때까지 이후 태스크들이 블로킹되는 단점이 있다.
+
+<img src="./images/39_3.jpg" alt="동기처리">
+
+#### 비동기 코드 예시
+
+```js
+function foo() {
+  console.log("foo");
+}
+
+function bar() {
+  console.log("bar");
+}
+
+// 타이머 함수 setTimeout은 일정 시간이 경과한 이후에 콜백 함수 foo를 호출한다.
+// 타이머 함수 setTimeout은 bar 함수를 블로킹하지 않는다.
+setTimeout(foo, 3 * 1000);
+bar();
+```
+
+<img src="./images/nonSleep.gif" alt="비동기 함수 setTimeout">
+
+setTimeout 함수는 앞서 살펴본 sleep 함수와 유사하게 일정 시간이 경과한 이후에 콜백 함수를 호출하지만 setTimeout 함수 이후의 태스크(여기서는 bar)를 블로킹하지 않고 곧바로 실행한다.
+
+이처럼 **현재 실행 중인 태스크가 종료되지 않은 상태라 해도 다음 태스크를 곧바로 실행하는 방식을 비동기(asynchronous) 처리라고 한다.**
+
+<img src="./images/39_4.jpg" alt="비동기처리">
+
+비동기 처리 방식은 현재 실행 중인 태스크가 종료되지 않은 상태라 해도 다음 태스크를 곧바로 실행하므로 **블로킹이 발생하지 않는다는 장점이 있다.**
+
+하지만 동시에 **태스크의 실행 순서가 보장되지 않는 단점이 있다.**
+
+</details>
+
+#### 한줄 요약
+
+1. 현재 실행 중인 태스크가 **종료될 때까지 다음에 실행될 태스크가 대기하는 방식** 을 동기(synchronous) 처리 방식이라고 하며
+2. 현재 실행 중인 태스크가 **종료되지 않은 상태라 해도 다음 태스크를 곧바로 실행하는 방식** 을 비동기(asynchronous) 처리라고 한다.
+3. 대표적으로 타이머 함수인 **① setTimeout/ setInterval ② HTTP 요청 ③ 이벤트 핸들러** 는 비동기 처리 방식으로 동작한다.
+
+<br/>
+
+### 이벤트 루프와 태스크 큐에 대해서 알고 있나요?
+
+자바스크립트는 싱글 스레드로 동작하기 때문에 한 번에 하나의 태스크만 처리할 수 있다 하지만 브라우저가 동작하는 것을 살펴보면 많은 태스크가 동시에 처리되는 것처럼 느껴진다
+
+**예를 들어, HTML 요소가 애니메이션 효과를 통해 움직이면서 이벤트를 처리하기도 하고, HTTP 요청을 통해 서버로부터 데이터를 가지고 오면서 렌더링하기도 한다. 이처럼 자바스크립트의 동시성을 지원하는 것이 바로 이벤트 루프(event loop)다.**
+
+이벤트 루프는 브라우저에 내장되어 있는 기능 중 하나다. 브라우저 환경을 그림으로 표현하면 다음과 같다.
+
+<img src="./images/39_6.jpg" alt="브라우저의 환경">
 
 ## Ajax
 
