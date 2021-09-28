@@ -187,6 +187,11 @@
 
 - [Promise 🔥](#Promise)
 
+  - 프로미스가 뭔가요?
+  - 프로미스 생성 방법
+  - 프로미스의 상태를 나타내는 것은 어떤 것들이 있나요?
+  - 프로미스 빌트인 객체가 제공하는 정적 메서드에 대해 알고 있나요?
+
 - 제너레이터와 async/await
 - 모듈
 
@@ -2649,6 +2654,8 @@ Promise.resolve()
 <details>
 <summary>gif로 이벤트 흐름 파악하기</summary>
 
+<br/>
+
 [출처: JavaScript Visualized: Promises](https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke)
 
 <img src="./images/micro1.gif" alt="마이크로태스크큐">
@@ -2727,6 +2734,8 @@ JSON은 클라이언트와 서버 간의 HTTP 통신을 위한 텍스트 데이�
 
 <details>
 
+<br/>
+
 브라우저는 주소창이나 HTML의 form 태그 또는 a 태그를 통해 HTTP 요청 전송 기능을 기본 제공합니다
 
 자바스크립트를 사용하여 HTTP 요청을 전송하려면 **XMLHttpRequest** 객체를 사용합니다
@@ -2793,9 +2802,11 @@ xhr.onload = () => {
 
 </details>
 
-2. Fetch
+2. [Fetch](https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme7.md#458-fetch)
 
 <details>
+
+<br/>
 
 fetch 함수는 **XMLHttpRequest 객체와 마찬가지로 HTTP 요청 전송 기능을 제공하는 클라이언트 사이드 Web API다.**
 
@@ -3205,6 +3216,8 @@ Promise 생성자 함수가 인수로 전달받은 콜백 함수 내부에서 �
 프로미스는 🔥 **pending** 상태에서 fulfilled 또는 rejected 상태, 즉 🔥 **settled** 상태로 변화할 수 있다.
 
 하지만 일단 settled 상태가 되면 더는 다른 상태로 변화할 수 없다.
+
+<br/>
 
 ### 프로미스 빌트인 객체가 제공하는 정적 메서드에 대해 알고 있나요?
 
