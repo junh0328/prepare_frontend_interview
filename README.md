@@ -122,7 +122,11 @@
 
   - 실행 컨텍스트에 대해 말해보세요
 
-- 클로저
+- [클로저 🔥](#클로저)
+
+  - 클로저에 대해서 아나요?
+  - 클로저를 사용하면 뭐가 좋죠?
+
 - 클래스
 - ES6 함수의 추가 기능
 
@@ -192,8 +196,21 @@
   - 프로미스의 상태를 나타내는 것은 어떤 것들이 있나요?
   - 프로미스 빌트인 객체가 제공하는 정적 메서드에 대해 알고 있나요?
 
-- 제너레이터와 async/await
-- 모듈
+- [제너레이터와 async await 🔥](#제너레이터와-async-await)
+
+  - 제너레이터란 뭔가요? 일반 함수와는 어떤 차이가 있죠?
+  - 제너레이터의 구조
+  - async/await 가 뭔가요? 기존의 Promise와는 어떤 차이가 있죠?
+  - Promise와 async/await의 차이점 한 줄 요약
+
+- [에러 🔥](#에러)
+
+  - 에러처리를 왜 해야 하나요?
+  - 자바스크립트에서 에러를 처리하는 방법에는 뭐가 있을까요?
+
+- [모듈 🔥](#모듈)
+
+  - 모듈이 뭔가요?
 
 ## 프로그래밍
 
@@ -3344,6 +3361,324 @@ Promise.allSettled([
 
 </details>
 
-## 제너레이터와 async/await
+## 제너레이터와 async await
+
+### `제너레이터란 뭔가요? 일반 함수와는 어떤 차이가 있죠?`
+
+ES6에서 도입된 제너레이터(generator)는 코드 블록의 실행을 일시 중지 (블로킹) 했다가 필요한 시점에 재개할 수 있는 특수한 함수다.
+
+제너레이터와 일반 함수의 차이는 다음과 같다.
+
+**① 제너레이터 함수는 함수 호출자에게 함수 실행의 제어권을 양도할 수 있다.**
+
+- 제너레이터는 함수 호출자가 함수 실행을 일시 중지시키거나 재개시킬 수 있다.
+- 이는 함수의 제어권을 함수가 독점하는 것이 아니라 함수 호출자에게 양도(yield)할 수 있다는 것을 의미한다.
+
+**② 제너레이터 함수는 함수 호출자와 함수의 상태를 주고받을 수 있다.**
+
+- 제너레이터 함수는 함수 호출자에게 상태를 전달할 수 있고 함수 호출자로부터 상태를 전달받을 수도 있다.
+
+**③ 제너레이터 함수를 호출하면 제너레이터 객체를 반환한다.**
+
+- 제너레이터 함수를 호출하면 함수 코드를 실행하는 것이 아니라 이터러블이면서 동시에 이터레이터인 제너레이터 객체를 반환한다.
+
+<br/>
+
+### `제너레이터의 구조`
+
+제너레이터는 ① yield 키워드와 ② next 메서드를 통해 실행을 일시 중지했다가 필요한 시점에 다시 재개할 수 있다.
+
+일반 함수는 호출 이후 제어권을 해당 함수가 독점하지만, 제너레이터는 함수 호출자에게 제어권을 양도(yield)하여 필요한 시점에 함수 실행을 재개할 수 있다.
+
+next 메서드를 통해 제너레이터를 실행할 경우, 코드 블록 내에 yield 키워드 뒤에 오는 표현식의 평가 결과를 제너레이터 함수 호출자에게 리절트 객체형식으로 반환한다.
+
+```
+{ value : , done : }
+```
+
+<details>
+<summary>코드 보기 📌</summary>
+
+<br/>
+
+```js
+// 제너레이터 함수
+function* genFunc() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+// 제너레이터 함수를 호출하면 제너레이터 객체를 반환한다.
+// 이터러블이면서 동시에 이터레이터인 제너레이터 객체는 next 메서드를 갖는다.
+const generator = genFunc();
+
+console.log(generator.next()); // {value: 1, done: false}
+
+console.log(generator.next()); // {value: 2, done: false}
+
+console.log(generator.next()); // {value: 3, done: false}
+
+console.log(generator.next()); // {value: undefined, done: true}
+```
+
+</details>
+
+<br/>
+
+### `async/await 가 뭔가요? 기존의 Promise와는 어떤 차이가 있죠?`
+
+ES8에서는 제너레이터보다 간단하고 가독성 좋게 비동기 처리를 동기 처리처럼 동작하도록 구현할 수 있는 async/await가 도입되었다.
+
+async/await는 프로미스를 기반으로 동작하기 때문에 **프로미스의 then/catch/finally 등의 후속 처리 메서드에 콜백 함수를 전달해서 비동기 처리 결과를 후속 처리할 필요 없이 마치 동기 처리처럼 프로미스를 사용할 수 있다.**
+
+🔥 **다시 말해, 프로미스의 후속 처리 메서드 없이 마치 동기 처리처럼 프로미스가 처리 결과를 반환하도록 구현할 수 있다.**
+
+<details>
+<summary>코드 보기 📌</summary>
+
+#### `async 함수`
+
+async 함수는 async 키워드를 사용해 정의하며 언제나 프로미스를 반환한다.
+
+async 함수가 명시적으로 프로미스를 반환하지 않더라도 async 함수는 암묵적으로 반환 값을 resolve하는 프로미스를 반환한다.
+
+#### `await 키워드`
+
+await 키워드는 프로미스가 **settled 상태(비동기 처리가 수행된 상태)** 가 될 때까지 대기하다가 settled 상태가 되면 프로미스가 resolve한 처리 결과를 반환한다.
+
+await 키워드는 반드시 프로미스 앞에서 사용해야 한다.
+
+```html
+<body>
+  <pre></pre>
+  <script>
+    // async 사용!
+    async function fetchTodo() {
+      const url = "https://jsonplaceholder.typicode.com/todos/1";
+
+      const response = await fetch(url);
+      const todo = await response.json();
+      console.log(todo);
+      const result = JSON.stringify(todo, null, 2);
+      document.querySelector("pre").innerHTML = result;
+      // {userId: 1, id: 1, title: 'delectus aut autem', completed: false}
+    }
+
+    fetchTodo();
+  </script>
+</body>
+```
+
+</details>
+
+async await로 구현할 경우 제너레이터의 성질을 갖기 때문에 항상 프로미스가 settled(이행된) 상태가 될 때까지 대기한다.
+
+따라서 모든 코드에 async await를 남발하는 것은 도움이 되지 않는다
+
+#### `async await 키워드를 사용하는 경우`
+
+```js
+async function foo() {
+  const a = await new Promise((resolve) => setTimeout(() => resolve(1), 3000));
+  const b = await new Promise((resolve) => setTimeout(() => resolve(2), 2000));
+  const c = await new Promise((resolve) => setTimeout(() => resolve(3), 1000));
+
+  console.log([a, b, c]); // [1, 2, 3]
+}
+
+foo(); // 약 6초 소요된다.
+```
+
+#### `프로미스의 정적 메서드 Promise.all을 사용하는 경우`
+
+3개의 비동기 처리는 서로 연관이 없이 개별적으로 수행되는 비동기처리 이므로 앞선 비동기 처리가 완료될 때까지 대기해서 순차적으로 처리할 필요가 없다.
+
+```js
+async function foo() {
+  const res = await Promise.all([
+    new Promise((resolve) => setTimeout(() => resolve(1), 3000)),
+    new Promise((resolve) => setTimeout(() => resolve(2), 2000)),
+    new Promise((resolve) => setTimeout(() => resolve(3), 1000)),
+  ]);
+
+  console.log(res); // [1, 2, 3]
+}
+
+foo(); // 약 3초 소요된다.
+```
+
+<br/>
+
+### `Promise와 async/await의 차이점 한 줄 요약`
+
+**① 에러 핸들링**
+
+- Promise 를 활용할 시에는 .catch() 문을 통해 에러 핸들링을 해야 하지만,
+- async/await 은 try / catch를 통해 에러를 처리할 수 있다
+
+**② 코드 가독성**
+
+- Promise의 후속 처리 메서드인 .then() 의 hell의 가능성
+- async/await 은 프로미스의 후속 처리 메서드 없이 마치 동기 처리처럼 프로미스가 처리 결과를 반환하도록 구현할 수 있기 때문에 코드 흐름을 이해 하기 쉽다.
+
+## 에러
+
+### `에러처리를 왜 해야 하나요?`
+
+에러가 발생하지 않는 코드를 작성하는 것은 불가능하다고 볼 수 있다.
+
+발생한 에러에 대해 대처하지 않고 방치한다면 프로그램을 강제 종료될 것이다.
+
+따라서 try catch 문 등을 사용해 발생한 에러를 적절하게 대응하면 프로그래밍이 강제 종료되지 않고 계속해서 코드를 실행시킬 수 있다.
+
+<details>
+<summary>에러 캐치</summary>
+
+#### 에러를 처리를 하지 않을 경우
+
+```js
+console.log("[Start]");
+
+foo(); // ReferenceError: foo is not defined
+
+console.log("[End]");
+```
+
+```
+// 터미널 💻
+
+[Start]
+/Users/leejunhee/junheeDB/CaptainP/upgrade_javascript/DEEPDIVE/error.js:3
+foo(); // ReferenceError: foo is not defined
+^
+
+ReferenceError: foo is not defined
+
+[End] 는 빛을 보지 못하고 종료되었다...
+```
+
+#### 에러 처리를 할 경우
+
+```js
+console.log("[Start]");
+
+try {
+  foo();
+} catch (error) {
+  console.error("[에러 발생]", error);
+  // [에러 발생] ReferenceError: foo is not defined
+}
+
+// 발생한 에러에 적절한 대응을 하면 프로그램이 강제 종료되지 않는다.
+console.log("[End]");
+```
+
+```
+[Start]
+[에러 발생] ReferenceError: foo is not defined
+    at Object.<anonymous> (/...파일이 실행된 상대 경로)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+    at internal/main/run_main_module.js:17:47
+[End]
+```
+
+</details>
+
+### `자바스크립트에서 에러를 처리하는 방법에는 뭐가 있을까요?`
+
+1. try catch finally
+2. Error 객체
+3. throw 문
+
+<details>
+<summary>Error 객체</summary>
+
+<br/>
+
+Error 생성자 함수는 에러 객체를 생성한다.
+
+Error 생성자 함수에는 에러를 상세히 설명하는 에러 메시지를 인수로 전달할 수 있다.
+
+```js
+const error = new Error("invalid");
+```
+
+자바스크립트는 Error 생성자 함수를 포함해 7가지의 에러 객체를 생성할 수 있는 Error 생성자 함수를 제공한다.
+
+해당 함수가 생성한 에러 객체의 프로토타입은 모두 Error.prototype을 상속받는다.
+
+| 생성자 함수    | 인스턴스                                                                       |
+| :------------- | :----------------------------------------------------------------------------- |
+| Error          | 일반적 에러 객체                                                               |
+| SyntaxError    | 자바스크립트 문법에 맞지 않는 문을 해석할 때 발생하는 에러 객체                |
+| ReferenceError | 참조할 수 없는 식별자를 참조했을 때 발생하는 에러 객체                         |
+| TypeError      | 피연산자 또는 인수의 데이터 타입이 유효하지 않을 때 발생하는 에러 객체         |
+| RangeError     | 숫자값의 허용 범위를 벗어낫을 때 발생하는 에러 객체                            |
+| URIError       | encodeURI 또는 decodeURI 함수에 부적절한 인수를 전달했을 때 발생하는 에러 객체 |
+| EvalError      | eval 함수에서 발생하는 에러 객체                                               |
+
+</details>
+
+<details>
+<summary>throw 문</summary>
+
+<br/>
+
+Error 생성자 함수로 에러 객체를 생성한다고 에러가 발생하는 것은 아니다.
+
+즉, 에러 객체 생성과 에러 발생은 의미가 다르다.
+
+```js
+try {
+  // 에러 객체를 생성한다고 에러가 발생하는 것은 아니다.
+  new Error("something wrong");
+} catch (error) {
+  console.log(error);
+}
+```
+
+**에러를 발생시키려면 try 코드 블록에서 throw 문으로 에러 객체를 던져야 한다**
+
+```
+throw 표현식;
+```
+
+```js
+try {
+  // 에러 객체를 던지면 catch 코드 블록이 실행되기 시작한다.
+  throw new Error("something wrong");
+} catch (error) {
+  console.log(error);
+}
+```
+
+</details>
 
 ## 모듈
+
+### `모듈이 뭔가요?`
+
+모듈(module)이란 애플리케이션을 구성하는 개별적 요소로서 재사용 가능한 코드 조각을 말한다.
+
+일반적으로 모듈은 기능을 기준으로 파일 단위로 분리한다. 이때 모듈이 성립하려면 모듈은 자신만의 파일 스코프(모듈 스코프)를 가질 수 있어야 한다.
+
+자신만의 파일 스코프를 갖는 모듈의 자산(모듈에 포함되어 있는 변수, 함수, 객체 등)은 기본적으로 비공개 상태다. 즉, 모듈은 개별적 존재로서 애플리케이션과 분리되어 존재한다.
+
+하지만 애플리캐이션과 완전히 분리되어 개별적으로 존재하는 모듈은 재사용이 불가능하므로 존재의 의미가 없다.
+
+따라서 **모듈은 공개가 필요한 자산에 한정하여 명시적으로 선택적 공개가 가능하다.** 이를 **export** 라 한다.
+
+공개(export)의 자산은 다른 모듈에서 재사용할 수 있다. (의존성을 갖게 된다)
+
+이때 공개된 모듈의 자산을 사용하는 모듈을 **모듈 사용자(module consumer)** 라 한다. 모듈 사용자는 모듈이 **공개(export)한 자산 중 일부 또는 전체를 선택해 자신의 스코프 내로 불러들여 재사용할 수 있다.** 이를 **import** 라 한다.
+
+<img src="./images/42_1.png" alt="모듈">
+
+자바스크립트는 기본적으로 모듈이 성립하기 위해 필요한 파일 스코프와 import, export를 지원하지 않는다.
+
+따라서 자바스크립트를 클라이언트 사이드, 즉 브라우저 환경에 국한하지 않고 범용적으로 사용하려는 움직임이 생기면서 이러한 상황에 제안된 것이 **CommonJS** 와 **AMD(asynchronous module definition)** 다.
