@@ -126,9 +126,14 @@
 
   - 클로저에 대해서 아나요?
   - 클로저를 사용하면 뭐가 좋죠?
+  - 클로저를 어떻게 생성하나요?
 
-- 클래스
-- ES6 함수의 추가 기능
+- [클래스 🔥](#클래스)
+
+  - 자바스크립트에서 클래스가 생기기 전에는 어떤 방식으로 객체지향 패턴을 구현했나요?
+  - 그럼 생성자 함수와 클래스는 어떤 차이가 있나요?
+  - 클래스 정의
+  - 클래스의 상속
 
 - [스프레드 문법 🔥](#스프레드-문법)
 
@@ -1401,9 +1406,533 @@ this 바인딩은 this(키워드로 분류되지만 식별자 역할을 한다)�
 
 다시 말해, 상태가 의도치 않게 변경되지 않도록 상태를 안전하게 **은닉(information hiding)하고 특정 함수에게만 상태변경을 허용하기 위해 사용한다.**
 
+<br/>
+
+### 클로저를 어떻게 생성하나요?
+
+1. 내부(중첩) 함수가 익명 함수로 되어 외부 함수의 반환값으로 사용될 때
+2. 내부(중첩) 함수가 외부 함수의 스코프에서 실행될 때
+3. 내부 함수에서 사용되는 변수가 외부 함수의 변수 스코프에 포함되어 있을 때
+
+```js
+var name = `Global`;
+function outer() {
+  var name = `closure`;
+  return function inner() {
+    console.log(name);
+  };
+}
+
+var callFunc = outer();
+callFunc();
+```
+
+위 코드에서 `callFunc`를 클로저라고 한다. `callFunc` 호출에 의해 name이라는 값이 console 에 찍히는데, 찍히는 값은 `Global`이 아니라 `closure`라는 값이다. 즉, `outer` 함수의 `context` 에 속해있는 변수를 참조하는 것이다. 여기서 `outer` 함수의 지역변수로 존재하는 `name`변수를 `free variable(자유변수)` 라고 한다.
+
+이처럼 외부 함수 호출이 종료되더라도 외부 함수의 지역 변수 및 변수 스코프 객체의 체인 관계를 유지할 수 있는 구조를 `클로저` 라고 한다.
+
+<details>
+<summary>여러 케이스 보기</summary>
+
+<br/>
+
+### case 1 상위 스코프의 식별자를 참조하지 않는 경우
+
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      function foo() {
+        const x = 1;
+        const y = 2;
+
+        function bar() {
+          const z = 3;
+          debugger;
+          // 상위 스코프의 함수(foo)의 어떠한 식별자도 참조하지 않았다.
+          console.log(z);
+        }
+
+        return bar;
+      }
+
+      const bar = foo();
+      bar();
+    </script>
+  </body>
+</html>
+```
+
+#### 디버깅
+
+<img src="./images/closure1.png" alt="클로저x">
+
+위 예제의 중첩 함수 bar는 외부 함수 foo 보다 더 오래 유지되지만 상위 스코프의 어떤 식별자(x,y)도 참조하지 않는다.
+
+이처럼 상위 스코프의 어떤 식별자도 참조하지 않는 경우 대부분의 모던 브라우저는 최적화를 통해 다음 그림과 같이 상위 스코프를 기억하지 않는다.
+
+참조하지도 않는 식별자를 기억하는 것은 메모리 낭비이기 때문이다. `따라서 bar 함수는 클로저라고 할 수 없다.`
+
+```
+참조하는 식별자를 실행 컨텍스트가 종료되어도 렉시컬 환경을 통해 참조하고, 값을 변경할 수 있는 것이 클로저이다.
+```
+
+<br/>
+
+### case 2 상위 스코프의 식별자를 참조하지만, 중첩 함수가 반환되지 않는 경우
+
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      function foo() {
+        const x = 1;
+
+        // 일반적으로 클로저라고 하지 않는다.
+        // bar 함수는 클로저였지만 곧바로 소멸한다.
+        function bar() {
+          debugger;
+          // 상위 스코프의 식별자를 참조한다.
+          console.log(x);
+        }
+        bar();
+      }
+
+      foo();
+    </script>
+  </body>
+</html>
+```
+
+#### 디버깅
+
+<img src="./images/closure2.png" alt="클로저x">
+
+위 예제의 중첩 함수 bar는 상위 스코프의 식별자(x)를 참조하고 있으므로 클로저다.
+
+하지만 외부 함수 foo의 외부로 중첩 함수가 반환되지 않는다.
+
+즉, 외부 함수 foo보다 중첩 함수 bar의 생명 주기가 짧다. 이런 경우 중첩 함수 bar는 클로저였지만 외부 함수보다 일찍 소멸되기 때문에 생명 주기가 종료된 외부 함수의 식별자를 참조할 수 있다든 클로저의 본질에 부합하지 않는다.
+
+따라서 중첩 함수 bar는 일반적으로 클로저라고 하지 않는다.
+
+<br/>
+
+### case 3 상위 스코프의 식별자를 참조하고, 중첩 함수가 반환되는 경우 (올바르게 사용된 클로저)
+
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      function foo() {
+        const x = 1;
+        const y = 2;
+
+        // 클로저
+        // 중첩 함수 bar는 외부 함수보다 더 오래 유지되며 상위 스코프의 식별자를 참조한다.
+        function bar() {
+          debugger;
+          console.log(x);
+        }
+        return bar;
+      }
+
+      const bar = foo();
+      bar();
+    </script>
+  </body>
+</html>
+```
+
+#### 디버깅
+
+<img src="./images/closure3.png" alt="클로저o">
+
+위 예제의 `중첩 함수 bar는 상위 스코프의 식별자를 참고하고 있으므로 클로저다.`
+
+그리고 외부 함수의 외부로 반환되어 외부 함수보다 더 오래 살아 남는다.
+
+이처럼 외부 함수보다 중첩 함수가 더 오래 유지되는 경우 중첩 함수는 이미 생명 주기가 종료한 외부 함수의 변수를 참조할 수 있다. 이러한 중첩 함수를 `클로저` 라고 부른다.
+
+클로저는 중첩 함수가 상위 스코프의 식별자를 참조하고 있고 중첩 함수가 외부 함수보다 더 오래 유지되는 경우에 한정하는 것이 일반적이다.
+
+</details>
+
+<br/>
+
+<details>
+<summary>함수형 프로그래밍에서의 클로저 사용하기</summary>
+
+<br/>
+
+```js
+function closure() {
+  let num = 10;
+
+  function plusNum() {
+    num += 1;
+  }
+
+  function printNum() {
+    console.log(num);
+  }
+
+  function setNum(val) {
+    num = val;
+  }
+
+  // 함수를 객체 형식으로 리턴하는 이유는 새로 생성한 변수를 (.) 연산자를 통해 (객체와 같은 방식으로) 접근하기 위해서
+  // 함수뿐만 아니라 지역 변수도 리턴이 가능하다 (하지만 추천하지 않음)
+  // 지역 변수를 객체 형식으로 담아서 리턴될 경우에, closure의 의도와 다르게 내부에 정의된 함수 외에도 지역 변수의 값을 변경하는 경우가 생기기 때문에
+  // (객체는 가변성의 성질을 가지므로)
+
+  return { num, plusNum, printNum, setNum };
+}
+
+// console.log("num is:", num); // num is not defined, 상위 스코프에서 하위 스코프로 식별자 검색을 할 수 없음
+
+const newNum = closure(); // closure 함수로 newNum 함수를 생성한다.
+
+console.log(newNum); // 생성된 함수객체 newNum은 closure 함수가 리턴하는 객체 형식의 프로퍼티와 메서드가 들어있음
+
+console.log((newNum.num = 20)); // newNum.num 에 값을 할당 (closure 함수의 메서드를 사용하지 않고 직접 변경)
+console.log(newNum); // 객체형식으로 리턴되는 newNum의 특성상 newNum의 프로퍼티인 num의 값이 재할당됨
+
+newNum.printNum(); // 하지만 printNum 메서드를 사용하면 기존의 10 출력
+
+newNum.setNum(100); // 따라서 지역 변수 num을 변경하기 위해서는 새로운 메서드를 정의하여 값을 전달함으로서 부수효과를 줄어야함
+
+newNum.printNum(); // 100 출력
+
+// 하지만 지역 변수를 리턴하더라도 원시 타입의 값은 불변성의 성질을 가지기 때문에, 재할당하지 않는 이상 값을 변화시킬 수 없다.
+// 따라서 함수를 통해 반환하여 사용하는 것이 올바르다.
+```
+
+#### 결과 보기
+
+```js
+>> console.log(newNum)
+{
+  num: 10,
+  plusNum: [Function: plusNum],
+  printNum: [Function: printNum],
+  setNum: [Function: setNum]
+}
+
+>> console.log((newNum.num = 20));
+20
+
+>> console.log(newNum);
+{
+  num: 20,
+  plusNum: [Function: plusNum],
+  printNum: [Function: printNum],
+  setNum: [Function: setNum]
+}
+
+>> newNum.printNum();
+10
+
+>> newNum.setNum(100);
+
+>> newNum.printNum();
+100
+
+```
+
+</details>
+
 ## 클래스
 
-## ES6 함수의 추가 기능
+### 자바스크립트에서 클래스가 생기기 전에는 어떤 방식으로 객체지향 패턴을 구현했나요?
+
+자바스크립트는 프로토타입 기반 객체지향 언어로서, 클래스가 필요 없는 객체지향 프로그래밍 언어이다.
+
+생성자 함수와 프로토타입을 통해 객체지향 언어의 상속을 구현할 수 있었다.
+
+```js
+// ES5 생성자 함수
+function Person(name) {
+  this.name = name;
+}
+
+// 프로토타입 메서드
+Person.prototype.sayHi = function () {
+  console.log("Hi! My name is " + this.name);
+};
+
+// 인스턴스 생성
+var me = new Person("Lee");
+me.sayHi(); // Hi! My name is Lee
+```
+
+하지만 **클래스 기반 언어에 익숙한 프로그래머들은 프로토타입 기반의 프로그래밍 방식에 혼란을 느낄 수 있으며, 자바스크립트를 어렵게 느끼게 하는 하나의 장벽처럼 인식되었다.**
+
+ES6에서 도입된 `클래스` 는 **①기존 프로토타입 기반 객체지향 프로그래밍보다 ②자바나 C#과 같은 클래스 기반 객체지향 프로그래밍에 익숙한 프로그래머가 더욱 빠르게 학습할 수 있도록 클래스 기반 객체지향 프로그래밍 언어와 매우 흡사한 새로운 객체 생성 메커니즘을 제시한다.**
+
+```
+자바스크립트에서는 프로토타입 기반의 객체지향 프로그래밍을 기반으로 설계되었지만,
+이에 어려움을 느끼는 객체지향 프로그래밍에 익숙한 프로그래머들을 위해 ES6부터 클래스 개념을 도입하였다.
+```
+
+### 그럼 생성자 함수와 클래스는 어떤 차이가 있나요?
+
+1. 클래스를 new 연산자 없이 호출하면 에러가 발생한다. 하지만, 생성자 함수는 일반 함수로 호출된다.
+
+2. 클래스는 상속을 지원하는 extends와 super 키워드를 제공한다. 생성자 함수는 해당 키워드를 제공하지 않는다.
+
+3. 클래스는 호이스팅이 발생하지 않는 것처럼 동작한다. 하지만 함수 선언문으로 작성된 클래스는 함수 호이스팅이,
+   함수 표현식으로 정의한 생성자 함수는 변수 호이스팅이 발생한다.
+
+4. 클래스 내의 모든 코드에는 암묵적으로 strict mode가 저장되어 실행되며 strict mode를 해제할 수 없다.
+   <-> 생성자 함수는 암묵적으로 strict mode가 지정되지 않는다.
+
+5. 클래스의 constructor, 프로토타입 메서드, 정적 메서드는 모두 프로퍼티 어트리뷰트 [[Enumerable]] 값이 false인
+   열거가 되지 않는 값이다.
+
+### 클래스 정의
+
+```js
+// 클래스 선언문
+class Person {}
+
+// 함수 선언문으로 작성시, 함수 호이스팅이
+// 함수 표현식으로 작성시, 변수 호이스팅이 발생한다.
+```
+
+#### 익명 함수와 기명 함수로 클래스 정의
+
+```js
+// 익명 클래스 표현식
+const Person = class {};
+
+// 기명 클래스 표현식
+const Person = class MyClass {};
+```
+
+#### 클래스 몸체에 정의할 수 있는 메서드
+
+- ① constructor(생성자)
+- ② 프로토타입 메서드
+- ③ 정적 메서드
+
+```js
+class Person {
+  // constructor: 생성자
+  constructor(name) {
+    // 인스턴스 생성 및 초기화
+    this.name = name; // name 프로퍼티는 public하다.
+  }
+
+  // 프로토타입 메서드
+  sayHi() {
+    console.log(`Hi! My name is ${this.name}`);
+  }
+
+  // 정적 메서드 (static을 붙여 정의한다)
+  static sayHello() {
+    console.log("Hello!");
+  }
+}
+
+// 인스턴스 생성
+const me = new Person("Lee");
+
+// ① 인스턴스의 프로퍼티 참조
+console.log(me.name); // Lee
+// ② 프로토타입 메서드 호출
+me.sayHi(); // Hi! My name is Lee
+// ③ 정적 메서드 호출 (호출 시에 인스턴스가 아닌 클래스의 메서드로 동작한다.)
+Person.sayHello(); // Hello!
+```
+
+#### 정적 메서드와 프로토타입 메서드의 차이
+
+1. 정적 메서드와 프로토타입 메서드는 자신이 속해 있는 프로토타입 체인이 다르다. 🌟
+2. 정적 메서드는 클래스로 호출하고 프로토타입 메서드는 인스턴스로 호출한다. 🌟
+3. 정적 메서드는 인스턴스를 프로퍼티로 참조할 수 없지만 프로토타입 메서드는 인스턴스 프로퍼티를 참조할 수 있다.
+
+### 클래스의 상속
+
+① 상속에 의한 클래스 확장은 ②프로토타입 기반 상속과는 다른 개념이다.
+
+②는 프로토타입 체인을 통해 다른 객체의 자산을 상속받는 개념이지만 ①은 기존 클래스를 상속받아 새로운 클래스를 확장(extends)하여 정의하는 것이다.
+
+#### extends 키워드
+
+```js
+// 수퍼(베이스/부모)클래스
+class Base {}
+
+// 서브(파생/자식)클래스
+class Derived extends Base {}
+```
+
+### 클래스 확장
+
+```js
+class Animal {
+  constructor(age, weight) {
+    this.age = age;
+    this.weight = weight;
+  }
+
+  eat() {
+    return "eat";
+  }
+
+  move() {
+    return "move";
+  }
+}
+
+// 상속을 통해 Animal 클래스를 확장한 Bird 클래스
+class Bird extends Animal {
+  fly() {
+    return "fly";
+  }
+}
+
+const bird = new Bird(1, 5);
+
+console.log(bird); // Bird {age: 1, weight: 5}
+console.log(bird instanceof Bird); // true
+console.log(bird instanceof Animal); // true (프로토타입 체인으로 얽혀있기 때문에)
+console.log(bird instanceof Object); // true (스코프의 최 상위에는 Object가 있다)
+
+console.log(bird.eat()); // eat
+console.log(bird.move()); // move
+console.log(bird.fly()); // fly
+```
+
+#### super 키워드
+
+super 키워드는 함수처럼 호출할 수도 있고 this와 같이 식별자처럼 참조할 수 있는 특수한 키워드다.
+
+```
+1. super를 호출하면 수퍼클래스의 constructor(super-constructor)를 호출한다.
+2. super를 참조하면 수퍼클래스의 메서드를 호출할 수 있다.
+```
+
+#### super 호출
+
+```js
+// 수퍼클래스
+class Base {
+  constructor(a, b) {
+    this.a = a;
+    this.b = b;
+  }
+}
+
+// 서브클래스
+class Derived extends Base {
+  constructor(a, b, c) {
+    super(a, b); // 수퍼클래스에 정의한 프로퍼티(a,b)를 그대로 사용하겠다는 의미
+    this.c = c;
+  }
+}
+
+const derived = new Derived(1, 2, 3);
+console.log(derived); // Derived {a: 1, b: 2, c: 3}
+```
+
+#### super 참조
+
+```js
+// 수퍼클래스
+class Base {
+  constructor(name) {
+    this.name = name;
+  }
+
+  sayHi() {
+    return `Hi! ${this.name}`;
+  }
+}
+
+// 서브클래스
+class Derived extends Base {
+  sayHi() {
+    // super.sayHi는 수퍼클래스의 프로토타입 메서드를 가리킨다.
+    return `${super.sayHi()}. how are you doing?`;
+  }
+}
+
+const derived = new Derived("Lee");
+console.log(derived.sayHi()); // Hi! Lee. how are you doing?
+```
+
+#### 추상화
+
+추상화는 다양한 속성 중에서 프로그램에 필요한 속성만 간추려 내어 표현하는 것이다
+
+```js
+// 수퍼클래스
+class Rectangle {
+  constructor(width, height) {
+    // constructor
+    this.width = width;
+    this.height = height;
+  }
+
+  // 프로토타입 메서드
+  getArea() {
+    return this.width * this.height;
+  }
+
+  toString() {
+    return `width = ${this.width}, height = ${this.height}`;
+  }
+}
+
+// 서브클래스
+class ColorRectangle extends Rectangle {
+  // extends 키워드를 통해 수퍼클래스를 상속받음
+  constructor(width, height, color) {
+    super(width, height);
+    this.color = color;
+  }
+
+  // 메서드 오버라이딩
+  toString() {
+    return super.toString() + `, color = ${this.color}`;
+  }
+}
+
+const colorRectangle = new ColorRectangle(2, 4, "red");
+console.log(colorRectangle); // ColorRectangle {width: 2, height: 4, color: "red"}
+
+// 상속을 통해 getArea 메서드를 호출
+console.log(colorRectangle.getArea()); // 8
+// 오버라이딩된 toString 메서드를 호출
+console.log(colorRectangle.toString()); // width = 2, height = 4, color = red
+```
+
+위 코드의 흐름은 다음과 같다
+
+1. 서브클래스의 super 호출
+2. 수퍼클래스의 인스턴스 생성과 this 바인딩
+3. 수퍼클래스의 인스턴스 초기화
+4. 서브클래스 constructor로의 복귀와 this 바인딩
+5. 서브클래스의 인스턴스 초기화
+6. 인스턴스 반환
+
+#### 오버라이딩
+
+```
+상위(super) 클래스가 가지고 있는 메서드를 하위(sub) 클래스가 재정의하여 사용하는 방식
+```
+
+#### 오버로딩
+
+```
+함수의 이름은 동일하지만 매개변수의 타입 또는 개수가 다른 메서드를 구현하고 매개변수에 의해 메서드를 구별하여 호출하는 방식이다.
+자바스크립트는 오버로딩을 지원하지 않지만 arguments 객체를 사용하여 구현할 수는 있다.
+```
 
 ## 스프레드 문법
 
