@@ -16,6 +16,23 @@
 
 ## <a href="./CS.md">① Computer Science</a>
 
+- `프로세스와 스레드 🔥`
+
+  - 프로세스가 뭔가요?
+  - 스레드가 뭔가요?
+  - 프로세스와 스레드는 어떤 차이가 있나요?
+
+- `HTTP 🔥`
+- `쿠키 세션 🔥`
+
+  - 쿠키, 세션을 왜 쓰나요?
+  - 쿠키가 뭔가요?
+  - 세션이 뭔가요?
+  - 쿠키와 세션의 차이는 어떤 점이 있을까요?
+
+- `CORS 🔥`
+- `웹팩 🔥`
+
 ## <a href="./HTML_CSS.md">② HTML/ CSS</a>
 
 ## <a href="./JS.md">③ JavaScript</a>
@@ -218,3 +235,8 @@
 - `모듈 🔥`
 
   - 모듈이 뭔가요?
+
+## 레퍼런스
+
+- [프론트 엔드 개발자 면접 질문 정리 🔥](https://sunnykim91.tistory.com/121)
+- [Interview_Question_for_Beginner 🔥](https://github.com/JaeYeopHan/Interview_Question_for_Beginner)
