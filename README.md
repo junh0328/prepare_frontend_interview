@@ -54,6 +54,8 @@
 
 ## <a href="./HTML_CSS.md">② HTML/ CSS</a>
 
+- `DOCTYPE에 대하여 설명 🔥`
+
 ## <a href="./JS.md">③ JavaScript</a>
 
 - `프로그래밍 🔥`
