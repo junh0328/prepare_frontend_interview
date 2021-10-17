@@ -86,20 +86,33 @@
 ### **(2) CSS**
 
 - 박스 모델에 대하여 설명하시오
-- display에 대하여 설명해보세요.
+- display
+  - block 이란?
+  - inline 이란?
+  - inline-block 이란?
+  - none 이란?
 - position에 대하여 설명해보세요.
+  - static
+  - relative
+  - fixed
+  - absolute
 - float가 어떻게 작동하는지 설명해보세요.
-- 브라우저 별로 스타일이 다른 문제를
-- z-index와 스택 컨텍스트는 어떻게 형성되나요?
 - SVG란 ?
 - Flexbox나 Grid 스펙을 사용해본 적이 있나요 ?
-- 이미지 대체하는법
-- 컨텐츠 이미지 숨기기
+  - flex 를 사용하는 이유가 무엇인가요?
+  - Grid를 사용하는 이유가 무엇인가요?
+- 이미지 태그를 스타일로 대체하는 법
 - 반응형 웹의 3요소
-- 선택자
-- 반응형웹과 적응형 웹에 설명하시오
+- CSS selector가 어떠한 원리로 동작하나요?
+- 반응형웹과 적응형웹에 설명하시오
 - PX, EM에 대해 설명하시오
 - CSS 적용 우선순위
+- CSS-in-JS에 대해서 설명해 주세요.
+- CSS 전처리기(CSS preprocessors)를 사용해보셨나요?
+  - 사용해봤다면 장점과 단점
+- padding과 margin의 차이가 무엇인가요?
+  - padding에 대하여
+  - margin에 대하여
 
 ## <a href="./JS.md">③ JavaScript</a>
 
