@@ -85,6 +85,34 @@
 
 ### **(2) CSS**
 
+- display
+  - block
+  - inline
+  - inline-block
+  - none
+- position에 대하여 설명해보세요.
+  - static
+  - relative
+  - fixed
+  - absolute
+- float가 어떻게 작동하는가
+- SVG란 ?
+- Flexbox나 Grid 스펙을 사용해본 적이 있나요 ?
+  - flex 를 사용하는 이유가 무엇인가요?
+  - Grid를 사용하는 이유가 무엇인가요?
+- 이미지 태그를 스타일로 대체하는 법
+- 반응형 웹의 3요소
+- CSS selector가 어떠한 원리로 동작하나요?
+- 반응형웹과 적응형웹에 설명하시오
+- PX, EM에 대해 설명하시오
+- CSS 적용 우선순위
+- CSS-in-JS에 대해서 설명해 주세요.
+- CSS 전처리기(CSS preprocessors)를 사용해보셨나요?
+  - 사용해봤다면 장점과 단점
+- padding과 margin의 차이가 무엇인가요?
+  - padding에 대하여
+  - margin에 대하여
+
 ## <a href="./JS.md">③ JavaScript</a>
 
 - `프로그래밍 🔥`
