@@ -85,18 +85,17 @@
 
 ### **(2) CSS**
 
-- 박스 모델에 대하여 설명하시오
 - display
-  - block 이란?
-  - inline 이란?
-  - inline-block 이란?
-  - none 이란?
+  - block
+  - inline
+  - inline-block
+  - none
 - position에 대하여 설명해보세요.
   - static
   - relative
   - fixed
   - absolute
-- float가 어떻게 작동하는지 설명해보세요.
+- float가 어떻게 작동하는가
 - SVG란 ?
 - Flexbox나 Grid 스펙을 사용해본 적이 있나요 ?
   - flex 를 사용하는 이유가 무엇인가요?
