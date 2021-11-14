@@ -325,19 +325,21 @@
 
 ## <a href="./React.md">4. React</a>
 
-- `React 시작 🔥`
-  - React를 사용한 이유가 무엇인가?
-  - React의 원리, 특징, 장단점이 무엇인가?
-  - Virtual DOM 이란 ?
-  - SPA(Single Page Application)
-- `React의 Class와 Hooks의 차이를 설명해달라. 🔥`
-- `Props, State에 대해 설명해달라. 🔥`
+- `React 시작🔥`
+- `리액트는 라이브러리인가요 프레임워크 인가요?🔥`
+- `리액트를 사용하는 이유🔥`
+- `virtual DOM에 대해서 아나요?🔥`
+- `React의 Class와 Hooks의 차이 🔥`
+- `props와 state의 차이🔥`
 - `Props가 컴포넌트간에 전달받는 것이라고 했는데 자식에서 부모로도 전달할 수 있는가? 🔥`
 - `React에서 state의 불변성을 유지하라는 말이 있는데 이에 대해 설명해달라. 🔥`
 - `컴포넌트의 라이프 사이클 메서드 🔥`
+
   - 이해
   - 메서드 종류
+
 - `Hooks 종류 🔥`
+
   - useState
   - useEffect
   - useReducer
@@ -345,10 +347,18 @@
   - useCallback
   - useRef
   - 커스텀 Hooks
-- `리덕스란 ? 🔥`
-  - 리덕스 미들웨어란 ?
-  - 비동기 작업을 처리하는 미들웨어
-- `서버 사이드 렌더링 🔥`
+
+- `컴포넌트에서 이벤트를 실행시키기 위해서는 어떻게 핸들링해야 하나요?🔥`
+- `SPA가 뭔가요?🔥`
+
+  - SPA의 단점
+
+- `SSR이 뭔가요?🔥`
+- `SEO가 뭔가요?🔥`
+
+  - TTV, TTI
+
+- `코드스플리팅이란?🔥`
 
 ## 레퍼런스
 
