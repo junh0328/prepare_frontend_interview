@@ -40,6 +40,8 @@ python으로 작성된 코드의 예시들이 있지만, JS와는 큰 차이가 
 
 어떤 데이터 구조를 사용하느냐에 따라, 코드의 효율이 달라질 수 있습니다
 
+<br/>
+
 #### 효율적으로 데이터를 관리해야 하는 이유 (예)
 
 우편번호: 5자리 우편번호로 국가의 기초구역을 제공
@@ -52,6 +54,8 @@ XX학년, X반, X번 학생
 
 만약 위 관리 기법이 없다면, 3000명 학생 중 특정 학생을 찾기 위해, 전체 학생부를 모두 훑어야 함
 
+<br/>
+
 ### 대표적인 자료구조는 어떤 것들이 있나요
 
 |              자료구조               |       자료구조        |
@@ -59,23 +63,25 @@ XX학년, X반, X번 학생
 |              선형 구조              |      비선형 구조      |
 | 리스트 <br/> 스택 <br/> 큐 <br/> 덱 | 트리<br/> 그래프<br/> |
 
-선형 구조
-
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile24.uf.tistory.com%2Fimage%2F2747733A57E8CD8D061E92" alt="자료구조">
 
 출처: https://boycoding.tistory.com/32
+
+<br/>
 
 #### 선형 구조란 무엇인가요
 
 **선형 구조 (Linear Structure)**
 
-데이터들이 일렬로 쭉 저장되어 있는 형태
+> 데이터들이 일렬로 쭉 저장되어 있는 형태
 
 #### 비 선형 구조란 무엇인가요
 
 **비 선형 구조 (Non-Linear Structure)**
 
-데이터가 트리 형태로 저장되어 있다고 생각하고 사용하는 자료구조
+> 데이터가 트리 형태로 저장되어 있다고 생각하고 사용하는 자료구조
+
+<br/>
 
 ### 리스트
 
@@ -158,6 +164,8 @@ print(data_list)
 ]
 ```
 
+<br/>
+
 ### 큐
 
 Queue 구조
@@ -173,10 +181,14 @@ Queue 구조
 
 <img src="https://github.com/junh0328/zero_base_algorithm/raw/main/images/queue.gif" alt="그림으로 보는 큐">
 
+<br/>
+
 #### 알아둘 용어
 
 - Enqueue: 큐에 데이터를 넣는 기능 (JS에서 push)
 - Dequeue: 큐에서 데이터를 꺼내는 기능 (JS에서 shift)
+
+<br/>
 
 #### 파이썬 queue 라이브러리 활용해서 큐 자료 구조 사용하기
 
@@ -368,7 +380,9 @@ pop(): 데이터를 스택에서 꺼내기
   - 저장 공간의 낭비가 발생할 수 있다
   - 미리 최대 개수만큼 저장 공간을 확보해야 한다
 
-- 스택은 단순하고 빠른 성능을 위해 사용되므로, 보통 배열 구조를 활용해서 구현하는 것이 일반적임.
+- 스택은 단순하고 빠른 성능을 위해 사용되므로, 보통 배열 구조를 활용해서 구현하는 것이 일반적임
+
+<br/>
 
 #### 파이썬을 통해 스택 구조 살펴보기
 
@@ -438,6 +452,8 @@ print('stack_list', stack_list)
 # >>> stack_list [0, 1, 2, 3, 4, 5, 6, 7, 8]
 ```
 
+<br/>
+
 ### 링크드 리스트
 
 Linked List 구조
@@ -491,6 +507,8 @@ Linked List 구조
 
 (출처: wikipedia, https://en.wikipedia.org/wiki/Linked_list)
 
+<br/>
+
 ### 해쉬 테이블
 
 `해쉬 테이블(Hash Table) 구조`
@@ -538,6 +556,8 @@ Linked List 구조
   - 캐쉬 구현시 (중복 확인이 쉽기 때문)
   - 캐쉬는 동일한 페이지를 불러오는 경우 https://naver.com, 변경되는 데이터 이외에는
   - 사용자의 캐쉬 메모리에 저장하여 서버로부터 불러오는 데이터의 양을 관리하기 위한 메모리이다
+
+<br/>
 
 ### 트리
 
@@ -594,6 +614,8 @@ Linked List 구조
 <img src="https://camo.githubusercontent.com/6c3fdc744c1a25d023f22050796c00134c7aacebd6e6ebff86b98effb19264b0/68747470733a2f2f7777772e6d61746877617265686f7573652e636f6d2f70726f6772616d6d696e672f696d616765732f62696e6172792d7365617263682d747265652f62696e6172792d7365617263682d747265652d736f727465642d61727261792d616e696d6174696f6e2e676966" alt="이진 탐색 트리">
 
 (출처: https://www.mathwarehouse.com/programming/gifs/binary-search-tree.php#binary-search-tree-insertion-node)
+
+<br/>
 
 ### 힙
 
@@ -671,6 +693,8 @@ O(1) < O( 𝑙𝑜𝑔𝑛 ) < O(n) < O(n 𝑙𝑜𝑔𝑛 ) < O( 𝑛2 ) < O( 2
 
 <img src="https://camo.githubusercontent.com/0027ad49c326f0fd184ae2e88ba465d1b04ac41fa79880c7140e5b3ecbba3cb9/68747470733a2f2f7777772e66756e2d636f64696e672e6f72672f30305f496d616765732f636f6d706c65746562696e617279747265655f6273742e706e67" width="800" alt="힙과 BST의 차이"/>
 
+<br/>
+
 ### 그래프
 
 `그래프 (Graph) 란?`
@@ -694,9 +718,9 @@ O(1) < O( 𝑙𝑜𝑔𝑛 ) < O(n) < O(n 𝑙𝑜𝑔𝑛 ) < O( 𝑛2 ) < O( 2
 - 방향 그래프
 - 가중치 그래프
 
-### 3. 그래프 (Graph) 종류
+### 그래프 (Graph) 종류
 
-### 무방향 그래프
+#### 무방향 그래프
 
 - 방향이 없는 그래프
 - 간선을 통해, 노드는 양방향으로 갈 수 있음
@@ -704,20 +728,26 @@ O(1) < O( 𝑙𝑜𝑔𝑛 ) < O(n) < O(n 𝑙𝑜𝑔𝑛 ) < O( 𝑛2 ) < O( 2
 
 <img src="https://www.fun-coding.org/00_Images/undirectedgraph.png" width=300>
 
-### 방향 그래프 (Directed Graph)
+<br/>
+
+#### 방향 그래프 (Directed Graph)
 
 - 간선에 방향이 있는 그래프
 - 보통 노드 A, B가 A -> B 로 가는 간선으로 연결되어 있을 경우, `<A, B>` 로 표기 (`<B, A>` 는 `B -> A` 로 가는 간선이 있는 경우이므로 `<A, B>` 와 다름)
 
 <img src="https://www.fun-coding.org/00_Images/directedgraph.png" width=300>
 
-### 가중치 그래프 (Weighted Graph) 또는 네트워크 (Network)
+<br/>
+
+#### 가중치 그래프 (Weighted Graph) 또는 네트워크 (Network)
 
 - 간선에 비용 또는 가중치가 할당된 그래프
 
 <img src="https://www.fun-coding.org/00_Images/weightedgraph.png" width=300>
 
-### 연결 그래프 (Connected Graph) 와 비연결 그래프 (Disconnected Graph)
+<br/>
+
+#### 연결 그래프 (Connected Graph) 와 비연결 그래프 (Disconnected Graph)
 
 - 연결 그래프 (Connected Graph)
 
@@ -727,11 +757,15 @@ O(1) < O( 𝑙𝑜𝑔𝑛 ) < O(n) < O(n 𝑙𝑜𝑔𝑛 ) < O( 𝑛2 ) < O( 2
 
   - 무방향 그래프에서 특정 노드에 대해 경로가 존재하지 않는 경우
 
-### 비연결 그래프 예시 이미지
+  <br/>
+
+#### 비연결 그래프 예시 이미지
 
 <img src="https://www.fun-coding.org/00_Images/disconnectedgraph.png" width=300>
 
-### 사이클 (Cycle) 과 비순환 그래프 (Acyclic Graph)
+<br/>
+
+#### 사이클 (Cycle) 과 비순환 그래프 (Acyclic Graph)
 
 - 사이클 (Cycle)
 
@@ -741,19 +775,27 @@ O(1) < O( 𝑙𝑜𝑔𝑛 ) < O(n) < O(n 𝑙𝑜𝑔𝑛 ) < O( 𝑛2 ) < O( 2
 
   - 사이클이 없는 그래프
 
-### 비순환 그래프 예
+<br/>
+
+#### 비순환 그래프 예
 
 <img src="https://www.fun-coding.org/00_Images/acyclicgraph.png" width=300>
 
-### 완전 그래프 (Complete Graph)
+<br/>
+
+#### 완전 그래프 (Complete Graph)
 
 - 그래프의 모든 노드가 서로 연결되어 있는 그래프
 
-### 완전 그래프 예
+<br/>
+
+#### 완전 그래프 예
 
 <img src="https://www.fun-coding.org/00_Images/completegraph.png" width=300>
 
-### 3. 그래프와 트리의 차이
+<br/>
+
+#### 그래프와 트리의 차이
 
 ### 트리는 그래프 중에 속한 특별한 종류라고 볼 수 있음 (트리는 그래프의 한 종류이다)
 
