@@ -6,7 +6,7 @@
 - [리액트는 라이브러리인가요 프레임워크인가요](#리액트는-라이브러리인가요-프레임워크인가요)
 - [리액트를 사용하는 이유](#리액트를-사용하는-이유)
 - [virtual DOM에 대해서 아나요](#virtual-DOM에-대해서-아나요)
-- [React의 Class와 Hooks의 차이 🔥](#React의-Class와-Hooks의-차이)
+- [React에서 함수형 컴포넌트와 클래스형 컴포넌트의 차이 🔥](#React에서-함수형-컴포넌트와-클래스형-컴포넌트의-차이)
 - [props와 state의 차이🔥](#props와-state의-차이)
 - [Props가 컴포넌트간에 전달받는 것이라고 했는데 자식에서 부모로도 전달할 수 있는가 🔥](#props가-컴포넌트간에-전달받는-것이라고-했는데-자식에서-부모로도-전달할-수-있는가)
 - [React에서 state의 불변성을 유지하라는 말이 있는데 이에 대해 설명해달라. 🔥](#React에서-state의-불변성을-유지하라는-말이-있는데-이에-대해-설명해달라)
@@ -15,7 +15,7 @@
   - 이해
   - 메서드 종류
 
-- `Hooks 종류 🔥`
+- [Hooks의 종류 🔥](#Hooks의-종류)
 
   - useState
   - useEffect
@@ -24,6 +24,11 @@
   - useCallback
   - useRef
   - 커스텀 Hooks
+
+- [리액트에서 setState는 비동기 동작인가요 동기 동작인가요?](#리액트에서-setState는-비동기-동작인가요-동기-동작인가요)
+- [setState가 비동기 동작을 취했을 때 얻을 수 있는 이점은 무엇인가요?](#setState가-비동기-동작을-취했을-때-얻을-수-있는-이점은-무엇인가요)
+- [useLayoutEffect는 무엇인가요?](#useLayoutEffect를-사용해보신-적-있나요)
+- [리액트의 성능개선 방법에 대해서 설명해주세요](#리액트의-성능개선-방법에-대해서-설명해주세요)
 
 - [컴포넌트에서 이벤트를 실행시키기 위해서는 어떻게 핸들링해야 하나요](#컴포넌트에서-이벤트를-실행시키기-위해서는-어떻게-핸들링해야-하나요)
 - [SPA가 뭔가요](#SPA가-뭔가요)
@@ -140,18 +145,21 @@ Virtual DOM을 사용한다고 해서 사용하지 않을 때와 비교하여 �
 
 리액트와 Virtual DOM이 언제나 제공할 수 있는 것은 바로 업데이트 처리 간결성입니다. UI를 업데이트하는 과정에서 생기는 복잡함을 모두 해소하고, 더욱 쉽게 업데이트에 접근할 수 있습니다.
 
-### React의 Class와 Hooks의 차이
+### React에서 함수형 컴포넌트와 클래스형 컴포넌트의 차이
 
 **클래스형 컴포넌트**의 경우
 
+- 객체지향 프로그래밍의 구조를 띄고 있으며, state를 초기화하기 위해서는 constructor (생성자) 함수를 필요로 합니다
+- 생성자 함수를 통해 state를 초기화해야 하기 때문에 함수형 컴포넌트에 비해서 코드가 길어지고, 사이즈가 커질 수 있습니다.
 - state 기능 및 라이프 사이클 기능을 사용할 수 있으며 임의 메서드를 정의할 수 있다
 - render 함수가 꼭 있어야 하고, 그 안에서 보여 주어야 할 JSX를 반환해야 한다.
 
 **함수형 컴포넌트**는 클래스형 컴포넌트보다
 
-- 선언하기가 좀 더 편하고
-- 메모리 자원을 덜 사용한다는 장점이 있다.
-- 프로젝트를 완성하여 빌드한 후 배포할 때도 함수형 컴포넌트를 사용하는 것이 결과물의 파일 크기가 더 작습니다.
+- Hooks 를 사용하여 생성자 함수를 통해 state를 초기화하지 않더라도 사용이 가능하다 (`useState()` 등)
+- 선언하기가 좀 더 편하고 메모리 자원을 덜 사용한다는 장점이 있다
+- 제공되는 hook 함수뿐만 아니라 커스텀 훅을 생성하여 동작시킬 수 있다
+- 프로젝트를 완성하여 빌드한 후 배포할 때도 함수형 컴포넌트를 사용하는 것이 결과물의 파일 크기가 더 작습니다
 
 **함수형 컴포넌트**는 state와 라이프사이클 API의 사용이 불가능하다는 점인데, 이를 해결 하기 위해 v16.8 업데이트 이후에 적용된 Hooks를 통해 해결되었습니다.
 
@@ -181,7 +189,86 @@ Virtual DOM을 사용한다고 해서 사용하지 않을 때와 비교하여 �
 
 ### React에서 state의 불변성을 유지하라는 말이 있는데 이에 대해 설명해달라
 
-- 불변성 유지를 해주어야 나중에 리액트 컴포넌트의 성능을 최적화할 수 있다.
+객체는 실제 데이터 값이 아닌 참조 값을 가집니다. 그렇기 때문에 복사하여 동일한 참조 값을 가지는 객체 중 하나라도 변경된다면, 모든 객체의 내부 값이 변경될 것입니다.
+
+`...연산자`를 통해 복사할 경우 A와 B는 같은 값을 가지더라도 새로운 객체를 할당 받은 상태가 됩니다. 따라서 A와 B 내부의 값은 같더라도(같아 보이더라도) 참조하는 객체가 다르기 때문에 무결성을 유지할 수 있습니다.
+
+**이미 복사를 한 프린트 물은 A 인쇄물에 낙서를 하더라도 B 인쇄물에 영향을 미치지 않는 것과 같습니다**
+
+리액트에서는 데이터를 저장할 때 객체 형식 또는 배열 형식의 데이터를 많이 다루게 되는데, 원본 배열이 변경되는 경우 의도한 동작과 다르게 동작할 수 있으며, 어떤 함수에 의해 부수효과(side effect)가 발생했는지 찾기 어려울 수 있습니다.
+
+```js
+let A = {
+  name: "junhee",
+  age: 25,
+  job: "student",
+};
+
+B = { ...A };
+
+console.log("A", A);
+console.log("B", B);
+/*
+A { name: 'junhee', age: 25, job: 'student' }
+B { name: 'junhee', age: 25, job: 'student' }
+*/
+
+B = { ...A, job: "frontend developer" };
+
+console.log("A", A);
+console.log("B", B);
+
+/*
+A { name: 'junhee', age: 25, job: 'student' }
+B { name: 'junhee', age: 25, job: 'frontend developer' }
+*/
+```
+
+### 리듀서 내부에서 불변성을 지키는 이유는? 전개 연산자의 단점을 해결할 수 있는 방법은 무엇인가
+
+**컴포넌트는 다음과 같은 총 네 가지 경우에 업데이트합니다.**
+
+- props가 바뀔 때
+- state가 바뀔 때
+- 부모 컴포넌트가 리렌더링될 때
+- this.forceUpdate로 강제로 렌더링을 트리거할 때
+
+리듀서의 initial state에는 서버에서 넘겨받는 정보를 저장하고 전역으로 해당 객체를 사용할 수 있는 저장소 역할을 합니다.
+
+불변성을 지킴으로써 각각의 고유한 참조값을 가지는 객체를 복사해서 사용함으로써 어떤 함수가 호출됐을 때 같은 객체를 참조한다면 생길 수 있는 불필요한 리렌더링과 부수효과를 줄일 수 있습니다.
+
+하지만 `...spread` 연산자를 사용하여 객체를 복사해 사용할 경우 객체의 깊이에 따라, 로직 구성이 매우 어려울 수 있습니다.
+
+```jsx
+const nextState = {
+  ...state,
+  posts: state.posts.map((post) =>
+    post.id === 1
+      ? {
+          ...post,
+          comments: post.comments.concat({
+            id: 3,
+            text: "새로운 댓글",
+          }),
+        }
+      : post
+  ),
+};
+```
+
+이를 해결하기 위해 등장한 라이브러리가 `immer` 라이브러리입니다.
+
+`produce`, `draft`라는 키워드를 사용해서 기존의 `... spread` 연산자를 사용하지 않고도 불변성을 유지해주며 불필요한 부수효과(side effect)를 막아줍니다.
+
+```jsx
+const nextState = produce(state, (draft) => {
+  const post = draft.posts.find((post) => post.id === 1);
+  post.comments.push({
+    id: 3,
+    text: "와 정말 쉽다!",
+  });
+});
+```
 
 <br/>
 
@@ -227,7 +314,7 @@ Virtual DOM을 사용한다고 해서 사용하지 않을 때와 비교하여 �
 
 <br/>
 
-### Hooks
+### Hooks의 종류
 
 **Hooks는 리액트 버전 16.8에 새로 도입된 기능으로 함수형 컴포넌트에서도 상태 관리를 할 수 있는 useState 렌더링 직후 작업을 설정하는 useEffect 등의 기능을 제공하여 기존의 함수형 컴포넌트에서 할 수 없었던 다양한 작업을 할 수 있게 해준다**
 
@@ -440,6 +527,157 @@ class RefSample extends Component {
 
 export default RefSample;
 ```
+
+<br/>
+
+### 리액트에서 setState는 비동기 동작인가요 동기 동작인가요
+
+[참고자료](https://velog.io/@jinsunee/setState%EA%B0%80-%EB%B9%84%EB%8F%99%EA%B8%B0%ED%95%A8%EC%88%98%EC%9D%B8-%EC%9D%B4%EC%9C%A0)
+
+```jsx
+function Example() {
+  const [count, setCount] = React.useState(0);
+
+  useEffect(()=>{
+    console.log('in useEffect:', count)
+  },[count])
+
+  const onClickButton = () => {
+    console.log("before", count);
+
+    setCount(count + 1);
+    // setCount(prev => prev+1);
+
+    console.log("after", count);
+  };
+
+  return <button onClick={onClickButton}>{count}</button>;
+}
+
+>>>
+/*
+  before 0
+  after 0
+  in useEffect 1
+*/
+```
+
+state 값을 갱신하는 함수인 `setState` 는 비동기로 동작하는 훅 함수입니다
+
+React는 앞서 언급했듯 state, props 값에 따라 re-rendering이 일어나죠.
+
+그런데 만약에 한 컴포넌트 안에서 여러 state 값을 연속으로 바꿔주는 일이 생긴다면 여러번 비교하고 다시 그리는 알고리즘이 실행됩니다.
+
+너무 비효율적이고 성능이 당연히 안좋을 것 입니다. 또 이중에 바뀌지 않아도 되는 불필요한 리렌더링 다수 발생할 것으로도 예상이 됩니다
+
+이에 대비하여 리액트 라이브러리는 state를 다시 설정하는 함수인 setState를 비동기 함수로 처리해서 컴포넌트 내의 비동기 함수를 처리하는 콜백큐가 다 비워지면 리렌더링하도록 설계했습니다.
+
+그 말인 즉, 해당 함수 내에서 동기적으로 실행되는 함수가 모두 실행된 뒤에 마지막에 setState를 처리한다는 이야기겠죠?
+
+```jsx
+const onClickButton = () => {
+  console.log("before", count); // ----> 동기함수
+
+  setCount(count + 1); // ---->  비동기함수
+
+  console.log("after", count); // ---->  동기함수
+};
+```
+
+<br/>
+
+### setState가 비동기 동작을 취했을 때 얻을 수 있는 이점은 무엇인가요
+
+앞서 말했지만, setState가 비동기 동작을 취함으로써 자바스크립트 내의 실행컨텍스트 스택이 돌아갈 때 동기적으로 실행되는 함수들을 모두 동작한 뒤에 큐에 존재하는 비동기적인 함수들을 이벤트 루프에 의해 꺼내와서 실행시킵니다.
+
+setState가 동기적으로 실행된다면, 한 컴포넌트 내부에 존재하는 함수에 의해 state 값이 연속적으로 변경될 경우 리액트의 컴포넌트 리렌더링 조건에 의해 지속적으로 리렌더링이 될 것입니다.
+
+<br/>
+
+### useLayoutEffect를 사용해보신 적 있나요
+
+[참고자료](https://merrily-code.tistory.com/46)
+
+**리액트 훅 함수를 바탕으로 한 생명주기는 다음과 같습니다**
+
+<img src="https://raw.githubusercontent.com/donavon/hook-flow/master/hook-flow.png" width="500" alt="hookflow">
+
+브라우저가 렌더링될 때 `.js` 파일은 브라우저에서 자바스크립트 엔진으로 권한을 넘겨 `.js` 해당 파일을 파싱되고 그리게 됩니다.
+
+위 그림의 훅 라이프 사이클을 보시다시피 브라우저가 스크린에 페인팅 작업이 완료된 이후에 우리는 `useEffect` 를 실행하는 구조를 가졌었습니다.
+
+따라서 다음과 같이 렌더링할 때 `useState(0)`과 같은 초기 useState의 값이 빈 값이라면, 0을 출력했다가 useEffect를 통해 값이 채워지는 구조를 가졌었습니다.
+
+```jsx
+// 코드 참고: https://merrily-code.tistory.com/46
+
+import { useEffect, useState } from "react";
+
+function App() {
+  const [age, setAge] = useState(0);
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    setAge(25);
+    setName("찬민");
+  }, []);
+
+  return (
+    <>
+      <div className="App">{`그의 이름은 ${name} 이며, 나이는 ${age}살 입니다.`}</div>
+    </>
+  );
+}
+
+export default App;
+```
+
+<img src="https://blog.kakaocdn.net/dn/eFC5OT/btqXwdg7gIx/RrXfz887pljat4sRFebgr0/img.gif" width="500" alt="useEffect"/>
+
+**useLayoutEffect 훅은 바로 이런 문제를 해결하기 위해 등장한 훅입니다.**
+
+`useLayoutEffect`는 브라우저가 화면에 DOM을 그리기 전에 이펙트를 수행합니다 .
+
+따라서 위 코드의 실행 순서도 달라지게 됩니다.
+
+1. 레이아웃 이펙트 내부의 setNumber, setName 호출
+
+2. `<div>그의 이름은 찬민이며, 나이는 25살 입니다.</div>` 를 페인트
+
+```jsx
+// 코드 참고: https://merrily-code.tistory.com/46
+
+import { useLayoutEffect, useState } from "react";
+
+function App() {
+  const [age, setAge] = useState(0);
+  const [name, setName] = useState("");
+
+  useLayoutEffect(() => {
+    setAge(25);
+    setName("찬민");
+  }, []);
+
+  return (
+    <>
+      <div className="App">{`그의 이름은 ${name} 이며, 나이는 ${age}살 입니다.`}</div>
+    </>
+  );
+}
+
+export default App;
+```
+
+<img src="https://blog.kakaocdn.net/dn/o7cjk/btqXu54HI2S/YQPWUG8kK8ns0sL62VFtpK/img.gif" width="500" alt="useLayoutEffect"/>
+
+<br/>
+
+### 리액트의 성능개선 방법에 대해서 설명해주세요
+
+제가 사용해 본 성능 개선 방법은 다음과 같습니다.
+
+- hook 함수 사용 (useMemo, useCallback)
+- 코드 스플리팅 (react.lazy(), Next.js 프레임워크 사용 등)
 
 <br/>
 
