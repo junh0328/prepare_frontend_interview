@@ -9,7 +9,14 @@
 - [React에서 함수형 컴포넌트와 클래스형 컴포넌트의 차이 🔥](#React에서-함수형-컴포넌트와-클래스형-컴포넌트의-차이)
 - [props와 state의 차이🔥](#props와-state의-차이)
 - [Props가 컴포넌트간에 전달받는 것이라고 했는데 자식에서 부모로도 전달할 수 있는가 🔥](#props가-컴포넌트간에-전달받는-것이라고-했는데-자식에서-부모로도-전달할-수-있는가)
-- [React에서 state의 불변성을 유지하라는 말이 있는데 이에 대해 설명해달라. 🔥](#React에서-state의-불변성을-유지하라는-말이-있는데-이에-대해-설명해달라)
+- [React에서 state의 불변성을 유지하라는 말이 있는데 이에 대해 설명해달라 🔥](#React에서-state의-불변성을-유지하라는-말이-있는데-이에-대해-설명해달라)
+- [리듀서 내부에서 불변성을 지키는 이유는? 전개 연산자의 단점을 해결할 수 있는 방법은 무엇인가 🔥](#리듀서-내부에서-불변성을-지키는-이유는?-전개-연산자의-단점을-해결할-수-있는-방법은-무엇인가)
+- [리액트 사용시에 부수효과로 인해 생기는 문제점이 있다면 🔥](#리액트-사용시에-부수효과로-인해-생기는-문제점이-있다면)
+
+  - 부수 효과를 일으키는 함수 (불순 함수)
+  - 부수 효과를 일으키지 않는 함수 (순수 함수)
+  - 요약
+
 - [컴포넌트의 라이프 사이클 메서드 🔥](#컴포넌트의-라이프-사이클-메서드)
 
   - 이해
@@ -271,6 +278,142 @@ const nextState = produce(state, (draft) => {
 ```
 
 <br/>
+
+### 리액트 사용시에 부수효과로 인해 생기는 문제점이 있다면
+
+[부수효과 없는 "순수함수" 맛보기](https://maxkim-j.github.io/posts/js-pure-function)
+
+**부수효과란 함수가 만들어진 목적과는 다른 효과 또는 부작용입니다.**
+
+더 쉽게 말하면 **함수에 예상할 수 없는 일이 생길 가능성이 존재한다면 이 함수는 부수 효과를 가질 수 있는 함수**가 됩니다.
+
+#### 부수 효과를 일으키는 함수 (불순 함수)
+
+```js
+/* 코드 참조 (https://maxkim-j.github.io/posts/js-pure-function) */
+
+// http 요청을 보내는 함수 : 순수함수 될 수 없음
+const getData = () => {
+  axios.get('http://data.url')
+  .then(...)
+  .catch(...)
+}
+
+// 입력 내포한 함수 : 순수함수 될 수 없음
+const typeInput = () => {
+  const input = prompt("Message");
+  return input;
+}
+
+// 파라미터를 직접 변경하는 함수 : 순수함수 될 수 없음
+const changeParams = (arr, elem) => {
+  arr.push(elem);
+  return arr;
+}
+
+```
+
+함수의 안팎에서 뭔가 예기치 않은 일이 생길 가능성이 있는 함수는 순수함수가 될 수 없습니다. 비동기 요청을 보내는 함수는 요청이 실패할 가능성이 있습니다. 입력을 포함하는 함수도 입력에 따라 출력이 달라질 가능성이 있기 때문에 순수함수가 될 수 없죠.
+
+매개변수로 들어온 값을 직접 변경하는 함수 역시 순수함수가 될 수 없습니다. 배열과 같은 참조 자료형 객체를 어떤 함수 안에서 직접 변경한다면, 나중에 이 객체를 인자로 받는 다른 함수의 작업에 영향을 미칠 수 있기 때문입니다. 뒤에서 좀 더 자세히 설명하겠습니다.
+
+불순 함수라는 말이 부정적인 뉘앙스를 내포하는 것도 같지만, 막 나쁜건 아닙니다. 비동기 http 요청처럼 부수효과가 필요한 경우도 있습니다.
+
+#### 부수 효과를 일으키지 않는 함수 (순수 함수)
+
+함수의 매개변수로 들어온 값을 직접 변경하는 것을 피하기만 해도, 순수함수를 만들 수 있습니다. 매개변수에 대한 직접 조작을 피하는 이유는 이 매개변수가 또 어디에 쓰일지 모르기 때문입니다.
+
+```js
+/* 코드 참조 (https://maxkim-j.github.io/posts/js-pure-function) */
+
+const num_arr = [1, 2, 3, 4, 5];
+
+// 매개변수의 값을 직접 변경하는 불순함수
+const addSixImpure = (arr) => {
+  // 매개변수에 직접 6 추가
+  arr.push(6);
+  return arr;
+};
+
+// 매개변수를 복사한 값을 변경하는 순수함수
+const addSixPure = (arr) => {
+  // 펼침 연산자로 새로운 배열에 6 추가
+  newArr = [...arr, 6];
+  return newArr;
+};
+
+// 매개변수 arr에 6이 있는지 확인하는 함수
+const hasSix = (arr) => {
+  if (arr.includes(6)) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+const new_arr = addSixImpure(num_arr);
+console.log(hasSix(num_arr)); // true
+```
+
+`addSixPure()`과 `addSixInpure()`는 언뜻 보면 별 차이가 없어 보이지만, `addSixInpure()`는 매개변수의 값을 직접 변경하는 불순함수이고, `addSixPure()`는 매개변수 값을 복사해서 변경하는 순수함수입니다.
+
+`addSixInpure()`는 num_arr을 직접 바꿨기 때문에 함수가 실행되면 num_arr의 값이 `[1,2,3,4,5,6]`으로 영구히 바뀝니다. 그래서 `hasSix()`함수의 결과로는 `true`를 반환하게 되죠.
+
+하지만 개발자의 의도가 변수 `new_arr`에 `addSix` 함수를 호출한 새로운 배열을 할당하고 난 후, 값이 `[1,2,3,4,5]`인 `num_arr`에 대해서 6이 있는지 판단하고 싶었던 거였다면 코드는 의도대로 실행되지 않았습니다. 의도대로라면 false가 나와야 하는데, `num_arr`이 이미 변경되었기 때문입니다. 따라서 이런 경우에는 `addSix`함수가 `num_arr`을 직접 변경해서는 안됩니다. 대신에 이런 코드가 필요하죠
+
+```js
+const new_arr = addSixPure(num_arr);
+console.log(hasSix(num_arr)); // false
+```
+
+`addSixPure()`는 num_arr을 직접 조작하지 않기 때문에 `num_arr`에 처음 할당되었던 값은 바뀌지 않습니다. 따라서 `hasSix(num_arr)`의 결과는 false입니다.
+
+이 예시는 순수함수가 많아질수록 코드를 더 쉽게 예측할 수 있음을 알 수 있게 해줍니다. `addSixInpure()`가 6을 num_arr에 추가해버린 부수효과 때문에 `hasSix()`의 결과가 부정확해졌습니다. 선언된 변수들을 직접 조작하지 않을수록 함수들은 부수효과 없이 개발자의 의도대로 움직일 가능성이 큽니다.
+
+#### 요약
+
+React state는 직접 조작을 피하는 방식으로 부수효과를 방지합니다.(state, props가 변경될 때 리렌더링이 되기 때문에 의도치 않게 부수효과를 가진 함수들로 인해 불필요한 리렌더링이 잦아질 수 있다) Redux의 reducer는 순수함수여야만 하는데, store값을 변경하는 함수가 부수효과를 동반하지 않아야 store 내부의 값들이 안전하게 보호될 수 있기 때문입니다.
+
+게다가 순수함수는 같은 입력에 대해 항상 같은 출력을 보장하니, 테스트 하기도 쉬워지죠. 함수형 프로그래밍에도 핵심적인 개념으로 쓰인다고 하는데… 포스팅을 해보며 느낀건데 정말 아직 너무 맛보기만 해본 것 같네요. 활용을 해보면서 순수함수가 실질적으로 어떤 이점을 가져오는지 포스팅 해볼 수 있으면 좋겠습니다.
+
+<details>
+<summary>부수효과가 있는 배열의 프로토타입 메서드</summary>
+
+[참고자료](https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme4.md#278-%EB%B0%B0%EC%97%B4-%EB%A9%94%EC%84%9C%EB%93%9C)
+
+```js
+const arr = [1];
+
+// push 메서드는 원본 배열(arr)을 직접 변경한다.
+arr.push(2);
+console.log(arr); // [1, 2]
+
+// concat 메서드는 원본 배열(arr)을 직접 변경하지 않고 새로운 배열을 생성하여 반환한다.
+const result = arr.concat(3);
+console.log(arr); // [1, 2]
+console.log(result); // [1, 2, 3]
+
+/* 
+
+부수효과가 있는 배열의 프로토타입 메서드
+
+Array.isArray 
+Array.prototype.indexOf 
+Array.prototype.push (원본 배열을 변경한다 - 부수효과 o)
+Array.prototype.pop (원본 배열을 변경한다 - 부수효과 o)
+Array.prototype.unshift (원본 배열을 변경한다 - 부수효과 o)
+Array.prototype.shift (원본 배열을 변경한다 - 부수효과 o)
+Array.prototype.concat 
+Array.prototype.splice 🌟 (원본 배열을 변경한다 - 부수효과 o)
+Array.prototype.slice 
+Array.prototype.join 🌟 (원본 배열을 변경한다 - 부수효과 o)
+Array.prototype.reverse 🌟 (원본 배열을 변경한다 - 부수효과 o)
+Array.prototype.fill 🌟 (원본 배열을 변경한다 - 부수효과 o)
+Array.prototype.includes 
+*/
+```
+
+</details>
 
 ### 컴포넌트의 라이프 사이클 메서드
 
