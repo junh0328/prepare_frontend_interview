@@ -47,6 +47,10 @@
 
   - TTV, TTI
 
+- [Next를 쓴 이유가 있나요](#Next를-쓴-이유가-있나요)
+- [Next를 구성하는 기본 설정 파일에 대해서 알고 있나요?](#Next를-구성하는-기본-설정-파일에-대해서-알고-있나요)
+- [사전 렌더링을 위해 사용해 본 함수가 있나요](#사전-렌더링을-위해-사용해-본-함수가-있나요)
+
 <hr>
 
 ## React 시작
@@ -917,3 +921,198 @@ const plusNum = (number) => {
 <p>요즘에는 SSR, CSR 뿐만 아니라 SSG(Static Site Generation)또한 렌더링 방법으로 등장하였습니다. SSG는 리액트를 예로 들면 'Gatsby' 또는 'Next'와 같은 라이브러리를 추가적으로 사용하여 렌더링을 하는 것인데, 웹페이지를 정적으로 미리 생성해두고, 서버에 배포해놓는 것입니다. SSG에서도 자바스크립트 파일을 html 파일과 함께 가지고 있을 수 있기 때문에, 동적인 요소도 충분히 추가할 수 있습니다. Next에서는 SSR뿐만 아니라, static generation, no pre-rendering, pre-rendering상태를 모두 지원하기 때문에 리액트로 작업을 계속한다면 next.js를 배워보는 것도 매우 효과적일 겁니다.</p>
 
 <p>어떤 것이 최고다, 제일 낫다라는 판단 보다는 우리가 만들어야 하는 웹사이트 특성에 맞게 다양한 방식의 렌더링을 활용하여 페이지를 구성한다면 최선의 선택이 될 것입니다.</p>
+
+### Next를 쓴 이유가 있나요
+
+[출처: 클론 코딩으로 시작하는 Next.js](https://bjpublic.tistory.com/391)
+
+`1. 사전 렌더링 및 서버 사이드 렌더링`
+
+- 서버 사이드 렌더링 기능을 제공하여 클라이언트 사이드 렌더링 환경보다 빠른 렌더링을 불러올 수 있습니다.
+
+`2. Hot Code Reloading을 지원`
+
+- Next 개발 환경에서는 코드 변경 사항이 저장되면 응용 프로그램을 자동으로 다시 로드합니다.
+
+`3. 자동 코드 분할`
+
+- 자동 코드 분할 기능 덕분에 코드의 모든 가져오기각 번들로 묶여 각 페이지와 함께 제공됩니다. 결과적으로, 불필요한 코드가 페이지에 로드되지 않게 됩니다.
+
+`4. 설정이 필요없음`
+
+- 넥스트는 기본적으로 웹팩과 바벨을 사용하고 있습니다. 이미 서버 사이드 렌더링 및 개발에 필요한 설정이 되어 있으므로 빠르게 개발을 시작할 수 있습니다.
+
+- 사용하고 싶은 플러그인이 있다면 손쉽게 추가하여 사용할 수 있도록 지원을 하고 있습니다.
+
+`5. 타입스크립트가 내장됨`
+
+`6. 파일기반 내비게이션 기능`
+
+- 리액트에서는 라우트를 위해서 'react-router'라는 라이브러리를 사용하여 라우팅 설정을 해주어야 합니다.
+
+- 그로 인해 페이지의 경로에 대하여 직접 설정을 해주어야 하였습니다.
+
+- 하지만 넥스트는 파일 시스템 기반 라우팅을 사용합니다.
+
+- 폴더의 경로에 따라 페이지의 경로가 설정되어 구축이 빠르고 관리가 편리하다는 장점이 있습니다.
+
+### Next를 구성하는 기본 설정 파일에 대해서 알고 있나요
+
+📁 pages 폴더 안에는 넥스트에서 중요한 역할을 하는 특별한 파일들이 있습니다.
+
+- 📙_app.jsx (tsx)
+- 📙_document.jsx (tsx)
+- 📙_error.jsx (tsx)
+- 📙404.jsx (tsx)
+
+`📙_app.jsx`
+
+App 컴포넌트는 모든 페이지의 공통 페이지 역할을 합니다.
+
+App 컴포넌트를 이용하여 모든 페이지들을 초기화하여 다음과 같은 역할을 할 수 있습니다.
+
+- 페이지들의 공통된 레이아웃
+- 페이지를 탐색할 때 상태 유지
+- 추가 데이터를 페이지에 주입
+- 글로벌 CSS 추가
+
+<details>
+
+```jsx
+📁 pages/_app.jsx
+
+import Header from '../components/Header';
+
+const MyApp = ({ Component, pageProps }) => {
+  return (
+    <>
+      <Header />
+      <Component {...pageProps} />
+      <style jsx global>
+        {`
+          body {
+            margin: 0;
+          }
+        `}
+      </style>
+    </>
+  );
+};
+
+export default MyApp;
+
+```
+
+</details>
+
+`📙_document.jsx`
+
+사용자 정의 Document는 일반적으로 응용 프로그램 `<HTML>` 및 `<body>` 태그를 보강하는데 사용됩니다.
+
+도큐먼트를 이용하여 `<title>`, `<description>`, `<meta>` 등 프로젝트의 정보를 제공하는 HTML 코드를 작성할 수 있고,
+
+폰트나 외부 api, cdn 등을 불러오도록 할 수 있습니다.
+
+또한 CSS-in-JS의 서버 사이드 렌더링을 위한 설정을 할 때 사용합니다.
+
+Head 태그에 meta 태그를 추가하여 해당 프로젝트에 대한 정보를 추가할 수 있고, 구글 폰트 등에서 제공하는 폰트를 link 로 불러와 전역으로 적용시킬 수 있습니다.
+
+<details>
+
+```jsx
+📁 pages/_document.jsx
+
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+
+class MyDocument extends Document {
+  render() {
+    return (
+      <Html lang="ko">
+        <Head>
+          <meta name="title" content="깃허브 레포지토리" />
+          <meta name="description" content="깃허브 레퍼지토리 리스트입니다" />
+          <link
+            href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700&display=swap&subset=korean"
+            rel="stylesheet"
+          />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}
+
+export default MyDocument;
+
+```
+
+</details>
+
+`📙_error.jsx`
+
+넥스트에서는 빌드 된 프로덕션 환경에서 에러가 발생한다면 에러 페이지로 넘어가게 됩니다.
+
+따로 라우팅 경로를 설정하지 않더라도, 빌드 된 프로덕트 환경에서 에러가 발생한다면 에러 페이지로 자동적으로 넘어갑니다.
+
+추가적으로 에러 상황에 따라서 500, 404 등도 추가할 수 있습니다
+
+<details>
+
+```jsx
+📁 pages/_error.jsx
+
+const Error = () => {
+  return (
+    <div>
+      <p>에러가 발생했습니다</p>
+    </div>
+  );
+};
+
+export default Error;
+
+```
+
+</details>
+
+### 사전 렌더링을 위해 사용해 본 함수가 있나요
+
+[참고자료](https://velog.io/@devstone/Next.js-100-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0-feat.-initialProps-webpack-storybook)
+
+- getInitialProps
+- getStaticProps
+- getStaticPath
+- getServerSideProps
+
+`getInitialProps`
+
+Next 9.3 버전 이전엔 getInitialProps만으로 사전 렌더링 관련 문제를 전부 해결했지만, 9.3버전부터는 getInitialProps가 3가지로 분리되었습니다
+
+- getStaticProps
+- getStaticPath
+- getServerSideProps
+
+`getStaticProps`
+
+- 빌드시 고정되는 값으로 빌드 이후에는 수정이 불가능합니다
+- data를 빌드 시에 미리 땡겨와 정적으로(static 하게) 제공합니다
+- 매 유저의 요청마다 fetch할 필요가 없는 데이터를 가진 페이지를 렌더링할 때 유리합니다
+- 유저에 구애받지 않고 퍼블릭하게 캐시할 수 있는 데이터
+- SEO 등의 이슈로 인해 빠르게 미리 렌더링해야만 하는 페이지
+
+`getStaticPath`
+
+- 동적 라우팅 + getStaticProps를 원할 때 사용
+- 정의하지 않은 하위 경로는 접근해도 화면이 뜨지 않는다 (error 페이지로 라우팅)
+- 동적 라우팅 시, 라우팅되는 경우의 수를 하나하나 넣어야 합니다
+
+`getServerSideProps`
+
+- 빌드와 상관없이, 매 페이지 요청마다 데이터를 서버로부터 가져옵니다
