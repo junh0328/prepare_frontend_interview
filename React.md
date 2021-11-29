@@ -47,6 +47,8 @@
 
   - TTV, TTI
 
+- [하이드레이션에 대해 알고 있나요](#하이드레이션에-대해-알고-있나요)
+- [Next의 렌더링 수행 방식](#Next의-렌더링-수행-방식)
 - [Next를 쓴 이유가 있나요](#Next를-쓴-이유가-있나요)
 - [Next를 구성하는 기본 설정 파일에 대해서 알고 있나요?](#Next를-구성하는-기본-설정-파일에-대해서-알고-있나요)
 - [사전 렌더링을 위해 사용해 본 함수가 있나요](#사전-렌더링을-위해-사용해-본-함수가-있나요)
@@ -922,6 +924,57 @@ const plusNum = (number) => {
 
 <p>어떤 것이 최고다, 제일 낫다라는 판단 보다는 우리가 만들어야 하는 웹사이트 특성에 맞게 다양한 방식의 렌더링을 활용하여 페이지를 구성한다면 최선의 선택이 될 것입니다.</p>
 
+### 하이드레이션에 대해 알고 있나요
+
+[참고 자료 1 🔥](https://simsimjae.tistory.com/389)
+[참고 자료 2 🔥](https://fourwingsy.medium.com/next-js-hydration-%EC%8A%A4%ED%83%80%EC%9D%BC-%EC%9D%B4%EC%8A%88-%ED%94%BC%ED%95%B4%EA%B0%80%EA%B8%B0-988ce0d939e7)
+
+```
+hydration = 수화 = 우리 몸에 수분을 보충하는 행위
+```
+
+하이드레이션이란, **리엑트에서 서버사이드 렌더링 혹은 SSG(스태틱 사이트 제네레이션)을 실행한 HTML 결과물을 받아온 뒤, 브라우저에서 이것을 다시 리액트 트리에 맞게 파싱하는 행위이다**.
+
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FQ46M7%2FbtqCRzEosOt%2F2JxdfPQP3OuPcsUjFbpOok%2Fimg.png" alt="hydration">
+
+출처 (https://simsimjae.tistory.com/389)
+
+서버가 완성된 HTML을 내려준다. 이때 Dehydrate는 수분을 없앤다는 뜻이다. 다시 말해서 동적인것을 정적으로 만드는 행위를 Dehydrate라고 표현했다. 그리고 나서 JS가 실행되면서 리액트가 정적인 HTML과 store를 동적인 리액트 컴포넌트 트리와 store로 변환하는 과정이 일어나는데, 이걸 (Re)hydrate라고 한다. 마치 수분기 없는 정적인 상태에서 수분 넘치는 동적인 상태로 변화한것이다. 문제는 이렇게 rehydrate가 일어나면서 쓸데없이 화면이 한번더 그려지는 현상이 발생한다는것이다. 왜냐면 리액트는 서버에서 완성된 HTML이 내려와서 이미 화면에 제대로 렌더링이 됬는지 안됬는지 모르고 자신이 할일을 그냥 했을 뿐이다. 그래서 SSR을 하는 경우에는 ReactDom의 render메소드가 아니라 hydrate 메소드를 사용해야 한다고 말했었다.
+
+이 hydrate 단계에서,
+
+- 렌더링한 결과물이 어떤 컴포넌트인지 확인한다
+- 각 컴포넌트에 걸린 이벤트 들을 실제 DOM에 걸어주는 동작을 하게 된다
+
+하이드레이션이 잘못되었을 때, 우리가 마주하는 문제들은 거의 1번 과정이 잘못되어서 일어난다.
+
+Next.JS에서 내부적으로 사용하는 ReactDOM.hydrate 함수는 다음과 같은 일을 한다.
+
+- 서버에서 받아온 DOM tree와 자체적으로 렌더링한 tree를 비교한다
+- 두 tree 사이의 차이(diff, diffrence)를 얻어낸 뒤, 자체적으로(클라이언트사이드) 렌더링 한 tree에 맞춰 patch를 적용한다
+
+`hydration이 되어야 진짜 리액트 컴포넌트`
+
+서버에서 내려준 HTML로 렌더링 된 화면은 그냥 단순히 그림일 뿐이다. 리액트가 관리하지 않는 화면이다. SSR을 하더라도 컴포넌트를 리액트가 관리하게 하기 위해서는 hydration은 꼭 필요한 작업이다.
+
+`결론`
+
+리액트에서 hydration이라고 하는 용어를 사용하는 이유는 "서버사이드 렌더링으로 만들어진 수분이 없는 정적인 HTML과 State로부터 수분을 보충하는 과정(동적인 상태로 변화)인 hydrate가 일어나기 때문" 이라고 추측해본다.
+
+<br/>
+
+### Next의 렌더링 수행 방식
+
+[참고 자료: Velog, Next.js 100% 활용하기](https://velog.io/@devstone/Next.js-100-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0-feat.-initialProps-webpack-storybook)
+
+1. SSR을 기반으로 서버에 사전에 저장된 렌더트리(render tree)의 HTML을 로드
+2. ① 방식의 `사전 렌더링(pre-render)` 이후에는 CSR 사용
+3. 페이지가 그려진 이후에 페이지 내부에서 동적인 데이터를 패치`(axios, fetch, XMLHttpRequest)`하는 과정은 `CSR` 방식을 따른다.
+4. 만약 페이지가 로드될 때 함게 데이터가 패칭되어야 하는 상황이라면(pre-render)
+5. next.js의 데이터 패칭 방식 (① getInitialProps/ ② getStaticProps / ③ getStaticPath / ④ getServerSideProps) 을 이용해 첫 렌더링 시에 HTML 파일 뿐만 아니라 데이터가 패칭될 수 있도록 처리해야 합니다.
+
+<br/>
+
 ### Next를 쓴 이유가 있나요
 
 [출처: 클론 코딩으로 시작하는 Next.js](https://bjpublic.tistory.com/391)
@@ -955,6 +1008,8 @@ const plusNum = (number) => {
 - 하지만 넥스트는 파일 시스템 기반 라우팅을 사용합니다.
 
 - 폴더의 경로에 따라 페이지의 경로가 설정되어 구축이 빠르고 관리가 편리하다는 장점이 있습니다.
+
+<br/>
 
 ### Next를 구성하는 기본 설정 파일에 대해서 알고 있나요
 
@@ -1081,6 +1136,8 @@ export default Error;
 ```
 
 </details>
+
+<br/>
 
 ### 사전 렌더링을 위해 사용해 본 함수가 있나요
 
