@@ -230,15 +230,13 @@
 
 ### 프로그래밍이란 뭐라고 생각하나요?
 
-프로그래밍이란 컴퓨터에게 실행을 요구하는 일종의 커뮤니케이션이다.해결해야 할 문제(요구사항)를 명확히 이해한 후 적절한 문제 해결 방안을 정의할 필요가 있다.0과 1밖에 알지 못하는 기계가 실행할 수 있을 정도로 정확하고 상세하게 요구를 설명하는 작업이며, 그 결과물이 바로 코드다.
+프로그래밍이란 컴퓨터에게 실행을 요구하는 일종의 커뮤니케이션이다. 해결해야 할 문제(요구사항)를 명확히 이해한 후 적절한 문제 해결 방안을 정의할 필요가 있다. 0과 1밖에 알지 못하는 기계가 실행할 수 있을 정도로 정확하고 상세하게 요구를 설명하는 작업이며, 그 결과물이 바로 코드다.
 
 <br/>
 
 ### 컴파일러는 뭐고 인터프리터는 뭔가요?
 
-우리가 코드를 통해 내린 명령을 수행할 주체는 컴퓨터이다. 따라서 사람이 이해할 수 있는 자연어가 아니라 컴퓨터가 이해할 수 있는 언어, 즉 기계어로 명령을 전달해야 한다.
-
-기계어는 우리가 사용하는 언어와는 너무나도 체계가 다르기 때문에 사람이 기계어로 직접 명령을 전달하는 것은 매우 어렵다. 기계어로 직접 명령을 전달하는 것을 대신할 가장 유용한 대안은 사람이 애해할 수 있는 약속된 구문으로 구성된 프로그래밍 언어를 사용해 프로그램을 작성한 후, 그것을 컴퓨터가 이해할 수 있는 기계어로 변환하는 일종의 번역기를 이용하는 것이다.
+기계어는 우리가 사용하는 언어와는 너무나도 체계가 다르기 때문에 사람이 기계어로 직접 명령을 전달하는 것은 매우 어렵다. 기계어로 직접 명령을 전달하는 것을 대신할 가장 유용한 대안은 사람이 이해할 수 있는 약속된 구문으로 구성된 프로그래밍 언어를 사용해 프로그램을 작성한 후, 그것을 컴퓨터가 이해할 수 있는 기계어로 변환하는 일종의 번역기를 이용하는 것이다.
 
 이 일종의 번역기를 컴파일러(compiler) 혹은 인터프리터(interpreter)라고 한다.
 
@@ -251,11 +249,13 @@ interpret:해석하다
 
 ### 자바스크립트의 특징은 뭐가 있나요?
 
-자바스크립트는 HTML, CSS와 함께 웹을 구성하는 요소 중 하나로 웹 브라우저에서 동작하는 유일한 프로그래밍 언어다.
+- 자바스크립트는 HTML, CSS와 함께 웹을 구성하는 요소 중 하나로 웹 브라우저에서 동작하는 유일한 프로그래밍 언어다.
 
-자바스크립트는 개발자가 별도의 컴파일 작업을 수행하지 않는 **인터프리터 언어이다.** **인터프리터는 소스코드를 즉시 실행하고** **컴파일러는 빠르게 동작하는 머신 코드를 생성하고 최적화한다.** 이를 통해 컴파일 단계에서 추가적인 시간이 필요함에도 더욱 빠르게 코드를 실행할 수 있다.
+- 자바스크립트는 객체 기반의 스크립트 언어이다.
 
-자바스크립트는 **런타임에 컴파일되며 실행 파일이 생성되지 않고 인터프리터의 도움 없이 실행할 수 없기 때문에 컴파일러 언어라고 할 수는 없다.**
+- 자바스크립트는 동적이며, 타입을 명시할 필요가 없고, 별도의 컴파일 작업을 수행하지 않는 인터프리터 언어이다. **인터프리터는 소스코드의 각 행을 즉시 분석하며 실행**한다.
+
+- 자바스크립트는 객체 지향형 프로그래밍과 함수형 프로그래밍을 모두 표현할 수 있는 멀티 패러다임 언어이다.
 
 ## 변수
 
@@ -293,15 +293,58 @@ var 키워드는 뒤에 오는 변수 이름을 새로운 변수를 선언할 �
 
 ### 호이스팅이 뭔가요?
 
-```js
-console.log(score); // undefined;
+Javascript parser가 함수 안에 있는 선언들을 모두 끌어올려서 해당 함수 유효 범위의 최상단에 선언하는 것을 말한다.
 
-var score; // 변수 선언문
+#### 특징
+- var 변수/함수의 선언만 위로 끌어 올려지며, 할당은 끌어 올려지지 않는다.
+- let/const 변수 선언과 함수표현식에서는 호이스팅이 발생하지 않는다.
+
+```js
+console.log("hello");
+var myname = "HONG"; // var 변수 
+let myname2 = "HONG2"; // let 변수 
 ```
 
-js 엔진은 변수 선언(을 포함한 모든 선언문)이 소스코드의 어디에 있든 상관없이 다른 코드보다 먼저 실행한다. 런타임 이전에 실행 컨텍스트에 의해 소스코드 평가 과정에서 스코프에 등록되고 이를 마치 코드의 제일 위에 있는 것처럼 변수가 어디에 위치하던지와 상관없이 어디서든지 변수를 참조할 수 있는 것처럼 만드는 특징을 변수 호이스팅이라고 합니다.
+```js
+/** --- JS Parser 내부의 호이스팅(Hoisting)의 결과 - 위와 동일 --- */
+  var myname; // [Hoisting] "선언"
+  console.log("hello");
+  myname = "HEEE"; // "할당"
+  let myname2 = "HEEE2"; // [Hoisting] 발생 X
+```
 
-**사실 변수 선언뿐 아니라 var, let, const, function, function\*, class 키워드를 사용해서 선언하는 모든 식별자(변수, 함수, 클래스 등)는 호이스팅된다. 모든 선언문은 런타임 이전 단계에서 먼저 실행되기 때문이다.**
+- 호이스팅은 함수선언문과 함수표현식에서 서로 다르게 동작하기 때문에 주의해야 한다. 변수에 할당된 함수표현식은 끌어 올려지지 않기 때문에 이때는 변수의 스코프 규칙을 그대로 따른다.
+
+```js
+foo();
+  foo2();
+
+  function foo() { // 함수선언문
+    console.log("hello");
+  }
+  var foo2 = function() { // 함수표현식
+    console.log("hello2");
+  }
+```
+
+```js
+  /** --- JS Parser 내부의 호이스팅(Hoisting)의 결과 - 위와 동일 --- */
+  var foo2; // [Hoisting] 함수표현식의 변수값 "선언"
+
+  function foo() { // [Hoisting] 함수선언문
+    console.log("hello");
+  }
+
+  foo();
+  foo2(); // ERROR!! 
+
+  foo2 = function() { 
+    console.log("hello2");
+  }
+https://gmlwjd9405.github.io/2019/04/22/javascript-hoisting.html
+```
+
+[참고 [JavaScript] 호이스팅(Hoisting)이란](https://gmlwjd9405.github.io/2019/04/22/javascript-hoisting.html)
 
 <br/>
 
@@ -542,8 +585,8 @@ var FirstName;
 
 // 헝가리언 케이스 (typeHungarianCase)
 var strFirstName; // type + identifier
-var $elem = document.getElementById("myId"); // DOM 노드
-var observable$ = fromEvent(document, "click"); // RxJS 옵저버블
+var $elem = document.getElementById('myId'); // DOM 노드
+var observable$ = fromEvent(document, 'click'); // RxJS 옵저버블
 ```
 
 <br/>
@@ -583,16 +626,16 @@ var observable$ = fromEvent(document, "click"); // RxJS 옵저버블
 // 위, 아래, 왼쪽, 오른쪽을 나타내는 상수를 정의한다.
 // 중복될 가능성이 없는 심벌 값으로 상수 값을 생성한다.
 const Direction = {
-  UP: Symbol("up"),
-  DOWN: Symbol("down"),
-  LEFT: Symbol("left"),
-  RIGHT: Symbol("right"),
+  UP: Symbol('up'),
+  DOWN: Symbol('down'),
+  LEFT: Symbol('left'),
+  RIGHT: Symbol('right'),
 };
 
 const myDirection = Direction.UP;
 
 if (myDirection === Direction.UP) {
-  console.log("You are going UP.");
+  console.log('You are going UP.');
 }
 ```
 
@@ -688,7 +731,7 @@ String(1); // -> "1"
 (1).toString(); // -> "1"
 
 // 3. 문자열 연결 연산자를 이용하는 방법
-1 + ""; // -> "1"
+1 + ''; // -> "1"
 ```
 
 </details>
@@ -704,16 +747,16 @@ String(1); // -> "1"
 
 ```js
 // 1. Number 생성자 함수를 new 연산자 없이 호출하는 방법
-Number("0"); // -> 0
+Number('0'); // -> 0
 
 // 2. parseInt, parseFloat 함수를 사용하는 방법(문자열만 변환 가능)
-parseInt("0"); // -> 0
+parseInt('0'); // -> 0
 
 // 3. + 단항 산술 연산자를 이용하는 방법
-+"0"; // -> 0
++'0'; // -> 0
 
 // 4. * 산술 연산자를 이용하는 방법
-"0" * 1; // -> 0
+'0' * 1; // -> 0
 ```
 
 </details>
@@ -728,9 +771,9 @@ parseInt("0"); // -> 0
 ```js
 // 1. Boolean 생성자 함수를 new 연산자 없이 호출하는 방법
 // 문자열 타입 => 불리언 타입
-Boolean("x"); // -> true
-Boolean(""); // -> false
-Boolean("false"); // -> true
+Boolean('x'); // -> true
+Boolean(''); // -> false
+Boolean('false'); // -> true
 // 숫자 타입 => 불리언 타입
 Boolean(0); // -> false
 Boolean(1); // -> true
@@ -746,9 +789,9 @@ Boolean([]); // -> true
 
 // 2. ! 부정 논리 연산자를 두번 사용하는 방법
 // 문자열 타입 => 불리언 타입
-!!"x"; // -> true
-!!""; // -> false
-!!"false"; // -> true
+!!'x'; // -> true
+!!''; // -> false
+!!'false'; // -> true
 // 숫자 타입 => 불리언 타입
 !!0; // -> false
 !!1; // -> true
@@ -775,7 +818,7 @@ Boolean([]); // -> true
 var x = 10;
 
 // 문자열 연결 연산자 ( + )는 숫자 타입 x의 값을 바탕으로 새로운 문자열을 생성한다.
-var str = x + "";
+var str = x + '';
 console.log(typeof str, str); // string 10
 
 // x 변수의 값이 변경된 것은 아니다.
@@ -803,12 +846,12 @@ Falsy값에 ! 연산자를 붙이면, 모두 Truthy 값으로 평가되어 실�
 
 ```js
 // 아래의 조건문은 모두 코드 블록을 실행한다.
-if (!false) console.log(false + " is falsy value");
-if (!undefined) console.log(undefined + " is falsy value");
-if (!null) console.log(null + " is falsy value");
-if (!0) console.log(0 + " is falsy value");
-if (!NaN) console.log(NaN + " is falsy value");
-if (!"") console.log("" + " is falsy value");
+if (!false) console.log(false + ' is falsy value');
+if (!undefined) console.log(undefined + ' is falsy value');
+if (!null) console.log(null + ' is falsy value');
+if (!0) console.log(0 + ' is falsy value');
+if (!NaN) console.log(NaN + ' is falsy value');
+if (!'') console.log('' + ' is falsy value');
 ```
 
 ## 배열
@@ -942,7 +985,7 @@ forEach 메서드와 마찬가지로 map 메서드의 콜백 함수는 map 메�
 
 ```js
 var person = {
-  name: "Lee",
+  name: 'Lee',
   age: 20,
 };
 ```
@@ -1036,7 +1079,7 @@ score 변수와 copy 변수의 값 80은 다른 메모리 공간에 저장된 �
 
 ```js
 var person = {
-  name: "Lee",
+  name: 'Lee',
 };
 
 // 참조값을 복사(얕은 복사)
@@ -1791,11 +1834,11 @@ function Person(name) {
 
 // 프로토타입 메서드
 Person.prototype.sayHi = function () {
-  console.log("Hi! My name is " + this.name);
+  console.log('Hi! My name is ' + this.name);
 };
 
 // 인스턴스 생성
-var me = new Person("Lee");
+var me = new Person('Lee');
 me.sayHi(); // Hi! My name is Lee
 ```
 
@@ -1864,12 +1907,12 @@ class Person {
 
   // 정적 메서드 (static을 붙여 정의한다)
   static sayHello() {
-    console.log("Hello!");
+    console.log('Hello!');
   }
 }
 
 // 인스턴스 생성
-const me = new Person("Lee");
+const me = new Person('Lee');
 
 // ① 인스턴스의 프로퍼티 참조
 console.log(me.name); // Lee
@@ -1911,18 +1954,18 @@ class Animal {
   }
 
   eat() {
-    return "eat";
+    return 'eat';
   }
 
   move() {
-    return "move";
+    return 'move';
   }
 }
 
 // 상속을 통해 Animal 클래스를 확장한 Bird 클래스
 class Bird extends Animal {
   fly() {
-    return "fly";
+    return 'fly';
   }
 }
 
@@ -1992,7 +2035,7 @@ class Derived extends Base {
   }
 }
 
-const derived = new Derived("Lee");
+const derived = new Derived('Lee');
 console.log(derived.sayHi()); // Hi! Lee. how are you doing?
 ```
 
@@ -2033,7 +2076,7 @@ class ColorRectangle extends Rectangle {
   }
 }
 
-const colorRectangle = new ColorRectangle(2, 4, "red");
+const colorRectangle = new ColorRectangle(2, 4, 'red');
 console.log(colorRectangle); // ColorRectangle {width: 2, height: 4, color: "red"}
 
 // 상속을 통해 getArea 메서드를 호출
@@ -2075,12 +2118,12 @@ ES6에서 도입된 스프레드 문법(=전개 문법) ...은 **하나로 뭉�
 ### 코드 요약
 
 ```js
-let user = { name: "Mike" };
+let user = { name: 'Mike' };
 let info = { age: 30 };
-let fe = ["js", "react"];
-let lang = ["korean", "english"];
+let fe = ['js', 'react'];
+let lang = ['korean', 'english'];
 
-console.log("before user: ", user);
+console.log('before user: ', user);
 
 user = {
   ...user,
@@ -2088,7 +2131,7 @@ user = {
   skills: [...fe, ...lang],
 };
 
-console.log("after user: ", user);
+console.log('after user: ', user);
 
 /*
 before user:  { name: 'Mike' }
@@ -2118,7 +2161,7 @@ after user:  {
 console.log(...[1, 2, 3]); // 1 2 3
 
 // 문자열은 이터러블이다.
-console.log(..."Hello"); // H e l l o
+console.log(...'Hello'); // H e l l o
 
 /* 이터러블이 아닌 일반 객체는 스프레드 문법의 대상이 될 수 없다. */
 console.log(...{ a: 1, b: 2 });
@@ -2224,11 +2267,11 @@ console.log(one, two, three); // 1 2 3
 배열 디스트럭처링 할당은 배열과 같은 이터러블에서 필요한 요소만 추출하여 변수에 할당하고 싶을 때 유용합니다.
 
 ```js
-const str = "hello-world-2021";
+const str = 'hello-world-2021';
 
-console.log(str.split("-"));
+console.log(str.split('-'));
 
-const [one, two, three] = str.split("-");
+const [one, two, three] = str.split('-');
 
 console.log(one);
 console.log(two);
@@ -2244,7 +2287,7 @@ console.log(three);
 즉, 순서는 의미가 없으며 선언된 변수 이름과 프로퍼티가 일치하면 할당된다.
 
 ```js
-var user = { age: 25, name: "junhee" };
+var user = { age: 25, name: 'junhee' };
 
 var { age, name } = user;
 
@@ -2258,7 +2301,7 @@ console.log(age, name); // 25 junhee
 2. 반드시 프로퍼티 키와 변수 이름이 같을 필요는 없다
 
 ```js
-var user = { age: 25, name: "junhee" };
+var user = { age: 25, name: 'junhee' };
 
 var { age: junheeAge, name: junheeName } = user;
 
@@ -2275,7 +2318,7 @@ console.log(junheeAge, junheeName); // 25 junhee
 ```js
 var user = { age: 25 };
 
-var { age, name = "default" } = user;
+var { age, name = 'default' } = user;
 
 console.log(age, name); // 25 default
 ```
@@ -2304,11 +2347,11 @@ printTodo({ id: 1, content: "HTML", completed: true });
 
 ```js
 const user = {
-  name: "junhee",
+  name: 'junhee',
   age: 25,
   address: {
     zipCode: 14063,
-    city: "Anyang",
+    city: 'Anyang',
   },
 };
 
@@ -2419,8 +2462,8 @@ DOM 요소를 조작하는 `<script>` 태그가 `<body>` 태그 위에 존재한
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
     <script>
-      const $apple = document.getElementById("apple");
-      $apple.style.color = "red";
+      const $apple = document.getElementById('apple');
+      $apple.style.color = 'red';
     </script>
   </head>
   <body>
@@ -2643,11 +2686,11 @@ ORANGE
   <body>
     <button>Click me!</button>
     <script>
-      const $button = document.querySelector("button");
+      const $button = document.querySelector('button');
 
       // 이벤트 핸들러 프로퍼티에 이벤트 핸들러를 바인딩 (익명 함수로 가능)
       $button.onclick = function () {
-        console.log("button click");
+        console.log('button click');
       };
     </script>
   </body>
@@ -2663,11 +2706,11 @@ ORANGE
     <em></em>
 
     <script>
-      const $button = document.querySelector("button");
-      const $em = document.querySelector("em");
+      const $button = document.querySelector('button');
+      const $em = document.querySelector('em');
 
-      $button.addEventListener("click", function () {
-        $em.innerHTML = "Button Cliked 1";
+      $button.addEventListener('click', function () {
+        $em.innerHTML = 'Button Cliked 1';
       });
     </script>
   </body>
@@ -2707,13 +2750,13 @@ DOM 트리상에 존재하는 모든 DOM 요소 노드에서 발생한 이벤트
     <div>Click me</div>
   </body>
   <script>
-    const html = document.querySelector("html");
-    const body = document.querySelector("body");
-    const div = document.querySelector("div");
+    const html = document.querySelector('html');
+    const body = document.querySelector('body');
+    const div = document.querySelector('div');
 
-    html.addEventListener("click", () => console.log("HTML"));
-    body.addEventListener("click", () => console.log("BODY"));
-    div.addEventListener("click", () => console.log("DIV"));
+    html.addEventListener('click', () => console.log('HTML'));
+    body.addEventListener('click', () => console.log('BODY'));
+    div.addEventListener('click', () => console.log('DIV'));
   </script>
 </html>
 ```
@@ -2787,9 +2830,9 @@ DIV
       <button class="btn-number">5</button>
     </div>
     <script>
-      const div = document.querySelector("div");
+      const div = document.querySelector('div');
 
-      div.addEventListener("click", (e) => {
+      div.addEventListener('click', (e) => {
         console.log(e.target.innerHTML);
       });
     </script>
@@ -2821,12 +2864,12 @@ e.preventDefault 메서드는 요소 태그의 기본 동작을 중단합니다.
     <a href="https://www.google.com">go</a>
     <input type="checkbox" />
     <script>
-      document.querySelector("a").onclick = (e) => {
+      document.querySelector('a').onclick = (e) => {
         // a 요소의 기본 동작을 중단한다.
         e.preventDefault();
       };
 
-      document.querySelector("input[type=checkbox]").onclick = (e) => {
+      document.querySelector('input[type=checkbox]').onclick = (e) => {
         // checkbox 요소의 기본 동작을 중단한다.
         e.preventDefault();
       };
@@ -2880,16 +2923,16 @@ e.stopPropagation 메서드는 이벤트 전파를 중지시키는 메서드입�
       <button>Button</button>
     </div>
     <script>
-      const div = document.querySelector("div");
-      const button = document.querySelector("button");
+      const div = document.querySelector('div');
+      const button = document.querySelector('button');
 
-      div.addEventListener("click", () => {
-        console.log("DIV");
+      div.addEventListener('click', () => {
+        console.log('DIV');
       });
 
-      button.addEventListener("click", (e) => {
+      button.addEventListener('click', (e) => {
         e.stopPropagation();
-        console.log("BUTTON");
+        console.log('BUTTON');
       });
     </script>
   </body>
@@ -2948,19 +2991,19 @@ setTimeout 함수가 반환한 타이머 id는 ① 브라우저 환경일 경우
 
 ```js
 // 1초(1000ms) 후 타이머가 만료되면 콜백 함수가 호출된다.
-setTimeout(() => console.log("Hi!"), 1000);
+setTimeout(() => console.log('Hi!'), 1000);
 
 // 세 번째 인수로 문자열 'Lee' 전달
-setTimeout((name) => console.log(`Hi! ${name}.`), 1000, "Lee");
+setTimeout((name) => console.log(`Hi! ${name}.`), 1000, 'Lee');
 
 // 두 번째 인수(delay)를 생략하면 기본값 0이 지정된다.
-setTimeout(() => console.log("Hello!"));
+setTimeout(() => console.log('Hello!'));
 ```
 
 setTimeout 함수가 반환한 타이머 id를 clearTimeout 함수의 인수로 전달하여 타이머를 취소할 수 있다.
 
 ```js
-const timerId = setTimeout(() => console.log("Hi!"), 1000);
+const timerId = setTimeout(() => console.log('Hi!'), 1000);
 console.log(timeId);
 
 clearTimeout(timerId);
@@ -2992,7 +3035,7 @@ const timeoutId = setInterval(() => {
   if (count++ === 5) clearInterval(timeoutId);
 }, 1000);
 
-console.log("timeoutId: ", timeoutId);
+console.log('timeoutId: ', timeoutId);
 ```
 
 <br/>
@@ -3024,8 +3067,8 @@ scroll, resize, mousemove 같은 이벤트는 짧은 시간 간격으로 연속�
     <input type="text" />
     <div class="msg"></div>
     <script>
-      const $input = document.querySelector("input");
-      const $msg = document.querySelector(".msg");
+      const $input = document.querySelector('input');
+      const $msg = document.querySelector('.msg');
 
       const debounce = (callback, delay) => {
         let timerId;
@@ -3104,9 +3147,9 @@ scroll 이벤트는 사용자가 스크롤할 때 짧은 시간 간격으로 연
     </div>
 
     <script>
-      const $container = document.querySelector(".container");
-      const $normalCount = document.querySelector(".normal-count");
-      const $throttleCount = document.querySelector(".throttle-count");
+      const $container = document.querySelector('.container');
+      const $normalCount = document.querySelector('.normal-count');
+      const $throttleCount = document.querySelector('.throttle-count');
 
       const throttle = (callback, delay) => {
         let timerId;
@@ -3128,14 +3171,14 @@ scroll 이벤트는 사용자가 스크롤할 때 짧은 시간 간격으로 연
       };
 
       let normalCount = 0;
-      $container.addEventListener("scroll", () => {
+      $container.addEventListener('scroll', () => {
         $normalCount.textContent = ++normalCount;
       });
 
       let throttleCount = 0;
       // throttle 함수가 반환하는 클로저가 이벤트 핸들러로 등록된다.
       $container.addEventListener(
-        "scroll",
+        'scroll',
         throttle(() => {
           $throttleCount.textContent = ++throttleCount;
         }, 1000)
@@ -3222,11 +3265,11 @@ function sleep(func, delay) {
 }
 
 function foo() {
-  console.log("foo");
+  console.log('foo');
 }
 
 function bar() {
-  console.log("bar");
+  console.log('bar');
 }
 
 sleep(foo, 3000);
@@ -3245,11 +3288,11 @@ bar();
 
 ```js
 function foo() {
-  console.log("foo");
+  console.log('foo');
 }
 
 function bar() {
-  console.log("bar");
+  console.log('bar');
 }
 
 // 타이머 함수 setTimeout은 일정 시간이 경과한 이후에 콜백 함수 foo를 호출한다.
@@ -3340,11 +3383,11 @@ setTimeout 함수는 앞서 살펴본 sleep 함수와 유사하게 일정 시간
 
 ```js
 function foo() {
-  console.log("foo");
+  console.log('foo');
 }
 
 function bar() {
-  console.log("bar");
+  console.log('bar');
 }
 
 setTimeout(foo, 0); // 0초(실제는 4ms) 후에 foo 함수가 호출된다.
@@ -3496,11 +3539,11 @@ Web API인 XMLHttpRequest 객체는 ① HTTP 요청 전송과 ② HTTP 응답 �
 const xhr = new XMLHttpRequest();
 
 // HTTP 요청 초기화
-xhr.open("GET", "/users");
+xhr.open('GET', '/users');
 
 // HTTP 요청 헤더 설정
 // 클라이언트가 서버로 전송할 데이터의 MIME 타입 지정: json
-xhr.setRequestHeader("content-type", "application/json");
+xhr.setRequestHeader('content-type', 'application/json');
 
 // HTTP 요청 전송
 xhr.send();
@@ -3513,14 +3556,14 @@ xhr.send();
 const xhr = new XMLHttpRequest();
 
 // HTTP 요청 초기화
-xhr.open("POST", "/users");
+xhr.open('POST', '/users');
 
 // HTTP 요청 헤더 설정
 // 클라이언트가 서버로 전송할 데이터의 MIME 타입 지정: json
-xhr.setRequestHeader("content-type", "application/json");
+xhr.setRequestHeader('content-type', 'application/json');
 
 // HTTP 요청 전송
-xhr.send(JSON.stringify({ id: 1, content: "HTML", completed: false }));
+xhr.send(JSON.stringify({ id: 1, content: 'HTML', completed: false }));
 ```
 
 #### HTTP 응답 처리
@@ -3531,7 +3574,7 @@ const xhr = new XMLHttpRequest();
 
 // HTTP 요청 초기화
 // https://jsonplaceholder.typicode.com은 Fake REST API를 제공하는 서비스다.
-xhr.open("GET", "https://jsonplaceholder.typicode.com/todos/1");
+xhr.open('GET', 'https://jsonplaceholder.typicode.com/todos/1');
 
 // HTTP 요청 전송
 xhr.send();
@@ -3542,7 +3585,7 @@ xhr.onload = () => {
     console.log(JSON.parse(xhr.response));
     // {userId: 1, id: 1, title: "delectus aut autem", completed: false}
   } else {
-    console.error("Error", xhr.status, xhr.statusText);
+    console.error('Error', xhr.status, xhr.statusText);
   }
 };
 ```
@@ -3570,7 +3613,7 @@ const promise = fetch(url [, options])
 fetch 함수는 HTTP 응답을 나타내는 Response 객체를 래핑한 Promise 객체를 반환한다.
 
 ```js
-fetch("https://jsonplaceholder.typicode.com/todos/1").then((response) =>
+fetch('https://jsonplaceholder.typicode.com/todos/1').then((response) =>
   console.log(response)
 );
 ```
@@ -3586,7 +3629,7 @@ Response.prototype에는 Response 객체에 포함되어 있는 HTTP 응답 몸�
 Response.prototype.json 메서드는 Response 객체에서 HTTP 응답 몸체를 역직렬화(deserialize)한다.
 
 ```js
-fetch("https://jsonplaceholder.typicode.com/todos/1")
+fetch('https://jsonplaceholder.typicode.com/todos/1')
   // response는 HTTP 응답을 나타내는 Response 객체이다.
   // json 메서드를 사용하여 Response 객체에서 HTTP 응답 몸체를 취득하여 역직렬화한다.
   .then((response) => response.json())
@@ -3610,7 +3653,7 @@ fetch("https://jsonplaceholder.typicode.com/todos/1")
       const render = (res) => {
         console.log(res);
         const result = JSON.stringify(res);
-        document.querySelector("pre").innerHTML = `<b>${result}</b>`;
+        document.querySelector('pre').innerHTML = `<b>${result}</b>`;
       };
 
       const request = {
@@ -3621,37 +3664,37 @@ fetch("https://jsonplaceholder.typicode.com/todos/1")
         // post 메서드
         post(url, payload) {
           return fetch(url, {
-            method: "POST",
-            headers: { "content-Type": "application/json" },
+            method: 'POST',
+            headers: { 'content-Type': 'application/json' },
             body: JSON.stringify(payload),
           });
         },
         // patch 메서드
         patch(url, payload) {
           return fetch(url, {
-            method: "PATCH",
-            headers: { "content-Type": "application/json" },
+            method: 'PATCH',
+            headers: { 'content-Type': 'application/json' },
             body: JSON.stringify(payload),
           });
         },
         // delete 메서드
         delete(url) {
-          return fetch(url, { method: "DELETE" });
+          return fetch(url, { method: 'DELETE' });
         },
       };
 
       // get
       request
-        .get("https://jsonplaceholder.typicode.com/todos/1")
+        .get('https://jsonplaceholder.typicode.com/todos/1')
         .then((response) => response.json())
         .then((todos) => render(todos))
         .catch((err) => console.log(err));
 
       // post
       request
-        .post("https://jsonplaceholder.typicode.com/todos", {
+        .post('https://jsonplaceholder.typicode.com/todos', {
           userId: 1,
-          title: "JavaScript",
+          title: 'JavaScript',
           completed: false,
         })
         .then((response) => response.json())
@@ -3660,7 +3703,7 @@ fetch("https://jsonplaceholder.typicode.com/todos/1")
 
       // patch
       request
-        .patch("https://jsonplaceholder.typicode.com/todos/1", {
+        .patch('https://jsonplaceholder.typicode.com/todos/1', {
           completed: true,
         })
         .then((response) => response.json())
@@ -3669,7 +3712,7 @@ fetch("https://jsonplaceholder.typicode.com/todos/1")
 
       // delete
       request
-        .delete("https://jsonplaceholder.typicode.com/todos/1")
+        .delete('https://jsonplaceholder.typicode.com/todos/1')
         .then((response) => response.json())
         .then((todos) => console.log(todos))
         .catch((err) => console.log(err));
@@ -3753,15 +3796,15 @@ GET /todos/1
     <script>
       const xhr = new XMLHttpRequest();
 
-      xhr.open("GET", "/todos");
+      xhr.open('GET', '/todos');
 
       xhr.send();
 
       xhr.onload = () => {
         if (xhr.status === 200) {
-          document.querySelector("pre").innerHTML = xhr.response;
+          document.querySelector('pre').innerHTML = xhr.response;
         } else {
-          console.error("Error", xhr.status, xhr.statusText);
+          console.error('Error', xhr.status, xhr.statusText);
         }
       };
     </script>
@@ -3783,17 +3826,17 @@ GET /todos/1
     <script>
       const xhr = new XMLHttpRequest();
 
-      xhr.open("GET", "/todos/1");
+      xhr.open('GET', '/todos/1');
 
       xhr.send();
 
       xhr.onload = () => {
         if (xhr.status === 200) {
           const result = (document.querySelector(
-            "pre"
+            'pre'
           ).innerHTML = `<h1>${xhr.response}</h1>`);
         } else {
-          console.error("Error", xhr.status, xhr.statusText);
+          console.error('Error', xhr.status, xhr.statusText);
         }
       };
     </script>
@@ -3814,18 +3857,18 @@ GET /todos/1
     <pre></pre>
     <script>
       const xhr = new XMLHttpRequest();
-      xhr.open("POST", "/todos");
-      xhr.setRequestHeader("content-type", "application/json");
+      xhr.open('POST', '/todos');
+      xhr.setRequestHeader('content-type', 'application/json');
 
       // 해당 액션이 db.json에 생성된 후에 다시 한번 해당 url로 접근한다면
       // Error: Insert failed, duplicate id (유효하지 않은 id 값) 이라는 에러가 뜬다
-      xhr.send(JSON.stringify({ id: 4, content: "Angular", completed: false }));
+      xhr.send(JSON.stringify({ id: 4, content: 'Angular', completed: false }));
 
       xhr.onload = () => {
         if (xhr.status === 200 || xhr.status === 201) {
-          document.querySelector("pre").innerHTML = xhr.response;
+          document.querySelector('pre').innerHTML = xhr.response;
         } else {
-          console.error("Error", xhr.status, xhr.statusText);
+          console.error('Error', xhr.status, xhr.statusText);
         }
       };
     </script>
@@ -3847,16 +3890,16 @@ GET /todos/1
     <script>
       const xhr = new XMLHttpRequest();
 
-      xhr.open("PATCH", "/todos/4");
-      xhr.setRequestHeader("content-type", "application/json");
+      xhr.open('PATCH', '/todos/4');
+      xhr.setRequestHeader('content-type', 'application/json');
 
       xhr.send(JSON.stringify({ completed: false }));
 
       xhr.onload = () => {
         if (xhr.status === 200) {
-          document.querySelector("pre").innerHTML = xhr.response;
+          document.querySelector('pre').innerHTML = xhr.response;
         } else {
-          console.error("Error", xhr.status, xhr.statusText);
+          console.error('Error', xhr.status, xhr.statusText);
         }
       };
     </script>
@@ -3878,15 +3921,15 @@ GET /todos/1
     <script>
       const xhr = new XMLHttpRequest();
 
-      xhr.open("DELETE", "/todos/4");
+      xhr.open('DELETE', '/todos/4');
 
       xhr.send();
 
       xhr.onload = () => {
         if (xhr.status === 200) {
-          document.querySelector("pre").innerHTML = xhr.response;
+          document.querySelector('pre').innerHTML = xhr.response;
         } else {
-          console.error("Error", xhr.status, xhr.statusText);
+          console.error('Error', xhr.status, xhr.statusText);
         }
       };
     </script>
@@ -3909,7 +3952,7 @@ GET /todos/1
 ```js
 // case 1 : 콜백 HELL 🔥
 
-get("/step1", (a) => {
+get('/step1', (a) => {
   get(`/step2/${a}`, (b) => {
     get(`/step3/${b}`, (c) => {
       get(`/step4/${c}`, (d) => {
@@ -4078,7 +4121,7 @@ Promise.allSettled 메서드는 프로미스를 요소로 갖는 배열 등의 �
 Promise.allSettled([
   new Promise((resolve) => setTimeout(() => resolve(1), 2000)),
   new Promise((_, reject) =>
-    setTimeout(() => reject(new Error("Error!")), 1000)
+    setTimeout(() => reject(new Error('Error!')), 1000)
   ),
 ]).then(console.log);
 /*
@@ -4185,13 +4228,13 @@ await 키워드는 반드시 프로미스 앞에서 사용해야 한다.
   <script>
     // async 사용!
     async function fetchTodo() {
-      const url = "https://jsonplaceholder.typicode.com/todos/1";
+      const url = 'https://jsonplaceholder.typicode.com/todos/1';
 
       const response = await fetch(url);
       const todo = await response.json();
       console.log(todo);
       const result = JSON.stringify(todo, null, 2);
-      document.querySelector("pre").innerHTML = result;
+      document.querySelector('pre').innerHTML = result;
       // {userId: 1, id: 1, title: 'delectus aut autem', completed: false}
     }
 
@@ -4268,11 +4311,11 @@ foo(); // 약 3초 소요된다.
 #### 에러를 처리를 하지 않을 경우
 
 ```js
-console.log("[Start]");
+console.log('[Start]');
 
 foo(); // ReferenceError: foo is not defined
 
-console.log("[End]");
+console.log('[End]');
 ```
 
 ```
@@ -4291,17 +4334,17 @@ ReferenceError: foo is not defined
 #### 에러 처리를 할 경우
 
 ```js
-console.log("[Start]");
+console.log('[Start]');
 
 try {
   foo();
 } catch (error) {
-  console.error("[에러 발생]", error);
+  console.error('[에러 발생]', error);
   // [에러 발생] ReferenceError: foo is not defined
 }
 
 // 발생한 에러에 적절한 대응을 하면 프로그램이 강제 종료되지 않는다.
-console.log("[End]");
+console.log('[End]');
 ```
 
 ```
@@ -4335,7 +4378,7 @@ Error 생성자 함수는 에러 객체를 생성한다.
 Error 생성자 함수에는 에러를 상세히 설명하는 에러 메시지를 인수로 전달할 수 있다.
 
 ```js
-const error = new Error("invalid");
+const error = new Error('invalid');
 ```
 
 자바스크립트는 Error 생성자 함수를 포함해 7가지의 에러 객체를 생성할 수 있는 Error 생성자 함수를 제공한다.
@@ -4366,7 +4409,7 @@ Error 생성자 함수로 에러 객체를 생성한다고 에러가 발생하�
 ```js
 try {
   // 에러 객체를 생성한다고 에러가 발생하는 것은 아니다.
-  new Error("something wrong");
+  new Error('something wrong');
 } catch (error) {
   console.log(error);
 }
@@ -4381,7 +4424,7 @@ throw 표현식;
 ```js
 try {
   // 에러 객체를 던지면 catch 코드 블록이 실행되기 시작한다.
-  throw new Error("something wrong");
+  throw new Error('something wrong');
 } catch (error) {
   console.log(error);
 }
