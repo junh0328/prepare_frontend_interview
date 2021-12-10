@@ -127,19 +127,74 @@ HTML 문서가 어떤 내용을 담고 있고, 키워드는 무엇이며, 누가
 
 <meta
   name="description"
-  content="The MDN Learning Area aims to provide
-complete beginners to the Web with all they need to know to get
-started with developing web sites and applications."
+  content="The MDN Web Docs site provides information about Open Web technologies including HTML, CSS, and APIs for both Web sites and progressive web apps."
 />
 ```
+
+해당 태그는 실제 MDN 웹 페이지에 등록된 meta 태그의 name 어트리뷰트와 content 어트리뷰트이다.
+
+구글에 'MDN'을 검색했을 때, 검색 엔진이 메타 태그의 `content 어트리뷰트` 안에 있는 내용을 검색 결과와 함께 추가적으로 보여주고 있다.
+
+<img width="500" src="./images/meta.gif" alt="메타태그 사용">
+
+### `검색 엔진 최적화를 위해 메타 태그의 어떤 것을 활용했는지`
+
+[Link 🔥 tcpschool/html-tags/meta](http://tcpschool.com/html-tags/meta)
+
+#### ① 검색 엔진을 위한 키워드를 정의
+
+```html
+<meta name="keyword" content="HTML, meta, tag, element, reference" />
+```
+
+#### ② 웹 페이지에 대한 설명(description)을 정의
+
+```html
+<meta name="description" content="HTML meta tag page" />
+```
+
+#### ③ 문서의 저자(author)를 정의
+
+```html
+<meta name="author" content="TCPSchool" />
+```
+
+#### ④ 5초 뒤에 다른 페이지로 리다이렉트(redirect)시키기
+
+```html
+<meta http-equiv="refresh" content="5;url=http://www.tcpschool.com" />
+```
+
+#### ⑤ 모든 장치에서 웹 사이트가 잘 보이도록 뷰포트(viewport)를 설정
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+```
+
+<details>
+<summary>전체 코드로 보기</summary>
+
+```html
+<head>
+  <meta charset="UTF-8" />
+  <meta name="keyword" content="HTML, meta, tag, element, reference" />
+  <meta name="description" content="HTML meta tag page" />
+  <meta name="author" content="TCPSchool" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTML meta tag</title>
+</head>
+```
+
+</details>
+<br/>
 
 ## 웹 표준 및 웹 접근성
 
 ### `웹 표준이란?`
 
-출처: https://goddaehee.tistory.com/244 [갓대희의 작은공간]
+[출처: 갓대희의 작은공간](https://goddaehee.tistory.com/244)
 
-웹표준이란 웹상에서 표준적으로 사용되는 기술을 말합니다.
+웹 표준이란 웹 상에서 표준적으로 사용되는 기술을 말합니다.
 
 웹사이트를 어떠한 운영체제에서나 어떠한 브라우저에서 보더라도 동일하게 보여지도록 W3C(World Wide Web Consortium) 기구 표준에 맞추는 것입니다.
 
@@ -231,6 +286,8 @@ submit이다. form 태그 안에 form data와 관련 없는 버튼을 만든 후
 2. 이미지 스프라이트를 활용한다.
 3. 벡터 이미지(SVG)를 활용한다.
 
+<br/>
+
 ### `SVG란`
 
 SVG는 Scalable Vector Graphics라는 뜻인데, 번역하자면 확장가능한 벡터 그래픽이다.
@@ -247,6 +304,8 @@ SVG는 Scalable Vector Graphics라는 뜻인데, 번역하자면 확장가능한
 - XML 포맷으로 파일이 작성되므로 JS나 CSS로 조작이 가능하다.
 
 * 단, 이미지가 복잡할수록 SVG만의 장점은 감소한다.
+
+<br/>
 
 ### `UI란 무엇인지 설명하시오`
 
@@ -268,6 +327,8 @@ SVG는 Scalable Vector Graphics라는 뜻인데, 번역하자면 확장가능한
 
 display:none과 비슷한 `visibility:hidden`는 보이지만 않고 해당 공간은 존재. width와 height값을 주었다면 그만큼 공간은 존재하게 됨
 
+<br/>
+
 ### `position 속성에 대하여`
 
 - 선택한 요소들을 화면에 나타나지 않게 한다. visibility: hidden과의 차이점은 영역이 남아있는지 여부가 다르다는 점이다.
@@ -280,6 +341,8 @@ display:none과 비슷한 `visibility:hidden`는 보이지만 않고 해당 공�
 
 4. absolute : 가장 가까운 상위 요소의 위치를 기준으로 지정한 값 만큼 떨어진 곳에 요소를 배치한다.
 
+<br/>
+
 ### `float가 어떻게 작동하는가`
 
 Float는 CSS 위치지정 속성입니다.
@@ -289,6 +352,8 @@ Float된 요소는 페이지의 흐름의 일부가 되며, 페이지의 흐름�
 CSS `clear` 속성은 float 요소에 left/right/both에 위치하도록 사용될 수 있습니다.
 
 부모 요소에 float 요소만 있으면, 그 높이는 무효가 됩니다. 컨테이너의 float 요소 다음에 있지만 컨테이너가 닫히기 전에 float를 clear하면 해결할 수 있습니다.
+
+<br/>
 
 ### `Flexbox나 Grid 각각의 특징`
 
@@ -310,15 +375,21 @@ gird를 사용 하면 list에 width를 따로 입력 하지 않고 리스트에 
 
 또 추가적으로 브라우저 창을 줄여도 자동으로 리스트의 width가 퍼센트(%)를 준것 처럼 브라우저 창에 반응 하는것을 볼 수 있습니다.
 
+<br/>
+
 ### `이미지 태그를 스타일로 대체하는 법`
 
 - background-image로 대체한다.
+
+<br/>
 
 ### `반응형 웹의 3요소`
 
 1. 그리드 레이아웃 : 부모요소에 display:grid; 속성을 넣어준다.
 2. 가변형 이미지 : max width, width, min-width등을 이용해 화면 너비에 따라 높이와 너비가 바뀌는 이미지
 3. 미디어 쿼리 : 미디어 쿼리는 화면(screen), 티비(tv), 프린터(print)와 같은 미디어 타입(media type)과 적어도 하나 이상의 표현식(expression)으로 구성된다. 표현식은 width, height, color와 같은 미디어 특성(media feature)들을 이용하여 그 특성들의 상태에 따라 다른 스타일 시트를 적용할 수 있다. 미디어 쿼리는 CSS3에 포함되어 있으며, 컨텐츠의 변경없이 주로 화면의 크기에 따라 스타일 시트를 달리하여 적절한 모양을 보여줄 수 있다.
+
+<br/>
 
 ### `CSS selector가 어떠한 원리로 동작하나요?`
 
@@ -327,10 +398,14 @@ gird를 사용 하면 list에 width를 따로 입력 하지 않고 리스트에 
 - Tag : `div`, `p`, `a`
 - Universal : \*
 
+<br/>
+
 ### `반응형웹과 적응형웹에 설명하시오`
 
 1. 반응형 웹이란? 반응형웹이란 **하나의 웹사이트에서 PC, 스마트폰, 태블릿 PC 등 접속하는 디스플레이의 종류에 따라 화면의 크기가 자동으로 변하도록 만든 웹페이지 접근 기법을 말합니다.**
 2. 적응형 웹이란? 적응형 웹은 한 마디로 반응형 웹의 반대라고 할 수 있겠죠. 맞는 건가. 홈페이지(블로그)가 모든 기기(PC, 모바일, 태블릿 등등) 및 해상도에 최적화되어 표시되는 것이 반응형 웹이라면, 적응형 웹은 사용자의 기기 및 해상도의 정보를 미리 받아서 조건에 맞는 화면을 보여주는 것입니다. 즉 반응형 웹페이지는 1개의 웹페이지라면 적응형 웹은 2개 이상의 웹페이지가 존재한다고 생각하면 될 것 같습니다.
+
+<br/>
 
 ### `PX, EM에 대해 설명하시오`
 
@@ -347,11 +422,15 @@ CSS의 표준권고안에 따르면 크기 단위는 절대단위와 상대단�
 - % : percent, 기본글꼴의 크기에 대하여 상대적인 값을 가짐.
 - pt : point, 일반 문서(워드 등)에서 많이 사용하는 단위
 
+<br/>
+
 ### `CSS 적용 우선순위`
 
 1. 기본적으로 뒤에 나오는 css가 우선순위가 높습니다.
 2. !important > inline style attribute > id > class, 다른 attribute, 수도클래스(:first-child같은 것) > tag element, 수도엘레먼트(::before같은 것) 순으로 우선순위가 높습니다.
 3. 우선순위가 같다면 개수가 많은 css가 우선순위가 높습니다.
+
+<br/>
 
 ### `CSS-in-JS에 대해서 설명해 주세요`
 
@@ -365,6 +444,8 @@ styled-components / emotion.js
 
 - 대표적인 라이브러리로 styled-components와 Emotion이 있다.
 
+<br/>
+
 ### `CSS 전처리기를 사용해보셨나요`
 
 ```
@@ -373,6 +454,8 @@ sass / less / ...
 
 1. **장점** : 조건문이나 반복문, 간단한 연산 등을 할 수 있어서 CSS를 마치 프로그래밍 하듯이 코딩할 수 있다.
 2. **단점** : 웹에서는 CSS만 동작하기 때문에 전처리기는 직접 동작시킬 수가 없다. 따라서 CSS로 컴파일 후 동작시켜야 한다.
+
+<br/>
 
 ### `padding과 margin의 차이가 무엇인가요`
 
