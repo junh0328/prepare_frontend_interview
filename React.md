@@ -204,6 +204,17 @@ Virtual DOM을 사용한다고 해서 사용하지 않을 때와 비교하여 �
 
 <br/>
 
+### Flux에 대해서 아나요
+
+[링크 벨로퍼트님 유튜브](https://www.youtube.com/watch?v=LRUQfJLuPA8)
+[링크 flux 카툰 안내서](https://bestalign.github.io/translation/cartoon-guide-to-flux/)
+
+`리덕스는 페이스북에서 리액트가 함께 소개한 Flux 아키텍쳐로 구현한 라이브러리입니다.`
+
+그렇다면 Flux는 뭘까요? Flux는 라이브러리나 프레임워크가 아닌 추상적인 개념입니다.
+
+---
+
 ### 리덕스에 대해서 아나요
 
 리덕스는 상태관리 라이브러리 중 하나로 여러 가지 상태관리 라이브러리 중 가장 많이 사용되고 있습니다.
