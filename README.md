@@ -78,7 +78,7 @@ ex)
 템플릿을 작성해 두었으니, 해당 예시 이슈에 맞춰 작성해주시면 됩니다!
 ```
 
-## <a href="./CS.md">① Computer Science</a>
+## <a href="./cs.md">① Computer Science</a>
 
 - `프로세스와 스레드 🔥`
 
@@ -152,7 +152,7 @@ ex)
   - 타입과 인터페이스의 차이를 아나요?
   - 프로젝트 진행 시에 어떤 상황에서 타입을 쓰고 어떤 상황에서 인터페이스를 썼나요?
 
-## <a href="./HTML_CSS.md">② HTML/ CSS</a>
+## <a href="./html_css.md">② HTML/ CSS</a>
 
 ### **HTML**
 
@@ -238,7 +238,7 @@ ex)
   - padding에 대하여
   - margin에 대하여
 
-## <a href="./JS.md">③ JavaScript</a>
+## <a href="./js.md">③ JavaScript</a>
 
 - `프로그래밍 🔥`
 
@@ -454,7 +454,7 @@ ex)
 
   - 모듈이 뭔가요?
 
-## <a href="./React.md">④ React</a>
+## <a href="./react.md">④ React</a>
 
 - `React 시작🔥`
 - `리액트는 라이브러리인가요 프레임워크 인가요?🔥`
@@ -512,7 +512,7 @@ ex)
 - `Next를 구성하는 기본 설정 파일에 대해서 알고 있나요? 🔥`
 - `사전 렌더링을 위해 사용해 본 함수가 있나요 🔥`
 
-## <a href="./Data_Structure.md">⑤ 자료구조</a>
+## <a href="./data_structure.md">⑤ 자료구조</a>
 
 - `자료구조란 무엇인가요 🔥`
 
@@ -532,7 +532,7 @@ ex)
 - `힙 🔥`
 - `그래프 🔥`
 
-## <a href="./AboutMe.md">⑥ '피면접자'가 생각하는 예상 질문 리스트</a>
+## <a href="./about_me.md">⑥ '피면접자'가 생각하는 예상 질문 리스트</a>
 
 ## <a href="./question_list.md">⑦ 비밀스러운 면접 후기 및 질문 리스트</a>
 
