@@ -449,13 +449,15 @@ SVG는 Scalable Vector Graphics라는 뜻인데, 번역하자면 확장가능한
 
 4. **none** : 아예 사라지게 하는것. 보이지도 않고 해당 공간도 존재하지 않게 됨
 
-display:none과 비슷한 `visibility:hidden`는 보이지만 않고 해당 공간은 존재. width와 height값을 주었다면 그만큼 공간은 존재하게 됨
+display:none과 `visibility:hidden`의 차이점
+| 구분 | 차이점 |
+| --- | --- |
+| display: none | 보이지도 않고 해당 공간도 존재하지 않게 됨 |
+| visibility: hidden | 보이지만 않고 해당 공간은 존재. width와 height값을 주었다면 그만큼 공간은 존재하게 됨 |
 
 <br/>
 
 ### `position 속성에 대하여`
-
-- 선택한 요소들을 화면에 나타나지 않게 한다. visibility: hidden과의 차이점은 영역이 남아있는지 여부가 다르다는 점이다.
 
 1. static : 기본값으로 요소들이 겹치지 않고 상→하로 배치된다.
 
