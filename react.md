@@ -59,6 +59,11 @@
 - [Next를 구성하는 기본 설정 파일에 대해서 알고 있나요?](#Next를-구성하는-기본-설정-파일에-대해서-알고-있나요)
 - [사전 렌더링을 위해 사용해 본 함수가 있나요](#사전-렌더링을-위해-사용해-본-함수가-있나요)
 
+- [Suspense](#suspense)
+
+- `suspense가 뭔가요?`
+- `suspense로 가능한 것은 어떤 것들이 있나요?`
+
 <hr>
 
 ## React 시작
@@ -1306,3 +1311,63 @@ Next 9.3 버전 이전엔 getInitialProps만으로 사전 렌더링 관련 문�
 `getServerSideProps`
 
 - 빌드와 상관없이, 매 페이지 요청마다 데이터를 서버로부터 가져옵니다
+
+## Suspense
+
+[참고, 리액트 코리아 - suspense](https://ko.reactjs.org/docs/concurrent-mode-suspense.html#what-is-suspense-exactly)
+
+- `suspense가 뭔가요?`
+
+suspense는 데이터 불러오기를 위한 라이브러리가 아닙니다.
+
+suspense는 '**컴포넌트가 읽어들이고 있는 데이터가 아직 준비되지 않았다**'고 React에 알려줄 수 있는, **데이터 불러오기 라이브러리에서 사용할 수 있는 메커니즘** 입니다.
+
+이후에 React는 데이터가 준비되기를 기다렸다가 UI를 갱신할 수 있습니다.
+
+장기적인 관점으로는, **Suspense가 데이터 출처와 상관없이 컴포넌트로부터 비동기 데이터를 읽는 데에 사용되는 주된 방식으로 거듭나길** 바라고 있습니다.
+
+<details>
+<summary>예시 코드 보기</summary>
+
+```jsx
+const resource = fetchProfileData();
+
+function ProfilePage() {
+  return (
+    <Suspense fallback={<h1>Loading profile...</h1>}>
+      <ProfileDetails />
+      <Suspense fallback={<h1>Loading posts...</h1>}>
+        <ProfileTimeline />
+      </Suspense>
+    </Suspense>
+  );
+}
+
+function ProfileDetails() {
+  // 아직 로딩이 완료되지 않았더라도, 사용자 정보 읽기를 시도합니다
+  const user = resource.user.read();
+  return <h1>{user.name}</h1>;
+}
+
+function ProfileTimeline() {
+  // 아직 로딩이 완료되지 않았더라도, 게시글 읽기를 시도합니다
+  const posts = resource.posts.read();
+  return (
+    <ul>
+      {posts.map((post) => (
+        <li key={post.id}>{post.text}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+</details>
+
+- `suspense로 가능한 것은 어떤 것들이 있나요?`
+
+1. 데이터 불러오기 라이브러리들(axios, SWR, react-query)이 React와 깊게 결합할 수 있도록 해줍니다
+
+2. 의도적으로 설계된 로딩 상태를 조정할 수 있도록 해줍니다. suspense는 데이터가 어떻게 불러져야 하는지를 정하지 않고, 앱의 시각적인 로딩 단계를 밀접하게 통제할 수 있도록 해줍니다
+
+3. 경쟁 상태(Race Condition)를 피할 수 있도록 돕습니다. await를 사용하더라도 비동기 코드는 종종 오류가 발생하기 쉽습니다. suspense를 사용하면 데이터를 동기적으로 읽어오는 것처럼 느껴지게 해줍니다.
