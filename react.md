@@ -1048,13 +1048,7 @@ const plusNum = (number) => {
 
 <p>CSR은 사용자에게 보여짐과 동시에 모든 html과 js를 불러온 상태이기 때문에, TTV과 됨과 동시에 TTI 모든 동적인 행동을 할 수 있게 됩니다.</p>
 
-<img src="https://github.com/junh0328/TIL/raw/master/React/images/CSR.png" alt="CSR">
-[출처: <a href="https://www.youtube.com/watch?v=iZ9csAfU5Os">유튜브, 드림 코딩 엘리님의 SSR 강의</a>]
-
 <p>하지만, SSR은 html과 일부 js파일은 서버로부터 사전에 받아 놓았기 때문에 TTV 상태에서도 TTI가 전부 활성화되어 있지는 않습니다</p>
-
-<img src="https://github.com/junh0328/TIL/raw/master/React/images/SSR.png" alt="SSR">
-[출처: <a href="https://www.youtube.com/watch?v=iZ9csAfU5Os">유튜브, 드림 코딩 엘리님의 SSR 강의</a>]
 
 <p>최종적으로 CSR을 많이 사용한다면, 우리가 최종적으로 번들링하여 사용자게에 보내주는 js 파일을 어떻게 하면 효율적으로 많이 분할하여 첫 번째로 사용자가 보기 위해서 필요한 정말 필수적인 html 요소만 보낼 수 있을지 고민해봐야 하고, SSR의 경우 사용자가 보고, 인터렉션(TTI)하는 이 시간의 단차를 줄이기 위해서 어떤 노력을 할 수 있을지 고민해봐야 합니다. 예를 들면 어떻게 하면 조금 더 매끄러운 UI와 UX를 제공할 수 있을지에 대한 고민들이 포함됩니다.</p>
 
