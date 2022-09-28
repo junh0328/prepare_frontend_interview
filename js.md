@@ -577,8 +577,17 @@ var observable$ = fromEvent(document, "click"); // RxJS 옵저버블
 | 원시 타입 |    undefined타입    |  var 키워드로 선언된 변수에 암묵적으로 할당되는 값  |
 | 원시 타입 |      null 타입      |  값이 없다는 것을 의도적으로 명시할 때 사용하는 값  |
 | 원시 타입 |  심벌(symbol) 타입  |              ES6에서 추가된 7번째 타입              |
-| 원시 타입 |  BigInt 타입  |              길이의 제약 없이 정수를 다룰 수 있게 해주는 숫자형              |
+| 원시 타입 |     BigInt 타입     | 길이의 제약 없이 정수를 다룰 수 있게 해주는 숫자형  |
 | 객체 타입 |                     |                 객체, 함수, 배열 등                 |
+
+<details>
+<summary>BigInt 타입 레퍼런스</summary>
+
+- [MDN: 원시 값](https://developer.mozilla.org/ko/docs/Glossary/Primitive)
+- [MDN: BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
+- [javascript tutorial](https://www.javascripttutorial.net/javascript-data-types/)
+
+</details>
 
 <br/>
 
