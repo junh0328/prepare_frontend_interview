@@ -467,6 +467,8 @@ display:none과 `visibility:hidden`의 차이점
 
 4. absolute : 가장 가까운 상위 요소의 위치를 기준으로 지정한 값 만큼 떨어진 곳에 요소를 배치한다.
 
+5. sticky : 스크롤 위치가 임계점에 이르면 position: fixed와 같이 박스를 화면에 고정할 수 있는 속성으로 스크롤 영역 기준으로 배치한다.
+
 <br/>
 
 ### `float가 어떻게 작동하는가`
