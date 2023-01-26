@@ -172,6 +172,7 @@ ex)
   - SEO란 무엇인가?
   - Button 태그의 Default type은 무엇인가?
   - Section 태그와 article 태그의 차이점
+  - 크로스 브라우징이란 무엇인가요?
 
 - `그 외 🔥`
 
@@ -516,6 +517,10 @@ ex)
 
   - suspense가 뭔가요?
   - suspense로 가능한 것은 어떤 것들이 있나요?
+
+- `웹 성능 최적화`
+- `LCP가 뭔가요?`
+- `FCP가 뭔가요?`
 
 ## <a href="./data_structure.md">⑤ 자료구조</a>
 
