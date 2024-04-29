@@ -32,6 +32,7 @@
   - HTTP란 뭔가요?
   - HTTP 프로토콜의 가장 큰 특징은 뭔가요?
   - URL은 뭔가요?
+  - HTTP/1.0 과 HTTP/1.1의 차이는 뭔가요?
   - HTTP/1.1 과 HTTP/2.0의 차이는 뭔가요?
   - HTTPS는 HTTP랑 뭐가 다른가요?
   - 심화) 공개키 (비대칭키) 방식이 뭔가요?
@@ -292,6 +293,16 @@ URL의 구조는 다음과 같습니다
 
 <br/>
 
+### `HTTP/1.0 과 HTTP/1.1의 차이는 뭔가요?`
+
+HTTP/1.0에서 발전한 것이 HTTP/1.1 입니다.
+
+요청 마다 매번 TCP 연결을 하는 것이 아니라 한 번 TCP 초기화를 한 이후에 keep-alive 옵션으로 여러 개의 파일을 송수신할 수 있게 바뀌었습니다.
+
+HTTP/1.0에서도 keep-alive 옵션이 있었지만 표준화가 되어 있지 않았고 HTTP/1.1부터 표준화가 되어 기본 옵션으로 설정되었습니다.
+
+<br/>
+
 ### `HTTP/1.1 과 HTTP/2.0의 차이는 뭔가요?`
 
 HTTP/1.1은 기본적으로 커넥션 당 하나의 요청과 응답만 처리한다.
@@ -312,14 +323,51 @@ HTTP/2는 커넥션당 여러 개의 요청과 응답, 즉 다중 요청/응답�
 
 <br/>
 
+### `HTTP/2.0의 주요 특징은 뭐가 있나요?`
+
+**HTTP/1.1의 헤더에는 쿠키 등 많은 메타데이터가 들어 있고 압축이 되지 않아 무거운 문제가 있었습니다.**
+
+HTTP/2는 SPDY 프로토콜에서 파생된 HTTP/1.x 보다 지연 시간을 줄이고 응답 시간을 더 빠르게 할 수 있으며 다음과 같은 처리를 지원하는 프로토콜입니다.
+
+- 멀티플렉싱
+- 헤더 압축
+- 서버 푸시
+- 요청의 우선순위 처리 지원
+
+**멀티플렉싱**
+
+멀티플렉싱이란 여러 개의 스트림을 사용하여 송수신한다는 것입니다. 이를 통해 특정 스트림의 패킷이 손실되었다고 하더라도 해당 스트림에만 영향을 미치고 나머지 스트림은 원활하게 동작할 수 있습니다.
+
+**헤더 압축**
+
+HTTP/1.1에서는 헤더에 많은 메타데이터가 포함되어 있어 무거운 문제가 있었습니다. HTTP/2에서는 헤더 압축을 통해 헤더의 크기를 줄이고 더 빠른 속도를 제공합니다.
+
+**서버 푸시**
+
+서버 푸시는 클라이언트의 요청에 대해 서버가 요청하지 않은 리소스를 보내주는 기능입니다. HTTP/2.0은 클라이언트 요청 없이 서버가 바로 리소스를 푸시할 수 있습니다.
+
+html에는 css나 js 파일이 포함되기 마련인데 html을 읽으면서 그 안에 들어 있던 css 파일을 서버에서 푸시하여 클라이언트에 먼저 줄 수 있습니다.
+
+<br/>
+
 ### `HTTPS는 HTTP랑 뭐가 다른가요?`
 
 [Link 🔥](https://mangkyu.tistory.com/98)
 [Youtube Link 🔥](https://www.youtube.com/watch?v=H6lpFRpyl14)
 
-HTTPS는 HTTP에 데이터 암호화가 추가된 프로토콜이다.
+HTTPS/2는 HTTPS 위에서 동작합니다.
 
-HTTPS는 HTTP(80번)와 다르게 443번 포트를 사용하며, 네트워크 상에서 중간에 제3자가 정보를 볼 수 없도록 **공개키 암호화를 지원하고 있다.**
+HTTPS는 애플리케이션 계층과 전송 계층 사이에 신뢰 계층인 SSL/TLS 계층을 넣은 신뢰할 수 있는 HTTP 요청을 말합니다. 이를 통해 ‘통신을 암호화’ 합니다.
+
+**SSL/TLS**
+
+SSL(Socket Secure Layer)은 SSL 1.0부터 시작해서 SSL 2.0, SSL 3.0, TLS 1.0, TLS 1.3 까지 버전이 올라가며 마지막으로 TLS로 명칭이 변경되었으나, 보통 이를 합쳐 SSL/TLS로 많이 부릅니다.
+
+SSL/TLS은 전송 계층에서 보안을 제공하는 프로토콜입니다. 클라이언트와 서버가 통신할 때 SSL/TLS를 통해 제3자가 메시지를 도청하거나 변조하지 못하도록 합니다.
+
+HTTPS는 HTTP에 데이터 암호화가 추가된 프로토콜입니다.
+
+HTTPS는 HTTP(80번)와 다르게 443번 포트를 사용하며, 네트워크 상에서 중간에 제3자가 정보를 볼 수 없도록 **공개키 암호화를 지원하고 있습니다.**
 
 HTTPS를 사용할 경우 내가 브라우저를 통해 입력하는 정보를 (ex: form data) 다른 누군가가 훔쳐보지 못하게 만드는 기능입니다.
 
@@ -997,7 +1045,7 @@ entry 속성은 웹팩에서 웹 자원을 변환하기 위해 필요한 최초 
 ```js
 // webpack.config.js
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js',
 };
 ```
 
@@ -1010,9 +1058,9 @@ entry 속성에 지정된 파일에는 웹 애플리케이션의 전반적인 �
 
 ```js
 // index.js
-import LoginView from "./LoginView.js";
-import HomeView from "./HomeView.js";
-import PostView from "./PostView.js";
+import LoginView from './LoginView.js';
+import HomeView from './HomeView.js';
+import PostView from './PostView.js';
 
 function initApp() {
   LoginView.init();
@@ -1052,7 +1100,7 @@ entry: {
 // webpack.config.js
 module.exports = {
   output: {
-    filename: "bundle.js",
+    filename: 'bundle.js',
   },
 };
 ```
@@ -1063,12 +1111,12 @@ module.exports = {
 
 ```js
 // webpack.config.js
-var path = require("path");
+var path = require('path');
 
 module.exports = {
   output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "./dist"),
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, './dist'),
   },
 };
 ```
@@ -1091,7 +1139,7 @@ module.exports = {
 ```js
 module.exports = {
   output: {
-    filename: "[name].bundle.js",
+    filename: '[name].bundle.js',
   },
 };
 ```
@@ -1101,7 +1149,7 @@ module.exports = {
 ```js
 module.exports = {
   output: {
-    filename: "[id].bundle.js",
+    filename: '[id].bundle.js',
   },
 };
 ```
@@ -1216,8 +1264,8 @@ module.exports = {
 
 ```js
 // webpack.config.js
-var webpack = require("webpack");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
+var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   plugins: [new HtmlWebpackPlugin(), new webpack.ProgressPlugin()],
@@ -1272,7 +1320,7 @@ interface PeopleInterface {
 }
 
 const me1: PeopleInterface = {
-  name: "yc",
+  name: 'yc',
   age: 34,
 };
 
@@ -1283,7 +1331,7 @@ type PeopleType = {
 };
 
 const me2: PeopleType = {
-  name: "yc",
+  name: 'yc',
   age: 31,
 };
 ```
@@ -1388,7 +1436,7 @@ const arr = [1, 2, 3];
 
 getSize(arr); // 3
 
-const arr2 = ["a", "b", "c"];
+const arr2 = ['a', 'b', 'c'];
 
 getSize(arr2); // 3
 
@@ -1409,7 +1457,7 @@ const arr = [1, 2, 3];
 
 getSize<number>(arr); // 3
 
-const arr2 = ["a", "b", "c"];
+const arr2 = ['a', 'b', 'c'];
 
 getSize<string>(arr2); // 3
 ```
