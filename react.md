@@ -6,6 +6,9 @@
 - [리액트는 라이브러리인가요 프레임워크인가요](#리액트는-라이브러리인가요-프레임워크인가요)
 - [리액트를 사용하는 이유](#리액트를-사용하는-이유)
 - [virtual DOM에 대해서 아나요](#virtual-DOM에-대해서-아나요)
+- [리액트의 렌더링에 대해 아나요](#리액트의-렌더링에-대해-아나요)
+- [리액트 fiber에 대해서 아나요](#리액트-fiber에-대해서-아나요)
+- [렌더 단계와 커밋 단계에 대해 아나요](#렌더-단계와-커밋-단계에-대해-아나요)
 - [React에서 함수 컴포넌트와 클래스 컴포넌트의 차이 🔥](#React에서-함수-컴포넌트와-클래스-컴포넌트의-차이)
 - [리액트에서 함수형 컴포넌트라고 부르지 않고 함수 컴포넌트라고 부르는 이유가 무엇인가요🔥](#리액트에서-함수형-컴포넌트라고-부르지-않고-함수-컴포넌트라고-부르는-이유가-무엇인가요)
 - [props와 state의 차이🔥](#props와-state의-차이)
@@ -174,6 +177,44 @@ Virtual DOM을 사용한다고 해서 사용하지 않을 때와 비교하여 �
 그렇습니다. 결국에는 적절한 곳에 사용해야 리액트기 지닌 진가를 비로소 발휘할 수 있습니다. 리액트를 사용하지 않아도 코드 최적화를 열심히 하면 DOM 작업이 느려지는 문제를 개선할 수 있고, 또 작업이 매우 간단할 때는 오히려 리액트를 사용하지 않는 편이 더 나은 성능을 보이기도 합니다.
 
 리액트와 Virtual DOM이 언제나 제공할 수 있는 것은 바로 업데이트 처리 간결성입니다. UI를 업데이트하는 과정에서 생기는 복잡함을 모두 해소하고, 더욱 쉽게 업데이트에 접근할 수 있습니다.
+
+### 리액트의 렌더링에 대해 아나요
+
+브라우저의 렌더링은 HTML과 CSS 리소스를 기반으로 웹 페이지에 필요한 UI를 그리는 과정입니다. 리액트의 렌더링의 경우 브라우저의 렌더링과 구분 지을 수 있습니다.
+
+브라우저가 렌더링에 필요한 DOM 트리를 만드는 과정으로 브라우저 렌더링보다 먼저 실행됩니다. 리액트 애플리케이션 트리 안에 있는 모든 컴포넌트들이 현재 자신들이 가지고 있는 props와 state의 값을 기반으로 어떻게 UI를 구성하고 이를 바탕으로 어떤 DOM 결과를 브라우저에 제공할 것인지 계산하는 일련의 과정입니다.
+
+### 리액트 fiber에 대해서 아나요
+
+React Fiber는 React의 내부 알고리즘 중 하나로, 리액트 컴포넌트의 업데이트와 렌더링을 관리하는 방식을 개선한 것입니다. 이전에는 리액트가 컴포넌트의 업데이트를 처리할 때, 한 번에 모든 작업을 처리하는 "블로킹" 방식을 사용했습니다. 이는 큰 애플리케이션에서 복잡한 컴포넌트 계층 구조를 가진 경우, 업데이트 작업이 오래 걸리고 사용자 경험에 영향을 줄 수 있었습니다.
+
+React Fiber는 이러한 문제를 해결하기 위해 비동기적인 방식으로 업데이트 작업을 처리합니다. Fiber는 업데이트 작업을 작은 단위로 나누어 우선순위를 부여하고, 브라우저의 렌더링 작업과 조화롭게 진행될 수 있도록 합니다. 이를 통해 사용자 경험을 향상시키고, 애플리케이션의 반응성을 높일 수 있습니다.
+
+React Fiber의 핵심 개념 중 하나는 "작업 단위"입니다. 작업 단위는 컴포넌트의 업데이트 작업을 나타내며, 작업 단위는 우선순위와 함께 스케줄링되고 처리됩니다. Fiber는 작업 단위를 효율적으로 관리하고, 우선순위에 따라 작업을 조절하여 중요한 작업에 우선순위를 부여할 수 있습니다.
+
+React Fiber는 또한 중단과 재개 기능을 제공합니다. 이는 작업을 중단하고 나중에 다시 재개할 수 있는 기능을 의미합니다. 이를 통해 브라우저의 렌더링 작업과 협력하여 애플리케이션의 반응성을 유지할 수 있습니다.
+
+React Fiber는 React v16 이후부터 도입되었으며, 기존의 React 코드와 호환되도록 설계되었습니다. 따라서 기존의 React 애플리케이션을 업그레이드하거나 새로운 애플리케이션을 개발할 때 React Fiber의 이점을 활용할 수 있습니다.
+
+과거 동기적으로 진행하던 스택 구조의 조정자 대신 사용하기 위해 리액트 fiber의 개념이 탄생했습니다.
+
+### 렌더 단계와 커밋 단계에 대해 아나요
+
+**렌더 단계(Render Phase)**
+
+이 단계에서는 Virtual DOM 트리의 변경사항을 계산하고 메모리에 새로운 Virtual DOM 트리를 생성합니다. React는 이전 Virtual DOM과 현재 상태를 기반으로 새로운 Virtual DOM 트리를 만듭니다. 이 과정에서 React는 무엇이 변경되었는지 파악하고 최소한의 DOM 변경사항을 계산합니다. 렌더링 단계는 완전히 메모리 안에서 이루어지며 실제 DOM에는 아무런 변화가 일어나지 않습니다.
+
+**커밋 단계(Commit Phase)**
+
+렌더링 단계에서 계산된 변경 사항을 실제 DOM에 반영하는 단계입니다. React는 변경된 부분만 실제 DOM에 업데이트합니다. 이 단계에서 React는 필요한 DOM 노드를 메모리에 추가, 변경 및 제거합니다. 또한 이벤트 핸들러 등의 업데이트도 수행됩니다. 커밋 단계가 완료되면 변경된 DOM이 화면에 반영됩니다.
+
+렌더링과 커밋 단계를 분리함으로써 React는 성능을 최적화합니다:
+
+메모리 상에서 렌더링 작업을 수행하므로 DOM 작업에 비해 빠릅니다.
+실제 DOM 변경은 최소한으로 유지되어 느린 DOM 조작을 줄입니다.
+렌더링 단계에서 업데이트 로직을 중단할 수 있어 사용자 상호작용에 더욱 반응적입니다.
+
+이렇게 React의 두 단계 렌더링 방식은 Virtual DOM을 통해 변경 사항을 효율적으로 계산하고 배치 처리하여 전체 애플리케이션의 성능을 최적화합니다.
 
 ### React에서 함수 컴포넌트와 클래스 컴포넌트의 차이
 
@@ -565,6 +606,54 @@ import { useState } from "react";
 const [value, setValue] = useState(0);
 ```
 
+### useState 내부의 모습을 구현한 모습
+
+```jsx
+const MyReact = (function () {
+  const global = {};
+  let index = 0;
+
+  function useState(initialState) {
+    if (!global.states) {
+      // 애플리케이션 전체의 states 배열을 초기화한다.
+      // 최초 접근이라면 빈 배열로 초기화한다.
+      global.states = [];
+    }
+
+    // states 정보를 조회해서 현재 상태값이 있는지 확인하고 없다면 초깃값으로 설정한다.
+    const currentState = global.states[index] || initialState;
+    // states의 값을 위에서 조회한 현재 값으로 업데이트한다.
+    global.states[index] = currentState;
+
+    // 즉시 실행 함수로 setter를 만든다.
+    const setState = (function () {
+      // 현재 index를 클로저로 가둬놔서 이후에도 계속해서 동인한 index에 접근할 수 있도록 한다.
+      let currentIndex = index;
+      return function (value) {
+        global.states[currentIndex] = value;
+        // 컴포넌트를 렌더링한다. 실제로 컴포넌트를 렌더링하는 코드는 생략했다.
+      };
+    })();
+
+    /**
+     * useState를 쓸 때마다 index를 하나씩 추가한다. 이 index는 setState에서 사용된다.
+     * 즉, 하나의 state마다 index가 할당돼 있어 그 index가 배열의 값(global.states)을 가리키고 필요할 때마다 그 값을 가져오게 한다.
+     **/
+
+    index = index + 1;
+
+    return [currentState, setState];
+  }
+
+  function Component() {
+    const [value, setValue] = useState(0);
+
+    //...
+    return <div>{value}</div>;
+  }
+})();
+```
+
 <br/>
 
 2. useEffect
@@ -615,6 +704,62 @@ useEffect(() => {
 3. useReducer
 
 - useReducer는 useState보다 더 다양한 컴포넌트 상황에 따라 다양한 상태를 다른 값으로 업데이트해 주고 싶을 때 사용하는 Hook입니다. 리듀서는 현재 상태, 그리고 업데이트를 위해 필요한 정보를 담은 액션 값을 전달받아 새로운 상태에 반환하는 함수입니다. 리듀서 함수에서 새로운 상태를 만들 때는 반드시 불변성을 지켜주어야 합니다.
+
+```jsx
+type State = {
+  count: number,
+};
+
+type Action = { type: "up" | "down" | "reset", payload?: State };
+
+function init(count: State): State {
+  return count;
+}
+
+const initialState: State = { count: 0 };
+
+function reducer(state: State, action: Action): State {
+  switch (action.type) {
+    case "up":
+      return { count: state.count + 1 };
+    case "down":
+      return { count: state.count - 1 };
+    case "reset":
+      return init(action.payload || { count: 0 });
+    default:
+      throw new Error(`Unexpected action type ${action.type}`);
+  }
+}
+
+export default function App() {
+  const [state, dispatcher] = useReducer(reducer, initialState, init);
+
+  function handleUpButtonClick() {
+    dispatcher({ type: "up" });
+  }
+
+  function handleDownButtonClick() {
+    dispatcher({ type: "down" });
+  }
+
+  function handleResetButtonClick() {
+    dispatcher({ type: "reset", payload: { count: 1 } });
+  }
+
+  return (
+    <div>
+      <h1>{state.count}</h1>
+      <button onClick={handleDownButtonClick}>+</button>
+      <button onClick={handleDownButtonClick}>-</button>
+      <button onClick={handleResetButtonClick}>reset</button>
+    </div>
+  );
+}
+```
+
+useReducer를 사용하는 모습이 언뜻 보면 복잡해 보일 수 있지만 useReducer의 목적은 간다합니다. 복잡한 형태의 state를 사전에 정의된 dispatcher로만 수정할 수 있게 만들어 줌으로써 state 값에 대한 접근은 컴포넌트에서만 가능하게 하고, 이를 업데이트하는 방법에 대한 상세 정의는 컴포넌트 밖에 둔 다음, state의 업데이트를 미리 정의해 둔 dispatcher로만 제한하는 것이다.
+
+**state의 값을 변경하는 시나리오를 제한적으로 두고 이에 대한 변경을 빠르게 확인할 수 있게끔 하는 것이 useReducer의 목적이다.**
 
 <br/>
 
