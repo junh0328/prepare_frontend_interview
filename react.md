@@ -58,6 +58,7 @@
 
   - TTV, TTI
 
+- [서버사이드 렌더링을 지원하기 위한 리액트 API를 알고 있나요](#서버사이드-렌더링을-지원하기-위한-리액트-API를-알고-있나요)
 - [하이드레이션에 대해 알고 있나요](#하이드레이션에-대해-알고-있나요)
 - [Next의 렌더링 수행 방식](#Next의-렌더링-수행-방식)
 - [Next를 쓴 이유가 있나요](#Next를-쓴-이유가-있나요)
@@ -279,6 +280,43 @@ React Fiber는 React v16 이후부터 도입되었으며, 기존의 React 코드
 [링크 FLUX 카툰 안내서](https://bestalign.github.io/translation/cartoon-guide-to-flux/)
 
 `리덕스는 페이스북에서 리액트가 함께 소개한 FLUX 아키텍쳐로 구현한 라이브러리입니다.`
+
+예제 코드
+
+```tsx
+type StoreState = {
+  count: number;
+};
+
+type Action = { type: "add"; payload: number };
+
+function reducer(state: StoreState, action: Action) {
+  const { type: ActionType, payload } = action;
+
+  if (ActionType === "add") {
+    return {
+      count: state.count + payload,
+    };
+  }
+
+  throw new Error(`Unexpected action type: ${ActionType}`);
+}
+
+export default function App() {
+  const [state, dispatcher] = useReducer(reducer, { count: 0 });
+
+  function handleClick() {
+    dispatcher({ type: "add", payload: 1 });
+  }
+
+  return (
+    <div>
+      <p>{state.count}</p>
+      <button onClick={handleClick}>Add</button>
+    </div>
+  );
+}
+```
 
 그렇다면 FLUX는 뭘까요? FLUX는 라이브러리나 프레임워크가 아닌 추상적인 개념입니다.
 
@@ -1232,6 +1270,35 @@ const plusNum = (number) => {
 <p>요즘에는 SSR, CSR 뿐만 아니라 SSG(Static Site Generation)또한 렌더링 방법으로 등장하였습니다. SSG는 리액트를 예로 들면 'Gatsby' 또는 'Next'와 같은 라이브러리를 추가적으로 사용하여 렌더링을 하는 것인데, 웹페이지를 정적으로 미리 생성해두고, 서버에 배포해놓는 것입니다. SSG에서도 자바스크립트 파일을 html 파일과 함께 가지고 있을 수 있기 때문에, 동적인 요소도 충분히 추가할 수 있습니다. Next에서는 SSR뿐만 아니라, static generation, no pre-rendering, pre-rendering상태를 모두 지원하기 때문에 리액트로 작업을 계속한다면 next.js를 배워보는 것도 매우 효과적일 겁니다.</p>
 
 <p>어떤 것이 최고다, 제일 낫다라는 판단 보다는 우리가 만들어야 하는 웹사이트 특성에 맞게 다양한 방식의 렌더링을 활용하여 페이지를 구성한다면 최선의 선택이 될 것입니다.</p>
+
+### 서버사이드 렌더링을 지원하기 위한 리액트 API를 알고 있나요 ?
+
+**renderToString**
+
+- 리액트 컴포넌트를 렌더링하여 정적 HTML 문자열을 반환합니다.
+- SSR 시 가장 일반적으로 사용되는 API입니다.
+
+**renderToStaticMarkup**
+
+- renderToString과 유사하지만, 일부 데이터 리액트 내부 데이터 속성을 추가하지 않습니다.
+- 정적 페이지 생성 시 사용됩니다.
+
+**renderToNodeStream**
+
+- 리액트 컴포넌트를 렌더링하여 Node.js 스트림을 반환합니다.
+- 대용량 컴포넌트를 스트리밍하거나 프록시 서버에서 사용될 수 있습니다.
+
+**renderToStaticNodeStream**
+
+- renderToNodeStream과 유사하지만, 데이터 속성을 추가하지 않습니다.
+- 정적 페이지 생성 시 스트리밍 렌더링에 사용될 수 있습니다.
+
+**hydrate**
+
+- 서버에서 렌더링된 HTML 코드를 브라우저에서 인식하고 이벤트 핸들러를 연결하는 역할을 합니다.
+- 클라이언트 측에서 서버 렌더링 마크업에 이벤트 핸들러를 연결할 때 사용됩니다.
+- 이미 렌더링된 HTML이 있다는 가정하에 작업을 수행합니다
+- renderToString, renderToNodeStream 등으로 생성된 HTML 컨텐츠에 자바스크립트 핸들러나 이벤트를 붙이는 역할을 합니다
 
 ### 하이드레이션에 대해 알고 있나요
 
