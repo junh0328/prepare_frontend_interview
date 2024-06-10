@@ -288,12 +288,12 @@ type StoreState = {
   count: number;
 };
 
-type Action = { type: "add"; payload: number };
+type Action = { type: 'add'; payload: number };
 
 function reducer(state: StoreState, action: Action) {
   const { type: ActionType, payload } = action;
 
-  if (ActionType === "add") {
+  if (ActionType === 'add') {
     return {
       count: state.count + payload,
     };
@@ -306,7 +306,7 @@ export default function App() {
   const [state, dispatcher] = useReducer(reducer, { count: 0 });
 
   function handleClick() {
-    dispatcher({ type: "add", payload: 1 });
+    dispatcher({ type: 'add', payload: 1 });
   }
 
   return (
@@ -378,24 +378,24 @@ ctrl + F '부수효과가 있는 배열의 프로토타입 메서드'
 
 ```js
 let A = {
-  name: "junhee",
+  name: 'junhee',
   age: 25,
-  job: "student",
+  job: 'student',
 };
 
 B = { ...A };
 
-console.log("A", A);
-console.log("B", B);
+console.log('A', A);
+console.log('B', B);
 /*
 A { name: 'junhee', age: 25, job: 'student' }
 B { name: 'junhee', age: 25, job: 'student' }
 */
 
-B = { ...A, job: "frontend developer" };
+B = { ...A, job: 'frontend developer' };
 
-console.log("A", A);
-console.log("B", B);
+console.log('A', A);
+console.log('B', B);
 
 /*
 A { name: 'junhee', age: 25, job: 'student' }
@@ -427,7 +427,7 @@ const nextState = {
           ...post,
           comments: post.comments.concat({
             id: 3,
-            text: "새로운 댓글",
+            text: '새로운 댓글',
           }),
         }
       : post
@@ -444,7 +444,7 @@ const nextState = produce(state, (draft) => {
   const post = draft.posts.find((post) => post.id === 1);
   post.comments.push({
     id: 3,
-    text: "와 정말 쉽다!",
+    text: '와 정말 쉽다!',
   });
 });
 ```
@@ -639,7 +639,7 @@ Array.prototype.includes
 - 이 함수에 파라미터를 넣어서 호출하면 전달받은 파라미터로 값이 바뀌고 컴포넌트가 정상적으로 리렌더링 됩니다
 
 ```jsx
-import { useState } from "react";
+import { useState } from 'react';
 
 const [value, setValue] = useState(0);
 ```
@@ -702,7 +702,7 @@ const MyReact = (function () {
 
 ```jsx
 useEffect(() => {
-  console.log("마운트될 때만 실행됩니다.");
+  console.log('마운트될 때만 실행됩니다.');
 }, []);
 ```
 
@@ -748,7 +748,7 @@ type State = {
   count: number,
 };
 
-type Action = { type: "up" | "down" | "reset", payload?: State };
+type Action = { type: 'up' | 'down' | 'reset', payload?: State };
 
 function init(count: State): State {
   return count;
@@ -758,11 +758,11 @@ const initialState: State = { count: 0 };
 
 function reducer(state: State, action: Action): State {
   switch (action.type) {
-    case "up":
+    case 'up':
       return { count: state.count + 1 };
-    case "down":
+    case 'down':
       return { count: state.count - 1 };
-    case "reset":
+    case 'reset':
       return init(action.payload || { count: 0 });
     default:
       throw new Error(`Unexpected action type ${action.type}`);
@@ -773,15 +773,15 @@ export default function App() {
   const [state, dispatcher] = useReducer(reducer, initialState, init);
 
   function handleUpButtonClick() {
-    dispatcher({ type: "up" });
+    dispatcher({ type: 'up' });
   }
 
   function handleDownButtonClick() {
-    dispatcher({ type: "down" });
+    dispatcher({ type: 'down' });
   }
 
   function handleResetButtonClick() {
-    dispatcher({ type: "reset", payload: { count: 1 } });
+    dispatcher({ type: 'reset', payload: { count: 1 } });
   }
 
   return (
@@ -815,10 +815,10 @@ useMemo Hook을 사용하면 이러한 작업을 최적화할 수 있습니다. 
 <summary>코드 보기</summary>
 
 ```jsx
-import React, { useCallback, useMemo, useRef, useState } from "react";
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 
 const getAverage = (numbers) => {
-  console.log("평균값 계산 중..");
+  console.log('평균값 계산 중..');
   if (numbers.length === 0) return 0;
   const sum = numbers.reduce((a, b) => a + b);
   return sum / numbers.length;
@@ -826,7 +826,7 @@ const getAverage = (numbers) => {
 
 const Average = () => {
   const [list, setList] = useState([]);
-  const [number, setNumber] = useState("");
+  const [number, setNumber] = useState('');
   const inputEl = useRef();
 
   const onChange = useCallback((e) => {
@@ -837,7 +837,7 @@ const Average = () => {
     (e) => {
       const nextList = list.concat(parseInt(number));
       setList(nextList);
-      setNumber("");
+      setNumber('');
       inputEl.current.focus();
     },
     [number, list] // number 혹은 list가 바뀌었을 때만 함수 생성
@@ -906,12 +906,12 @@ onChange처럼 비어 있는 배열을 넣게 되면 컴포넌트가 렌더링�
 
 ```jsx
 useCallback(() => {
-  console.log("hello world!");
+  console.log('hello world!');
 }, []);
 
 useMemo(() => {
   const fn = () => {
-    console.log("hello world!");
+    console.log('hello world!');
   };
   return fn;
 }, []);
@@ -926,7 +926,7 @@ useMemo(() => {
 - `.current`프로퍼티를 변경하더라도 리렌더링을 유발하지 않습니다. ref 객체 안의 값은 리액트 생명주기에 독립적이기 때문입니다
 
 ```jsx
-import React, { useRef, Component } from "react";
+import React, { useRef, Component } from 'react';
 
 class RefSample extends Component {
   input = useRef();
@@ -984,7 +984,7 @@ const onInsert = useCallback(
   (e) => {
     const nextList = list.concat(parseInt(number));
     setList(nextList);
-    setNumber("");
+    setNumber('');
   },
   [number, list] // number 혹은 list가 바뀌었을 때만 onInsert 함수 생성
 );
@@ -1078,11 +1078,11 @@ React는 앞서 언급했듯 state, props 값에 따라 re-rendering이 일어�
 
 ```jsx
 const onClickButton = () => {
-  console.log("before", count); // ----> 동기함수
+  console.log('before', count); // ----> 동기함수
 
   setCount(count + 1); // ---->  비동기함수
 
-  console.log("after", count); // ---->  동기함수
+  console.log('after', count); // ---->  동기함수
 };
 ```
 
@@ -1113,20 +1113,20 @@ setState가 동기적으로 실행된다면, 한 컴포넌트 내부에 존재�
 ```jsx
 // 코드 참고: https://merrily-code.tistory.com/46
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 function App() {
   const [age, setAge] = useState(0);
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
 
   useEffect(() => {
     setAge(25);
-    setName("찬민");
+    setName('찬민');
   }, []);
 
   return (
     <>
-      <div className="App">{`그의 이름은 ${name} 이며, 나이는 ${age}살 입니다.`}</div>
+      <div className='App'>{`그의 이름은 ${name} 이며, 나이는 ${age}살 입니다.`}</div>
     </>
   );
 }
@@ -1149,20 +1149,20 @@ export default App;
 ```jsx
 // 코드 참고: https://merrily-code.tistory.com/46
 
-import { useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from 'react';
 
 function App() {
   const [age, setAge] = useState(0);
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
 
   useLayoutEffect(() => {
     setAge(25);
-    setName("찬민");
+    setName('찬민');
   }, []);
 
   return (
     <>
-      <div className="App">{`그의 이름은 ${name} 이며, 나이는 ${age}살 입니다.`}</div>
+      <div className='App'>{`그의 이름은 ${name} 이며, 나이는 ${age}살 입니다.`}</div>
     </>
   );
 }
@@ -1283,10 +1283,11 @@ const plusNum = (number) => {
 - renderToString과 유사하지만, 일부 데이터 리액트 내부 데이터 속성을 추가하지 않습니다.
 - 정적 페이지 생성 시 사용됩니다.
 
-**renderToNodeStream**
+**renderToNodeStream > renderToPipeableStream**
 
 - 리액트 컴포넌트를 렌더링하여 Node.js 스트림을 반환합니다.
 - 대용량 컴포넌트를 스트리밍하거나 프록시 서버에서 사용될 수 있습니다.
+- React 18 버전에서 renderToPipeableStream 으로 메서드가 변경되었습니다.
 
 **renderToStaticNodeStream**
 

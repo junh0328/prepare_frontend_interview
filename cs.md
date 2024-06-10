@@ -1410,10 +1410,6 @@ Cache를 사용하는 것
 
 메인 메모리는 DRAM, 캐시 메모리는 SRAM의 구조를 가지는데, SRAM이 셀당 트랜지스터의 개수도 많고 물리적으로 차지하는 면적 또한 훨씬 크다
 
-<img width="500" src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/00adbdad-47b3-4ddd-a503-dddec358825c/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2022-02-14_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_12.47.52.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220325%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220325T140907Z&X-Amz-Expires=86400&X-Amz-Signature=f2fdc1914ab4f76593e30620515d8faa45c88667aec7161255224c98a3182f98&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA%25202022-02-14%2520%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE%252012.47.52.png%22&x-id=GetObject" alt="캐시 메모리"/>
-
-<img width="500" src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/e9712134-5b79-48c6-b240-2d0d6a456ab5/%E1%84%86%E1%85%A6%E1%84%86%E1%85%A9%E1%84%85%E1%85%B5_%E1%84%80%E1%85%A8%E1%84%8E%E1%85%B3%E1%86%BC_%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220325%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220325T141009Z&X-Amz-Expires=86400&X-Amz-Signature=a68f711398d6e8b1bd07222b8c1160153c72740cf2ea1ce80798a61dba1e167f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2586%25E1%2585%25A6%25E1%2584%2586%25E1%2585%25A9%25E1%2584%2585%25E1%2585%25B5%2520%25E1%2584%2580%25E1%2585%25A8%25E1%2584%258E%25E1%2585%25B3%25E1%2586%25BC%2520%25E1%2584%2580%25E1%2585%25AE%25E1%2584%258C%25E1%2585%25A9.png%22&x-id=GetObject" alt="메모리의 계층 구조"/>
-
 [출처 - 테코톡 파피의 캐싱](https://www.youtube.com/watch?v=JBFT4KyEvoY&t=314s)
 
 메모리의 계층 구조
@@ -1449,8 +1445,6 @@ Cache를 사용하는 것
 [Link 🔥](https://www.redhat.com/ko/topics/devops/what-is-ci-cd)
 
 ### `CI CD란 뭔가요?`
-
-<img src="https://www.redhat.com/cms/managed-files/styles/wysiwyg_full_width/s3/ci-cd-flow-desktop_edited_0.png?itok=TzgJwj6p" alt="CI/CD">
 
 [출처: 레드헷 CI/CD](https://www.redhat.com/ko/topics/devops/what-is-ci-cd)
 
