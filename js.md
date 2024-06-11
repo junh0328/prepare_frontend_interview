@@ -102,6 +102,8 @@
   - 꼬리 질문) 함수형 프로그래밍이 뭔가요? 🔥
   - 꼬리 질문) 순수 함수가 뭔가요? 일반 함수와는 어떤 차이가 있죠? 🔥
 
+- [Map과 Set 그리고 Lookup Table](#Map과-Set-그리고-Lookup-Table)
+
 - [프로토타입 🔥](#프로토타입)
 
   - 객체지향 프로그래밍은 무엇을 의미하나요? 🔥
@@ -549,8 +551,8 @@ var FirstName;
 
 // 헝가리언 케이스 (typeHungarianCase)
 var strFirstName; // type + identifier
-var $elem = document.getElementById("myId"); // DOM 노드
-var observable$ = fromEvent(document, "click"); // RxJS 옵저버블
+var $elem = document.getElementById('myId'); // DOM 노드
+var observable$ = fromEvent(document, 'click'); // RxJS 옵저버블
 ```
 
 <br/>
@@ -600,16 +602,16 @@ var observable$ = fromEvent(document, "click"); // RxJS 옵저버블
 // 위, 아래, 왼쪽, 오른쪽을 나타내는 상수를 정의한다.
 // 중복될 가능성이 없는 심벌 값으로 상수 값을 생성한다.
 const Direction = {
-  UP: Symbol("up"),
-  DOWN: Symbol("down"),
-  LEFT: Symbol("left"),
-  RIGHT: Symbol("right"),
+  UP: Symbol('up'),
+  DOWN: Symbol('down'),
+  LEFT: Symbol('left'),
+  RIGHT: Symbol('right'),
 };
 
 const myDirection = Direction.UP;
 
 if (myDirection === Direction.UP) {
-  console.log("You are going UP.");
+  console.log('You are going UP.');
 }
 ```
 
@@ -705,7 +707,7 @@ String(1); // -> "1"
 (1).toString(); // -> "1"
 
 // 3. 문자열 연결 연산자를 이용하는 방법
-1 + ""; // -> "1"
+1 + ''; // -> "1"
 ```
 
 </details>
@@ -721,16 +723,16 @@ String(1); // -> "1"
 
 ```js
 // 1. Number 생성자 함수를 new 연산자 없이 호출하는 방법
-Number("0"); // -> 0
+Number('0'); // -> 0
 
 // 2. parseInt, parseFloat 함수를 사용하는 방법(문자열만 변환 가능)
-parseInt("0"); // -> 0
+parseInt('0'); // -> 0
 
 // 3. + 단항 산술 연산자를 이용하는 방법
-+"0"; // -> 0
++'0'; // -> 0
 
 // 4. * 산술 연산자를 이용하는 방법
-"0" * 1; // -> 0
+'0' * 1; // -> 0
 ```
 
 </details>
@@ -745,9 +747,9 @@ parseInt("0"); // -> 0
 ```js
 // 1. Boolean 생성자 함수를 new 연산자 없이 호출하는 방법
 // 문자열 타입 => 불리언 타입
-Boolean("x"); // -> true
-Boolean(""); // -> false
-Boolean("false"); // -> true
+Boolean('x'); // -> true
+Boolean(''); // -> false
+Boolean('false'); // -> true
 // 숫자 타입 => 불리언 타입
 Boolean(0); // -> false
 Boolean(1); // -> true
@@ -763,9 +765,9 @@ Boolean([]); // -> true
 
 // 2. ! 부정 논리 연산자를 두번 사용하는 방법
 // 문자열 타입 => 불리언 타입
-!!"x"; // -> true
-!!""; // -> false
-!!"false"; // -> true
+!!'x'; // -> true
+!!''; // -> false
+!!'false'; // -> true
 // 숫자 타입 => 불리언 타입
 !!0; // -> false
 !!1; // -> true
@@ -792,7 +794,7 @@ Boolean([]); // -> true
 var x = 10;
 
 // 문자열 연결 연산자 ( + )는 숫자 타입 x의 값을 바탕으로 새로운 문자열을 생성한다.
-var str = x + "";
+var str = x + '';
 console.log(typeof str, str); // string 10
 
 // x 변수의 값이 변경된 것은 아니다.
@@ -820,12 +822,12 @@ Falsy값에 ! 연산자를 붙이면, 모두 Truthy 값으로 평가되어 실�
 
 ```js
 // 아래의 조건문은 모두 코드 블록을 실행한다.
-if (!false) console.log(false + " is falsy value");
-if (!undefined) console.log(undefined + " is falsy value");
-if (!null) console.log(null + " is falsy value");
-if (!0) console.log(0 + " is falsy value");
-if (!NaN) console.log(NaN + " is falsy value");
-if (!"") console.log("" + " is falsy value");
+if (!false) console.log(false + ' is falsy value');
+if (!undefined) console.log(undefined + ' is falsy value');
+if (!null) console.log(null + ' is falsy value');
+if (!0) console.log(0 + ' is falsy value');
+if (!NaN) console.log(NaN + ' is falsy value');
+if (!'') console.log('' + ' is falsy value');
 ```
 
 ## 배열
@@ -959,7 +961,7 @@ forEach 메서드와 마찬가지로 map 메서드의 콜백 함수는 map 메�
 
 ```js
 var person = {
-  name: "Lee",
+  name: 'Lee',
   age: 20,
 };
 ```
@@ -1053,7 +1055,7 @@ score 변수와 copy 변수의 값 80은 다른 메모리 공간에 저장된 �
 
 ```js
 var person = {
-  name: "Lee",
+  name: 'Lee',
 };
 
 // 참조값을 복사(얕은 복사)
@@ -1351,6 +1353,166 @@ console.log(decreaser()); // -2
 
 1. 순수 함수: 어떤 외부 상태에 의존하지도 않고 변경하지도 않는, 즉 부수 효과가 없는 함수를 순수 함수라 한다.
 2. 비순수 함수: 외부 상태에 의존하거나 외부 상태를 변경하는, 즉 부수 효과가 있는 함수를 비순수 함수라고 한다.
+
+## Map과 Set 그리고 Lookup Table
+
+### 맵
+
+맵(Map)은 키가 있는 데이터를 저장한다는 점에서 객체와 유사합니다. 다만, 맵은 키에 다양한 자료형을 허용한다는 점에서 차이가 있습니다.
+
+맵에는 다음과 같은 주요 메서드와 프로퍼티가 있습니다.
+
+new Map() – 맵을 만듭니다.
+map.set(key, value) – key를 이용해 value를 저장합니다.
+map.get(key) – key에 해당하는 값을 반환합니다. key가 존재하지 않으면 undefined를 반환합니다.
+map.has(key) – key가 존재하면 true, 존재하지 않으면 false를 반환합니다.
+map.delete(key) – key에 해당하는 값을 삭제합니다.
+map.clear() – 맵 안의 모든 요소를 제거합니다.
+map.size – 요소의 개수를 반환합니다.
+예시:
+
+```js
+
+let map = new Map();
+
+map.set('1', 'str1');   // 문자형 키
+map.set(1, 'num1');     // 숫자형 키
+map.set(true, 'bool1'); // 불린형 키
+
+// 객체는 키를 문자형으로 변환한다는 걸 기억하고 계신가요?
+// 맵은 키의 타입을 변환시키지 않고 그대로 유지합니다. 따라서 아래의 코드는 출력되는 값이 다릅니다.
+alert( map.get(1)   ); // 'num1'
+alert( map.get('1') ); // 'str1'
+
+alert( map.size ); // 3
+맵은 객체와 달리 키를 문자형으로 변환하지 않습니다. 키엔 자료형 제약이 없습니다.
+```
+
+- map[key]는 Map을 쓰는 바른 방법이 아닙니다. > 룩업 테이블 구조
+- map[key] = 2로 값을 설정하는 것 같이 map[key]를 사용할 수 있긴 합니다. 하지만 이 방법은 map을 일반 객체처럼 취급하게 됩니다. 따라서 여러 제약이 생기게 되죠.
+- map을 사용할 땐 map전용 메서드 set, get 등을 사용해야만 합니다.
+
+### 셋
+
+셋(Set)은 중복을 허용하지 않는 값을 모아놓은 특별한 컬렉션입니다. 셋에 키가 없는 값이 저장됩니다.
+
+주요 메서드는 다음과 같습니다.
+
+new Set(iterable) – 셋을 만듭니다. 이터러블 객체를 전달받으면(대개 배열을 전달받음) 그 안의 값을 복사해 셋에 넣어줍니다.
+set.add(value) – 값을 추가하고 셋 자신을 반환합니다.
+set.delete(value) – 값을 제거합니다. 호출 시점에 셋 내에 값이 있어서 제거에 성공하면 true, 아니면 false를 반환합니다.
+set.has(value) – 셋 내에 값이 존재하면 true, 아니면 false를 반환합니다.
+set.clear() – 셋을 비웁니다.
+set.size – 셋에 몇 개의 값이 있는지 세줍니다.
+셋 내에 동일한 값(value)이 있다면 set.add(value)을 아무리 많이 호출하더라도 아무런 반응이 없을 겁니다. 셋 내의 값에 중복이 없는 이유가 바로 이 때문이죠.
+
+방문자 방명록을 만든다고 가정해 봅시다. 한 방문자가 여러 번 방문해도 방문자를 중복해서 기록하지 않겠다고 결정 내린 상황입니다. 즉, 한 방문자는 '단 한 번만 기록’되어야 합니다.
+
+이때 적합한 자료구조가 바로 셋입니다.
+
+```js
+let set = new Set();
+
+let john = { name: 'John' };
+let pete = { name: 'Pete' };
+let mary = { name: 'Mary' };
+
+// 어떤 고객(john, mary)은 여러 번 방문할 수 있습니다.
+set.add(john);
+set.add(pete);
+set.add(mary);
+set.add(john);
+set.add(mary);
+
+// 셋에는 유일무이한 값만 저장됩니다.
+alert(set.size); // 3
+
+for (let user of set) {
+  alert(user.name); // // John, Pete, Mary 순으로 출력됩니다.
+}
+```
+
+### 룩업 테이블
+
+룩업 테이블(Lookup Table) 구조를 사용하는 것도 객체의 중복 키 값을 제거하는 좋은 방법입니다. 이 방법은 특히 대량의 데이터에서 중복 제거를 수행할 때 효율적입니다.
+룩업 테이블은 키-값 쌍을 저장하는 자료구조로, 검색 속도가 매우 빠른 것이 장점입니다. 객체에서 중복 키 값 제거를 위해 룩업 테이블을 사용하는 방법은 다음과 같습니다:
+
+**날짜 별로 메시지 데이터를 나눌 때, 룩업 테이블을 사용합니다.**
+
+```ts
+interface Data {
+  date: string; // 'YYYY-MM-DD' 형식의 날짜 문자열
+  value: any; // 데이터 값
+}
+
+const groupByDate = (data: Data[]): Record<string, Data[]> => {
+  const lookupTable: Record<string, Data[]> = {};
+
+  for (const item of data) {
+    const { date, value } = item;
+
+    if (!lookupTable[date]) {
+      lookupTable[date] = [];
+    }
+
+    lookupTable[date].push({ date, value });
+  }
+
+  return lookupTable;
+};
+
+// 사용 예시
+const data: Data[] = [
+  { date: '2023-06-01', value: 10 },
+  { date: '2023-06-02', value: 20 },
+  { date: '2023-06-01', value: 30 },
+  { date: '2023-06-03', value: 40 },
+];
+
+const lookupTable = groupByDate(data);
+/*
+lookupTable: {
+  '2023-06-01': [
+    { date: '2023-06-01', value: 10 },
+    { date: '2023-06-01', value: 30 }
+  ],
+  '2023-06-02': [
+    { date: '2023-06-02', value: 20 }
+  ],
+  '2023-06-03': [
+    { date: '2023-06-03', value: 40 }
+  ]
+}
+*/
+```
+
+- 빈 객체를 룩업 테이블로 사용합니다.
+- 원본 객체의 모든 키-값 쌍을 룩업 테이블에 추가합니다. 이때 중복 키가 있다면 기존 값이 새로운 값으로 덮어씌워집니다.
+- 룩업 테이블을 다시 객체로 변환하면 중복 키 값이 제거된 새로운 객체를 얻을 수 있습니다.
+
+이 방식의 장점은 대량의 데이터에서도 빠른 검색 속도를 유지할 수 있다는 점입니다. 다만, 최종적으로 중복 키에 대한 마지막 값만 남게 되므로, 중복 키에 대한 처리 로직이 별도로 필요할 수 있습니다.
+또한, 룩업 테이블 방식은 메모리 사용량이 다소 늘어날 수 있습니다. 왜냐하면 임시로 키-값 쌍을 모두 저장해야 하기 때문입니다. 따라서 메모리 제약이 있는 환경에서는 주의가 필요합니다.
+
+### 언제 룩업 테이블과 셋을 골라서 써야 할까?
+
+룩업 테이블과 Set 모두 객체에서 중복 제거를 할 수 있는 효과적인 방법입니다. 각각의 장단점을 고려하여 상황에 맞게 적절히 선택하는 것이 중요합니다.
+
+**Set을 사용하는 경우:**
+
+- 데이터 크기가 작고, 메모리 효율성이 크게 중요하지 않은 경우
+- 중복 제거 외에 다른 로직이 필요 없는 경우
+- 코드 가독성과 간결함이 중요한 경우
+- 순서가 중요하지 않은 경우 (Set은 값의 순서를 보장하지 않음)
+
+**룩업 테이블을 사용하는 경우:**
+
+- 대량의 데이터에서 중복 제거를 수행해야 하는 경우 (검색 속도가 빠름)
+- 순서가 중요한 경우 (룩업 테이블은 객체이므로 삽입 순서 유지)
+- 중복 키에 대한 추가 처리 로직이 필요한 경우
+- 메모리 효율성보다는 속도 효율성이 더 중요한 경우
+
+일반적으로 데이터 크기가 크지 않고, 단순한 중복 제거만 필요하다면 Set을 사용하는 것이 더 간편합니다. 하지만 대량의 데이터나 추가 로직이 필요한 경우에는 룩업 테이블이 더 적합할 수 있습니다.
+결론적으로 프로젝트의 요구사항, 데이터 크기, 성능 요구 수준, 메모리 제약 등을 종합적으로 고려하여 Set과 룩업 테이블 중 적절한 방법을 선택하는 것이 좋습니다.
 
 ## 프로토타입
 
@@ -1825,11 +1987,11 @@ function Person(name) {
 
 // 프로토타입 메서드
 Person.prototype.sayHi = function () {
-  console.log("Hi! My name is " + this.name);
+  console.log('Hi! My name is ' + this.name);
 };
 
 // 인스턴스 생성
-var me = new Person("Lee");
+var me = new Person('Lee');
 me.sayHi(); // Hi! My name is Lee
 ```
 
@@ -1898,12 +2060,12 @@ class Person {
 
   // 정적 메서드 (static을 붙여 정의한다)
   static sayHello() {
-    console.log("Hello!");
+    console.log('Hello!');
   }
 }
 
 // 인스턴스 생성
-const me = new Person("Lee");
+const me = new Person('Lee');
 
 // ① 인스턴스의 프로퍼티 참조
 console.log(me.name); // Lee
@@ -1945,18 +2107,18 @@ class Animal {
   }
 
   eat() {
-    return "eat";
+    return 'eat';
   }
 
   move() {
-    return "move";
+    return 'move';
   }
 }
 
 // 상속을 통해 Animal 클래스를 확장한 Bird 클래스
 class Bird extends Animal {
   fly() {
-    return "fly";
+    return 'fly';
   }
 }
 
@@ -2026,7 +2188,7 @@ class Derived extends Base {
   }
 }
 
-const derived = new Derived("Lee");
+const derived = new Derived('Lee');
 console.log(derived.sayHi()); // Hi! Lee. how are you doing?
 ```
 
@@ -2067,7 +2229,7 @@ class ColorRectangle extends Rectangle {
   }
 }
 
-const colorRectangle = new ColorRectangle(2, 4, "red");
+const colorRectangle = new ColorRectangle(2, 4, 'red');
 console.log(colorRectangle); // ColorRectangle {width: 2, height: 4, color: "red"}
 
 // 상속을 통해 getArea 메서드를 호출
@@ -2109,12 +2271,12 @@ ES6에서 도입된 스프레드 문법(=전개 문법) ...은 **하나로 뭉�
 ### 코드 요약
 
 ```js
-let user = { name: "Mike" };
+let user = { name: 'Mike' };
 let info = { age: 30 };
-let fe = ["js", "react"];
-let lang = ["korean", "english"];
+let fe = ['js', 'react'];
+let lang = ['korean', 'english'];
 
-console.log("before user: ", user);
+console.log('before user: ', user);
 
 user = {
   ...user,
@@ -2122,7 +2284,7 @@ user = {
   skills: [...fe, ...lang],
 };
 
-console.log("after user: ", user);
+console.log('after user: ', user);
 
 /*
 before user:  { name: 'Mike' }
@@ -2152,7 +2314,7 @@ after user:  {
 console.log(...[1, 2, 3]); // 1 2 3
 
 // 문자열은 이터러블이다.
-console.log(..."Hello"); // H e l l o
+console.log(...'Hello'); // H e l l o
 
 /* 이터러블이 아닌 일반 객체는 스프레드 문법의 대상이 될 수 없다. */
 console.log(...{ a: 1, b: 2 });
@@ -2258,11 +2420,11 @@ console.log(one, two, three); // 1 2 3
 배열 디스트럭처링 할당은 배열과 같은 이터러블에서 필요한 요소만 추출하여 변수에 할당하고 싶을 때 유용합니다.
 
 ```js
-const str = "hello-world-2021";
+const str = 'hello-world-2021';
 
-console.log(str.split("-"));
+console.log(str.split('-'));
 
-const [one, two, three] = str.split("-");
+const [one, two, three] = str.split('-');
 
 console.log(one);
 console.log(two);
@@ -2278,7 +2440,7 @@ console.log(three);
 즉, 순서는 의미가 없으며 선언된 변수 이름과 프로퍼티가 일치하면 할당된다.
 
 ```js
-var user = { age: 25, name: "junhee" };
+var user = { age: 25, name: 'junhee' };
 
 var { age, name } = user;
 
@@ -2292,7 +2454,7 @@ console.log(age, name); // 25 junhee
 2. 반드시 프로퍼티 키와 변수 이름이 같을 필요는 없다
 
 ```js
-var user = { age: 25, name: "junhee" };
+var user = { age: 25, name: 'junhee' };
 
 var { age: junheeAge, name: junheeName } = user;
 
@@ -2309,7 +2471,7 @@ console.log(junheeAge, junheeName); // 25 junhee
 ```js
 var user = { age: 25 };
 
-var { age, name = "default" } = user;
+var { age, name = 'default' } = user;
 
 console.log(age, name); // 25 default
 ```
@@ -2338,11 +2500,11 @@ printTodo({ id: 1, content: "HTML", completed: true });
 
 ```js
 const user = {
-  name: "junhee",
+  name: 'junhee',
   age: 25,
   address: {
     zipCode: 14063,
-    city: "Anyang",
+    city: 'Anyang',
   },
 };
 
@@ -2453,8 +2615,8 @@ DOM 요소를 조작하는 `<script>` 태그가 `<body>` 태그 위에 존재한
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
     <script>
-      const $apple = document.getElementById("apple");
-      $apple.style.color = "red";
+      const $apple = document.getElementById('apple');
+      $apple.style.color = 'red';
     </script>
   </head>
   <body>
@@ -2677,11 +2839,11 @@ ORANGE
   <body>
     <button>Click me!</button>
     <script>
-      const $button = document.querySelector("button");
+      const $button = document.querySelector('button');
 
       // 이벤트 핸들러 프로퍼티에 이벤트 핸들러를 바인딩 (익명 함수로 가능)
       $button.onclick = function () {
-        console.log("button click");
+        console.log('button click');
       };
     </script>
   </body>
@@ -2697,11 +2859,11 @@ ORANGE
     <em></em>
 
     <script>
-      const $button = document.querySelector("button");
-      const $em = document.querySelector("em");
+      const $button = document.querySelector('button');
+      const $em = document.querySelector('em');
 
-      $button.addEventListener("click", function () {
-        $em.innerHTML = "Button Cliked 1";
+      $button.addEventListener('click', function () {
+        $em.innerHTML = 'Button Cliked 1';
       });
     </script>
   </body>
@@ -2741,13 +2903,13 @@ DOM 트리상에 존재하는 모든 DOM 요소 노드에서 발생한 이벤트
     <div>Click me</div>
   </body>
   <script>
-    const html = document.querySelector("html");
-    const body = document.querySelector("body");
-    const div = document.querySelector("div");
+    const html = document.querySelector('html');
+    const body = document.querySelector('body');
+    const div = document.querySelector('div');
 
-    html.addEventListener("click", () => console.log("HTML"));
-    body.addEventListener("click", () => console.log("BODY"));
-    div.addEventListener("click", () => console.log("DIV"));
+    html.addEventListener('click', () => console.log('HTML'));
+    body.addEventListener('click', () => console.log('BODY'));
+    div.addEventListener('click', () => console.log('DIV'));
   </script>
 </html>
 ```
@@ -2821,9 +2983,9 @@ DIV
       <button class="btn-number">5</button>
     </div>
     <script>
-      const div = document.querySelector("div");
+      const div = document.querySelector('div');
 
-      div.addEventListener("click", (e) => {
+      div.addEventListener('click', (e) => {
         console.log(e.target.innerHTML);
       });
     </script>
@@ -2855,12 +3017,12 @@ e.preventDefault 메서드는 요소 태그의 기본 동작을 중단합니다.
     <a href="https://www.google.com">go</a>
     <input type="checkbox" />
     <script>
-      document.querySelector("a").onclick = (e) => {
+      document.querySelector('a').onclick = (e) => {
         // a 요소의 기본 동작을 중단한다.
         e.preventDefault();
       };
 
-      document.querySelector("input[type=checkbox]").onclick = (e) => {
+      document.querySelector('input[type=checkbox]').onclick = (e) => {
         // checkbox 요소의 기본 동작을 중단한다.
         e.preventDefault();
       };
@@ -2914,16 +3076,16 @@ e.stopPropagation 메서드는 이벤트 전파를 중지시키는 메서드입�
       <button>Button</button>
     </div>
     <script>
-      const div = document.querySelector("div");
-      const button = document.querySelector("button");
+      const div = document.querySelector('div');
+      const button = document.querySelector('button');
 
-      div.addEventListener("click", () => {
-        console.log("DIV");
+      div.addEventListener('click', () => {
+        console.log('DIV');
       });
 
-      button.addEventListener("click", (e) => {
+      button.addEventListener('click', (e) => {
         e.stopPropagation();
-        console.log("BUTTON");
+        console.log('BUTTON');
       });
     </script>
   </body>
@@ -2982,19 +3144,19 @@ setTimeout 함수가 반환한 타이머 id는 ① 브라우저 환경일 경우
 
 ```js
 // 1초(1000ms) 후 타이머가 만료되면 콜백 함수가 호출된다.
-setTimeout(() => console.log("Hi!"), 1000);
+setTimeout(() => console.log('Hi!'), 1000);
 
 // 세 번째 인수로 문자열 'Lee' 전달
-setTimeout((name) => console.log(`Hi! ${name}.`), 1000, "Lee");
+setTimeout((name) => console.log(`Hi! ${name}.`), 1000, 'Lee');
 
 // 두 번째 인수(delay)를 생략하면 기본값 0이 지정된다.
-setTimeout(() => console.log("Hello!"));
+setTimeout(() => console.log('Hello!'));
 ```
 
 setTimeout 함수가 반환한 타이머 id를 clearTimeout 함수의 인수로 전달하여 타이머를 취소할 수 있다.
 
 ```js
-const timerId = setTimeout(() => console.log("Hi!"), 1000);
+const timerId = setTimeout(() => console.log('Hi!'), 1000);
 console.log(timeId);
 
 clearTimeout(timerId);
@@ -3026,7 +3188,7 @@ const timeoutId = setInterval(() => {
   if (count++ === 5) clearInterval(timeoutId);
 }, 1000);
 
-console.log("timeoutId: ", timeoutId);
+console.log('timeoutId: ', timeoutId);
 ```
 
 <br/>
@@ -3058,8 +3220,8 @@ scroll, resize, mousemove 같은 이벤트는 짧은 시간 간격으로 연속�
     <input type="text" />
     <div class="msg"></div>
     <script>
-      const $input = document.querySelector("input");
-      const $msg = document.querySelector(".msg");
+      const $input = document.querySelector('input');
+      const $msg = document.querySelector('.msg');
 
       const debounce = (callback, delay) => {
         let timerId;
@@ -3138,9 +3300,9 @@ scroll 이벤트는 사용자가 스크롤할 때 짧은 시간 간격으로 연
     </div>
 
     <script>
-      const $container = document.querySelector(".container");
-      const $normalCount = document.querySelector(".normal-count");
-      const $throttleCount = document.querySelector(".throttle-count");
+      const $container = document.querySelector('.container');
+      const $normalCount = document.querySelector('.normal-count');
+      const $throttleCount = document.querySelector('.throttle-count');
 
       const throttle = (callback, delay) => {
         let timerId;
@@ -3162,14 +3324,14 @@ scroll 이벤트는 사용자가 스크롤할 때 짧은 시간 간격으로 연
       };
 
       let normalCount = 0;
-      $container.addEventListener("scroll", () => {
+      $container.addEventListener('scroll', () => {
         $normalCount.textContent = ++normalCount;
       });
 
       let throttleCount = 0;
       // throttle 함수가 반환하는 클로저가 이벤트 핸들러로 등록된다.
       $container.addEventListener(
-        "scroll",
+        'scroll',
         throttle(() => {
           $throttleCount.textContent = ++throttleCount;
         }, 1000)
@@ -3256,11 +3418,11 @@ function sleep(func, delay) {
 }
 
 function foo() {
-  console.log("foo");
+  console.log('foo');
 }
 
 function bar() {
-  console.log("bar");
+  console.log('bar');
 }
 
 sleep(foo, 3000);
@@ -3279,11 +3441,11 @@ bar();
 
 ```js
 function foo() {
-  console.log("foo");
+  console.log('foo');
 }
 
 function bar() {
-  console.log("bar");
+  console.log('bar');
 }
 
 // 타이머 함수 setTimeout은 일정 시간이 경과한 이후에 콜백 함수 foo를 호출한다.
@@ -3374,11 +3536,11 @@ setTimeout 함수는 앞서 살펴본 sleep 함수와 유사하게 일정 시간
 
 ```js
 function foo() {
-  console.log("foo");
+  console.log('foo');
 }
 
 function bar() {
-  console.log("bar");
+  console.log('bar');
 }
 
 setTimeout(foo, 0); // 0초(실제는 4ms) 후에 foo 함수가 호출된다.
@@ -3536,11 +3698,11 @@ Web API인 XMLHttpRequest 객체는 ① HTTP 요청 전송과 ② HTTP 응답 �
 const xhr = new XMLHttpRequest();
 
 // HTTP 요청 초기화
-xhr.open("GET", "/users");
+xhr.open('GET', '/users');
 
 // HTTP 요청 헤더 설정
 // 클라이언트가 서버로 전송할 데이터의 MIME 타입 지정: json
-xhr.setRequestHeader("content-type", "application/json");
+xhr.setRequestHeader('content-type', 'application/json');
 
 // HTTP 요청 전송
 xhr.send();
@@ -3553,14 +3715,14 @@ xhr.send();
 const xhr = new XMLHttpRequest();
 
 // HTTP 요청 초기화
-xhr.open("POST", "/users");
+xhr.open('POST', '/users');
 
 // HTTP 요청 헤더 설정
 // 클라이언트가 서버로 전송할 데이터의 MIME 타입 지정: json
-xhr.setRequestHeader("content-type", "application/json");
+xhr.setRequestHeader('content-type', 'application/json');
 
 // HTTP 요청 전송
-xhr.send(JSON.stringify({ id: 1, content: "HTML", completed: false }));
+xhr.send(JSON.stringify({ id: 1, content: 'HTML', completed: false }));
 ```
 
 #### HTTP 응답 처리
@@ -3571,7 +3733,7 @@ const xhr = new XMLHttpRequest();
 
 // HTTP 요청 초기화
 // https://jsonplaceholder.typicode.com은 Fake REST API를 제공하는 서비스다.
-xhr.open("GET", "https://jsonplaceholder.typicode.com/todos/1");
+xhr.open('GET', 'https://jsonplaceholder.typicode.com/todos/1');
 
 // HTTP 요청 전송
 xhr.send();
@@ -3582,7 +3744,7 @@ xhr.onload = () => {
     console.log(JSON.parse(xhr.response));
     // {userId: 1, id: 1, title: "delectus aut autem", completed: false}
   } else {
-    console.error("Error", xhr.status, xhr.statusText);
+    console.error('Error', xhr.status, xhr.statusText);
   }
 };
 ```
@@ -3610,7 +3772,7 @@ const promise = fetch(url [, options])
 fetch 함수는 HTTP 응답을 나타내는 Response 객체를 래핑한 Promise 객체를 반환한다.
 
 ```js
-fetch("https://jsonplaceholder.typicode.com/todos/1").then((response) =>
+fetch('https://jsonplaceholder.typicode.com/todos/1').then((response) =>
   console.log(response)
 );
 ```
@@ -3626,7 +3788,7 @@ Response.prototype에는 Response 객체에 포함되어 있는 HTTP 응답 몸�
 Response.prototype.json 메서드는 Response 객체에서 HTTP 응답 몸체를 역직렬화(deserialize)한다.
 
 ```js
-fetch("https://jsonplaceholder.typicode.com/todos/1")
+fetch('https://jsonplaceholder.typicode.com/todos/1')
   // response는 HTTP 응답을 나타내는 Response 객체이다.
   // json 메서드를 사용하여 Response 객체에서 HTTP 응답 몸체를 취득하여 역직렬화한다.
   .then((response) => response.json())
@@ -3650,7 +3812,7 @@ fetch("https://jsonplaceholder.typicode.com/todos/1")
       const render = (res) => {
         console.log(res);
         const result = JSON.stringify(res);
-        document.querySelector("pre").innerHTML = `<b>${result}</b>`;
+        document.querySelector('pre').innerHTML = `<b>${result}</b>`;
       };
 
       const request = {
@@ -3661,37 +3823,37 @@ fetch("https://jsonplaceholder.typicode.com/todos/1")
         // post 메서드
         post(url, payload) {
           return fetch(url, {
-            method: "POST",
-            headers: { "content-Type": "application/json" },
+            method: 'POST',
+            headers: { 'content-Type': 'application/json' },
             body: JSON.stringify(payload),
           });
         },
         // patch 메서드
         patch(url, payload) {
           return fetch(url, {
-            method: "PATCH",
-            headers: { "content-Type": "application/json" },
+            method: 'PATCH',
+            headers: { 'content-Type': 'application/json' },
             body: JSON.stringify(payload),
           });
         },
         // delete 메서드
         delete(url) {
-          return fetch(url, { method: "DELETE" });
+          return fetch(url, { method: 'DELETE' });
         },
       };
 
       // get
       request
-        .get("https://jsonplaceholder.typicode.com/todos/1")
+        .get('https://jsonplaceholder.typicode.com/todos/1')
         .then((response) => response.json())
         .then((todos) => render(todos))
         .catch((err) => console.log(err));
 
       // post
       request
-        .post("https://jsonplaceholder.typicode.com/todos", {
+        .post('https://jsonplaceholder.typicode.com/todos', {
           userId: 1,
-          title: "JavaScript",
+          title: 'JavaScript',
           completed: false,
         })
         .then((response) => response.json())
@@ -3700,7 +3862,7 @@ fetch("https://jsonplaceholder.typicode.com/todos/1")
 
       // patch
       request
-        .patch("https://jsonplaceholder.typicode.com/todos/1", {
+        .patch('https://jsonplaceholder.typicode.com/todos/1', {
           completed: true,
         })
         .then((response) => response.json())
@@ -3709,7 +3871,7 @@ fetch("https://jsonplaceholder.typicode.com/todos/1")
 
       // delete
       request
-        .delete("https://jsonplaceholder.typicode.com/todos/1")
+        .delete('https://jsonplaceholder.typicode.com/todos/1')
         .then((response) => response.json())
         .then((todos) => console.log(todos))
         .catch((err) => console.log(err));
@@ -3801,15 +3963,15 @@ GET /todos/1
     <script>
       const xhr = new XMLHttpRequest();
 
-      xhr.open("GET", "/todos");
+      xhr.open('GET', '/todos');
 
       xhr.send();
 
       xhr.onload = () => {
         if (xhr.status === 200) {
-          document.querySelector("pre").innerHTML = xhr.response;
+          document.querySelector('pre').innerHTML = xhr.response;
         } else {
-          console.error("Error", xhr.status, xhr.statusText);
+          console.error('Error', xhr.status, xhr.statusText);
         }
       };
     </script>
@@ -3831,17 +3993,17 @@ GET /todos/1
     <script>
       const xhr = new XMLHttpRequest();
 
-      xhr.open("GET", "/todos/1");
+      xhr.open('GET', '/todos/1');
 
       xhr.send();
 
       xhr.onload = () => {
         if (xhr.status === 200) {
           const result = (document.querySelector(
-            "pre"
+            'pre'
           ).innerHTML = `<h1>${xhr.response}</h1>`);
         } else {
-          console.error("Error", xhr.status, xhr.statusText);
+          console.error('Error', xhr.status, xhr.statusText);
         }
       };
     </script>
@@ -3862,18 +4024,18 @@ GET /todos/1
     <pre></pre>
     <script>
       const xhr = new XMLHttpRequest();
-      xhr.open("POST", "/todos");
-      xhr.setRequestHeader("content-type", "application/json");
+      xhr.open('POST', '/todos');
+      xhr.setRequestHeader('content-type', 'application/json');
 
       // 해당 액션이 db.json에 생성된 후에 다시 한번 해당 url로 접근한다면
       // Error: Insert failed, duplicate id (유효하지 않은 id 값) 이라는 에러가 뜬다
-      xhr.send(JSON.stringify({ id: 4, content: "Angular", completed: false }));
+      xhr.send(JSON.stringify({ id: 4, content: 'Angular', completed: false }));
 
       xhr.onload = () => {
         if (xhr.status === 200 || xhr.status === 201) {
-          document.querySelector("pre").innerHTML = xhr.response;
+          document.querySelector('pre').innerHTML = xhr.response;
         } else {
-          console.error("Error", xhr.status, xhr.statusText);
+          console.error('Error', xhr.status, xhr.statusText);
         }
       };
     </script>
@@ -3895,16 +4057,16 @@ GET /todos/1
     <script>
       const xhr = new XMLHttpRequest();
 
-      xhr.open("PATCH", "/todos/4");
-      xhr.setRequestHeader("content-type", "application/json");
+      xhr.open('PATCH', '/todos/4');
+      xhr.setRequestHeader('content-type', 'application/json');
 
       xhr.send(JSON.stringify({ completed: false }));
 
       xhr.onload = () => {
         if (xhr.status === 200) {
-          document.querySelector("pre").innerHTML = xhr.response;
+          document.querySelector('pre').innerHTML = xhr.response;
         } else {
-          console.error("Error", xhr.status, xhr.statusText);
+          console.error('Error', xhr.status, xhr.statusText);
         }
       };
     </script>
@@ -3926,15 +4088,15 @@ GET /todos/1
     <script>
       const xhr = new XMLHttpRequest();
 
-      xhr.open("DELETE", "/todos/4");
+      xhr.open('DELETE', '/todos/4');
 
       xhr.send();
 
       xhr.onload = () => {
         if (xhr.status === 200) {
-          document.querySelector("pre").innerHTML = xhr.response;
+          document.querySelector('pre').innerHTML = xhr.response;
         } else {
-          console.error("Error", xhr.status, xhr.statusText);
+          console.error('Error', xhr.status, xhr.statusText);
         }
       };
     </script>
@@ -3993,7 +4155,7 @@ GET /todos/1
 ```js
 // case 1 : 콜백 HELL 🔥
 
-get("/step1", (a) => {
+get('/step1', (a) => {
   get(`/step2/${a}`, (b) => {
     get(`/step3/${b}`, (c) => {
       get(`/step4/${c}`, (d) => {
@@ -4162,7 +4324,7 @@ Promise.allSettled 메서드는 프로미스를 요소로 갖는 배열 등의 �
 Promise.allSettled([
   new Promise((resolve) => setTimeout(() => resolve(1), 2000)),
   new Promise((_, reject) =>
-    setTimeout(() => reject(new Error("Error!")), 1000)
+    setTimeout(() => reject(new Error('Error!')), 1000)
   ),
 ]).then(console.log);
 /*
@@ -4271,13 +4433,13 @@ await 키워드는 반드시 프로미스 앞에서 사용해야 한다.
   <script>
     // async 사용!
     async function fetchTodo() {
-      const url = "https://jsonplaceholder.typicode.com/todos/1";
+      const url = 'https://jsonplaceholder.typicode.com/todos/1';
 
       const response = await fetch(url);
       const todo = await response.json();
       console.log(todo);
       const result = JSON.stringify(todo, null, 2);
-      document.querySelector("pre").innerHTML = result;
+      document.querySelector('pre').innerHTML = result;
       // {userId: 1, id: 1, title: 'delectus aut autem', completed: false}
     }
 
@@ -4354,11 +4516,11 @@ foo(); // 약 3초 소요된다.
 #### 에러를 처리를 하지 않을 경우
 
 ```js
-console.log("[Start]");
+console.log('[Start]');
 
 foo(); // ReferenceError: foo is not defined
 
-console.log("[End]");
+console.log('[End]');
 ```
 
 ```
@@ -4377,17 +4539,17 @@ ReferenceError: foo is not defined
 #### 에러 처리를 할 경우
 
 ```js
-console.log("[Start]");
+console.log('[Start]');
 
 try {
   foo();
 } catch (error) {
-  console.error("[에러 발생]", error);
+  console.error('[에러 발생]', error);
   // [에러 발생] ReferenceError: foo is not defined
 }
 
 // 발생한 에러에 적절한 대응을 하면 프로그램이 강제 종료되지 않는다.
-console.log("[End]");
+console.log('[End]');
 ```
 
 ```
@@ -4421,7 +4583,7 @@ Error 생성자 함수는 에러 객체를 생성한다.
 Error 생성자 함수에는 에러를 상세히 설명하는 에러 메시지를 인수로 전달할 수 있다.
 
 ```js
-const error = new Error("invalid");
+const error = new Error('invalid');
 ```
 
 자바스크립트는 Error 생성자 함수를 포함해 7가지의 에러 객체를 생성할 수 있는 Error 생성자 함수를 제공한다.
@@ -4452,7 +4614,7 @@ Error 생성자 함수로 에러 객체를 생성한다고 에러가 발생하�
 ```js
 try {
   // 에러 객체를 생성한다고 에러가 발생하는 것은 아니다.
-  new Error("something wrong");
+  new Error('something wrong');
 } catch (error) {
   console.log(error);
 }
@@ -4467,7 +4629,7 @@ throw 표현식;
 ```js
 try {
   // 에러 객체를 던지면 catch 코드 블록이 실행되기 시작한다.
-  throw new Error("something wrong");
+  throw new Error('something wrong');
 } catch (error) {
   console.log(error);
 }
