@@ -76,8 +76,8 @@
 - [LCP가 뭔가요?](#lcp가-뭔가요)
 - [FCP가 뭔가요?](#fcp가-뭔가요)
 
-- [controlled pattern에 대서 아나요?](controlled-pattern에-대서-아나요?)
-- [uncontrolled pattern에 대서 아나요?](uncontrolled-pattern에-대서-아나요?)
+- [controlled pattern에 대해서 아나요?](#controlled-pattern에-대해서-아나요)
+- [uncontrolled pattern에 대해서 아나요?](#uncontrolled-pattern에-대해서-아나요)
 
 <hr>
 
@@ -1667,7 +1667,7 @@ FCP는 웹 페이지의 로딩 속도에 대한 사용자의 인식을 반영하
 
 FCP를 개선하기 위해 HTML, CSS 및 JavaScript 파일의 크기를 줄이고 서버에 대한 요청 수를 최소화하여 웹 페이지 로드를 최적화할 수 있습니다. 또한 로드 프로세스에서 우선 순위를 지정하여 위의 내용과 같은 중요한 리소스의 로드를 최적화할 수 있습니다.
 
-### controlled pattern에 대서 아나요?
+### controlled pattern에 대해서 아나요?
 
 React의 Controlled 패턴은 폼 요소의 상태를 React 컴포넌트의 state로 관리하는 방식입니다. 이 패턴을 사용하면 React가 폼의 데이터를 완전히 제어할 수 있게 됩니다.
 
@@ -1729,7 +1729,7 @@ Controlled 패턴의 장점:
 
 Controlled 패턴은 React에서 폼을 다룰 때 권장되는 방식이며, 특히 복잡한 폼이나 동적인 유효성 검사가 필요한 경우에 유용합니다.
 
-### uncontrolled pattern에 대서 아나요?
+### uncontrolled pattern에 대해서 아나요?
 
 Uncontrolled 패턴은 React에서 폼 요소의 상태를 직접 React의 state로 관리하지 않고, DOM이 내부적으로 관리하도록 하는 방식입니다. 이 방식은 주로 ref를 사용하여 필요할 때만 DOM에서 값을 가져옵니다.
 
