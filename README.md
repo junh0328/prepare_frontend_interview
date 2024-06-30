@@ -577,6 +577,8 @@ ex)
 - `웹 성능 최적화`
 - `LCP가 뭔가요?`
 - `FCP가 뭔가요?`
+- `controlled pattern에 대서 아나요?`
+- `uncontrolled pattern에 대서 아나요?`
 
 ## <a href="./data_structure.md">⑤ 자료구조</a>
 
