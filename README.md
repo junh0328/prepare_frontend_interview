@@ -600,6 +600,35 @@ ex)
 - `힙 🔥`
 - `그래프 🔥`
 
+## <a href="./algorithm_data_structure.md">⓺ 알고리즘과 자료구조 v2</a>
+
+- `Frequency Counters`
+- `Multiple Pointers`
+- `Sliding Window`
+- `Divide and conquer`
+- `Recursion`
+- `Linear Search`
+- `Naive String Search`
+- `Binary Search`
+- `Bubble Sort`
+- `Selection Sort`
+- `Insertion Sort`
+- `Merge Sort`
+- `Quick Sort`
+- `Single Linked List`
+- `Dobule Linked List`
+- `Stack`
+- `Queue`
+- `Binary Search Tree`
+- `Breadth First Search`
+- `Depth First Search`
+- `Binary Heap`
+- `Priority Queue`
+- `Hash Table`
+- `graph`
+- `Dijkstra`
+- `Dynamic Programming`
+
 ## 레퍼런스
 
 - [프론트 엔드 개발자 면접 질문 정리 🔥](https://sunnykim91.tistory.com/121)

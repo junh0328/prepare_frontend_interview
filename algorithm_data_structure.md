@@ -52,7 +52,7 @@ Frequency Counter 알고리즘은 자바스크립트에서 다음과 같은 다�
 - 데이터 집합에서 가장 많이/적게 발생한 요소 찾기
 - 주어진 조건에 맞는 부분 배열 찾기
 
-```
+```js
 function charCount(str) {
   // 소문자로 변환하기
   // 문자를 하나씩 떼서 배열 안에 넣기
@@ -111,7 +111,7 @@ console.log(charCount('Your Pin is 1234 !'));
 
 - for 문 내부에서 indexOf로 검색하기 때문에 O(n^2)
 
-```
+```js
 function same(arr1, arr2) {
   if (arr1.length !== arr2.length) return false;
 
@@ -140,7 +140,7 @@ console.log(same([1, 2, 1], [4, 4, 1])); // false
 
 - for 문 내부를 순회하면서 객체 내부를 index를 기반으로 access 하기 때문에 O(n)
 
-```
+```js
 function same2(arr1, arr2) {
   if (arr1.length !== arr2.length) return false;
 
@@ -194,7 +194,7 @@ false
 
 # Anagram
 
-```
+```js
 // time complexity: O(n)
 
 function validAnagram(str1, str2) {
@@ -262,7 +262,7 @@ Multiple Pointers 기법은 다음과 같은 다양한 문제에서 유용하게
 
 # 이중 for문 사용
 
-```
+```js
 // time complexity o(n^2)
 
 function sumZero(arr) {
@@ -288,7 +288,7 @@ console.log(sumZero([1, 2, 3]));
 
 # While 문 사용, 단일 for문 사용 ✔
 
-```
+```js
 // time complexity o(n)
 
 function sumZero(arr) {
@@ -320,7 +320,7 @@ console.log(sumZero([1, 2, 3]));
 
 # 두 개의 포인터를 사용하여 배열 내 특정 조건을 만족하는 요소 찾기
 
-```
+```js
 // 정렬된 배열을 받아들이고 배열의 고유 값을 세는 countUniqueValues라는 함수를 구현합니다. 배열에 음수가 있을 수 있지만 항상 정렬됩니다.
 
 function countUniqueValues(arr) {
@@ -372,24 +372,24 @@ Sliding Window의 기본 개념은 다음과 같습니다:
 
 다음은 고정된 크기의 윈도우를 사용하여 배열 내 연속된 요소들의 최대 합을 찾는 예제입니다.
 
-```
+```js
 function maxSubarraySum(arr, num) {
-    if (arr.length < num) return null;
+  if (arr.length < num) return null;
 
-    let maxSum = 0;
-    let tempSum = 0;
+  let maxSum = 0;
+  let tempSum = 0;
 
-    for (let i = 0; i < num; i++) {
-        maxSum += arr[i];
-    }
-    tempSum = maxSum;
+  for (let i = 0; i < num; i++) {
+    maxSum += arr[i];
+  }
+  tempSum = maxSum;
 
-    for (let i = num; i < arr.length; i++) {
-        tempSum = tempSum - arr[i - num] + arr[i];
-        maxSum = Math.max(maxSum, tempSum);
-    }
+  for (let i = num; i < arr.length; i++) {
+    tempSum = tempSum - arr[i - num] + arr[i];
+    maxSum = Math.max(maxSum, tempSum);
+  }
 
-    return maxSum;
+  return maxSum;
 }
 
 console.log(maxSubarraySum([1, 2, 5, 2, 8, 1, 5], 2)); // 10
@@ -424,7 +424,7 @@ Divide and Conquer의 기본 개념은 다음과 같습니다:
 
 병합 정렬은 Divide and Conquer를 사용하는 대표적인 정렬 알고리즘입니다. 배열을 반으로 나눈 후 각각을 정렬하고, 정렬된 부분 배열을 합칩니다.
 
-```
+```js
 function merge(arr1, arr2) {
   let idx1 = 0;
   let idx2 = 0;
@@ -472,7 +472,7 @@ console.log(mergeSort([8, 3, 5, 4, 7, 6, 1, 2]));
 
 이진 탐색은 정렬된 배열에서 특정 값을 찾는 효율적인 알고리즘입니다. 배열을 반으로 나누어 찾고자 하는 값이 어느 쪽에 있는지 확인한 후, 해당 절반에서 다시 탐색을 반복합니다.
 
-```
+```js
 function binarySearch(arr, target) {
   var start = 0;
   var end = arr.length - 1;
@@ -531,10 +531,10 @@ Divide and Conquer 기법은 다음과 같은 다양한 문제에서 유용하�
 
 팩토리얼은 1부터 n까지의 정수를 모두 곱한 값입니다. 재귀를 사용하여 팩토리얼을 계산할 수 있습니다.
 
-```
+```js
 function factorial(n) {
-    if (n === 0) return 1; // 기본 조건
-    return n * factorial(n - 1); // 재귀 조건
+  if (n === 0) return 1; // 기본 조건
+  return n * factorial(n - 1); // 재귀 조건
 }
 
 console.log(factorial(5)); // 120
@@ -544,29 +544,27 @@ console.log(factorial(5)); // 120
 
 피보나치 수열의 각 항은 앞의 두 항의 합입니다. 재귀를 사용하여 피보나치 수를 계산할 수 있습니다.
 
-```
+```js
 function fibonacci(n) {
-    if (n <= 1) return n; // 기본 조건
-    return fibonacci(n - 1) + fibonacci(n - 2); // 재귀 조건
+  if (n <= 1) return n; // 기본 조건
+  return fibonacci(n - 1) + fibonacci(n - 2); // 재귀 조건
 }
 
 console.log(fibonacci(7)); // 13
-
 ```
 
 ### 예제 3: 배열의 합 계산
 
 재귀를 사용하여 배열의 합을 계산하는 예제입니다.
 
-```
+```js
 function sumArray(arr) {
-    if (arr.length === 0) return 0; // 기본 조건
-    return arr[0] + sumArray(arr.slice(1)); // 재귀 조건
+  if (arr.length === 0) return 0; // 기본 조건
+  return arr[0] + sumArray(arr.slice(1)); // 재귀 조건
 }
 
 let arr = [1, 2, 3, 4, 5];
 console.log(sumArray(arr)); // 15
-
 ```
 
 ### 예제 4: 제곱근 만들기, helper 함수 사용
@@ -574,7 +572,7 @@ console.log(sumArray(arr)); // 15
 - 자바스크립트의 Math.prototype.pow()를 본따 함수를 선언합니다
 - helper 함수는 재귀적이지 않은 외부 함수가 재귀적인 내부 함수를 호출하는 패턴입니다.
 
-```
+```js
 function power(number, cnt) {
   let result = 1;
   if (cnt === 0) return 1;
@@ -592,14 +590,14 @@ function power(number, cnt) {
   return result;
 }
 
-power(2,0) // 1
-power(2,2) // 4
-power(2,4) // 16
+power(2, 0); // 1
+power(2, 2); // 4
+power(2, 4); // 16
 ```
 
 ### 예제 5: 숫자 배열을 받아 모든 숫자의 곱을 반환하는 함수 만들기, helper 함수 사용
 
-```
+```js
 function productOfArray(arr) {
   let result = 1;
   if (arr.length === 0) return null;
@@ -617,8 +615,8 @@ function productOfArray(arr) {
   return result;
 }
 
-productOfArray([1,2,3]) // 6
-productOfArray([1,2,3,10]) // 60
+productOfArray([1, 2, 3]); // 6
+productOfArray([1, 2, 3, 10]); // 60
 ```
 
 ### 시간 복잡도
@@ -658,14 +656,14 @@ productOfArray([1,2,3,10]) // 60
 
 다음은 자바스크립트로 구현한 선형 검색의 예제입니다.
 
-```
+```js
 function linearSearch(arr, target) {
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] === target) {
-            return i; // 요소를 찾으면 인덱스를 반환
-        }
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === target) {
+      return i; // 요소를 찾으면 인덱스를 반환
     }
-    return -1; // 요소를 찾지 못하면 -1 반환
+  }
+  return -1; // 요소를 찾지 못하면 -1 반환
 }
 
 let arr = [5, 3, 8, 4, 2];
@@ -721,7 +719,7 @@ Naive String Search의 기본 개념은 다음과 같습니다:
 
 다음은 자바스크립트로 구현한 Naive String Search의 예제입니다.
 
-```
+```js
 function naiveStringSearch(longer, shorter) {
   let cnt = 0;
 
@@ -736,7 +734,6 @@ function naiveStringSearch(longer, shorter) {
 }
 
 naiveStringSearch('omaomggfaomg', 'omg'); // 1
-
 ```
 
 ### 시간 복잡도
@@ -795,7 +792,7 @@ Naive String Search는 단순하고 구현이 쉬운 문자열 검색 알고리�
 
 다음은 자바스크립트로 구현한 이진 탐색의 예제입니다.
 
-```
+```js
 function binarySearch(arr, target) {
   var start = 0;
   var end = arr.length - 1;
@@ -818,7 +815,6 @@ function binarySearch(arr, target) {
 let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 console.log(binarySearch(arr, 7)); // 6
 console.log(binarySearch(arr, 11)); // -1
-
 ```
 
 ### 시간 복잡도
@@ -850,27 +846,26 @@ console.log(binarySearch(arr, 11)); // -1
 
 이진 탐색은 반복문을 사용하는 방법 외에도 재귀적으로 구현할 수 있습니다. 다음은 재귀적 이진 탐색의 예제입니다.
 
-```
+```js
 function binarySearchRecursive(arr, target, left = 0, right = arr.length - 1) {
-    if (left > right) {
-        return -1; // 요소를 찾지 못하면 -1 반환
-    }
+  if (left > right) {
+    return -1; // 요소를 찾지 못하면 -1 반환
+  }
 
-    let mid = Math.floor((left + right) / 2);
+  let mid = Math.floor((left + right) / 2);
 
-    if (arr[mid] === target) {
-        return mid; // 요소를 찾으면 인덱스를 반환
-    } else if (arr[mid] < target) {
-        return binarySearchRecursive(arr, target, mid + 1, right); // 오른쪽 부분을 검색
-    } else {
-        return binarySearchRecursive(arr, target, left, mid - 1); // 왼쪽 부분을 검색
-    }
+  if (arr[mid] === target) {
+    return mid; // 요소를 찾으면 인덱스를 반환
+  } else if (arr[mid] < target) {
+    return binarySearchRecursive(arr, target, mid + 1, right); // 오른쪽 부분을 검색
+  } else {
+    return binarySearchRecursive(arr, target, left, mid - 1); // 왼쪽 부분을 검색
+  }
 }
 
 let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 console.log(binarySearchRecursive(arr, 7)); // 6
 console.log(binarySearchRecursive(arr, 11)); // -1
-
 ```
 
 ### 결론
@@ -894,7 +889,7 @@ console.log(binarySearchRecursive(arr, 11)); // -1
 
 다음은 자바스크립트로 구현한 버블 정렬의 예제입니다.
 
-```
+```js
 function bubbleSort(arr) {
   let swaps = true;
   for (let i = arr.length; i > 0; i--) {
@@ -942,25 +937,25 @@ console.log(bubbleSort([1, 6, 3, 10, 2, 15]));
 
 버블 정렬은 이미 정렬된 경우 비교를 최소화하기 위해 최적화할 수 있습니다. 만약 어떤 반복에서 교환이 발생하지 않으면 리스트가 이미 정렬된 것이므로 정렬을 종료할 수 있습니다.
 
-```
+```js
 function optimizedBubbleSort(arr) {
-    let n = arr.length;
-    let swapped;
+  let n = arr.length;
+  let swapped;
 
-    do {
-        swapped = false;
-        for (let i = 0; i < n - 1; i++) {
-            if (arr[i] > arr[i + 1]) {
-                let temp = arr[i];
-                arr[i] = arr[i + 1];
-                arr[i + 1] = temp;
-                swapped = true;
-            }
-        }
-        n--;
-    } while (swapped);
+  do {
+    swapped = false;
+    for (let i = 0; i < n - 1; i++) {
+      if (arr[i] > arr[i + 1]) {
+        let temp = arr[i];
+        arr[i] = arr[i + 1];
+        arr[i + 1] = temp;
+        swapped = true;
+      }
+    }
+    n--;
+  } while (swapped);
 
-    return arr;
+  return arr;
 }
 
 let arr = [3, 2, 1, 4, 5];
@@ -989,7 +984,7 @@ console.log(optimizedBubbleSort(arr)); // [1, 2, 3, 4, 5]
 
 다음은 자바스크립트로 구현한 선택 정렬의 예제입니다.
 
-```
+```js
 function swap(arr, idx1, idx2) {
   let temp = arr[idx1];
   arr[idx1] = arr[idx2];
@@ -1060,7 +1055,7 @@ console.log(selectionSort([0, 2, 34, 22, 10, 19, 17]));
 
 다음은 자바스크립트로 구현한 삽입 정렬의 예제입니다.
 
-```
+```js
 function insertionSort(arr) {
   var currentVal;
 
@@ -1124,7 +1119,7 @@ console.log(insertionSort([2, 1, 9, 76, 4]));
 
 다음은 자바스크립트로 구현한 병합 정렬의 예제입니다.
 
-```
+```js
 function merge(arr1, arr2) {
   let idx1 = 0;
   let idx2 = 0;
@@ -1225,7 +1220,7 @@ console.log(mergeSort([8, 3, 5, 4, 7, 6, 1, 2]));
 
 다음은 자바스크립트로 구현한 퀵 정렬의 예제입니다.
 
-```
+```js
 function swap(arr, idx1, idx2) {
   let temp = arr[idx1];
   arr[idx1] = arr[idx2];
@@ -1306,35 +1301,35 @@ LSD 방식은 일반적으로 더 많이 사용됩니다.
 
 다음은 자바스크립트로 구현한 기수 정렬의 예제입니다(LSD 방식).
 
-```
+```js
 function getDigit(num, place) {
-    return Math.floor(Math.abs(num) / Math.pow(10, place)) % 10;
+  return Math.floor(Math.abs(num) / Math.pow(10, place)) % 10;
 }
 
 function digitCount(num) {
-    if (num === 0) return 1;
-    return Math.floor(Math.log10(Math.abs(num))) + 1;
+  if (num === 0) return 1;
+  return Math.floor(Math.log10(Math.abs(num))) + 1;
 }
 
 function mostDigits(nums) {
-    let maxDigits = 0;
-    for (let num of nums) {
-        maxDigits = Math.max(maxDigits, digitCount(num));
-    }
-    return maxDigits;
+  let maxDigits = 0;
+  for (let num of nums) {
+    maxDigits = Math.max(maxDigits, digitCount(num));
+  }
+  return maxDigits;
 }
 
 function radixSort(nums) {
-    let maxDigitCount = mostDigits(nums);
-    for (let k = 0; k < maxDigitCount; k++) {
-        let digitBuckets = Array.from({ length: 10 }, () => []);
-        for (let i = 0; i < nums.length; i++) {
-            let digit = getDigit(nums[i], k);
-            digitBuckets[digit].push(nums[i]);
-        }
-        nums = [].concat(...digitBuckets);
+  let maxDigitCount = mostDigits(nums);
+  for (let k = 0; k < maxDigitCount; k++) {
+    let digitBuckets = Array.from({ length: 10 }, () => []);
+    for (let i = 0; i < nums.length; i++) {
+      let digit = getDigit(nums[i], k);
+      digitBuckets[digit].push(nums[i]);
     }
-    return nums;
+    nums = [].concat(...digitBuckets);
+  }
+  return nums;
 }
 
 let arr = [170, 45, 75, 90, 802, 24, 2, 66];
@@ -1393,7 +1388,7 @@ JavaScript에서 링크드 리스트(Linked List)는 노드(Node)들이 포인�
 
 다음은 자바스크립트로 단일 연결 리스트를 구현한 예제입니다:
 
-```
+```js
 class Node {
   constructor(data) {
     this.data = data;
@@ -1622,7 +1617,7 @@ class SingleLinkedList {
 var list = new SingleLinkedList();
 ```
 
-```
+```js
 list.push('Hi');
 list.push('there');
 list.push('!');
@@ -1700,7 +1695,7 @@ console.log('--- list', list);
 
 다음은 더블 링크드 리스트의 간단한 구현입니다.
 
-```
+```js
 class Node {
   constructor(data) {
     this.data = data;
@@ -1970,7 +1965,7 @@ class DoubleLinkedList {
 
 다음은 JavaScript로 스택을 배열을 사용하여 구현한 예제입니다.
 
-```
+```js
 class Node {
   constructor(value) {
     this.value = value;
@@ -1981,7 +1976,7 @@ class Node {
 class Stack {
   constructor() {
     this.top = null; // 스택의 맨 위 요소
-    this.size = 0;   // 스택의 크기
+    this.size = 0; // 스택의 크기
   }
 
   // 스택에 요소 추가
@@ -2029,14 +2024,13 @@ stack.push(10);
 stack.push(20);
 stack.push(30);
 
-console.log(stack.peek());    // 30
-console.log(stack.pop());     // 30
+console.log(stack.peek()); // 30
+console.log(stack.pop()); // 30
 console.log(stack.getSize()); // 2
 console.log(stack.isEmpty()); // false
-console.log(stack.pop());     // 20
-console.log(stack.pop());     // 10
+console.log(stack.pop()); // 20
+console.log(stack.pop()); // 10
 console.log(stack.isEmpty()); // true
-
 ```
 
 ### 배열과의 차이점
@@ -2073,7 +2067,7 @@ console.log(stack.isEmpty()); // true
 
 배열을 사용한 큐는 정적 크기를 가지며, 요소를 추가하거나 제거할 때마다 배열을 이동시키는 방식입니다.
 
-```
+```js
 class ArrayQueue {
   constructor() {
     this.queue = [];
@@ -2099,14 +2093,13 @@ class ArrayQueue {
     return this.queue.length;
   }
 }
-
 ```
 
 ### 링크드 리스트 기반 구현
 
 링크드 리스트를 사용한 큐는 동적 크기를 가지며, 요소를 추가하거나 제거할 때 포인터를 이동시키는 방식입니다.
 
-```
+```js
 class Node {
   constructor(value) {
     this.value = value;
@@ -2117,8 +2110,8 @@ class Node {
 class LinkedListQueue {
   constructor() {
     this.first = null; // 큐의 맨 앞 요소
-    this.last = null;  // 큐의 맨 뒤 요소
-    this.size = 0;     // 큐의 크기
+    this.last = null; // 큐의 맨 뒤 요소
+    this.size = 0; // 큐의 크기
   }
 
   enqueue(value) {
@@ -2165,14 +2158,13 @@ queue.enqueue(10);
 queue.enqueue(20);
 queue.enqueue(30);
 
-console.log(queue.peek());    // 10
+console.log(queue.peek()); // 10
 console.log(queue.dequeue()); // 10
 console.log(queue.getSize()); // 2
 console.log(queue.isEmpty()); // false
 console.log(queue.dequeue()); // 20
 console.log(queue.dequeue()); // 30
 console.log(queue.isEmpty()); // true
-
 ```
 
 이렇게 구현된 큐는 링크드 리스트를 사용하여 동적 크기를 가지며, 요소의 추가와 제거가 O(1) 시간 복잡도로 이루어집니다. 이는 큐의 효율적인 동작을 보장합니다.
@@ -2195,7 +2187,7 @@ console.log(queue.isEmpty()); // true
 
 ### 이진 탐색 트리의 구현 (자바스크립트 예제)
 
-```
+```js
 class Node {
   constructor(value) {
     this.value = value;
@@ -2300,7 +2292,6 @@ console.log('tree is:', tree);
 
 console.log(tree.search(13));
 console.log(tree.search(19));
-
 ```
 
 ### 설명
@@ -2337,7 +2328,7 @@ console.log(tree.search(19));
 
 ### 트리에서의 BFS 구현
 
-```
+```js
 class Node {
   constructor(value) {
     this.value = value;
@@ -2441,7 +2432,6 @@ console.log(tree.find(13));
 console.log(tree.find(19));
 
 console.log('BFS:', tree.BFS());
-
 ```
 
 ### BFS의 동작 원리
@@ -2473,7 +2463,7 @@ BFS는 너비 우선으로 탐색하여 최단 경로를 찾는 문제에 적합
 
 ### 트리에서의 DFS 구현 (재귀 사용)
 
-```
+```js
 class Node {
   constructor(value) {
     this.value = value;
@@ -2577,7 +2567,6 @@ console.log(tree.find(13));
 console.log(tree.find(19));
 
 console.log('DFS:', tree.DFS());
-
 ```
 
 ### DFS의 동작 원리
@@ -2627,7 +2616,7 @@ DFS는 경로 탐색, 사이클 탐지, 강력 연결 요소 찾기 등 다양�
 
 ### 최대 힙의 구현 (자바스크립트 예제)
 
-```
+```js
 class MaxBinaryHeap {
   constructor() {
     this.values = [];
@@ -2729,14 +2718,13 @@ maxBinaryHeap.insert(55);
 //  0  1  2  3  4  5  6
 
 console.log('maxBinaryHeap:', maxBinaryHeap);
-
 ```
 
 ### 최소 힙의 구현 (자바스크립트 예제)
 
 최소 힙은 최대 힙과 거의 동일한 방식으로 구현되지만, 힙 속성을 유지하기 위해 부모와 자식 노드의 크기 비교가 반대입니다.
 
-```
+```js
 class MinBinaryHeap {
   constructor() {
     this.values = [];
@@ -2838,7 +2826,6 @@ minBinaryHeap.insert(55);
 //  0  1  2  3  4  5  6
 
 console.log('minBinaryHeap:', minBinaryHeap);
-
 ```
 
 ### 이진 힙의 시간 복잡도
@@ -2864,7 +2851,7 @@ console.log('minBinaryHeap:', minBinaryHeap);
 
 ### 배열을 사용한 간단한 구현
 
-```
+```js
 class PriorityQueue {
   constructor() {
     this.values = [];
@@ -2886,13 +2873,12 @@ class PriorityQueue {
 
 // 사용 예시
 let pq = new PriorityQueue();
-pq.enqueue("low priority task", 5);
-pq.enqueue("medium priority task", 3);
-pq.enqueue("high priority task", 1);
+pq.enqueue('low priority task', 5);
+pq.enqueue('medium priority task', 3);
+pq.enqueue('high priority task', 1);
 
 console.log(pq.values); // [{value: "high priority task", priority: 1}, {value: "medium priority task", priority: 3}, {value: "low priority task", priority: 5}]
 console.log(pq.dequeue()); // {value: "high priority task", priority: 1}
-
 ```
 
 위의 구현은 배열을 사용하여 요소를 정렬합니다. 그러나 이 방식은 정렬하는 데 O(n log n)의 시간이 소요되므로, 더 효율적인 방법은 힙을 사용하는 것입니다.
@@ -2902,7 +2888,7 @@ console.log(pq.dequeue()); // {value: "high priority task", priority: 1}
 - 최소 힙을 바탕으로 구현된 우선순위 큐
 - 기존 이진 힙을 구현할 때와의 차이점은 priority 를 바탕으로 값을 넣어준다는 점입니다
 
-```
+```js
 class Node {
   constructor(value, priority) {
     this.value = value;
@@ -3021,7 +3007,7 @@ console.log('ER:', ER.dequeue());
 
 ### 간단한 해시 함수 구현
 
-```
+```js
 function hash(key, arrayLen) {
   let total = 0;
   let WEIRD_PRIME = 31;
@@ -3032,12 +3018,11 @@ function hash(key, arrayLen) {
   }
   return total;
 }
-
 ```
 
 ### 체이닝을 이용한 해시 테이블 구현
 
-```
+```js
 class HashTable {
   // 소수 값을 기본 값으로 설정한다
   constructor(size = 53) {
@@ -3141,7 +3126,7 @@ console.log(newHashTable.values());
 
 ### 선형 탐사를 통한 구현
 
-```
+```js
 class HashTable {
   constructor(size = 53) {
     this.keyMap = new Array(size);
@@ -3202,18 +3187,17 @@ class HashTable {
 
 // 사용 예시
 let ht = new HashTable(17);
-ht.set("maroon", "#800000");
-ht.set("yellow", "#FFFF00");
-ht.set("olive", "#808000");
-ht.set("salmon", "#FA8072");
-ht.set("lightcoral", "#F08080");
-ht.set("mediumvioletred", "#C71585");
-ht.set("plum", "#DDA0DD");
+ht.set('maroon', '#800000');
+ht.set('yellow', '#FFFF00');
+ht.set('olive', '#808000');
+ht.set('salmon', '#FA8072');
+ht.set('lightcoral', '#F08080');
+ht.set('mediumvioletred', '#C71585');
+ht.set('plum', '#DDA0DD');
 
-console.log(ht.get("yellow")); // #FFFF00
+console.log(ht.get('yellow')); // #FFFF00
 console.log(ht.keys()); // ["maroon", "yellow", "olive", "salmon", "lightcoral", "mediumvioletred", "plum"]
 console.log(ht.values()); // ["#800000", "#FFFF00", "#808000", "#FA8072", "#F08080", "#C71585", "#DDA0DD"]
-
 ```
 
 ### 해시 테이블의 장점
@@ -3327,7 +3311,7 @@ console.log(ht.values()); // ["#800000", "#FFFF00", "#808000", "#FA8072", "#F080
 
 ### 인접 리스트를 사용한 구현
 
-```
+```js
 class Graph {
   constructor() {
     this.adjacencyList = {};
@@ -3391,7 +3375,7 @@ console.log(basicGraph);
 
 ### 너비 우선 탐색(BFS) 구현
 
-```
+```js
  bfs(vertex) {
     // This function should accept a starting vertex
     // Create a queue (you can use an array) and place the starting vertex in it
@@ -3430,7 +3414,7 @@ console.log(basicGraph);
 
 ### 깊이 우선 탐색(DFS) 구현 - 재귀
 
-```
+```js
   dfRecursive(startVertex) {
     // The function should accept a starting node
     // Create a 'results' variable to store the end result, to be returned at the very end
@@ -3485,7 +3469,7 @@ const list = {
 
 ### 깊이 우선 탐색(DFS) 구현 - 순환
 
-```
+```js
 dfIterative(vertex) {
     // The function should accept a starting node
     // Create a stack to help use keep track of vertices (use a list/ array)
@@ -3598,7 +3582,7 @@ const list = {
 
 ### 자바스크립트로 다익스트라 알고리즘 구현
 
-```
+```js
 class PriorityQueue {
   constructor() {
     this.values = [];
@@ -3760,7 +3744,7 @@ console.log(graph.Dijkstra('A', 'E'));
 
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F8B7R9%2FbtsIqVI8vcY%2F4gqx1tnH4U0ALdWxPe13Ik%2Fimg.png" width="480" alt="시간 복잡도"/>
 
-```
+```js
 function fib(n) {
   if (n <= 2) return 1;
 
@@ -3772,7 +3756,7 @@ console.log(fib(2)); // 13
 
 ### 메모이제이션을 사용한 피보나치 수열 (탑다운 방식)
 
-```
+```js
 function fib_memo(n, memo = []) {
   if (memo[n] !== undefined) return memo[n];
   if (n <= 2) return 1;
@@ -3802,7 +3786,7 @@ console.log(fib_memo(10));
 
 ### 테이블링을 사용한 피보나치 수열 (바텀업 방식)
 
-```
+```js
 function fib_tabulation(n) {
   if (n <= 2) return 1;
   let fibNums = [0, 1, 1];
