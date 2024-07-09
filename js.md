@@ -1194,24 +1194,30 @@ function () {
 함수를 어디서 '호출' 했는지가 아닌 어디서 '정의' 했는지에 따라 함수의 상위 스코프를 결정하는 것이 정적 스코프 즉, 렉시컬 스코프를 의미합니다.
 
 ```js
-var x = 1;
+function outer() {
+  let outerVar = 'I am from outer';
 
-function foo() {
-  var x = 10;
-  bar();
+  function inner() {
+    let innerVar = 'I am from inner';
+    console.log(outerVar); // 접근 가능
+    console.log(innerVar); // 접근 가능
+  }
+
+  inner();
+  console.log(outerVar); // 접근 가능
+  // console.log(innerVar); // 접근 불가, ReferenceError 발생
 }
 
-function bar() {
-  console.log(x);
-}
-
-foo(); // ?
-bar(); // ?
+outer();
 ```
 
-소스코드의 실행에 있어서 foo 함수 내부에서 bar 함수를 '호출' 하더라도, bar 함수는 foo 함수와 동일한 스코프인 전역 스코프에 '정의'되어 있기 때문에 foo 함수 내부의 x=10을 참조할 수 없습니다.
+위 코드에서 inner 함수는 outer 함수 내부에 정의되어 있습니다. 자바스크립트는 렉시컬 스코핑을 사용하여 스코프 체인을 구축합니다. 이는 다음과 같은 스코프 체인을 생성합니다:
 
-따라서 foo, bar의 호출한 결과는 모두 1로 반환됩니다. 이러한 자바스크립트의 정적인 스코프 특징을 '렉시컬 스코프', '정적 스코프' 라고 부릅니다.
+- Global Scope: 전역 변수와 함수가 정의되는 스코프
+- Outer Function Scope: outer 함수 내에서 정의된 변수 outerVar가 있는 스코프
+- Inner Function Scope: inner 함수 내에서 정의된 변수 innerVar가 있는 스코프
+
+inner 함수는 자신을 둘러싼 외부 함수 outer의 스코프를 렉시컬하게 기억합니다. 따라서 inner 함수 내부에서는 outer 함수의 변수인 outerVar에 접근할 수 있습니다. 그러나 outer 함수는 inner 함수 내부의 변수인 innerVar에 접근할 수 없습니다.
 
 <br/>
 
