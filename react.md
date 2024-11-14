@@ -835,7 +835,7 @@ export default function App() {
 }
 ```
 
-useReducer를 사용하는 모습이 언뜻 보면 복잡해 보일 수 있지만 useReducer의 목적은 간다합니다. 복잡한 형태의 state를 사전에 정의된 dispatcher로만 수정할 수 있게 만들어 줌으로써 state 값에 대한 접근은 컴포넌트에서만 가능하게 하고, 이를 업데이트하는 방법에 대한 상세 정의는 컴포넌트 밖에 둔 다음, state의 업데이트를 미리 정의해 둔 dispatcher로만 제한하는 것이다.
+useReducer를 사용하는 모습이 언뜻 보면 복잡해 보일 수 있지만 useReducer의 목적은 간단합니다. 복잡한 형태의 state를 사전에 정의된 dispatcher로만 수정할 수 있게 만들어 줌으로써 state 값에 대한 접근은 컴포넌트에서만 가능하게 하고, 이를 업데이트하는 방법에 대한 상세 정의는 컴포넌트 밖에 둔 다음, state의 업데이트를 미리 정의해 둔 dispatcher로만 제한하는 것이다.
 
 **state의 값을 변경하는 시나리오를 제한적으로 두고 이에 대한 변경을 빠르게 확인할 수 있게끔 하는 것이 useReducer의 목적이다.**
 
