@@ -1022,6 +1022,12 @@ console.log(person);
 
 ### 객체 프로퍼티 접근 시 메모리 동작은 어떻게 되나요? (프로토타입 체인 탐색) 🔥
 
+`person.name에 접근할 때와 person.hobby (없는 프로퍼티)에 접근하려고 할 때는 어떻게 동작하나요?`
+
+```js
+let person = { name: 'junhee', age: 29 };
+```
+
 #### 메모리 구조
 
 `let person = { name: 'junhee', age: 29 }`가 실행되면:
