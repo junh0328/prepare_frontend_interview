@@ -1,0 +1,34 @@
+{
+  "name": "prepare_frontend_interview",
+  "version": "1.0.0",
+  "description": "프론트엔드 개발자의 인터뷰 준비를 위한 레포지토리입니다. ",
+  "keywords": [
+    "frontend",
+    "interview",
+    "javascript",
+    "computer science"
+  ],
+  "homepage": "https://github.com/junh0328/prepare_frontend_interview#readme",
+  "bugs": {
+    "url": "https://github.com/junh0328/prepare_frontend_interview/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/junh0328/prepare_frontend_interview.git"
+  },
+  "license": "ISC",
+  "author": "junhee lee",
+  "type": "module",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  }
+}
