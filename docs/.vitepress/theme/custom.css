@@ -1,0 +1,33 @@
+/* 앵커 링크 스크롤 여백 */
+:target {
+  scroll-margin-top: 80px;
+}
+
+/* 불 이모지 강조 */
+:root {
+  --vp-c-brand-1: #ff6b6b;
+  --vp-c-brand-2: #ff8787;
+  --vp-c-brand-3: #fc8888;
+}
+
+/* 코드 블록 스타일 */
+.vp-doc div[class*='language-'] {
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+/* 목차 스타일 */
+.VPDocAsideOutline {
+  padding-top: 24px;
+}
+
+/* 스크롤 동작 부드럽게 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 헤더에 약간의 패딩 추가 (앵커 스크롤 시 헤더가 상단에 딱 붙지 않게) */
+.vp-doc h2,
+.vp-doc h3 {
+  scroll-margin-top: 80px;
+}
