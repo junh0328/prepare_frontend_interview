@@ -52,7 +52,7 @@ features:
 
 ## 📚 학습 가이드
 
-### <a href="./prompt_engineering.md">프롬프트 엔지니어링 가이드 (2025-11-11)</a>
+### <a href="./prompt_engineering">프롬프트 엔지니어링 가이드 (2025-11-11)</a>
 
 CLAUDE CODE와 협업하여 이 핸드북을 개선한 실제 과정을 담은 가이드입니다.
 
@@ -109,7 +109,7 @@ ex)
 템플릿을 작성해 두었으니, 해당 예시 이슈에 맞춰 작성해주시면 됩니다!
 ```
 
-## <a href="./cs.md">① Computer Science</a>
+## <a href="./cs">① Computer Science</a>
 
 - `네트워크 🔥`
 
@@ -228,7 +228,7 @@ ex)
   - 타입의 유틸리티 타입 중 알고 있는 것들에 대해 가볍게 설명해주세요
   - 프로젝트 진행 시에 어떤 상황에서 타입을 쓰고 어떤 상황에서 인터페이스를 썼나요?
 
-## <a href="./html_css.md">② HTML/ CSS</a>
+## <a href="./html_css">② HTML/ CSS</a>
 
 ### **HTML**
 
@@ -315,7 +315,7 @@ ex)
   - padding에 대하여
   - margin에 대하여
 
-## <a href="./js.md">③ JavaScript</a>
+## <a href="./js">③ JavaScript</a>
 
 - `프로그래밍 🔥`
 
@@ -539,7 +539,7 @@ ex)
 
   - 자바스크립트의 가비지 컬렉션에 대해 알고 있나요?
 
-## <a href="./react.md">④ React</a>
+## <a href="./react">④ React</a>
 
 - `React 시작🔥`
 - `리액트는 라이브러리인가요 프레임워크 인가요?🔥`
@@ -615,7 +615,7 @@ ex)
 - `controlled pattern에 대해서 아나요?`
 - `uncontrolled pattern에 대해서 아나요?`
 
-## <a href="./data_structure.md">⑤ 자료구조</a>
+## <a href="./data_structure">⑤ 자료구조</a>
 
 - `자료구조란 무엇인가요 🔥`
 
@@ -635,7 +635,7 @@ ex)
 - `힙 🔥`
 - `그래프 🔥`
 
-## <a href="./algorithm_data_structure.md">⓺ 알고리즘과 자료구조 v2</a>
+## <a href="./algorithm_data_structure">⓺ 알고리즘과 자료구조 v2</a>
 
 - `Frequency Counters`
 - `Multiple Pointers`
