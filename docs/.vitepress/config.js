@@ -31,7 +31,8 @@ export default defineConfig({
           { text: '알고리즘', link: '/algorithm_data_structure' }
         ]
       },
-      { text: '면접 질문 모음', link: '/question_list' }
+      { text: '면접 질문 모음', link: '/question_list' },
+      { text: '프롬프트 엔지니어링', link: '/prompt_engineering' }
     ],
 
     // 사이드바
@@ -125,6 +126,15 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: '질문 모음', link: '/question_list' }
+          ]
+        }
+      ],
+      '/prompt_engineering': [
+        {
+          text: '프롬프트 엔지니어링',
+          collapsed: false,
+          items: [
+            { text: '가이드', link: '/prompt_engineering' }
           ]
         }
       ]

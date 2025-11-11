@@ -38,6 +38,10 @@ features:
     title: 알고리즘
     details: 정렬, 탐색, 동적 프로그래밍 등 알고리즘 패턴
     link: /algorithm_data_structure
+  - icon: 🤖
+    title: 프롬프트 엔지니어링
+    details: Claude Code와 협업하여 프로젝트를 개선하는 실전 가이드
+    link: /prompt_engineering
 ---
 
 ## 프로젝트 소개
