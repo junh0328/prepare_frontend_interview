@@ -707,13 +707,16 @@ console.log(typeof x, x); // number 10
 
 ### 명시적 타입 변환 함수를 예를 들어볼 수 있나요?
 
-문자열이 아닌 값을 문자열 타입으로 변환하는 방법
+명시적 타입 변환은 **String(), Number(), Boolean() 생성자 함수**를 new 없이 호출하거나, **toString(), parseInt()** 등의 메서드를 사용한다. 단축 표기로 **문자열 연결(+ ''), 단항 연산자(+), 이중 부정(!!)** 등도 자주 사용된다.
+
+<details>
+<summary>타입별 변환 방법 및 예제 코드 보기</summary>
+
+#### 문자열 타입으로 변환
 
 1. String 생성자 함수를 new 연산자 없이 호출하는 방법
 2. Object.prototype.toString 메서드를 사용하는 방법
 3. 문자열 연결 연산자를 이용하는 방법
-
-<details>
 
 ```js
 // 1. String 생성자 함수를 new 연산자 없이 호출하는 방법
@@ -726,16 +729,12 @@ String(1); // -> "1"
 1 + ''; // -> "1"
 ```
 
-</details>
-
-숫자 타입이 아닌 값을 숫자 타입으로 변환하는 방법
+#### 숫자 타입으로 변환
 
 1. Number 생성자 함수를 new 연산자 없이 호출하는 방법
 2. parseInt, parseFloat 함수를 사용하는 방법(문자열만 변환 가능)
 3. `+` 단항 산술 연산자를 이용하는 방법
 4. `*` 산술 연산자를 이용하는 방법
-
-<details>
 
 ```js
 // 1. Number 생성자 함수를 new 연산자 없이 호출하는 방법
@@ -751,14 +750,10 @@ parseInt('0'); // -> 0
 '0' * 1; // -> 0
 ```
 
-</details>
-
-불리언 타입이 아닌 값을 불리언 타입으로 변환하는 방법
+#### 불리언 타입으로 변환
 
 1. Boolean 생성자 함수를 new 연산자 없이 호출하는 방법
 2. ! 부정 논리 연산자를 두번 사용하는 방법
-
-<details>
 
 ```js
 // 1. Boolean 생성자 함수를 new 연산자 없이 호출하는 방법
@@ -2210,6 +2205,13 @@ class Derived extends Base {}
 
 ### 클래스 확장
 
+`extends` 키워드를 사용해 기존 클래스를 상속받아 새로운 클래스를 확장할 수 있다. `super` 키워드로 수퍼클래스의 constructor와 메서드를 호출하며, 메서드 오버라이딩을 통해 상속받은 메서드를 재정의할 수 있다. 이를 통해 코드 재사용성과 계층적 관계를 표현할 수 있다.
+
+<details>
+<summary>상세 설명 및 예제 코드 보기</summary>
+
+#### 기본 클래스 상속 예제
+
 ```js
 class Animal {
   constructor(age, weight) {
@@ -2371,6 +2373,8 @@ console.log(colorRectangle.toString()); // width = 2, height = 4, color = red
 자바스크립트는 오버로딩을 지원하지 않지만 arguments 객체를 사용하여 구현할 수는 있다.
 ```
 
+</details>
+
 ## 스프레드 문법
 
 📌 **관련 주제**: [배열](#배열), [구조 분해 할당](#구조-분해-할당), [객체 리터럴](#객체-리터럴)
@@ -2413,7 +2417,12 @@ after user:  {
 
 ### 어떤 상황에서 사용할 수 있죠?
 
-스프레드 문법을 사용할 수 있는 대상은 다음과 같이 한정된다.
+스프레드 문법은 **이터러블**(Array, String, Map, Set, DOM 컬렉션, arguments 등)에만 사용 가능하다. **① 함수 인수 목록**, **② 배열 리터럴**, **③ 객체 리터럴** 세 가지 상황에서 활용되며, 배열 병합/복사, 객체 얕은 복사 등 간결한 코드 작성에 유용하다.
+
+<details>
+<summary>상세 설명 및 예제 코드 보기</summary>
+
+#### 스프레드 문법 사용 가능 대상
 
 1. Array
 2. String
@@ -2434,15 +2443,7 @@ console.log(...{ a: 1, b: 2 });
 // TypeError: Found non-callable @@iterator
 ```
 
-위와 같은 대상에 대해 3가지 상황에서 사용할 수 있다.
-
-1. 함수 호출문의 인수 목록에서 사용하는 경우
-
-2. 배열 리터럴 내부에서 사용하는 경우
-
-3. 객체 리터럴 내부에서 사용하는 경우
-
-<details>
+#### 스프레드 문법 활용 상황
 
 <b>① 함수 호출문의 인수 목록에서 사용하는 경우</b>
 
@@ -2504,10 +2505,10 @@ console.log(merged); // { x: 1, y: 2, a: 3, b: 4 }
 
 ### 구조 분해 할당은 크게 어떤 종류가 있나요?
 
-1. 배열 구조분해 할당
-2. 객체 구조분해 할당
+구조 분해 할당은 **배열 구조분해**와 **객체 구조분해** 두 가지로 나뉜다. 배열은 인덱스 순서대로 할당되며, 객체는 프로퍼티 키 기준으로 할당된다. 기본값 설정, 변수명 변경, 중첩 객체 접근 등 다양한 패턴으로 활용할 수 있다.
 
 <details>
+<summary>상세 설명 및 예제 코드 보기</summary>
 
 <b>① 배열 구조분해 할당</b>
 
@@ -3237,17 +3238,14 @@ console.log(add(2, 5)); >>> 7;
 
 ### 타이머 함수에는 어떤 것들이 있나요?
 
-1. setTimeout/ clearTimeout
+자바스크립트는 **setTimeout/clearTimeout**(일정 시간 후 단 한 번 실행)과 **setInterval/clearInterval**(일정 시간마다 반복 실행) 타이머 함수를 제공한다. 타이머 함수는 고유한 타이머 id를 반환하며, clear 함수에 id를 전달하여 타이머를 취소할 수 있다.
 
-2. setInterval/ clearInterval
+<details>
+<summary>타이머 함수 상세 설명 및 예제 보기</summary>
 
 <b>① setTimeout/ clearTimeout</b>
 
 setTimeout 함수로 생성한 타이머는 한 번 동작합니다.
-
-<details>
-
-<br/>
 
 ```js
 const timeoutdId = setTimeout(func|code[, delay, param1, param2, ...]);
@@ -3379,17 +3377,10 @@ scroll, resize, mousemove 같은 이벤트는 짧은 시간 간격으로 연속�
 
 ### 쓰로틀에 대해서 알고 있나요?
 
-쓰로틀(throttle)은 짧은 시간 간격으로 이벤트가 연속해서 발생하더라도 일정 시간 간격으로 이벤트 핸들러가 최대 한 번만 호출되도록 한다.
-
-쓰로틀은 짧은 시간 간격으로 연속해서 발생하는 이벤트를 그룹화해서 일정 시간 단위로 이벤트 핸들러가 호출되도록 호출 주기를 만든다.
-
-scroll 이벤트는 사용자가 스크롤할 때 짧은 시간 간격으로 연속해서 발생한다
-
-이처럼 짧은 시간 간격으로 연속해서 발생하는 이벤트의 과도한 이벤트 핸들러의 호출을 방지하기 위해 throttle 함수를 통해 호출 주기를 만든다
-
-쓰로틀은 scroll 이벤트 처리나 무한 스크롤 UI 구현 등에 유용하게 사용된다
+**쓰로틀(throttle)**은 짧은 시간 간격으로 이벤트가 연속 발생하더라도 **일정 시간 간격으로 최대 한 번만** 이벤트 핸들러가 호출되도록 제한한다. scroll, resize, mousemove 등 연속 발생 이벤트의 호출 주기를 제어하여 성능을 최적화한다. 무한 스크롤 UI 구현 등에 유용하다.
 
 <details>
+<summary>쓰로틀 구현 예제 코드 보기</summary>
 
 ```html
 <!DOCTYPE html>
@@ -4345,12 +4336,10 @@ Promise 생성자 함수가 인수로 전달받은 콜백 함수 내부에서 �
 
 ### 프로미스 빌트인 객체가 제공하는 정적 메서드에 대해 알고 있나요?
 
-- Promise.resolve/ Promise.reject
-- Promise.all
-- Promise.race
-- Promise.allSettled
+Promise 객체는 **Promise.resolve/reject**(값 래핑), **Promise.all**(모든 프로미스 병렬 처리 및 완료 대기), **Promise.race**(가장 먼저 완료된 것 반환), **Promise.allSettled**(모든 settled 상태 대기) 등의 정적 메서드를 제공한다. 각 메서드는 비동기 처리 패턴에 따라 적절히 선택하여 사용할 수 있다.
 
 <details>
+<summary>상세 설명 및 예제 코드 보기</summary>
 
 **① Promise.resolve/ Promise.reject**
 
@@ -4537,16 +4526,12 @@ console.log(generator.next()); // {value: undefined, done: true}
 
 ### `async/await 가 뭔가요? 기존의 Promise와는 어떤 차이가 있죠?`
 
+**async/await**는 ES8에서 도입된 문법으로, **프로미스를 기반**으로 동작하지만 **then/catch 체이닝 없이 동기 코드처럼** 비동기 처리를 작성할 수 있다. **에러 핸들링은 try/catch**를 사용하며, Promise.all과 함께 사용하면 병렬 처리도 가능하다. 코드 가독성이 뛰어나 현대적인 비동기 처리의 표준으로 자리잡았다.
+
 [Link MDN: async function🔥](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/async_function)
 
-ES8에서는 제너레이터보다 간단하고 가독성 좋게 `비동기 처리를 동기 처리처럼 동작하도록 구현할 수 있는` async/await가 도입되었다.
-
-async/await는 `프로미스를 기반으로 동작`하기 때문에 **프로미스의 then/catch/finally 등의 후속 처리 메서드에 콜백 함수를 전달해서 비동기 처리 결과를 후속 처리할 필요 없이 마치 동기 처리처럼 프로미스를 사용할 수 있다.**
-
-🔥 **다시 말해, 프로미스의 후속 처리 메서드 없이 마치 동기 처리처럼 프로미스가 처리 결과를 반환하도록 구현할 수 있다.**
-
 <details>
-<summary>코드 보기 📌</summary>
+<summary>상세 설명 및 예제 코드 보기</summary>
 
 #### `async 함수`
 

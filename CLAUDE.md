@@ -23,12 +23,13 @@
 
 - **question_list.md** - 실제 기업 면접에서 받은 질문들 (A-F 기업) 및 자가 평가 (✅ 답변함 / ❎ 어려웠음)
 - **README.md** - 주제별로 정리된 모든 질문의 목차
-- **flux_pattern.tsx** - Flux 패턴 구현 예제
-- **useState.jsx** - useState 훅 예제
-- **useReducer.tsx** - useReducer 훅 예제
 
 ### 디렉토리
 
+- **examples/** - React 및 상태 관리 패턴 구현 예제 코드
+  - **flux_pattern.tsx** - Flux 패턴 구현 예제
+  - **useState.jsx** - useState 훅 예제
+  - **useReducer.tsx** - useReducer 훅 예제
 - **images/** - JavaScript/React 개념의 스크린샷과 다이어그램
 - **cs_images/** - CS 주제 관련 다이어그램
 - **pdf/** - 학습 자료의 PDF 버전
