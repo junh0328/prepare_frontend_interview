@@ -657,7 +657,7 @@ C언어에서는 malloc, java에서는 new 키워드로 Heap 영역에 메모리
 
 Heap 메모리의 해제는 C에서는 free 함수로 해제하며, java에서는 JVM에서 가비지 컬렉터가 지우는 시점에 해제된다.
 
-<img src="https://3.bp.blogspot.com/-7FF1hm4-m1w/W11mkhDHvfI/AAAAAAAAAFI/bNWuGgr6W3YmteTK9p4e3l5JW2-dI65gwCLcBGAs/s320/%25EB%25A9%2594%25EB%25AA%25A8%25EB%25A6%25AC.PNG" alt="메모리의 힙">
+<img src="https://3.bp.blogspot.com/-7FF1hm4-m1w/W11mkhDHvfI/AAAAAAAAAFI/bNWuGgr6W3YmteTK9p4e3l5JW2-dI65gwCLcBGAs/s320/%25EB%25A9%2594%25EB%25AA%25A8%25EB%25A6%25AC.png" alt="메모리의 힙">
 
 #### 자료구조의 힙(Heap)
 
@@ -665,7 +665,7 @@ Heap 메모리의 해제는 C에서는 free 함수로 해제하며, java에서�
 
 힙에는 최소 힙과 최대 힙이 있다. 최대 힙은 루트노드로 갈수록 값이 커지며, 최소 힙은 루트노드로 갈수록 값이 작아진다.
 
-<img src="https://4.bp.blogspot.com/-aByMeNVnVLI/W11pUWsy5CI/AAAAAAAAAFY/ekEjOt7JsZAceB9Z_EIuiv-Vj0UCIT7bQCLcBGAs/s400/heap%257E%257E.PNG" alt="자료구조의 힙">
+<img src="https://4.bp.blogspot.com/-aByMeNVnVLI/W11pUWsy5CI/AAAAAAAAAFY/ekEjOt7JsZAceB9Z_EIuiv-Vj0UCIT7bQCLcBGAs/s400/heap%257E%257E.png" alt="자료구조의 힙">
 
 </details>
 

@@ -18,29 +18,44 @@ const filesToSync = [
   'prompt_engineering.md',
 ];
 
+// 이미지 확장자를 소문자로 변환하는 함수
+function lowercaseImageExtensions(content) {
+  // .PNG, .JPG, .JPEG, .GIF, .SVG, .WEBP 등 대문자 확장자를 소문자로 변환
+  return content.replace(
+    /(\!\[.*?\]\(.*?)\.(PNG|JPG|JPEG|GIF|SVG|WEBP|BMP|ICO)(\))/gi,
+    (match, prefix, ext, suffix) => `${prefix}.${ext.toLowerCase()}${suffix}`
+  ).replace(
+    /(src=["'].*?)\.(PNG|JPG|JPEG|GIF|SVG|WEBP|BMP|ICO)(["'])/gi,
+    (match, prefix, ext, suffix) => `${prefix}.${ext.toLowerCase()}${suffix}`
+  );
+}
+
 // 이미지 경로 변환 함수
 function convertImagePaths(content) {
-  return (
-    content
-      // ./images/ → /images/
-      .replace(/\(\.\/images\//g, '(/images/')
-      // (images/ → (/images/ (괄호 뒤에 바로 images가 오는 경우)
-      .replace(/\(images\//g, '(/images/')
-      // src="./images/ → src="/images/
-      .replace(/src="\.\/images\//g, 'src="/images/')
-      // src="images/ → src="/images/
-      .replace(/src="images\//g, 'src="/images/')
-      // ./cs_images/ → /cs_images/
-      .replace(/\(\.\/cs_images\//g, '(/cs_images/')
-      .replace(/\(cs_images\//g, '(/cs_images/')
-      .replace(/src="\.\/cs_images\//g, 'src="/cs_images/')
-      .replace(/src="cs_images\//g, 'src="/cs_images/')
-      // ./examples/ → /examples/
-      .replace(/\(\.\/examples\//g, '(/examples/')
-      .replace(/\(examples\//g, '(/examples/')
-      .replace(/src="\.\/examples\//g, 'src="/examples/')
-      .replace(/src="examples\//g, 'src="/examples/')
-  );
+  let result = content
+    // ./images/ → /images/
+    .replace(/\(\.\/images\//g, '(/images/')
+    // (images/ → (/images/ (괄호 뒤에 바로 images가 오는 경우)
+    .replace(/\(images\//g, '(/images/')
+    // src="./images/ → src="/images/
+    .replace(/src="\.\/images\//g, 'src="/images/')
+    // src="images/ → src="/images/
+    .replace(/src="images\//g, 'src="/images/')
+    // ./cs_images/ → /cs_images/
+    .replace(/\(\.\/cs_images\//g, '(/cs_images/')
+    .replace(/\(cs_images\//g, '(/cs_images/')
+    .replace(/src="\.\/cs_images\//g, 'src="/cs_images/')
+    .replace(/src="cs_images\//g, 'src="/cs_images/')
+    // ./examples/ → /examples/
+    .replace(/\(\.\/examples\//g, '(/examples/')
+    .replace(/\(examples\//g, '(/examples/')
+    .replace(/src="\.\/examples\//g, 'src="/examples/')
+    .replace(/src="examples\//g, 'src="/examples/');
+
+  // 이미지 확장자를 소문자로 변환
+  result = lowercaseImageExtensions(result);
+
+  return result;
 }
 
 // 파일 동기화

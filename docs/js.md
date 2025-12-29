@@ -2764,7 +2764,7 @@ DOM 요소를 조작하는 `<script>` 태그가 `<body>` 태그 위에 존재한
 
 HTML 파싱과 외부 자바스크립트 파일의 로드가 비동기적으로 동시에 진행된다. 단, 자바스크립트의 파싱과 실행은 자바스크립트의 파일의 로드가 완료된 직후 진행되며, 이때 HTML 파싱은 중단된다.
 
-<img src="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/images/35_10.JPG" alt="async"/>
+<img src="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/images/35_10.jpg" alt="async"/>
 
 여러 개의 script 태그에 async 어트리뷰트를 지정하면 script 태그의 순서와는 상관없이 로드가 완료된 자바스크립트부터 먼저 실행되므로 순서가 보장되지 않는다.
 
@@ -2772,7 +2772,7 @@ HTML 파싱과 외부 자바스크립트 파일의 로드가 비동기적으로 
 
 async 어트리뷰트와 마찬가지로 HTML 파싱과 외부 자바스크립트 파일의 로드가 비동기적으로 동시에 진행된다. 단, 자바스크립트의 파싱과 실행은 HTML 파싱이 완료된 직후, 즉 DOM 생성이 완료된 직후 진행된다. 따라서 DOM 생성이 완료된 이후 실행되어야 할 자바스크립트에 유용하다.
 
-<img src="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/images/35_11.JPG" alt="defer"/>
+<img src="https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/images/35_11.jpg" alt="defer"/>
 
 </details>
 
