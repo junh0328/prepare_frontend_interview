@@ -24,11 +24,14 @@
     "example": "examples"
   },
   "scripts": {
+    "sync:docs": "node scripts/sync-docs.js",
     "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:build": "pnpm run sync:docs && vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "prepare": "husky"
   },
   "devDependencies": {
+    "husky": "^9.1.7",
     "vitepress": "^1.6.4"
   }
 }

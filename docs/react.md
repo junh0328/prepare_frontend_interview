@@ -419,19 +419,19 @@ export default function App() {
 
 `MVC` 패턴의 경우 사용자의 어떠한 행위(액션)가 있을 때, 이를 바탕으로 설계된 `컨트롤러`를 통해 `모델`을 변화하고 이를 `뷰`에 반영합니다.
 
-<img width="500" src="/images/mvc1.png" alt="MVC 패턴"/>
+<img width="500" src="/images/mvc1.PNG" alt="MVC 패턴"/>
 
 보여져야 할 `뷰`가 적거나, 변경될 `모델`이 많지 않다면 매우 효율적인 구조일 것입니다.
 
 하지만, `모델`과 `뷰`가 복잡하게 얽혀 있다면 어떤 모델이 변화되어 뷰가 변경되었는지 제대로 확인할 수 없는 경우가 생깁니다.
 
-<img width="500" src="/images/mvc2.png" alt="MVC 패턴"/>
+<img width="500" src="/images/mvc2.PNG" alt="MVC 패턴"/>
 
 실제로 `페이스북`에서는 `MVC` 패턴으로 설계한 구조 때문에, 아직 읽지 않은 메세지를 표시하지만, 실제로 들어가 보면 새로운 메세지가 없는 경우가 있었습니다.
 
 이를 해결하기 위해 나온 단방향 데이터 흐름을 제어하는 패턴이 `FLUX` 입니다.
 
-<img width="500" src="/images/flux1.png" alt="FLUX 패턴"/>
+<img width="500" src="/images/flux1.PNG" alt="FLUX 패턴"/>
 
 사용자의 행위 `액션`은 `디스패쳐`에 의해 통제됩니다. `디스패처`가 `스토어`를 업데이트하고 변경된 `스토어`에 대한 `뷰`를 리렌더링합니다.
 

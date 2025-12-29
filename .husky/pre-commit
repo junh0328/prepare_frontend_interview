@@ -1,0 +1,5 @@
+# 루트 마크다운 → docs/ 동기화
+pnpm run sync:docs
+
+# 변경된 docs/ 파일들 스테이징
+git add docs/*.md
