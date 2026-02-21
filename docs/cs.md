@@ -11,7 +11,6 @@
 ## 목차
 
 - [`네트워크 🔥`](#네트워크)
-
   - 네트워크에서 패킷이란 무엇을 의미하나요? 🔥
   - 네트워크에서 처리량은 무엇을 의미하나요? 🔥
   - 지연시간이란 무엇인가요? 🔥
@@ -26,8 +25,7 @@
   - MAC 주소란 무엇인가요? 🔥
   - NAT란 무엇인가요? 🔥
 
-- [HTTP 🔥](#HTTP)
-
+- [HTTP 🔥](#http)
   - HTTP란 뭔가요? 🔥🔥
   - HTTP 프로토콜의 가장 큰 특징은 뭔가요? 🔥🔥🔥
   - URL은 뭔가요? 🔥🔥
@@ -46,7 +44,6 @@
   - HTTPS 인증서 발급 과정에 대해 아나요? 🔥🔥
 
 - [`운영체제 🔥`](#운영체제)
-
   - 운영체제란 무엇인가요? 🔥🔥
   - 운영체제는 어떤 역할을 하나요? 🔥🔥
   - 운영체제는 어떤 구조로 이루어져 있나요? 🔥
@@ -58,7 +55,6 @@
   - 메모리는 어떤 방식으로 데이터를 관리하나요? 🔥
 
 - [프로세스와 스레드 🔥](#프로세스와-스레드)
-
   - 프로세스가 뭔가요? 🔥🔥🔥
   - 스레드가 뭔가요? 🔥🔥🔥
   - 프로세스와 스레드는 어떤 차이가 있나요? 🔥🔥🔥🔥
@@ -68,14 +64,12 @@
   - PCB는 무엇인가요? 어떤 용도로 사용되나요? (메타 데이터) 🔥
 
 - [싱글 스레드와 멀티 스레드 🔥](#싱글-스레드와-멀티-스레드)
-
   - 싱글 스레드 장점 🔥🔥
   - 싱글 스레드 단점 🔥🔥
   - 멀티 스레드 장점 🔥🔥
   - 멀티 스레드 단점 🔥🔥
 
 - [공유 자원 임계 영역 교착 상태 🔥](#공유-자원-임계-영역-교착-상태)
-
   - 공유 자원 🔥🔥
   - 임계 영역 🔥🔥
   - 뮤텍스 🔥🔥
@@ -83,7 +77,6 @@
   - 교착 상태 🔥🔥
 
 - [쿠키 세션 🔥](#쿠키-세션)
-
   - 쿠키, 세션을 왜 쓰나요? 🔥🔥🔥
   - 쿠키가 뭔가요? 🔥🔥🔥
   - 세션이 뭔가요? 🔥🔥🔥
@@ -91,30 +84,26 @@
   - JWT을 아나요? 🔥🔥🔥
   - JWT를 웹 스토리지에 저장해야 한다면 어디다 저장하시겠나요? 이유는요? 🔥🔥
 
-- [CORS 🔥](#CORS)
-
+- [CORS 🔥](#cors)
   - CORS가 뭔가요? 🔥🔥🔥🔥
   - CORS를 겪고 직접 해결해 본 경험이 있으면 말해주세요 🔥🔥🔥
 
 - [개발 방법론 🔥](#개발-방법론)
-
   - 소프트웨어 개발 주기(SDLC)에 대해 아나요? 🔥
   - 폭포수 방법론이란 뭔가요? 🔥
   - 애자일 방법론이란 뭔가요? 🔥🔥
 
-- [Cache 🔥](#Cache)
+- [Cache 🔥](#cache)
 
 - 캐시란 무엇인가요? 🔥🔥🔥
 
-- [CDN 🔥](#CDN)
-
+- [CDN 🔥](#cdn)
   - CDN이란 뭔가요? 🔥🔥🔥
   - CDN의 동작 방식을 설명해주세요 🔥🔥
   - CDN의 주요 장점은 무엇인가요? 🔥
   - CDN 캐시 무효화(Cache Invalidation)란? 🔥
 
 - [테스트 🔥](#테스트)
-
   - 테스트란 무엇인가요? 🔥
   - 테스트의 예는 어떤 것들이 있나요? 🔥
   - 테스트는 왜 해야 하나요? 🔥🔥
@@ -124,7 +113,6 @@
   - 테스트 피라미드에 대해 아나요? 🔥
 
 - [웹팩 🔥](#웹팩)
-
   - 웹팩이란? 🔥🔥🔥
   - 모듈이란? 🔥🔥
   - 모듈 번들링이란? 🔥🔥🔥
@@ -133,7 +121,6 @@
   - 웹팩의 주요 속성 4가지 🔥🔥
 
 - [타입과 인터페이스 🔥](#타입과-인터페이스)
-
   - 이 글을 보시는 분들께
   - 타입스크립트를 왜 쓰나요? (본인이 느낀점) 🔥🔥
   - 타입과 인터페이스의 차이를 아나요? 🔥🔥🔥
@@ -142,7 +129,7 @@
 
 ## 네트워크
 
-📌 **관련 주제**: [HTTP](#HTTP), [운영체제](#운영체제), [프로세스와 스레드](#프로세스와-스레드)
+📌 **관련 주제**: [HTTP](#http), [운영체제](#운영체제), [프로세스와 스레드](#프로세스와-스레드)
 
 네트워크란 **노드와 링크가 서로 연결되어 있으며 리소스를 공유하는 집합**을 의미합니다. 여기서 노드란 서버, 라우터, 스위치 등 네트워크 장치를 의미하고 링크는 유선 또는 무선을 의미합니다.
 
@@ -158,7 +145,6 @@
 패킷은 헤더, 데이터, 트레일러 구조로 구성됩니다:
 
 1. **헤더(Header):**
-
    - 목적지 주소 - 패킷이 전송되어야 할 대상의 네트워크 주소
    - 출발지 주소 - 패킷을 전송한 장치의 네트워크 주소
    - 프로토콜 정보 - 패킷에 담긴 데이터가 어떤 프로토콜(TCP, UDP 등)을 사용했는지 나타냄
@@ -166,7 +152,6 @@
    - 기타 정보 - 패킷 순서, 분할 여부 등
 
 2. **데이터(Payload):**
-
    - 실제 전송하고자 하는 데이터 콘텐츠
 
 3. **트레일러(Trailer):**
@@ -292,22 +277,18 @@ ACK 단계 [ESTABLISHED > ESTABLISHED]
 <br/>
 
 1. **연결 지향성 vs 비연결 지향성:**
-
    - TCP: 연결 지향적 프로토콜입니다. 데이터 전송을 시작하기 전에 송신자와 수신자 사이에 연결을 설정해야 합니다. 이 연결은 "3-way handshake"라고 불리는 과정으로 설정됩니다. 연결이 설정된 후에야 데이터가 전송되기 시작합니다.
    - UDP: 비연결 지향적 프로토콜입니다. 데이터 전송을 시작하기 전에 연결을 설정할 필요가 없습니다. 송신자는 수신자의 주소를 알고 있으면 언제든지 데이터를 보낼 수 있습니다.
 
 2. **신뢰성:**
-
    - TCP: 신뢰성 있는 데이터 전송을 보장합니다. 데이터 패킷이 손실되거나 손상되면 재전송을 요청합니다. 순서가 잘못된 패킷은 올바른 순서로 재조립됩니다.
    - UDP: 신뢰성 있는 전송을 보장하지 않습니다. 패킷이 손실되거나 순서가 뒤바뀌더라도 재전송을 요청하지 않습니다. 따라서 일부 데이터가 손실될 수 있습니다.
 
 3. **데이터 흐름 제어 및 혼잡 제어:**
-
    - TCP: 데이터 흐름을 제어하여 송신자가 수신자가 처리할 수 있는 속도에 맞춰 데이터를 보냅니다. 또한 네트워크 혼잡 상황을 감지하고 조절합니다.
    - UDP: 데이터 흐름 제어나 혼잡 제어를 하지 않습니다. 송신자는 네트워크 상태에 관계없이 데이터를 전송합니다.
 
 4. **속도:**
-
    - TCP: 연결 설정, 데이터 흐름 제어, 혼잡 제어 등의 과정으로 인해 비교적 느릴 수 있습니다.
    - UDP: 이러한 과정이 없기 때문에 TCP보다 빠릅니다. 실시간 응용 프로그램(예: VoIP, 게임, 스트리밍)에서 자주 사용됩니다.
 
@@ -458,7 +439,7 @@ NAT(Network Address Translation)는 IP 주소를 변환하는 기술로, 다음�
 
 ## HTTP
 
-📌 **관련 주제**: [네트워크](#네트워크), [CORS](#CORS), [쿠키 세션](#쿠키-세션)
+📌 **관련 주제**: [네트워크](#네트워크), [CORS](#cors), [쿠키 세션](#쿠키-세션)
 
 [Link 🔥](https://joshua1988.github.io/web-development/http-part1/)
 
@@ -1340,7 +1321,7 @@ Context Switch 비용이 너무 크면 시스템 전체 성능이 저하될 수 
 
 ## 쿠키 세션
 
-📌 **관련 주제**: [HTTP](#HTTP), [CORS](#CORS), [CDN](#CDN)
+📌 **관련 주제**: [HTTP](#http), [CORS](#cors), [CDN](#cdn)
 
 [Link 🔥](https://github.com/junh0328/TIL/tree/master/Chore#%EC%BF%A0%ED%82%A4%EC%99%80-%EC%84%B8%EC%85%98)
 
@@ -1580,7 +1561,7 @@ JWT는 그 특성상 다양한 시나리오에서 유용하게 사용될 수 있
 - 장기적으로 사용자가 로그인 상태를 유지해야 하는 경우.
 
 ```javascript
-localStorage.setItem('token', jwtToken);
+localStorage.setItem('token', jwtToken)
 ```
 
 ### 2. 세션 스토리지 (Session Storage)
@@ -1600,7 +1581,7 @@ localStorage.setItem('token', jwtToken);
 - 로그인 상태를 탭별로 관리해야 하는 경우.
 
 ```javascript
-sessionStorage.setItem('token', jwtToken);
+sessionStorage.setItem('token', jwtToken)
 ```
 
 ### 3. 쿠키 (Cookies)
@@ -1621,7 +1602,7 @@ sessionStorage.setItem('token', jwtToken);
 - XSS 공격을 방지하고자 할 때.
 
 ```javascript
-document.cookie = 'token=' + jwtToken + '; HttpOnly; Secure';
+document.cookie = 'token=' + jwtToken + '; HttpOnly; Secure'
 ```
 
 ### 결론
@@ -1638,7 +1619,7 @@ document.cookie = 'token=' + jwtToken + '; HttpOnly; Secure';
 
 ## CORS
 
-📌 **관련 주제**: [HTTP](#HTTP), [쿠키 세션](#쿠키-세션), [네트워크](#네트워크)
+📌 **관련 주제**: [HTTP](#http), [쿠키 세션](#쿠키-세션), [네트워크](#네트워크)
 
 [Link 🔥](https://velog.io/@young_pallete/CORS)
 
@@ -1778,7 +1759,7 @@ Origin이 다른 http 통신에서는 request header에 쿠키가 자동으로 �
 
 ## Cache
 
-📌 **관련 주제**: [CDN](#CDN), [네트워크](#네트워크), [운영체제](#운영체제)
+📌 **관련 주제**: [CDN](#cdn), [네트워크](#네트워크), [운영체제](#운영체제)
 
 [Link 10분 테코톡 -파피의 Caching 캐싱](https://www.youtube.com/watch?v=JBFT4KyEvoY&t=314s)
 
@@ -1850,7 +1831,7 @@ Cache를 사용하는 것
 
 ## CDN
 
-📌 **관련 주제**: [Cache](#Cache), [네트워크](#네트워크), [HTTP](#HTTP)
+📌 **관련 주제**: [Cache](#cache), [네트워크](#네트워크), [HTTP](#http)
 
 ### `CDN이란 뭔가요?`
 
@@ -1945,12 +1926,12 @@ Cache를 사용하는 것
 ```javascript
 // 유닛 테스트 예시 (Jest)
 function add(a, b) {
-  return a + b;
+  return a + b
 }
 
 test('두 수를 더한 결과를 반환해야 한다', () => {
-  expect(add(2, 3)).toBe(5);
-});
+  expect(add(2, 3)).toBe(5)
+})
 ```
 
 ### `통합 테스트란 무엇인가요?`
@@ -1965,22 +1946,22 @@ test('두 수를 더한 결과를 반환해야 한다', () => {
 
 ```javascript
 // 통합 테스트 예시 (React Testing Library)
-import { render, screen, fireEvent } from '@testing-library/react';
-import LoginForm from './LoginForm';
+import { render, screen, fireEvent } from '@testing-library/react'
+import LoginForm from './LoginForm'
 
 test('로그인 폼 제출 시 사용자 정보가 전달되어야 한다', async () => {
-  render(<LoginForm />);
+  render(<LoginForm />)
 
   fireEvent.change(screen.getByLabelText('이메일'), {
     target: { value: 'test@example.com' },
-  });
+  })
   fireEvent.change(screen.getByLabelText('비밀번호'), {
     target: { value: 'password123' },
-  });
-  fireEvent.click(screen.getByRole('button', { name: '로그인' }));
+  })
+  fireEvent.click(screen.getByRole('button', { name: '로그인' }))
 
-  expect(await screen.findByText('로그인 성공')).toBeInTheDocument();
-});
+  expect(await screen.findByText('로그인 성공')).toBeInTheDocument()
+})
 ```
 
 ### `E2E 테스트란 무엇인가요?`
@@ -1997,14 +1978,14 @@ test('로그인 폼 제출 시 사용자 정보가 전달되어야 한다', asyn
 // E2E 테스트 예시 (Cypress)
 describe('쇼핑몰 구매 플로우', () => {
   it('사용자가 상품을 장바구니에 담고 결제할 수 있어야 한다', () => {
-    cy.visit('/products');
-    cy.get('[data-testid="product-item"]').first().click();
-    cy.get('[data-testid="add-to-cart"]').click();
-    cy.get('[data-testid="cart-icon"]').click();
-    cy.get('[data-testid="checkout-button"]').click();
-    cy.get('[data-testid="payment-form"]').should('be.visible');
-  });
-});
+    cy.visit('/products')
+    cy.get('[data-testid="product-item"]').first().click()
+    cy.get('[data-testid="add-to-cart"]').click()
+    cy.get('[data-testid="cart-icon"]').click()
+    cy.get('[data-testid="checkout-button"]').click()
+    cy.get('[data-testid="payment-form"]').should('be.visible')
+  })
+})
 ```
 
 ### `테스트 피라미드에 대해 아나요?`
@@ -2039,16 +2020,16 @@ describe('쇼핑몰 구매 플로우', () => {
 // 📁 math.js
 
 function sum(a, b) {
-  return a + b;
+  return a + b
 }
 
 function substract(a, b) {
-  return a - b;
+  return a - b
 }
 
-const PI = 3.14;
+const PI = 3.14
 
-export { sum, substract, PI };
+export { sum, substract, PI }
 ```
 
 이 math.js 파일은 아래와 같이 3가지 기능을 갖고 있는 모듈입니다.
@@ -2087,11 +2068,11 @@ export { sum, substract, PI };
 입문자 관점에서 고안된 자바스크립트는 아래와 같이 편리한 유효 범위를 갖고 있습니다.
 
 ```js
-var window = 10;
-console.log(window); // 10
+var window = 10
+console.log(window) // 10
 
 function logText() {
-  console.log(window); // 10
+  console.log(window) // 10
 }
 ```
 
@@ -2110,7 +2091,7 @@ function logText() {
     <script src="./app.js"></script>
     <script src="./main.js"></script>
     <script>
-      getNum(); // ??
+      getNum() // ??
     </script>
   </body>
 </html>
@@ -2120,17 +2101,17 @@ function logText() {
 
 ```js
 // app.js
-var num = 10;
+var num = 10
 function getNum() {
-  console.log(num);
+  console.log(num)
 }
 ```
 
 ```js
 // main.js
-var num = 20;
+var num = 20
 function getNum() {
-  console.log(num);
+  console.log(num)
 }
 ```
 
@@ -2188,12 +2169,12 @@ app.js에서 선언한 num 변수는 main.js에서 다시 선언하고 20을 할
 
 ```js
 // Babel Input: ES2015 arrow function
-[1, 2, 3].map((n) => n + 1);
+;[1, 2, 3].map((n) => n + 1)
 
 // Babel Output: ES5 equivalent
-[1, 2, 3].map(function (n) {
-  return n + 1;
-});
+;[1, 2, 3].map(function (n) {
+  return n + 1
+})
 ```
 
 ### `웹팩의 주요 속성 4가지`
@@ -2213,7 +2194,7 @@ entry 속성은 웹팩에서 웹 자원을 변환하기 위해 필요한 최초 
 // webpack.config.js
 module.exports = {
   entry: './src/index.js',
-};
+}
 ```
 
 <details>
@@ -2225,17 +2206,17 @@ entry 속성에 지정된 파일에는 웹 애플리케이션의 전반적인 �
 
 ```js
 // index.js
-import LoginView from './LoginView.js';
-import HomeView from './HomeView.js';
-import PostView from './PostView.js';
+import LoginView from './LoginView.js'
+import HomeView from './HomeView.js'
+import PostView from './PostView.js'
 
 function initApp() {
-  LoginView.init();
-  HomeView.init();
-  PostView.init();
+  LoginView.init()
+  HomeView.init()
+  PostView.init()
 }
 
-initApp();
+initApp()
 ```
 
 싱글 페이지 애플리케이션으로 작성된 index.js를 예로 들어보겠습니다. 3개의 컴포넌트를 index.js에 불러와서 실행을 하고있는 구조입니다.
@@ -2269,7 +2250,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
   },
-};
+}
 ```
 
 앞에서 배운 entry 속성과는 다르게 객체 형태로 옵션들을 추가해야 합니다.
@@ -2278,14 +2259,14 @@ module.exports = {
 
 ```js
 // webpack.config.js
-var path = require('path');
+var path = require('path')
 
 module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, './dist'),
   },
-};
+}
 ```
 
 - filename 속성은 웹팩으로 빌드(번들링)한 파일의 이름을 의미합니다.
@@ -2308,7 +2289,7 @@ module.exports = {
   output: {
     filename: '[name].bundle.js',
   },
-};
+}
 ```
 
 2. 결과 파일 이름에 웹팩 내부적으로 사용하는 모듈 ID를 포함하는 옵션
@@ -2318,7 +2299,7 @@ module.exports = {
   output: {
     filename: '[id].bundle.js',
   },
-};
+}
 ```
 
 3. [그 밖의 옵션](https://joshua1988.github.io/webpack-guide/concepts/output.html#output-%ED%8C%8C%EC%9D%BC-%EC%9D%B4%EB%A6%84-%EC%98%B5%EC%85%98)
@@ -2335,7 +2316,7 @@ module.exports = {
   module: {
     rules: [],
   },
-};
+}
 ```
 
 엔트리나 아웃풋 속성과는 다르게 module라는 이름을 사용합니다.
@@ -2424,19 +2405,19 @@ module.exports = {
 // webpack.config.js
 module.exports = {
   plugins: [],
-};
+}
 ```
 
 플러그인의 배열에는 생성자 함수로 생성한 객체 인스턴스만 추가될 수 있습니다.
 
 ```js
 // webpack.config.js
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var webpack = require('webpack')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   plugins: [new HtmlWebpackPlugin(), new webpack.ProgressPlugin()],
-};
+}
 ```
 
 - [Loader 보기 🔥](https://webpack.js.org/loaders/)
@@ -2484,25 +2465,25 @@ module.exports = {
 ```ts
 // interface
 interface PeopleInterface {
-  name: string;
-  age: number;
+  name: string
+  age: number
 }
 
 const me1: PeopleInterface = {
   name: 'yc',
   age: 34,
-};
+}
 
 // type
 type PeopleType = {
-  name: string;
-  age: number;
-};
+  name: string
+  age: number
+}
 
 const me2: PeopleType = {
   name: 'yc',
   age: 31,
-};
+}
 ```
 
 하지만 일정 부분에 있어서 타입과 인터페이스는 차이점이 존재한다
@@ -2514,23 +2495,23 @@ const me2: PeopleType = {
 ```ts
 // interface
 interface PeopleInterface {
-  name: string;
-  age: number;
+  name: string
+  age: number
 }
 
 interface StudentInterface extends PeopleInterface {
-  school: string;
+  school: string
 }
 
 // type
 type PeopleType = {
-  name: string;
-  age: number;
-};
+  name: string
+  age: number
+}
 
 type StudentType = PeopleType & {
-  school: string;
-};
+  school: string
+}
 ```
 
 2. 선언적 확장
@@ -2540,26 +2521,26 @@ type StudentType = PeopleType & {
 ```ts
 // interface
 interface Window {
-  title: string;
+  title: string
 }
 
 interface Window {
-  ts: TypeScriptAPI;
+  ts: TypeScriptAPI
 }
 
 // 같은 interface 명으로 Window를 다시 만든다면, 자동으로 확장이 된다.
 
-const src = 'const a = "Hello World"';
-window.ts.transpileModule(src, {});
+const src = 'const a = "Hello World"'
+window.ts.transpileModule(src, {})
 
 // type
 type Window = {
-  title: string;
-};
+  title: string
+}
 
 type Window = {
-  ts: TypeScriptAPI;
-};
+  ts: TypeScriptAPI
+}
 
 // Error: Duplicate identifier 'Window'.
 // 타입은 안된다.
@@ -2598,18 +2579,18 @@ type Window = {
 
 ```typescript
 type User = {
-  id: number;
-  name: string;
-  email: string;
-};
+  id: number
+  name: string
+  email: string
+}
 
-type UserPreview = Pick<User, 'id' | 'name'>;
+type UserPreview = Pick<User, 'id' | 'name'>
 
 const user: UserPreview = {
   id: 1,
   name: 'Alice',
   // email: "alice@example.com" // 오류: 'email'은 'UserPreview' 타입에 존재하지 않습니다.
-};
+}
 ```
 
 **실무 사용 사례:**
@@ -2624,18 +2605,18 @@ const user: UserPreview = {
 
 ```typescript
 type User = {
-  id: number;
-  name: string;
-  email: string;
-};
+  id: number
+  name: string
+  email: string
+}
 
-type UserWithoutEmail = Omit<User, 'email'>;
+type UserWithoutEmail = Omit<User, 'email'>
 
 const user: UserWithoutEmail = {
   id: 1,
   name: 'Alice',
   // email: "alice@example.com" // 오류: 'email'은 'UserWithoutEmail' 타입에 존재하지 않습니다.
-};
+}
 ```
 
 **실무 사용 사례:**
@@ -2650,17 +2631,17 @@ const user: UserWithoutEmail = {
 
 ```typescript
 type User = {
-  id: number;
-  name: string;
-  email: string;
-};
+  id: number
+  name: string
+  email: string
+}
 
-type PartialUser = Partial<User>;
+type PartialUser = Partial<User>
 
 const user: PartialUser = {
   name: 'Alice',
   // 모든 속성이 선택 사항이므로 'id'와 'email'은 없어도 됨
-};
+}
 ```
 
 **실무 사용 사례:**
@@ -2675,19 +2656,19 @@ const user: PartialUser = {
 
 ```typescript
 type User = {
-  id: number;
-  name?: string;
-  email?: string;
-};
+  id: number
+  name?: string
+  email?: string
+}
 
-type RequiredUser = Required<User>;
+type RequiredUser = Required<User>
 
 const user: RequiredUser = {
   id: 1,
   name: 'Alice',
   email: 'alice@example.com',
   // 모든 속성이 필수로 변경됨
-};
+}
 ```
 
 **실무 사용 사례:**
@@ -2702,18 +2683,18 @@ const user: RequiredUser = {
 
 ```typescript
 type User = {
-  id: number;
-  name: string;
-  email: string;
-};
+  id: number
+  name: string
+  email: string
+}
 
-type ReadonlyUser = Readonly<User>;
+type ReadonlyUser = Readonly<User>
 
 const user: ReadonlyUser = {
   id: 1,
   name: 'Alice',
   email: 'alice@example.com',
-};
+}
 
 // user.id = 2; // 오류: 'id'는 읽기 전용 속성입니다.
 ```
@@ -2729,16 +2710,16 @@ const user: ReadonlyUser = {
 `Record` 유틸리티 타입은 특정 키와 값의 타입을 갖는 객체 타입을 만듭니다.
 
 ```typescript
-type Role = 'admin' | 'user' | 'guest';
-type Permissions = 'read' | 'write' | 'execute';
+type Role = 'admin' | 'user' | 'guest'
+type Permissions = 'read' | 'write' | 'execute'
 
-type RolePermissions = Record<Role, Permissions[]>;
+type RolePermissions = Record<Role, Permissions[]>
 
 const rolePermissions: RolePermissions = {
   admin: ['read', 'write', 'execute'],
   user: ['read', 'write'],
   guest: ['read'],
-};
+}
 ```
 
 **실무 사용 사례:**
@@ -2753,10 +2734,10 @@ const rolePermissions: RolePermissions = {
 `Exclude` 유틸리티 타입은 주어진 타입에서 특정 타입을 제외하여 새로운 타입을 만듭니다.
 
 ```typescript
-type AllTypes = string | number | boolean;
-type ExcludeStringAndNumber = Exclude<AllTypes, string | number>;
+type AllTypes = string | number | boolean
+type ExcludeStringAndNumber = Exclude<AllTypes, string | number>
 
-const value: ExcludeStringAndNumber = true; // boolean 타입만 남음
+const value: ExcludeStringAndNumber = true // boolean 타입만 남음
 ```
 
 **실무 사용 사례:**
@@ -2770,11 +2751,11 @@ const value: ExcludeStringAndNumber = true; // boolean 타입만 남음
 `Extract` 유틸리티 타입은 주어진 타입에서 특정 타입만 추출하여 새로운 타입을 만듭니다.
 
 ```typescript
-type AllTypes = string | number | boolean;
-type ExtractStringAndNumber = Extract<AllTypes, string | number>;
+type AllTypes = string | number | boolean
+type ExtractStringAndNumber = Extract<AllTypes, string | number>
 
-const value1: ExtractStringAndNumber = 'hello'; // string 타입
-const value2: ExtractStringAndNumber = 42; // number 타입
+const value1: ExtractStringAndNumber = 'hello' // string 타입
+const value2: ExtractStringAndNumber = 42 // number 타입
 ```
 
 **실무 사용 사례:**
@@ -2792,12 +2773,10 @@ TypeScript에서 `type`과 `interface`가 둘 다 존재하는 이유는 각기 
 **주요 차이점 요약**
 
 - 상속 및 확장:
-
   - 인터페이스는 다른 인터페이스를 확장할 수 있습니다.
   - 타입 별칭은 인터섹션을 사용하여 다른 타입과 결합할 수 있습니다.
 
 - 클래스와의 사용:
-
   - 인터페이스는 클래스의 형태를 강제할 수 있습니다.
   - 타입 별칭은 클래스를 정의할 수 없으나, 클래스의 타입을 정의할 수 있습니다.
 
@@ -2808,7 +2787,6 @@ TypeScript에서 `type`과 `interface`가 둘 다 존재하는 이유는 각기 
 ### 언제 인터페이스와 타입을 사용할지
 
 - 인터페이스를 사용하는 경우:
-
   - 객체의 구조를 정의하고, 이를 구현하는 클래스가 필요한 경우.
   - 여러 객체 타입을 확장하거나 결합해야 하는 경우.
   - 외부 라이브러리와의 타입 정의를 작성하는 경우 (많은 라이브러리가 인터페이스를 사용함).
@@ -2828,19 +2806,19 @@ TypeScript에서 `type`과 `interface`가 둘 다 존재하는 이유는 각기 
 
 ```ts
 function getSize(arr: number[] | string[] | boolean[]): number {
-  return arr.length;
+  return arr.length
 }
 
-const arr = [1, 2, 3];
+const arr = [1, 2, 3]
 
-getSize(arr); // 3
+getSize(arr) // 3
 
-const arr2 = ['a', 'b', 'c'];
+const arr2 = ['a', 'b', 'c']
 
-getSize(arr2); // 3
+getSize(arr2) // 3
 
-const arr3 = [true, false, true];
-getSize(arr3); // 3
+const arr3 = [true, false, true]
+getSize(arr3) // 3
 ```
 
 위와 같이 한가지 함수에서 다양한 타입의 데이터를 받아줘야한다고 가정할 때 올바른 타입을 지정하기 위해서는 타입을 확장시켜줘야 합니다.
@@ -2849,16 +2827,16 @@ getSize(arr3); // 3
 
 ```ts
 function getSize<T>(arr: T[]): number {
-  return arr.length;
+  return arr.length
 }
 
-const arr = [1, 2, 3];
+const arr = [1, 2, 3]
 
-getSize<number>(arr); // 3
+getSize<number>(arr) // 3
 
-const arr2 = ['a', 'b', 'c'];
+const arr2 = ['a', 'b', 'c']
 
-getSize<string>(arr2); // 3
+getSize<string>(arr2) // 3
 ```
 
 `한 줄 요약`

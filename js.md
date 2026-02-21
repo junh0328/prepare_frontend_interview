@@ -19,16 +19,13 @@
 ## 목차
 
 - [프로그래밍 🔥](#프로그래밍)
-
   - 프로그래밍이란 뭐라고 생각하나요?
   - 컴파일러는 뭐고 인터프리터는 뭔가요? 🔥
 
 - [자바스크립트란 🔥](#자바스크립트란)
-
   - 자바스크립트의 특징은 뭐가 있나요?
 
 - [변수 🔥](#변수)
-
   - 변수란 무엇인가요?
   - 식별자란 무엇인가요? 🔥
   - 변수를 선언한다는 것은 어떤 것을 의미하나요?
@@ -41,117 +38,98 @@
   - 리터럴이 뭔가요?
 
 - [데이터 타입 🔥](#데이터-타입)
-
   - 데이터 타입의 종류는 어떤 것들이 있나요? 🔥
   - 데이터 타입은 왜 필요할까요? 🔥
   - 정적 타이핑이 뭔가요?
   - 동적 타이핑이 뭔가요?
 
 - [타입변환과 단축 평가 🔥](#타입변환과-단축-평가)
-
   - truthy / falsy 한 값이 뭔가요?
 
 - [배열 🔥](#배열)
-
   - 자바스크립트의 배열은 자료구조의 배열과 같나요?
   - 배열의 메서드는 어떤 종류가 있나요?
   - 고차 함수에 대해서 아나요?
   - forEach 메서드와 map메서드의 차이점에 대해 알고 있나요?
 
 - [객체 리터럴 🔥](#객체-리터럴)
-
   - 자바스크립트에서 객체란 뭘까요?
   - 함수와 메서드의 차이점에 대해 알고 계신가요?
   - 객체 프로퍼티 접근 시 메모리 동작은 어떻게 되나요? (프로토타입 체인 탐색) 🔥
   - 전역 객체에 대해서 아나요?
 
 - [원시 값과 객체 비교 🔥](#원시-값과-객체-비교)
-
   - 자바스크립트에서 데이터의 타입을 크게 2개로 나누는 이유가 있을까요? 🔥
   - 값에 의한 전달이 뭔가요? 🔥
   - 참조에 의한 전달이 뭔가요? 🔥
 
 - [함수 🔥](#함수)
-
   - 함수 선언문과 함수 표현식은 어떤 차이가 있나요?
   - 즉시 실행 함수(IIFE)에 대해 알고 있나요? 알고 있다면 아는 내용에 대해 말해보세요
 
 - [스코프 🔥](#스코프)
-
   - 스코프가 뭔가요? 🔥🔥
   - 스코프에는 어떤 종류가 있죠? 🔥
   - 렉시컬 스코프를 아나요? 안다면 렉시컬 스코프는 무엇을 의미하나요? 🔥
 
 - [생성자 함수에 의한 객체 생성 🔥](#생성자-함수에-의한-객체-생성)
-
   - 생성자 함수가 뭔가요?
   - 객체 리터럴로 만들 때와는 무슨 차이가 있죠? 왜 생성자 함수를 사용하나요?
   - 생성자 함수가 객체(인스턴스)를 생성하는 과정에 대해 간략하게 설명해줄 수 있나요?
 
 - [함수와 일급 객체 🔥](#함수와-일급-객체)
-
   - 일급 객체가 뭔가요?
   - 자바스크립트에서 함수가 일급 객체라면, 일급 객체로 뭘 할 수 있나요?
   - 꼬리 질문) 함수형 프로그래밍이 뭔가요? 🔥
   - 꼬리 질문) 순수 함수가 뭔가요? 일반 함수와는 어떤 차이가 있죠? 🔥
 
-- [Map과 Set 그리고 Lookup Table](#Map과-Set-그리고-Lookup-Table)
+- [Map과 Set 그리고 Lookup Table](#map과-set-그리고-lookup-table)
 
 - [프로토타입 🔥](#프로토타입)
-
   - 객체지향 프로그래밍은 무엇을 의미하나요? 🔥
   - 객체지향 프로그래밍의 특징에 대해 말해볼 수 있나요? 🔥
   - 자바스크립트는 객체지향 프로그래밍 언어인가요?
   - 프로토타입이 뭔가요?
 
 - [빌트인 객체 🔥](#빌트인-객체)
-
   - 빌트인 객체가 뭔가요?
   - 빌트인 객체의 종류는 어떤게 있죠?
   - 래퍼 객체에 대해서 알고 있나요?
 
 - [this 🔥](#this)
-
   - this가 뭔가요? 🔥
   - this 바인딩이란? 🔥
 
 - [실행 컨텍스트 🔥](#실행-컨텍스트)
-
   - 실행 컨텍스트에 대해 말해보세요 🔥🔥
 
 - [클로저 🔥](#클로저)
-
   - 클로저에 대해서 아나요? 🔥🔥
   - 클로저를 사용하면 뭐가 좋죠? 🔥
   - 클로저를 어떻게 생성하나요? 🔥
 
 - [클래스 🔥](#클래스)
-
   - 자바스크립트에서 클래스가 생기기 전에는 어떤 방식으로 객체지향 패턴을 구현했나요?
   - 그럼 생성자 함수와 클래스는 어떤 차이가 있나요?
   - 클래스 정의
   - 클래스의 상속
 
 - [브라우저 렌더링 과정 🔥](#브라우저-렌더링-과정)
-
   - 브라우저의 렌더링 과정에 대해 설명해보세요 🔥
   - 브라우저의 렌더링 과정에 자바스크립트는 어떻게 동작하나요? 🔥
   - `<script></script>` 태그를 `<body></body>` 태그 밑에 둬야하는 이유가 있을까요?
 
-- [DOM 🔥](#DOM)
-
+- [DOM 🔥](#dom)
   - DOM이 뭔가요?
   - DOM을 구성하는 건 뭐가 있나요?
 
 - [이벤트 🔥](#이벤트)
-
   - 마우스 이벤트 타입에는 뭐가 있나요? click 말고 클릭을 대체할 수 있는 이벤트가 있나요?
   - 그 외에 알고 있는 대표적인 이벤트가 있나요?
   - 이벤트 전파(propagation)에 대해서 알고 있나요?
   - 이벤트 위임(delegation)에 대해서 알고있나요? 🔥
 
 - [타이머 🔥](#타이머)
-
   - 호출 스케쥴링이 무엇인가요?
   - 타이머 함수에는 어떤 것들이 있나요?
   - 이벤트가 과도하게 호출되어 성능에 문제를 일으킬 경우에 할 수 있는 어떤 일을 통해 해결할 수 있나요?
@@ -159,47 +137,39 @@
   - 쓰로틀에 대해서 알고 있나요?
 
 - [비동기 프로그래밍 🔥](#비동기-프로그래밍)
-
   - 동기와 비동기의 차이점에 대해서 설명해줄 수 있나요? 🔥
-
     - 한줄 요약
 
   - 이벤트 루프와 태스크 큐에 대해서 알고 있나요? 🔥🔥
   - 마이크로태스크 큐에 대해서 알고 있나요? 🔥
   - 태스크 큐와 마이크로태스크 큐 중 어떤 것이 먼저 실행되나요? 🔥
 
-- [REST API 🔥](#REST-API)
-
+- [REST API 🔥](#rest-api)
   - REST API가 뭔가요?
   - REST API의 구성은 어떤 것이 있나요?
   - REST API를 설계하는데 중요한 것이 있을까요?
   - HTTP 요청 메서드에 대해서 아는대로 얘기해보세요
 
-- [Promise 🔥](#Promise)
-
+- [Promise 🔥](#promise)
   - 콜백이란 뭐라고 생각하나요? 🔥
   - 프로미스가 뭔가요? 🔥
   - 프로미스 생성 방법
   - 프로미스의 상태를 나타내는 것은 어떤 것들이 있나요? 🔥
 
 - [제너레이터와 async await 🔥](#제너레이터와-async-await)
-
   - 제너레이터란 뭔가요? 일반 함수와는 어떤 차이가 있죠?
   - 제너레이터의 구조
   - async/await 가 뭔가요? 기존의 Promise와는 어떤 차이가 있죠? 🔥
   - Promise와 async/await의 차이점 한 줄 요약 🔥
 
 - [에러 🔥](#에러)
-
   - 에러처리를 왜 해야 하나요?
   - 자바스크립트에서 에러를 처리하는 방법에는 뭐가 있을까요?
 
 - [모듈 🔥](#모듈)
-
   - 모듈이 뭔가요?
 
 - [가비지 컬렉션 🔥](#가비지-컬렉션)
-
   - 자바스크립트의 가비지 컬렉션에 대해 알고 있나요?
 
 ## 프로그래밍
@@ -247,7 +217,7 @@
 ### 변수를 선언한다는 것은 어떤 것을 의미하나요?
 
 ```js
-var score;
+var score
 ```
 
 **값을 저장하기 위한 메모리 공간을 확보하고 변수 이름과 확보된 메모리 공간의 주소를 연결해서 값을 저장할 수 있게 준비하는 것.** 변수를 선언할 때는 var, let, const 키워드를 사용한다.
@@ -261,9 +231,9 @@ var 키워드는 뒤에 오는 변수 이름을 새로운 변수를 선언할 �
 ### 호이스팅이 뭔가요?
 
 ```js
-console.log(score); // undefined;
+console.log(score) // undefined;
 
-var score; // 변수 선언문
+var score // 변수 선언문
 ```
 
 js 엔진은 변수 선언(을 포함한 모든 선언문)이 소스코드의 어디에 있든 상관없이 다른 코드보다 먼저 실행한다. 런타임 이전에 **실행 컨텍스트**에 의해 소스코드 평가 과정에서 스코프에 등록되고 이를 마치 코드의 제일 위에 있는 것처럼 변수가 어디에 위치하던지와 상관없이 어디서든지 변수를 참조할 수 있는 것처럼 만드는 특징을 변수 호이스팅이라고 합니다.
@@ -285,13 +255,13 @@ var 키워드로 선언된 변수는 같은 스코프 내에서 중복 선언이
 
 ```js
 function foo() {
-  var x = 1;
+  var x = 1
   // var 키워드로 선언된 변수는 같은 스코프 내에서 중복 선언을 허용한다.
   // 아래 변수 선언문은 자바스크립트 엔진에 의해 var 키워드가 없는 것처럼 동작한다.
-  var x = 2;
-  console.log(x); // 2
+  var x = 2
+  console.log(x) // 2
 }
-foo();
+foo()
 ```
 
 </details>
@@ -337,9 +307,9 @@ console.log(i); // 5
 var 키워드로 선언된 변수는 선언과 동시에 undefined로 초기화되며, 런타임 즉 소스코드 평가 단계에서 스코프에 등록되기 때문에 실행 단계에서 실제 값이 할당되지 않더라도 undefined를 가지고있다. 이를 변수 호이스팅이라 한다.
 
 ```js
-console.log(score); // undefined;
+console.log(score) // undefined;
 
-var score; // 변수 선언문
+var score // 변수 선언문
 ```
 
 </details>
@@ -360,9 +330,9 @@ let 키워드는 var 키워드의 단점을 보완하기 위해 ES6에서 도입
 let 키워드로 이름이 같은 변수를 중복 선언하면 문법 에러(SyntaxError)가 발생한다.
 
 ```js
-let bar = 123;
+let bar = 123
 // let이나 const 키워드로 선언된 변수는 같은 스코프 내에서 중복 선언을 허용하지 않는다.
-let bar = 456; // SyntaxError: Identifier 'bar' has already been declared
+let bar = 456 // SyntaxError: Identifier 'bar' has already been declared
 ```
 
 <b>2. 블록 레벨 스코프</b>
@@ -370,15 +340,15 @@ let bar = 456; // SyntaxError: Identifier 'bar' has already been declared
 let 키워드를 통해 선언된 변수는 블록 레벨 스코프를 따른다. 함수 뿐만 아니라 모든 코드 블록 내에 선언된 변수(지역 변수)는 해당 유효 범위(스코프)를 벗어나면 사용할 수 없다.
 
 ```js
-let foo = 1; // 전역 변수
+let foo = 1 // 전역 변수
 
 {
-  let foo = 2; // 지역 변수
-  let bar = 3; // 지역 변수
+  let foo = 2 // 지역 변수
+  let bar = 3 // 지역 변수
 }
 
-console.log(foo); // 1
-console.log(bar); // ReferenceError: bar is not defined
+console.log(foo) // 1
+console.log(bar) // ReferenceError: bar is not defined
 ```
 
 <b>3. 변수 호이스팅</b>
@@ -386,8 +356,8 @@ console.log(bar); // ReferenceError: bar is not defined
 var 키워드로 선언한 변수와 달리 let 키워드로 선언한 변수는 변수 호이스팅이 발생하지 않는 것처럼 동작한다.
 
 ```js
-console.log(foo); // Cannot access 'foo' before initialization
-let foo;
+console.log(foo) // Cannot access 'foo' before initialization
+let foo
 ```
 
 let 키워드로 선언한 변수는 '선언 단계'와 '초기화 단계'가 분리되어 진행된다. 즉, 런타임 이전에 자바스크립트 엔진에 의해 암묵적으로 선언 단계가 먼저 실행되지만 초기화 단계는 변수 선언문에 도달했을 때 실행된다. 만약 초기화 단계가 실행되기 이전에 변수에 접근하려고 하면 참조 에러가 발생한다.
@@ -399,13 +369,13 @@ let 키워드로 선언한 변수는 스코프의 시작 지점부터 초기화 
 ```js
 // 런타임 이전에 선언 단계가 실행된다. 아직 변수가 초기화되지 않았다.
 // 초기화 이전의 일시적 사각 지대에서는 변수를 참조할 수 없다.
-console.log(foo); // ReferenceError: foo is not defined
+console.log(foo) // ReferenceError: foo is not defined
 
-let foo; // 변수 선언문에서 초기화 단계가 실행된다.
-console.log(foo); // undefined
+let foo // 변수 선언문에서 초기화 단계가 실행된다.
+console.log(foo) // undefined
 
-foo = 1; // 할당문에서 할당 단계가 실행된다.
-console.log(foo); // 1
+foo = 1 // 할당문에서 할당 단계가 실행된다.
+console.log(foo) // 1
 ```
 
 <b>4. 전역 객체와 let</b>
@@ -413,11 +383,11 @@ console.log(foo); // 1
 let 키워드로 선언한 전역 변수는 전역 객체의 프로퍼티가 아니다. 즉, window.foo와 같이 접근할 수 없다.
 
 ```js
-let x = 1;
+let x = 1
 
 // let, const 키워드로 선언한 전역 변수는 전역 객체 window의 프로퍼티가 아니다.
-console.log(window.x); // undefined
-console.log(x); // 1
+console.log(window.x) // undefined
+console.log(x) // 1
 ```
 
 ### const 키워드는 어떤 특징이 있나요?
@@ -447,8 +417,8 @@ console.log(foo); >>> // SyntaxError: Missing initializer in const declaration
 var 또는 let 키워드로 선언한 변수는 재할당이 자유로우나 const 키워드로 선언한 변수는 재할당이 금지된다.
 
 ```js
-const foo = 1;
-foo = 2; // TypeError: Assignment to constant variable.
+const foo = 1
+foo = 2 // TypeError: Assignment to constant variable.
 ```
 
 <b>3. 상수</b>
@@ -458,15 +428,15 @@ const 키워드로 선언한 변수에 원시 값을 할당한 경우 변수 값
 ```js
 // 세율을 의미하는 0.1은 변경할 수 없는 상수로서 사용될 값이다.
 // 변수 이름을 대문자로 선언해 상수임을 명확히 나타낸다.
-const TAX_RATE = 0.1;
+const TAX_RATE = 0.1
 
 // 세전 가격
-let preTaxPrice = 100;
+let preTaxPrice = 100
 
 // 세후 가격
-let afterTaxPrice = preTaxPrice + preTaxPrice * TAX_RATE;
+let afterTaxPrice = preTaxPrice + preTaxPrice * TAX_RATE
 
-console.log(afterTaxPrice); // 110
+console.log(afterTaxPrice) // 110
 ```
 
 ### 한 줄 요약
@@ -531,26 +501,26 @@ C나 자바 같은 정적 타입언어는 변수를 선언할 때 변수에 할�
 자바스크립트는 정적 타입 언어와 다르게 변수를 선언할 때 타입을 선언하지 않는다. 다만 var, let, const 키워들 사용해 변수를 선언할 뿐이다.
 
 ```js
-var foo;
-console.log(typeof foo); // undefined
+var foo
+console.log(typeof foo) // undefined
 
-foo = 3;
-console.log(typeof foo); // number
+foo = 3
+console.log(typeof foo) // number
 
-foo = null;
-console.log(typeof foo); // object
+foo = null
+console.log(typeof foo) // object
 
-foo = Symbol(); // 심벌
-console.log(typeof foo); // symbol
+foo = Symbol() // 심벌
+console.log(typeof foo) // symbol
 
-foo = {}; // 객체
-console.log(typeof foo); // object
+foo = {} // 객체
+console.log(typeof foo) // object
 
-foo = []; // 배열
-console.log(typeof foo); // object
+foo = [] // 배열
+console.log(typeof foo) // object
 
-foo = function () {}; // 함수
-console.log(typeof foo); // function
+foo = function () {} // 함수
+console.log(typeof foo) // function
 ```
 
 자바스크립트의 변수는 선언이 아닌 할당에 의해 타입이 결정 **(타입 추론)** 된다. 그리고 **재할당에 의해 변수의 타입은 언제든지 동적으로 변할 수 있다.** 이러한 특징을 동적 타이핑이라고 하며, 자바스크립트를 정적 타입 언어와 구별하기 위해 동적 타입 언어라고 한다.
@@ -578,17 +548,17 @@ Falsy값에 ! 연산자를 붙이면, 모두 Truthy 값으로 평가되어 실�
 
 ```js
 // 아래의 조건문은 모두 코드 블록을 실행한다.
-if (!false) console.log(false + ' is falsy value');
-if (!undefined) console.log(undefined + ' is falsy value');
-if (!null) console.log(null + ' is falsy value');
-if (!0) console.log(0 + ' is falsy value');
-if (!NaN) console.log(NaN + ' is falsy value');
-if (!'') console.log('' + ' is falsy value');
+if (!false) console.log(false + ' is falsy value')
+if (!undefined) console.log(undefined + ' is falsy value')
+if (!null) console.log(null + ' is falsy value')
+if (!0) console.log(0 + ' is falsy value')
+if (!NaN) console.log(NaN + ' is falsy value')
+if (!'') console.log('' + ' is falsy value')
 ```
 
 ## 배열
 
-📌 **관련 주제**: [객체 리터럴](#객체-리터럴), [함수와 일급 객체](#함수와-일급-객체), [Map과 Set 그리고 Lookup Table](#Map과-Set-그리고-Lookup-Table)
+📌 **관련 주제**: [객체 리터럴](#객체-리터럴), [함수와 일급 객체](#함수와-일급-객체), [Map과 Set 그리고 Lookup Table](#map과-set-그리고-lookup-table)
 
 ### 자바스크립트의 배열은 자료구조의 배열과 같나요?
 
@@ -608,7 +578,7 @@ if (!'') console.log('' + ' is falsy value');
 
 배열은 크게 두 종류로 나눌 수 있다
 
-- `① 원본 배열을 직접 변경하는 메서드 `
+- `① 원본 배열을 직접 변경하는 메서드`
 - `② 원본 배열을 직접 변경하지 않고 새로운 배열을 생성하여 반환하는 메서드`가 있다.
 
 ES5부터 도입된 배열 메서드는 대부분 원본 배열을 직접 변경하지 않지만 초창기 배열 메서드는 원본 배열을 직접 변경하는 경우가 많다.
@@ -681,7 +651,7 @@ Array.prototype.find
 var person = {
   name: 'Lee',
   age: 20,
-};
+}
 ```
 
 ### 함수와 메서드의 차이점에 대해 알고 계신가요?
@@ -709,7 +679,7 @@ console.log(person);
 `person.name에 접근할 때와 person.hobby (없는 프로퍼티)에 접근하려고 할 때는 어떻게 동작하나요?`
 
 ```js
-let person = { name: 'junhee', age: 29 };
+let person = { name: 'junhee', age: 29 }
 ```
 
 #### 메모리 구조
@@ -725,7 +695,7 @@ let person = { name: 'junhee', age: 29 };
 #### 1. 존재하는 프로퍼티 접근 (`person.name`)
 
 ```js
-console.log(person.name); // 'junhee'
+console.log(person.name) // 'junhee'
 ```
 
 **동작 과정:**
@@ -740,7 +710,7 @@ V8 엔진의 경우 Hidden Class를 사용해 프로퍼티 위치를 캐싱하�
 #### 2. 존재하지 않는 프로퍼티 접근 (`person.hobby`)
 
 ```js
-console.log(person.hobby); // undefined
+console.log(person.hobby) // undefined
 ```
 
 **동작 과정:**
@@ -786,20 +756,20 @@ console.log(person.hobby); // undefined
 변수에 원시 값을 갖는 변수를 할당하면 할당받는 변수(copy)에는 할당하는 변수(score)의 원시 값이 복사되어 전달된다. 이를 **'값에 의한 전달'** 이라 한다.
 
 ```js
-var score = 80;
+var score = 80
 
 // copy 변수에는 score 변수의 값 80이 복사되어 할당된다.
-var copy = score;
+var copy = score
 
-console.log(score, copy); // 80  80
-console.log(score === copy); // true
+console.log(score, copy) // 80  80
+console.log(score === copy) // true
 
 // score 변수와 copy 변수의 값은 다른 메모리 공간에 저장된 별개의 값이다.
 // 따라서 score 변수의 값을 변경해도 copy 변수의 값에는 어떠한 영향도 주지 않는다.
-score = 100;
+score = 100
 
-console.log(score, copy); // 100  80
-console.log(score === copy); // false
+console.log(score, copy) // 100  80
+console.log(score === copy) // false
 ```
 
 score 변수와 copy 변수의 값 80은 다른 메모리 공간에 저장된 별개의 값이라는 것에 주의하기 바란다. 따라서 score 변수의 값을 변경해도 copy 변수의 값에는 어떠한 영향도 주지 않는다.
@@ -813,10 +783,10 @@ score 변수와 copy 변수의 값 80은 다른 메모리 공간에 저장된 �
 ```js
 var person = {
   name: 'Lee',
-};
+}
 
 // 참조값을 복사(얕은 복사)
-var copy = person;
+var copy = person
 ```
 
 객체를 가리키는 변수(원본, person)를 다른 변수(사본, copy)에 할당하면 원본의 참조 값이 복사되어 전달된다. 이를 **'참조에 의한 전달'** 이라 한다.
@@ -831,25 +801,25 @@ var copy = person;
 
 ```js
 // 함수 참조
-console.dir(add); // ƒ add(x, y)
-console.dir(sub); // undefined
+console.dir(add) // ƒ add(x, y)
+console.dir(sub) // undefined
 
 // 함수 호출
-console.log(add(2, 5));
+console.log(add(2, 5))
 // 7 why? 함수 선언문은 표현식이 아닌 문으로, 런타임 이전에 js 엔진에 의해 실행된다.
 
-console.log(sub(2, 5));
+console.log(sub(2, 5))
 // TypeError: sub is not a function, why? 함수 표현식(표현식인 문)은 런타임에 값을 할당하기 때문에 sub는 현재 undefined로만 초기화된 상태이다.
 
 // ① 함수 선언문
 function add(x, y) {
-  return x + y;
+  return x + y
 }
 
 // ② 함수 표현식
 var sub = function (x, y) {
-  return x - y;
-};
+  return x - y
+}
 ```
 
 코드가 한 줄씩 순차적으로 실행되기 시작하는 런타임에는 이미 함수 객체가 생성되어 있고 함수 이름과 동일한 식별자에 할당까지 완료된 상태이다. 따라서 함수 선언문의 소스코드가 평가되고 실행되기 이전에 함수를 참조할 수 있으며 호출할 수도 있다. 이처럼 **함수 선언문이 코드의 선두로 끌어 올려진 것처럼 동작하는 자바스크립트 고유의 특징을 함수 호이스팅**이라 한다.
@@ -862,24 +832,24 @@ var sub = function (x, y) {
 
 ```js
 //익명 즉시 실행함수
-(function () {
-  var a = 3;
-  var b = 5;
-  return a * b;
-})();
+;(function () {
+  var a = 3
+  var b = 5
+  return a * b
+})()
 ```
 
 2. 즉시 실행 함수는 함수 이름이 없는 익명 함수를 사용하는 것이 일반적이다. 함수 이름이 있는 기명 즉시 실행 함수도 사용할 수 있다. 하지만 즉시 실행 함수를 다시 호출할 수는 없다.
 
 ```js
 //기명 즉시 실행 함수
-(function foo() {
-  var a = 3;
-  var b = 5;
-  return a * b;
-})();
+;(function foo() {
+  var a = 3
+  var b = 5
+  return a * b
+})()
 
-foo(); //ReferenceError: foo is not defined
+foo() //ReferenceError: foo is not defined
 ```
 
 3. 즉시 실행 함수는 반드시 그룹 연산자 (...)로 감싸야 한다.
@@ -917,20 +887,20 @@ function () {
 
 ```js
 function outer() {
-  let outerVar = 'I am from outer';
+  let outerVar = 'I am from outer'
 
   function inner() {
-    let innerVar = 'I am from inner';
-    console.log(outerVar); // 접근 가능
-    console.log(innerVar); // 접근 가능
+    let innerVar = 'I am from inner'
+    console.log(outerVar) // 접근 가능
+    console.log(innerVar) // 접근 가능
   }
 
-  inner();
-  console.log(outerVar); // 접근 가능
+  inner()
+  console.log(outerVar) // 접근 가능
   // console.log(innerVar); // 접근 불가, ReferenceError 발생
 }
 
-outer();
+outer()
 ```
 
 위 코드에서 inner 함수는 outer 함수 내부에 정의되어 있습니다. 자바스크립트는 렉시컬 스코핑을 사용하여 스코프 체인을 구축합니다. 이는 다음과 같은 스코프 체인을 생성합니다:
@@ -964,18 +934,18 @@ inner 함수는 자신을 둘러싼 외부 함수 outer의 스코프를 렉시�
 
 function Circle(radius) {
   // 생성자 함수 내부의 this는 생성자 함수가 생성할 인스턴스를 가리킨다.
-  this.radius = radius; // ex) circle1의 radius에 radius(5)를 할당해줘
+  this.radius = radius // ex) circle1의 radius에 radius(5)를 할당해줘
   this.getDiameter = function () {
-    return 2 * this.radius;
-  };
+    return 2 * this.radius
+  }
 }
 
 // 인스턴스의 생성
-const circle1 = new Circle(5); // 반지름이 5인 Circle 객체를 생성
-const circle2 = new Circle(10); // 반지름이 10인 Circle 객체를 생성
+const circle1 = new Circle(5) // 반지름이 5인 Circle 객체를 생성
+const circle2 = new Circle(10) // 반지름이 10인 Circle 객체를 생성
 
-console.log(circle1.getDiameter()); // 10
-console.log(circle2.getDiameter()); // 20
+console.log(circle1.getDiameter()) // 10
+console.log(circle2.getDiameter()) // 20
 ```
 
 ### 생성자 함수가 객체(인스턴스)를 생성하는 과정에 대해 간략하게 설명해줄 수 있나요?
@@ -989,14 +959,14 @@ console.log(circle2.getDiameter()); // 20
 // 1. 생성자 함수 선언
 function Circle(radius) {
   // 3. 인스턴스 초기화
-  this.radius = radius;
+  this.radius = radius
   this.getDiameter = function () {
-    return 2 * this.radius;
-  };
+    return 2 * this.radius
+  }
   // 4. 인스턴스 생성시에 생성자 함수를 호출할 때 넣은 인수를 this 바인딩을 통해 프로퍼티에 할당한 뒤, 인스턴스를 반환한다
 }
 // 2. 인스턴스 생성
-const circle1 = new Circle(5); // 반지름이 5인 Circle 객체를 생성
+const circle1 = new Circle(5) // 반지름이 5인 Circle 객체를 생성
 ```
 
 ## 함수와 일급 객체
@@ -1016,38 +986,38 @@ const circle1 = new Circle(5); // 반지름이 5인 Circle 객체를 생성
 // 1. 함수는 무명의 리터럴로 생성할 수 있다.
 // 2. 함수는 변수에 저장할 수 있다.
 const increase = function (num) {
-  return ++num;
-};
+  return ++num
+}
 
 const decrease = function (num) {
-  return --num;
-};
+  return --num
+}
 
 // 2. 함수는 객체에 저장할 수 있다.
-const predicates = { increase, decrease };
+const predicates = { increase, decrease }
 
-console.log(predicates); // predicates:  { increase: [Function: increase], decrease: [Function: decrease] }
+console.log(predicates) // predicates:  { increase: [Function: increase], decrease: [Function: decrease] }
 
 // 3. 함수의 매개변수에게 전달할 수 있다.
 // 4. 함수의 반환값으로 사용할 수 있다.
 function makeCounter(predicate) {
-  let num = 0;
+  let num = 0
 
   return function () {
-    num = predicate(num);
-    return num;
-  };
+    num = predicate(num)
+    return num
+  }
 }
 
 // 3. 함수는 매개변수에게 함수를 전달할 수 있다.
-const increaser = makeCounter(predicates.increase);
-console.log(increaser()); // 1
-console.log(increaser()); // 2
+const increaser = makeCounter(predicates.increase)
+console.log(increaser()) // 1
+console.log(increaser()) // 2
 
 // 3. 함수는 매개변수에게 함수를 전달할 수 있다.
-const decreaser = makeCounter(predicates.decrease);
-console.log(decreaser()); // -1
-console.log(decreaser()); // -2
+const decreaser = makeCounter(predicates.decrease)
+console.log(decreaser()) // -1
+console.log(decreaser()) // -2
 ```
 
 ### 자바스크립트에서 함수가 일급 객체라면, 일급 객체로 뭘 할 수 있나요?
@@ -1083,18 +1053,18 @@ console.log(decreaser()); // -2
   예시:
 
 ```js
-let map = new Map();
+let map = new Map()
 
-map.set('1', 'str1'); // 문자형 키
-map.set(1, 'num1'); // 숫자형 키
-map.set(true, 'bool1'); // 불린형 키
+map.set('1', 'str1') // 문자형 키
+map.set(1, 'num1') // 숫자형 키
+map.set(true, 'bool1') // 불린형 키
 
 // 객체는 키를 문자형으로 변환한다는 걸 기억하고 계신가요?
 // 맵은 키의 타입을 변환시키지 않고 그대로 유지합니다. 따라서 아래의 코드는 출력되는 값이 다릅니다.
-alert(map.get(1)); // 'num1'
-alert(map.get('1')); // 'str1'
+alert(map.get(1)) // 'num1'
+alert(map.get('1')) // 'str1'
 
-alert(map.size); // 3
+alert(map.size) // 3
 
 // 맵은 객체와 달리 키를 문자형으로 변환하지 않습니다. 키엔 자료형 제약이 없습니다.
 ```
@@ -1119,24 +1089,24 @@ alert(map.size); // 3
 이때 적합한 자료구조가 바로 셋입니다.
 
 ```js
-let set = new Set();
+let set = new Set()
 
-let john = { name: 'John' };
-let pete = { name: 'Pete' };
-let mary = { name: 'Mary' };
+let john = { name: 'John' }
+let pete = { name: 'Pete' }
+let mary = { name: 'Mary' }
 
 // 어떤 고객(john, mary)은 여러 번 방문할 수 있습니다.
-set.add(john);
-set.add(pete);
-set.add(mary);
-set.add(john);
-set.add(mary);
+set.add(john)
+set.add(pete)
+set.add(mary)
+set.add(john)
+set.add(mary)
 
 // 셋에는 유일무이한 값만 저장됩니다.
-alert(set.size); // 3
+alert(set.size) // 3
 
 for (let user of set) {
-  alert(user.name); // // John, Pete, Mary 순으로 출력됩니다.
+  alert(user.name) // // John, Pete, Mary 순으로 출력됩니다.
 }
 ```
 
@@ -1149,25 +1119,25 @@ for (let user of set) {
 
 ```ts
 interface Data {
-  date: string; // 'YYYY-MM-DD' 형식의 날짜 문자열
-  value: any; // 데이터 값
+  date: string // 'YYYY-MM-DD' 형식의 날짜 문자열
+  value: any // 데이터 값
 }
 
 const groupByDate = (data: Data[]): Record<string, Data[]> => {
-  const lookupTable: Record<string, Data[]> = {};
+  const lookupTable: Record<string, Data[]> = {}
 
   for (const item of data) {
-    const { date, value } = item;
+    const { date, value } = item
 
     if (!lookupTable[date]) {
-      lookupTable[date] = [];
+      lookupTable[date] = []
     }
 
-    lookupTable[date].push({ date, value });
+    lookupTable[date].push({ date, value })
   }
 
-  return lookupTable;
-};
+  return lookupTable
+}
 
 // 사용 예시
 const data: Data[] = [
@@ -1175,9 +1145,9 @@ const data: Data[] = [
   { date: '2023-06-02', value: 20 },
   { date: '2023-06-01', value: 30 },
   { date: '2023-06-03', value: 40 },
-];
+]
 
-const lookupTable = groupByDate(data);
+const lookupTable = groupByDate(data)
 /*
 lookupTable: {
   '2023-06-01': [
@@ -1394,16 +1364,16 @@ this 바인딩은 this(키워드로 분류되지만 식별자 역할을 한다)�
 3. 내부 함수에서 사용되는 변수가 외부 함수의 변수 스코프에 포함되어 있을 때
 
 ```js
-var name = `Global`;
+var name = `Global`
 function outer() {
-  var name = `closure`;
+  var name = `closure`
   return function inner() {
-    console.log(name);
-  };
+    console.log(name)
+  }
 }
 
-var callFunc = outer();
-callFunc();
+var callFunc = outer()
+callFunc()
 ```
 
 위 코드에서 `callFunc`를 클로저라고 한다. `callFunc` 호출에 의해 name이라는 값이 console 에 찍히는데, 찍히는 값은 `Global`이 아니라 `closure`라는 값이다. 즉, `outer` 함수의 `context` 에 속해있는 변수를 참조하는 것이다. 여기서 `outer` 함수의 지역변수로 존재하는 `name`변수를 `free variable(자유변수)` 라고 한다.
@@ -1423,17 +1393,17 @@ callFunc();
 ```js
 // ES5 생성자 함수
 function Person(name) {
-  this.name = name;
+  this.name = name
 }
 
 // 프로토타입 메서드
 Person.prototype.sayHi = function () {
-  console.log('Hi! My name is ' + this.name);
-};
+  console.log('Hi! My name is ' + this.name)
+}
 
 // 인스턴스 생성
-var me = new Person('Lee');
-me.sayHi(); // Hi! My name is Lee
+var me = new Person('Lee')
+me.sayHi() // Hi! My name is Lee
 ```
 
 하지만 **클래스 기반 언어에 익숙한 프로그래머들은 프로토타입 기반의 프로그래밍 방식에 혼란을 느낄 수 있으며, 자바스크립트를 어렵게 느끼게 하는 하나의 장벽처럼 인식되었다.**
@@ -1474,10 +1444,10 @@ class Person {}
 
 ```js
 // 익명 클래스 표현식
-const Person = class {};
+const Person = class {}
 
 // 기명 클래스 표현식
-const Person = class MyClass {};
+const Person = class MyClass {}
 ```
 
 #### 클래스 몸체에 정의할 수 있는 메서드
@@ -1491,29 +1461,29 @@ class Person {
   // constructor: 생성자
   constructor(name) {
     // 인스턴스 생성 및 초기화
-    this.name = name; // name 프로퍼티는 public하다.
+    this.name = name // name 프로퍼티는 public하다.
   }
 
   // 프로토타입 메서드
   sayHi() {
-    console.log(`Hi! My name is ${this.name}`);
+    console.log(`Hi! My name is ${this.name}`)
   }
 
   // 정적 메서드 (static을 붙여 정의한다)
   static sayHello() {
-    console.log('Hello!');
+    console.log('Hello!')
   }
 }
 
 // 인스턴스 생성
-const me = new Person('Lee');
+const me = new Person('Lee')
 
 // ① 인스턴스의 프로퍼티 참조
-console.log(me.name); // Lee
+console.log(me.name) // Lee
 // ② 프로토타입 메서드 호출
-me.sayHi(); // Hi! My name is Lee
+me.sayHi() // Hi! My name is Lee
 // ③ 정적 메서드 호출 (호출 시에 인스턴스가 아닌 클래스의 메서드로 동작한다.)
-Person.sayHello(); // Hello!
+Person.sayHello() // Hello!
 ```
 
 #### 정적 메서드와 프로토타입 메서드의 차이
@@ -1550,36 +1520,36 @@ class Derived extends Base {}
 ```js
 class Animal {
   constructor(age, weight) {
-    this.age = age;
-    this.weight = weight;
+    this.age = age
+    this.weight = weight
   }
 
   eat() {
-    return 'eat';
+    return 'eat'
   }
 
   move() {
-    return 'move';
+    return 'move'
   }
 }
 
 // 상속을 통해 Animal 클래스를 확장한 Bird 클래스
 class Bird extends Animal {
   fly() {
-    return 'fly';
+    return 'fly'
   }
 }
 
-const bird = new Bird(1, 5);
+const bird = new Bird(1, 5)
 
-console.log(bird); // Bird {age: 1, weight: 5}
-console.log(bird instanceof Bird); // true
-console.log(bird instanceof Animal); // true (프로토타입 체인으로 얽혀있기 때문에)
-console.log(bird instanceof Object); // true (스코프의 최 상위에는 Object가 있다)
+console.log(bird) // Bird {age: 1, weight: 5}
+console.log(bird instanceof Bird) // true
+console.log(bird instanceof Animal) // true (프로토타입 체인으로 얽혀있기 때문에)
+console.log(bird instanceof Object) // true (스코프의 최 상위에는 Object가 있다)
 
-console.log(bird.eat()); // eat
-console.log(bird.move()); // move
-console.log(bird.fly()); // fly
+console.log(bird.eat()) // eat
+console.log(bird.move()) // move
+console.log(bird.fly()) // fly
 ```
 
 #### super 키워드
@@ -1597,21 +1567,21 @@ super 키워드는 함수처럼 호출할 수도 있고 this와 같이 식별자
 // 수퍼클래스
 class Base {
   constructor(a, b) {
-    this.a = a;
-    this.b = b;
+    this.a = a
+    this.b = b
   }
 }
 
 // 서브클래스
 class Derived extends Base {
   constructor(a, b, c) {
-    super(a, b); // 수퍼클래스에 정의한 프로퍼티(a,b)를 그대로 사용하겠다는 의미
-    this.c = c;
+    super(a, b) // 수퍼클래스에 정의한 프로퍼티(a,b)를 그대로 사용하겠다는 의미
+    this.c = c
   }
 }
 
-const derived = new Derived(1, 2, 3);
-console.log(derived); // Derived {a: 1, b: 2, c: 3}
+const derived = new Derived(1, 2, 3)
+console.log(derived) // Derived {a: 1, b: 2, c: 3}
 ```
 
 #### super 참조
@@ -1620,11 +1590,11 @@ console.log(derived); // Derived {a: 1, b: 2, c: 3}
 // 수퍼클래스
 class Base {
   constructor(name) {
-    this.name = name;
+    this.name = name
   }
 
   sayHi() {
-    return `Hi! ${this.name}`;
+    return `Hi! ${this.name}`
   }
 }
 
@@ -1632,12 +1602,12 @@ class Base {
 class Derived extends Base {
   sayHi() {
     // super.sayHi는 수퍼클래스의 프로토타입 메서드를 가리킨다.
-    return `${super.sayHi()}. how are you doing?`;
+    return `${super.sayHi()}. how are you doing?`
   }
 }
 
-const derived = new Derived('Lee');
-console.log(derived.sayHi()); // Hi! Lee. how are you doing?
+const derived = new Derived('Lee')
+console.log(derived.sayHi()) // Hi! Lee. how are you doing?
 ```
 
 #### 추상화
@@ -1649,17 +1619,17 @@ console.log(derived.sayHi()); // Hi! Lee. how are you doing?
 class Rectangle {
   constructor(width, height) {
     // constructor
-    this.width = width;
-    this.height = height;
+    this.width = width
+    this.height = height
   }
 
   // 프로토타입 메서드
   getArea() {
-    return this.width * this.height;
+    return this.width * this.height
   }
 
   toString() {
-    return `width = ${this.width}, height = ${this.height}`;
+    return `width = ${this.width}, height = ${this.height}`
   }
 }
 
@@ -1667,23 +1637,23 @@ class Rectangle {
 class ColorRectangle extends Rectangle {
   // extends 키워드를 통해 수퍼클래스를 상속받음
   constructor(width, height, color) {
-    super(width, height);
-    this.color = color;
+    super(width, height)
+    this.color = color
   }
 
   // 메서드 오버라이딩
   toString() {
-    return super.toString() + `, color = ${this.color}`;
+    return super.toString() + `, color = ${this.color}`
   }
 }
 
-const colorRectangle = new ColorRectangle(2, 4, 'red');
-console.log(colorRectangle); // ColorRectangle {width: 2, height: 4, color: "red"}
+const colorRectangle = new ColorRectangle(2, 4, 'red')
+console.log(colorRectangle) // ColorRectangle {width: 2, height: 4, color: "red"}
 
 // 상속을 통해 getArea 메서드를 호출
-console.log(colorRectangle.getArea()); // 8
+console.log(colorRectangle.getArea()) // 8
 // 오버라이딩된 toString 메서드를 호출
-console.log(colorRectangle.toString()); // width = 2, height = 4, color = red
+console.log(colorRectangle.toString()) // width = 2, height = 4, color = red
 ```
 
 위 코드의 흐름은 다음과 같다
@@ -1712,7 +1682,7 @@ console.log(colorRectangle.toString()); // width = 2, height = 4, color = red
 
 ## 브라우저 렌더링 과정
 
-📌 **관련 주제**: [DOM](#DOM), [비동기 프로그래밍](#비동기-프로그래밍)
+📌 **관련 주제**: [DOM](#dom), [비동기 프로그래밍](#비동기-프로그래밍)
 
 ### 브라우저의 렌더링 과정에 대해 설명해보세요
 
@@ -1863,7 +1833,7 @@ ORANGE
 
 ## 이벤트
 
-📌 **관련 주제**: [DOM](#DOM), [브라우저 렌더링 과정](#브라우저-렌더링-과정), [비동기 프로그래밍](#비동기-프로그래밍)
+📌 **관련 주제**: [DOM](#dom), [브라우저 렌더링 과정](#브라우저-렌더링-과정), [비동기 프로그래밍](#비동기-프로그래밍)
 
 ### 마우스 이벤트 타입에는 뭐가 있나요? click 말고 클릭을 대체할 수 있는 이벤트가 있나요?
 
@@ -1971,13 +1941,13 @@ DOM 트리상에 존재하는 모든 DOM 요소 노드에서 발생한 이벤트
     <div>Click me</div>
   </body>
   <script>
-    const html = document.querySelector('html');
-    const body = document.querySelector('body');
-    const div = document.querySelector('div');
+    const html = document.querySelector('html')
+    const body = document.querySelector('body')
+    const div = document.querySelector('div')
 
-    html.addEventListener('click', () => console.log('HTML'));
-    body.addEventListener('click', () => console.log('BODY'));
-    div.addEventListener('click', () => console.log('DIV'));
+    html.addEventListener('click', () => console.log('HTML'))
+    body.addEventListener('click', () => console.log('BODY'))
+    div.addEventListener('click', () => console.log('DIV'))
   </script>
 </html>
 ```
@@ -2047,11 +2017,11 @@ DIV
       <button class="btn-number">5</button>
     </div>
     <script>
-      const div = document.querySelector('div');
+      const div = document.querySelector('div')
 
       div.addEventListener('click', (e) => {
-        console.log(e.target.innerHTML);
-      });
+        console.log(e.target.innerHTML)
+      })
     </script>
   </body>
 </html>
@@ -2104,22 +2074,22 @@ setTimeout 함수가 반환한 타이머 id는 ① 브라우저 환경일 경우
 
 ```js
 // 1초(1000ms) 후 타이머가 만료되면 콜백 함수가 호출된다.
-setTimeout(() => console.log('Hi!'), 1000);
+setTimeout(() => console.log('Hi!'), 1000)
 
 // 세 번째 인수로 문자열 'Lee' 전달
-setTimeout((name) => console.log(`Hi! ${name}.`), 1000, 'Lee');
+setTimeout((name) => console.log(`Hi! ${name}.`), 1000, 'Lee')
 
 // 두 번째 인수(delay)를 생략하면 기본값 0이 지정된다.
-setTimeout(() => console.log('Hello!'));
+setTimeout(() => console.log('Hello!'))
 ```
 
 setTimeout 함수가 반환한 타이머 id를 clearTimeout 함수의 인수로 전달하여 타이머를 취소할 수 있다.
 
 ```js
-const timerId = setTimeout(() => console.log('Hi!'), 1000);
-console.log(timeId);
+const timerId = setTimeout(() => console.log('Hi!'), 1000)
+console.log(timeId)
 
-clearTimeout(timerId);
+clearTimeout(timerId)
 ```
 
 <b>② setInterval/ clearInterval</b>
@@ -2138,15 +2108,15 @@ const timeoutdId = setInterval(func|code[, delay, param1, param2, ...]);
 setInterval의 첫 번째 인수인 콜백 함수는 두 번째 인수로 전달받은 시간이 경과할 때마다 반복 실행되도록 호출 스케줄링된다.
 
 ```js
-let count = 1;
+let count = 1
 
 const timeoutId = setInterval(() => {
-  console.log(count); // 1 2 3 4 5
+  console.log(count) // 1 2 3 4 5
 
-  if (count++ === 5) clearInterval(timeoutId);
-}, 1000);
+  if (count++ === 5) clearInterval(timeoutId)
+}, 1000)
 
-console.log('timeoutId: ', timeoutId);
+console.log('timeoutId: ', timeoutId)
 ```
 
 ### 이벤트가 과도하게 호출되어 성능에 문제를 일으킬 경우에 할 수 있는 어떤 일을 통해 해결할 수 있나요?
@@ -2176,27 +2146,27 @@ scroll, resize, mousemove 같은 이벤트는 짧은 시간 간격으로 연속�
     <input type="text" />
     <div class="msg"></div>
     <script>
-      const $input = document.querySelector('input');
-      const $msg = document.querySelector('.msg');
+      const $input = document.querySelector('input')
+      const $msg = document.querySelector('.msg')
 
       const debounce = (callback, delay) => {
-        let timerId;
+        let timerId
         // debounce 함수는 timerId를 기억하는 클로저를 반환한다.
         return (event) => {
           // delay가 경과하기 이전에 이벤트가 발생하면 이전 타이머를 취소하고
           // 새로운 타이머를 재설정한다.
           // 따라서 delay보다 짧은 간격으로 이벤트가 발생하면 callback은 호출되지 않는다.
-          if (timerId) clearTimeout(timerId);
-          timerId = setTimeout(callback, delay, event);
-        };
-      };
+          if (timerId) clearTimeout(timerId)
+          timerId = setTimeout(callback, delay, event)
+        }
+      }
 
       // debounce 함수가 반환하는 클로저가 이벤트 핸들러로 등록된다.
       // 300ms보다 짧은 간격으로 input 이벤트가 발생하면 debounce 함수의 콜백 함수는
       // 호출되지 않다가 300ms 동안 input 이벤트가 더 이상 발생하면 한 번만 호출된다.
       $input.oninput = debounce((e) => {
-        $msg.textContent = e.target.value;
-      }, 300);
+        $msg.textContent = e.target.value
+      }, 300)
     </script>
   </body>
 </html>
@@ -2249,42 +2219,42 @@ scroll, resize, mousemove 같은 이벤트는 짧은 시간 간격으로 연속�
     </div>
 
     <script>
-      const $container = document.querySelector('.container');
-      const $normalCount = document.querySelector('.normal-count');
-      const $throttleCount = document.querySelector('.throttle-count');
+      const $container = document.querySelector('.container')
+      const $normalCount = document.querySelector('.normal-count')
+      const $throttleCount = document.querySelector('.throttle-count')
 
       const throttle = (callback, delay) => {
-        let timerId;
+        let timerId
         // throttle 함수는 timerId를 기억하는 클로저를 반환한다.
         return (event) => {
           // delay가 경과하기 이전에 이벤트가 발생하면 아무것도 하지 않다가
           // delay가 경과했을 때 이벤트가 발생하면 새로운 타이머를 재설정한다.
           // 따라서 delay 간격으로 callback이 호출된다.
-          if (timerId) return;
+          if (timerId) return
           timerId = setTimeout(
             () => {
-              callback(event);
-              timerId = null;
+              callback(event)
+              timerId = null
             },
             delay,
-            event
-          );
-        };
-      };
+            event,
+          )
+        }
+      }
 
-      let normalCount = 0;
+      let normalCount = 0
       $container.addEventListener('scroll', () => {
-        $normalCount.textContent = ++normalCount;
-      });
+        $normalCount.textContent = ++normalCount
+      })
 
-      let throttleCount = 0;
+      let throttleCount = 0
       // throttle 함수가 반환하는 클로저가 이벤트 핸들러로 등록된다.
       $container.addEventListener(
         'scroll',
         throttle(() => {
-          $throttleCount.textContent = ++throttleCount;
-        }, 1000)
-      );
+          $throttleCount.textContent = ++throttleCount
+        }, 1000),
+      )
     </script>
   </body>
 </html>
@@ -2298,7 +2268,7 @@ scroll, resize, mousemove 같은 이벤트는 짧은 시간 간격으로 연속�
 
 ## 비동기 프로그래밍
 
-📌 **관련 주제**: [Promise](#Promise), [제너레이터와 async await](#제너레이터와-async-await), [타이머](#타이머), [이벤트](#이벤트)
+📌 **관련 주제**: [Promise](#promise), [제너레이터와 async await](#제너레이터와-async-await), [타이머](#타이머), [이벤트](#이벤트)
 
 ### 동기와 비동기의 차이점에 대해서 설명해줄 수 있나요?
 
@@ -2315,19 +2285,19 @@ scroll, resize, mousemove 같은 이벤트는 짧은 시간 간격으로 연속�
 함수 코드의 실행이 종료되면 함수 실행 컨텍스트는 실행 컨텍스트 스택에서 팝되어 제거된다.
 
 ```js
-const x = 1;
+const x = 1
 
 function foo() {
-  const y = 2;
+  const y = 2
 
   function bar() {
-    const z = 3;
-    console.log(x + y + z);
+    const z = 3
+    console.log(x + y + z)
   }
-  bar();
+  bar()
 }
 
-foo(); // 6
+foo() // 6
 ```
 
 <img src="./images/27_2.jpg" alt="실행 컨텍스트 스택 구조">
@@ -2364,24 +2334,24 @@ foo(); // 6
 
 ```js
 function sleep(func, delay) {
-  const delayUntil = Date.now() + delay;
+  const delayUntil = Date.now() + delay
 
   // 현재 시간(Date.now())에 delay를 더한 delayUntil이 현재 시간보다 작으면 계속 반복한다.
   while (Date.now() < delayUntil);
   // 일정 시간(delay)이 경과한 이후에 콜백 함수(func)를 호출한다.
-  func();
+  func()
 }
 
 function foo() {
-  console.log('foo');
+  console.log('foo')
 }
 
 function bar() {
-  console.log('bar');
+  console.log('bar')
 }
 
-sleep(foo, 3000);
-bar();
+sleep(foo, 3000)
+bar()
 ```
 
 <img src="./images/sleep.gif" alt="동기함수 sleep">
@@ -2396,17 +2366,17 @@ bar();
 
 ```js
 function foo() {
-  console.log('foo');
+  console.log('foo')
 }
 
 function bar() {
-  console.log('bar');
+  console.log('bar')
 }
 
 // 타이머 함수 setTimeout은 일정 시간이 경과한 이후에 콜백 함수 foo를 호출한다.
 // 타이머 함수 setTimeout은 bar 함수를 블로킹하지 않는다.
-setTimeout(foo, 3 * 1000);
-bar();
+setTimeout(foo, 3 * 1000)
+bar()
 ```
 
 <img src="./images/nonSleep.gif" alt="비동기 함수 setTimeout">
@@ -2488,11 +2458,11 @@ setTimeout 함수는 앞서 살펴본 sleep 함수와 유사하게 일정 시간
 콜백 함수나 이벤트 핸들러를 일시 저장한다는 점에서 태스크 큐와 동일하지만 마이크로태스크 큐는 태스크 큐보다 우선순위가 높다.
 
 ```js
-setTimeout(() => console.log(1), 0);
+setTimeout(() => console.log(1), 0)
 
 Promise.resolve()
   .then(() => console.log(2))
-  .then(() => console.log(3));
+  .then(() => console.log(3))
 ```
 
 프로미스의 후속 처리 메서드(then, catch, finally)도 비동기적으로 동작하므로 1 > 2 > 3 의 순으로 출력될 것처럼 보이지만 2 > 3 > 1 순으로 출력된다.
@@ -2524,7 +2494,7 @@ Promise.resolve()
 
 ## REST API
 
-📌 **관련 주제**: [Promise](#Promise)
+📌 **관련 주제**: [Promise](#promise)
 
 ### REST API가 뭔가요?
 
@@ -2605,11 +2575,11 @@ get('/step1', (a) => {
   get(`/step2/${a}`, (b) => {
     get(`/step3/${b}`, (c) => {
       get(`/step4/${c}`, (d) => {
-        console.log(d);
-      });
-    });
-  });
-});
+        console.log(d)
+      })
+    })
+  })
+})
 ```
 
 ### 프로미스 생성 방법
@@ -2654,7 +2624,7 @@ Promise 생성자 함수가 인수로 전달받은 콜백 함수 내부에서 �
 
 ## 제너레이터와 async await
 
-📌 **관련 주제**: [Promise](#Promise), [비동기 프로그래밍](#비동기-프로그래밍), [함수](#함수)
+📌 **관련 주제**: [Promise](#promise), [비동기 프로그래밍](#비동기-프로그래밍), [함수](#함수)
 
 ### `제너레이터란 뭔가요? 일반 함수와는 어떤 차이가 있죠?`
 
@@ -2693,22 +2663,22 @@ next 메서드를 통해 제너레이터를 실행할 경우, 코드 블록 내�
 ```js
 // 제너레이터 함수
 function* genFunc() {
-  yield 1;
-  yield 2;
-  yield 3;
+  yield 1
+  yield 2
+  yield 3
 }
 
 // 제너레이터 함수를 호출하면 제너레이터 객체를 반환한다.
 // 이터러블이면서 동시에 이터레이터인 제너레이터 객체는 next 메서드를 갖는다.
-const generator = genFunc();
+const generator = genFunc()
 
-console.log(generator.next()); // {value: 1, done: false}
+console.log(generator.next()) // {value: 1, done: false}
 
-console.log(generator.next()); // {value: 2, done: false}
+console.log(generator.next()) // {value: 2, done: false}
 
-console.log(generator.next()); // {value: 3, done: false}
+console.log(generator.next()) // {value: 3, done: false}
 
-console.log(generator.next()); // {value: undefined, done: true}
+console.log(generator.next()) // {value: undefined, done: true}
 ```
 
 </details>
@@ -2740,17 +2710,17 @@ await 키워드는 반드시 프로미스 앞에서 사용해야 한다.
   <script>
     // async 사용!
     async function fetchTodo() {
-      const url = 'https://jsonplaceholder.typicode.com/todos/1';
+      const url = 'https://jsonplaceholder.typicode.com/todos/1'
 
-      const response = await fetch(url);
-      const todo = await response.json();
-      console.log(todo);
-      const result = JSON.stringify(todo, null, 2);
-      document.querySelector('pre').innerHTML = result;
+      const response = await fetch(url)
+      const todo = await response.json()
+      console.log(todo)
+      const result = JSON.stringify(todo, null, 2)
+      document.querySelector('pre').innerHTML = result
       // {userId: 1, id: 1, title: 'delectus aut autem', completed: false}
     }
 
-    fetchTodo();
+    fetchTodo()
   </script>
 </body>
 ```
@@ -2765,14 +2735,14 @@ async await로 구현할 경우 제너레이터의 성질을 갖기 때문에 �
 
 ```js
 async function foo() {
-  const a = await new Promise((resolve) => setTimeout(() => resolve(1), 3000));
-  const b = await new Promise((resolve) => setTimeout(() => resolve(2), 2000));
-  const c = await new Promise((resolve) => setTimeout(() => resolve(3), 1000));
+  const a = await new Promise((resolve) => setTimeout(() => resolve(1), 3000))
+  const b = await new Promise((resolve) => setTimeout(() => resolve(2), 2000))
+  const c = await new Promise((resolve) => setTimeout(() => resolve(3), 1000))
 
-  console.log([a, b, c]); // [1, 2, 3]
+  console.log([a, b, c]) // [1, 2, 3]
 }
 
-foo(); // 약 6초 소요된다.
+foo() // 약 6초 소요된다.
 ```
 
 #### `프로미스의 정적 메서드 Promise.all을 사용하는 경우`
@@ -2785,12 +2755,12 @@ async function foo() {
     new Promise((resolve) => setTimeout(() => resolve(1), 3000)),
     new Promise((resolve) => setTimeout(() => resolve(2), 2000)),
     new Promise((resolve) => setTimeout(() => resolve(3), 1000)),
-  ]);
+  ])
 
-  console.log(res); // [1, 2, 3]
+  console.log(res) // [1, 2, 3]
 }
 
-foo(); // 약 3초 소요된다.
+foo() // 약 3초 소요된다.
 ```
 
 ### `Promise와 async/await의 차이점 한 줄 요약`
@@ -2807,7 +2777,7 @@ foo(); // 약 3초 소요된다.
 
 ## 에러
 
-📌 **관련 주제**: [Promise](#Promise), [제너레이터와 async await](#제너레이터와-async-await)
+📌 **관련 주제**: [Promise](#promise), [제너레이터와 async await](#제너레이터와-async-await)
 
 ### `에러처리를 왜 해야 하나요?`
 
@@ -2823,11 +2793,11 @@ foo(); // 약 3초 소요된다.
 #### 에러를 처리를 하지 않을 경우
 
 ```js
-console.log('[Start]');
+console.log('[Start]')
 
-foo(); // ReferenceError: foo is not defined
+foo() // ReferenceError: foo is not defined
 
-console.log('[End]');
+console.log('[End]')
 ```
 
 ```
@@ -2846,17 +2816,17 @@ ReferenceError: foo is not defined
 #### 에러 처리를 할 경우
 
 ```js
-console.log('[Start]');
+console.log('[Start]')
 
 try {
-  foo();
+  foo()
 } catch (error) {
-  console.error('[에러 발생]', error);
+  console.error('[에러 발생]', error)
   // [에러 발생] ReferenceError: foo is not defined
 }
 
 // 발생한 에러에 적절한 대응을 하면 프로그램이 강제 종료되지 않는다.
-console.log('[End]');
+console.log('[End]')
 ```
 
 ```
@@ -2888,7 +2858,7 @@ Error 생성자 함수는 에러 객체를 생성한다.
 Error 생성자 함수에는 에러를 상세히 설명하는 에러 메시지를 인수로 전달할 수 있다.
 
 ```js
-const error = new Error('invalid');
+const error = new Error('invalid')
 ```
 
 자바스크립트는 Error 생성자 함수를 포함해 7가지의 에러 객체를 생성할 수 있는 Error 생성자 함수를 제공한다.
@@ -2917,9 +2887,9 @@ Error 생성자 함수로 에러 객체를 생성한다고 에러가 발생하�
 ```js
 try {
   // 에러 객체를 생성한다고 에러가 발생하는 것은 아니다.
-  new Error('something wrong');
+  new Error('something wrong')
 } catch (error) {
-  console.log(error);
+  console.log(error)
 }
 ```
 
@@ -2932,9 +2902,9 @@ throw 표현식;
 ```js
 try {
   // 에러 객체를 던지면 catch 코드 블록이 실행되기 시작한다.
-  throw new Error('something wrong');
+  throw new Error('something wrong')
 } catch (error) {
-  console.log(error);
+  console.log(error)
 }
 ```
 

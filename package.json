@@ -25,6 +25,11 @@
   },
   "scripts": {
     "sync:docs": "node scripts/sync-docs.js",
+    "lint:md": "markdownlint js.md react.md cs.md html_css.md data_structure.md algorithm_data_structure.md",
+    "lint:md:fix": "markdownlint --fix js.md react.md cs.md html_css.md data_structure.md algorithm_data_structure.md",
+    "lint:links": "find . -maxdepth 1 -name '*.md' ! -name 'README.md' -exec markdown-link-check --config .markdown-link-check.json {} +",
+    "format": "prettier --write '*.md'",
+    "format:check": "prettier --check '*.md'",
     "docs:dev": "vitepress dev docs",
     "docs:build": "pnpm run sync:docs && vitepress build docs",
     "docs:preview": "vitepress preview docs",
@@ -32,6 +37,9 @@
   },
   "devDependencies": {
     "husky": "^9.1.7",
+    "markdown-link-check": "^3.14.2",
+    "markdownlint-cli": "^0.47.0",
+    "prettier": "^3.8.1",
     "vitepress": "^1.6.4"
   }
 }

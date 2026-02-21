@@ -2,37 +2,34 @@
 
 ## React
 
-- [React 기초](#React-기초)
+- [React 기초](#react-기초)
 - [리액트는 라이브러리인가요 프레임워크인가요](#리액트는-라이브러리인가요-프레임워크인가요)
 - [리액트를 사용하는 이유](#리액트를-사용하는-이유)
-- [virtual DOM에 대해서 아나요](#virtual-DOM에-대해서-아나요)
+- [virtual DOM에 대해서 아나요](#virtual-dom에-대해서-아나요)
 - [리액트의 렌더링에 대해 아나요](#리액트의-렌더링에-대해-아나요)
 - [리액트 파이버에 대해서 아나요](#리액트-파이버에-대해서-아나요)
 - [리액트 파이버 트리](#리액트-파이버-트리)
-- [리액트 파이버와 DOM, Virtual DOM의 관계](#리액트-파이버와-DOM-Virtual-DOM의-관계)
+- [리액트 파이버와 DOM, Virtual DOM의 관계](#리액트-파이버와-dom-virtual-dom의-관계)
 - [렌더 단계와 커밋 단계에 대해 아나요](#렌더-단계와-커밋-단계에-대해-아나요)
-- [React에서 함수 컴포넌트와 클래스 컴포넌트의 차이 🔥](#React에서-함수-컴포넌트와-클래스-컴포넌트의-차이)
+- [React에서 함수 컴포넌트와 클래스 컴포넌트의 차이 🔥](#react에서-함수-컴포넌트와-클래스-컴포넌트의-차이)
 - [리액트에서 함수형 컴포넌트라고 부르지 않고 함수 컴포넌트라고 부르는 이유가 무엇인가요🔥](#리액트에서-함수형-컴포넌트라고-부르지-않고-함수-컴포넌트라고-부르는-이유가-무엇인가요)
 - [props와 state의 차이🔥](#props와-state의-차이)
 - [Props가 컴포넌트간에 전달받는 것이라고 했는데 자식에서 부모로도 전달할 수 있는가 🔥](#props가-컴포넌트간에-전달받는-것이라고-했는데-자식에서-부모로도-전달할-수-있는가)
-- [FLUX에 대해서 아나요? 🔥🔥](#FLUX에-대해서-아나요)
+- [FLUX에 대해서 아나요? 🔥🔥](#flux에-대해서-아나요)
 - [리덕스에 대해서 아나요? 🔥](#리덕스에-대해서-아나요)
 - [리덕스의 기본 원칙은? 🔥](#리덕스의-기본-원칙은)
-- [React에서 state의 불변성을 유지하라는 말이 있는데 이에 대해 설명해달라 🔥](#React에서-state의-불변성을-유지하라는-말이-있는데-이에-대해-설명해달라)
-- [리듀서 내부에서 불변성을 지키는 이유는? 전개 연산자의 단점을 해결할 수 있는 방법은 무엇인가 🔥](#리듀서-내부에서-불변성을-지키는-이유는?-전개-연산자의-단점을-해결할-수-있는-방법은-무엇인가)
+- [React에서 state의 불변성을 유지하라는 말이 있는데 이에 대해 설명해달라 🔥](#react에서-state의-불변성을-유지하라는-말이-있는데-이에-대해-설명해달라)
+- [리듀서 내부에서 불변성을 지키는 이유는? 전개 연산자의 단점을 해결할 수 있는 방법은 무엇인가 🔥](#리듀서-내부에서-불변성을-지키는-이유는-전개-연산자의-단점을-해결할-수-있는-방법은-무엇인가)
 - [리액트 사용시에 부수효과로 인해 생기는 문제점이 있다면 🔥](#리액트-사용시에-부수효과로-인해-생기는-문제점이-있다면)
-
   - 부수 효과를 일으키는 함수 (불순 함수)
   - 부수 효과를 일으키지 않는 함수 (순수 함수)
   - 요약
 
 - [컴포넌트의 라이프 사이클 메서드 🔥](#컴포넌트의-라이프-사이클-메서드)
-
   - 이해
   - 메서드 종류
 
-- [Hooks의 종류 🔥](#Hooks의-종류)
-
+- [Hooks의 종류 🔥](#hooks의-종류)
   - useState
   - useEffect
   - useReducer
@@ -41,30 +38,28 @@
   - useRef
   - 커스텀 Hooks
 
-- [useCallback을 사용할 때와 사용하지 않고 함수를 선언할 때는 어떤 차이가 있나요?](#useCallback을-사용할-때와-사용하지-않고-함수를-선언할-때는-어떤-차이가-있나요?)
-- [useMemo와 useCallback의 차이를 아나요 🔥](#useMemo와-useCallback의-차이를-아나요)
-- [언제 useState 대신 useRef를 쓸 수 있나요?](#언제-useState-대신-useRef를-쓸-수-있나요?)
+- [useCallback을 사용할 때와 사용하지 않고 함수를 선언할 때는 어떤 차이가 있나요?](#usecallback을-사용할-때와-사용하지-않고-함수를-선언할-때는-어떤-차이가-있나요)
+- [useMemo와 useCallback의 차이를 아나요 🔥](#usememo와-usecallback의-차이를-아나요)
+- [언제 useState 대신 useRef를 쓸 수 있나요?](#언제-usestate-대신-useref를-쓸-수-있나요)
 
-- [리액트에서 setState는 비동기 동작인가요 동기 동작인가요?](#리액트에서-setState는-비동기-동작인가요-동기-동작인가요)
-- [setState가 비동기 동작을 취했을 때 얻을 수 있는 이점은 무엇인가요?](#setState가-비동기-동작을-취했을-때-얻을-수-있는-이점은-무엇인가요)
-- [useLayoutEffect는 무엇인가요?](#useLayoutEffect를-사용해보신-적-있나요)
+- [리액트에서 setState는 비동기 동작인가요 동기 동작인가요?](#리액트에서-setstate는-비동기-동작인가요-동기-동작인가요)
+- [setState가 비동기 동작을 취했을 때 얻을 수 있는 이점은 무엇인가요?](#setstate가-비동기-동작을-취했을-때-얻을-수-있는-이점은-무엇인가요)
+- [useLayoutEffect는 무엇인가요?](#uselayouteffect를-사용해보신-적-있나요)
 - [리액트의 성능개선 방법에 대해서 설명해주세요](#리액트의-성능개선-방법에-대해서-설명해주세요)
 
 - [컴포넌트에서 이벤트를 실행시키기 위해서는 어떻게 핸들링해야 하나요](#컴포넌트에서-이벤트를-실행시키기-위해서는-어떻게-핸들링해야-하나요)
-- [SPA가 뭔가요](#SPA가-뭔가요)
-
+- [SPA가 뭔가요](#spa가-뭔가요)
   - SPA의 단점
 
-- [SSR이 뭔가요](#SSR이-뭔가요)
-- [SEO가 뭔가요](#SEO가-뭔가요)
-
+- [SSR이 뭔가요](#ssr이-뭔가요)
+- [SEO가 뭔가요](#seo가-뭔가요)
   - TTV, TTI
 
-- [서버사이드 렌더링을 지원하기 위한 리액트 API를 알고 있나요](#서버사이드-렌더링을-지원하기-위한-리액트-API를-알고-있나요)
+- [서버사이드 렌더링을 지원하기 위한 리액트 API를 알고 있나요](#서버사이드-렌더링을-지원하기-위한-리액트-api를-알고-있나요-)
 - [하이드레이션에 대해 알고 있나요](#하이드레이션에-대해-알고-있나요)
-- [Next의 렌더링 수행 방식](#Next의-렌더링-수행-방식)
-- [Next를 쓴 이유가 있나요](#Next를-쓴-이유가-있나요)
-- [Next를 구성하는 기본 설정 파일에 대해서 알고 있나요?](#Next를-구성하는-기본-설정-파일에-대해서-알고-있나요)
+- [Next의 렌더링 수행 방식](#next의-렌더링-수행-방식)
+- [Next를 쓴 이유가 있나요](#next를-쓴-이유가-있나요)
+- [Next를 구성하는 기본 설정 파일에 대해서 알고 있나요?](#next를-구성하는-기본-설정-파일에-대해서-알고-있나요)
 - [사전 렌더링을 위해 사용해 본 함수가 있나요](#사전-렌더링을-위해-사용해-본-함수가-있나요)
 
 - [Suspense](#suspense)
@@ -83,7 +78,7 @@
 
 ## React 기초
 
-📌 **관련 주제**: [React Fiber와 렌더링](#React-Fiber와-렌더링), [컴포넌트](#컴포넌트), [Hooks](#Hooks)
+📌 **관련 주제**: [React Fiber와 렌더링](#react-fiber와-렌더링), [컴포넌트](#컴포넌트), [Hooks](#hooks)
 
 ### 리액트는 라이브러리인가요 프레임워크인가요
 
@@ -222,7 +217,7 @@ Virtual DOM을 사용한다고 해서 사용하지 않을 때와 비교하여 �
 
 ## React Fiber와 렌더링
 
-📌 **관련 주제**: [React 기초](#React-기초), [컴포넌트](#컴포넌트), [웹 성능 최적화](#웹-성능-최적화)
+📌 **관련 주제**: [React 기초](#react-기초), [컴포넌트](#컴포넌트), [웹 성능 최적화](#웹-성능-최적화)
 
 ### 리액트 파이버에 대해서 아나요
 
@@ -303,7 +298,7 @@ Virtual DOM을 사용한다고 해서 사용하지 않을 때와 비교하여 �
 
 ## 컴포넌트
 
-📌 **관련 주제**: [React 기초](#React-기초), [Hooks](#Hooks), [상태 관리](#상태-관리)
+📌 **관련 주제**: [React 기초](#react-기초), [Hooks](#hooks), [상태 관리](#상태-관리)
 
 ### React에서 함수 컴포넌트와 클래스 컴포넌트의 차이
 
@@ -363,7 +358,7 @@ Virtual DOM을 사용한다고 해서 사용하지 않을 때와 비교하여 �
 
 ## 상태 관리
 
-📌 **관련 주제**: [React 기초](#React-기초), [컴포넌트](#컴포넌트), [Hooks](#Hooks)
+📌 **관련 주제**: [React 기초](#react-기초), [컴포넌트](#컴포넌트), [Hooks](#hooks)
 
 ### FLUX에 대해서 아나요
 
@@ -382,28 +377,28 @@ FLUX 패턴은 Action → Dispatcher → Store → View의 단방향 구조를 �
 
 ```tsx
 type StoreState = {
-  count: number;
-};
+  count: number
+}
 
-type Action = { type: 'add'; payload: number };
+type Action = { type: 'add'; payload: number }
 
 function reducer(state: StoreState, action: Action) {
-  const { type: ActionType, payload } = action;
+  const { type: ActionType, payload } = action
 
   if (ActionType === 'add') {
     return {
       count: state.count + payload,
-    };
+    }
   }
 
-  throw new Error(`Unexpected action type: ${ActionType}`);
+  throw new Error(`Unexpected action type: ${ActionType}`)
 }
 
 export default function App() {
-  const [state, dispatcher] = useReducer(reducer, { count: 0 });
+  const [state, dispatcher] = useReducer(reducer, { count: 0 })
 
   function handleClick() {
-    dispatcher({ type: 'add', payload: 1 });
+    dispatcher({ type: 'add', payload: 1 })
   }
 
   return (
@@ -411,7 +406,7 @@ export default function App() {
       <p>{state.count}</p>
       <button onClick={handleClick}>Add</button>
     </div>
-  );
+  )
 }
 ```
 
@@ -478,21 +473,21 @@ let A = {
   name: 'junhee',
   age: 25,
   job: 'student',
-};
+}
 
-B = { ...A };
+B = { ...A }
 
-console.log('A', A);
-console.log('B', B);
+console.log('A', A)
+console.log('B', B)
 /*
 A { name: 'junhee', age: 25, job: 'student' }
 B { name: 'junhee', age: 25, job: 'student' }
 */
 
-B = { ...A, job: 'frontend developer' };
+B = { ...A, job: 'frontend developer' }
 
-console.log('A', A);
-console.log('B', B);
+console.log('A', A)
+console.log('B', B)
 
 /*
 A { name: 'junhee', age: 25, job: 'student' }
@@ -527,9 +522,9 @@ const nextState = {
             text: '새로운 댓글',
           }),
         }
-      : post
+      : post,
   ),
-};
+}
 ```
 
 이를 해결하기 위해 등장한 라이브러리가 `immer` 라이브러리입니다.
@@ -538,12 +533,12 @@ const nextState = {
 
 ```jsx
 const nextState = produce(state, (draft) => {
-  const post = draft.posts.find((post) => post.id === 1);
+  const post = draft.posts.find((post) => post.id === 1)
   post.comments.push({
     id: 3,
     text: '와 정말 쉽다!',
-  });
-});
+  })
+})
 ```
 
 <br/>
@@ -598,33 +593,33 @@ const changeParams = (arr, elem) => {
 ```js
 /* 코드 참조 (https://maxkim-j.github.io/posts/js-pure-function) */
 
-const num_arr = [1, 2, 3, 4, 5];
+const num_arr = [1, 2, 3, 4, 5]
 
 // 매개변수의 값을 직접 변경하는 불순함수
 const addSixImpure = (arr) => {
   // 매개변수에 직접 6 추가
-  arr.push(6);
-  return arr;
-};
+  arr.push(6)
+  return arr
+}
 
 // 매개변수를 복사한 값을 변경하는 순수함수
 const addSixPure = (arr) => {
   // 펼침 연산자로 새로운 배열에 6 추가
-  newArr = [...arr, 6];
-  return newArr;
-};
+  newArr = [...arr, 6]
+  return newArr
+}
 
 // 매개변수 arr에 6이 있는지 확인하는 함수
 const hasSix = (arr) => {
   if (arr.includes(6)) {
-    return true;
+    return true
   } else {
-    return false;
+    return false
   }
-};
+}
 
-const new_arr = addSixImpure(num_arr);
-console.log(hasSix(num_arr)); // true
+const new_arr = addSixImpure(num_arr)
+console.log(hasSix(num_arr)) // true
 ```
 
 `addSixPure()`과 `addSixInpure()`는 언뜻 보면 별 차이가 없어 보이지만, `addSixInpure()`는 매개변수의 값을 직접 변경하는 불순함수이고, `addSixPure()`는 매개변수 값을 복사해서 변경하는 순수함수입니다.
@@ -634,8 +629,8 @@ console.log(hasSix(num_arr)); // true
 하지만 개발자의 의도가 변수 `new_arr`에 `addSix` 함수를 호출한 새로운 배열을 할당하고 난 후, 값이 `[1,2,3,4,5]`인 `num_arr`에 대해서 6이 있는지 판단하고 싶었던 거였다면 코드는 의도대로 실행되지 않았습니다. 의도대로라면 false가 나와야 하는데, `num_arr`이 이미 변경되었기 때문입니다. 따라서 이런 경우에는 `addSix`함수가 `num_arr`을 직접 변경해서는 안됩니다. 대신에 이런 코드가 필요하죠
 
 ```js
-const new_arr = addSixPure(num_arr);
-console.log(hasSix(num_arr)); // false
+const new_arr = addSixPure(num_arr)
+console.log(hasSix(num_arr)) // false
 ```
 
 `addSixPure()`는 num_arr을 직접 조작하지 않기 때문에 `num_arr`에 처음 할당되었던 값은 바뀌지 않습니다. 따라서 `hasSix(num_arr)`의 결과는 false입니다.
@@ -656,16 +651,16 @@ React state는 직접 조작을 피하는 방식으로 부수효과를 방지합
 [참고자료](https://github.com/junh0328/upgrade_javascript/blob/master/DEEPDIVE/readme4.md#278-%EB%B0%B0%EC%97%B4-%EB%A9%94%EC%84%9C%EB%93%9C)
 
 ```js
-const arr = [1];
+const arr = [1]
 
 // push 메서드는 원본 배열(arr)을 직접 변경한다.
-arr.push(2);
-console.log(arr); // [1, 2]
+arr.push(2)
+console.log(arr) // [1, 2]
 
 // concat 메서드는 원본 배열(arr)을 직접 변경하지 않고 새로운 배열을 생성하여 반환한다.
-const result = arr.concat(3);
-console.log(arr); // [1, 2]
-console.log(result); // [1, 2, 3]
+const result = arr.concat(3)
+console.log(arr) // [1, 2]
+console.log(result) // [1, 2, 3]
 
 /* 
 
@@ -731,7 +726,7 @@ Array.prototype.includes
 
 ## Hooks
 
-📌 **관련 주제**: [React 기초](#React-기초), [컴포넌트](#컴포넌트), [상태 관리](#상태-관리)
+📌 **관련 주제**: [React 기초](#react-기초), [컴포넌트](#컴포넌트), [상태 관리](#상태-관리)
 
 ### Hooks의 종류
 
@@ -747,57 +742,57 @@ Array.prototype.includes
 가장 기본적인 Hook으로, 첫 번째 원소는 상태 값, 두 번째 원소는 상태를 설정하는 함수입니다. 이 함수에 파라미터를 넣어서 호출하면 전달받은 파라미터로 값이 바뀌고 컴포넌트가 정상적으로 리렌더링 됩니다.
 
 ```jsx
-import { useState } from 'react';
+import { useState } from 'react'
 
-const [value, setValue] = useState(0);
+const [value, setValue] = useState(0)
 ```
 
 ##### useState 내부의 모습을 구현한 모습
 
 ```jsx
 const MyReact = (function () {
-  const global = {};
-  let index = 0;
+  const global = {}
+  let index = 0
 
   function useState(initialState) {
     if (!global.states) {
       // 애플리케이션 전체의 states 배열을 초기화한다.
       // 최초 접근이라면 빈 배열로 초기화한다.
-      global.states = [];
+      global.states = []
     }
 
     // states 정보를 조회해서 현재 상태값이 있는지 확인하고 없다면 초깃값으로 설정한다.
-    const currentState = global.states[index] || initialState;
+    const currentState = global.states[index] || initialState
     // states의 값을 위에서 조회한 현재 값으로 업데이트한다.
-    global.states[index] = currentState;
+    global.states[index] = currentState
 
     // 즉시 실행 함수로 setter를 만든다.
     const setState = (function () {
       // 현재 index를 클로저로 가둬놔서 이후에도 계속해서 동인한 index에 접근할 수 있도록 한다.
-      let currentIndex = index;
+      let currentIndex = index
       return function (value) {
-        global.states[currentIndex] = value;
+        global.states[currentIndex] = value
         // 컴포넌트를 렌더링한다. 실제로 컴포넌트를 렌더링하는 코드는 생략했다.
-      };
-    })();
+      }
+    })()
 
     /**
      * useState를 쓸 때마다 index를 하나씩 추가한다. 이 index는 setState에서 사용된다.
      * 즉, 하나의 state마다 index가 할당돼 있어 그 index가 배열의 값(global.states)을 가리키고 필요할 때마다 그 값을 가져오게 한다.
      **/
 
-    index = index + 1;
+    index = index + 1
 
-    return [currentState, setState];
+    return [currentState, setState]
   }
 
   function Component() {
-    const [value, setValue] = useState(0);
+    const [value, setValue] = useState(0)
 
     //...
-    return <div>{value}</div>;
+    return <div>{value}</div>
   }
-})();
+})()
 ```
 
 #### 2. useEffect
@@ -808,16 +803,16 @@ const MyReact = (function () {
 
 ```jsx
 useEffect(() => {
-  console.log('마운트될 때만 실행됩니다.');
-}, []);
+  console.log('마운트될 때만 실행됩니다.')
+}, [])
 ```
 
 **특정 값이 업데이트될 때만 실행하고 싶을 경우**: 두 번째 파라미터로 전달되는 배열 안에 검사하고 싶은 값을 넣어주면 됩니다.
 
 ```jsx
 useEffect(() => {
-  console.log(name);
-}, [name]);
+  console.log(name)
+}, [name])
 ```
 
 **뒷 정리(cleanup) 하기**: useEffect는 기본적으로 렌더링되고 난 직후마다 실행되며, 두 번째 파라미터 배열에 무엇을 넣는지에 따라 실행되는 조건이 달라집니다. 컴포넌트가 언마운트되기 전이나 업데이트되기 직전에 어떠한 작업을 수행하고 싶다면 useEffect에서 뒷정리(cleanup) 함수를 반환해 주어야 합니다.
@@ -909,35 +904,35 @@ useMemo Hook을 사용하면 이러한 작업을 최적화할 수 있습니다. 
 <summary>코드 보기</summary>
 
 ```jsx
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react'
 
 const getAverage = (numbers) => {
-  console.log('평균값 계산 중..');
-  if (numbers.length === 0) return 0;
-  const sum = numbers.reduce((a, b) => a + b);
-  return sum / numbers.length;
-};
+  console.log('평균값 계산 중..')
+  if (numbers.length === 0) return 0
+  const sum = numbers.reduce((a, b) => a + b)
+  return sum / numbers.length
+}
 
 const Average = () => {
-  const [list, setList] = useState([]);
-  const [number, setNumber] = useState('');
-  const inputEl = useRef();
+  const [list, setList] = useState([])
+  const [number, setNumber] = useState('')
+  const inputEl = useRef()
 
   const onChange = useCallback((e) => {
-    setNumber(e.target.value);
-  }, []); // 컴포넌트가 처음 렌더링될 때만 함수 생성
+    setNumber(e.target.value)
+  }, []) // 컴포넌트가 처음 렌더링될 때만 함수 생성
 
   const onInsert = useCallback(
     (e) => {
-      const nextList = list.concat(parseInt(number));
-      setList(nextList);
-      setNumber('');
-      inputEl.current.focus();
+      const nextList = list.concat(parseInt(number))
+      setList(nextList)
+      setNumber('')
+      inputEl.current.focus()
     },
-    [number, list] // number 혹은 list가 바뀌었을 때만 함수 생성
-  );
+    [number, list], // number 혹은 list가 바뀌었을 때만 함수 생성
+  )
 
-  const avg = useMemo(() => getAverage(list), [list]);
+  const avg = useMemo(() => getAverage(list), [list])
 
   return (
     <div>
@@ -952,10 +947,10 @@ const Average = () => {
         <b>평균값:</b> {avg}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Average;
+export default Average
 ```
 
 </details>
@@ -998,15 +993,15 @@ onChange처럼 비어 있는 배열을 넣게 되면 컴포넌트가 렌더링�
 
 ```jsx
 useCallback(() => {
-  console.log('hello world!');
-}, []);
+  console.log('hello world!')
+}, [])
 
 useMemo(() => {
   const fn = () => {
-    console.log('hello world!');
-  };
-  return fn;
-}, []);
+    console.log('hello world!')
+  }
+  return fn
+}, [])
 ```
 
 </details>
@@ -1019,25 +1014,25 @@ useMemo(() => {
 - `.current`프로퍼티를 변경하더라도 리렌더링을 유발하지 않습니다. ref 객체 안의 값은 리액트 생명주기에 독립적이기 때문입니다
 
 ```jsx
-import React, { useRef, Component } from 'react';
+import React, { useRef, Component } from 'react'
 
 class RefSample extends Component {
-  input = useRef();
+  input = useRef()
 
   handleFocus = () => {
-    this.input.current.focus();
-  };
+    this.input.current.focus()
+  }
 
   render() {
     return (
       <div>
         <input ref={input} />
       </div>
-    );
+    )
   }
 }
 
-export default RefSample;
+export default RefSample
 ```
 
 #### 7. 커스텀 Hooks
@@ -1076,17 +1071,17 @@ Memoization(메모이제이션)
 
 ```jsx
 // useMemo
-const avg = useMemo(() => getAverage(list), [list]); // list 라는 값이 변결될 때'만' getAverage 함수를 재 호출하는 용도입니다
+const avg = useMemo(() => getAverage(list), [list]) // list 라는 값이 변결될 때'만' getAverage 함수를 재 호출하는 용도입니다
 
 // useCallback
 const onInsert = useCallback(
   (e) => {
-    const nextList = list.concat(parseInt(number));
-    setList(nextList);
-    setNumber('');
+    const nextList = list.concat(parseInt(number))
+    setList(nextList)
+    setNumber('')
   },
-  [number, list] // number 혹은 list가 바뀌었을 때만 onInsert 함수 생성
-);
+  [number, list], // number 혹은 list가 바뀌었을 때만 onInsert 함수 생성
+)
 ```
 
 ```jsx
@@ -1184,12 +1179,12 @@ React는 앞서 언급했듯 state, props 값에 따라 re-rendering이 일어�
 
 ```jsx
 const onClickButton = () => {
-  console.log('before', count); // ----> 동기함수
+  console.log('before', count) // ----> 동기함수
 
-  setCount(count + 1); // ---->  비동기함수
+  setCount(count + 1) // ---->  비동기함수
 
-  console.log('after', count); // ---->  동기함수
-};
+  console.log('after', count) // ---->  동기함수
+}
 ```
 
 </details>
@@ -1230,25 +1225,25 @@ setState가 동기적으로 실행된다면, 한 컴포넌트 내부에 존재�
 ```jsx
 // 코드 참고: https://merrily-code.tistory.com/46
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
 function App() {
-  const [age, setAge] = useState(0);
-  const [name, setName] = useState('');
+  const [age, setAge] = useState(0)
+  const [name, setName] = useState('')
 
   useEffect(() => {
-    setAge(25);
-    setName('찬민');
-  }, []);
+    setAge(25)
+    setName('찬민')
+  }, [])
 
   return (
     <>
-      <div className='App'>{`그의 이름은 ${name} 이며, 나이는 ${age}살 입니다.`}</div>
+      <div className="App">{`그의 이름은 ${name} 이며, 나이는 ${age}살 입니다.`}</div>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
 ```
 
 <img src="https://blog.kakaocdn.net/dn/eFC5OT/btqXwdg7gIx/RrXfz887pljat4sRFebgr0/img.gif" width="500" alt="useEffect"/>
@@ -1268,25 +1263,25 @@ export default App;
 ```jsx
 // 코드 참고: https://merrily-code.tistory.com/46
 
-import { useLayoutEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react'
 
 function App() {
-  const [age, setAge] = useState(0);
-  const [name, setName] = useState('');
+  const [age, setAge] = useState(0)
+  const [name, setName] = useState('')
 
   useLayoutEffect(() => {
-    setAge(25);
-    setName('찬민');
-  }, []);
+    setAge(25)
+    setName('찬민')
+  }, [])
 
   return (
     <>
-      <div className='App'>{`그의 이름은 ${name} 이며, 나이는 ${age}살 입니다.`}</div>
+      <div className="App">{`그의 이름은 ${name} 이며, 나이는 ${age}살 입니다.`}</div>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
 ```
 
 <img src="https://blog.kakaocdn.net/dn/o7cjk/btqXu54HI2S/YQPWUG8kK8ns0sL62VFtpK/img.gif" width="500" alt="useLayoutEffect"/>
@@ -1330,7 +1325,7 @@ const plusNum = (number) => {
 
 ## Next.js
 
-📌 **관련 주제**: [React 기초](#React-기초), [React Fiber와 렌더링](#React-Fiber와-렌더링), [웹 성능 최적화](#웹-성능-최적화)
+📌 **관련 주제**: [React 기초](#react-기초), [React Fiber와 렌더링](#react-fiber와-렌더링), [웹 성능 최적화](#웹-성능-최적화)
 
 ### SPA가 뭔가요
 
@@ -1707,7 +1702,7 @@ Next 9.3 버전 이전엔 getInitialProps만으로 사전 렌더링 관련 문�
 
 ## Suspense
 
-📌 **관련 주제**: [React 기초](#React-기초), [Hooks](#Hooks), [Next.js](#Nextjs)
+📌 **관련 주제**: [React 기초](#react-기초), [Hooks](#hooks), [Next.js](#nextjs)
 
 [참고, 리액트 코리아 - suspense](https://ko.reactjs.org/docs/concurrent-mode-suspense.html#what-is-suspense-exactly)
 
@@ -1725,7 +1720,7 @@ suspense는 '**컴포넌트가 읽어들이고 있는 데이터가 아직 준비
 <summary>예시 코드 보기</summary>
 
 ```jsx
-const resource = fetchProfileData();
+const resource = fetchProfileData()
 
 function ProfilePage() {
   return (
@@ -1735,25 +1730,25 @@ function ProfilePage() {
         <ProfileTimeline />
       </Suspense>
     </Suspense>
-  );
+  )
 }
 
 function ProfileDetails() {
   // 아직 로딩이 완료되지 않았더라도, 사용자 정보 읽기를 시도합니다
-  const user = resource.user.read();
-  return <h1>{user.name}</h1>;
+  const user = resource.user.read()
+  return <h1>{user.name}</h1>
 }
 
 function ProfileTimeline() {
   // 아직 로딩이 완료되지 않았더라도, 게시글 읽기를 시도합니다
-  const posts = resource.posts.read();
+  const posts = resource.posts.read()
   return (
     <ul>
       {posts.map((post) => (
         <li key={post.id}>{post.text}</li>
       ))}
     </ul>
-  );
+  )
 }
 ```
 
@@ -1769,7 +1764,7 @@ function ProfileTimeline() {
 
 ## 웹 성능 최적화
 
-📌 **관련 주제**: [React Fiber와 렌더링](#React-Fiber와-렌더링), [컴포넌트](#컴포넌트), [Next.js](#Nextjs)
+📌 **관련 주제**: [React Fiber와 렌더링](#react-fiber와-렌더링), [컴포넌트](#컴포넌트), [Next.js](#nextjs)
 
 ### LCP가 뭔가요?
 
@@ -1807,26 +1802,26 @@ FCP를 개선하기 위해 HTML, CSS 및 JavaScript 파일의 크기를 줄이�
 #### 예시 코드
 
 ```jsx
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 function ControlledForm() {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState('')
 
   const handleChange = (event) => {
-    setInputValue(event.target.value);
-  };
+    setInputValue(event.target.value)
+  }
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log('Submitted value:', inputValue);
-  };
+    event.preventDefault()
+    console.log('Submitted value:', inputValue)
+  }
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type='text' value={inputValue} onChange={handleChange} />
-      <button type='submit'>Submit</button>
+      <input type="text" value={inputValue} onChange={handleChange} />
+      <button type="submit">Submit</button>
     </form>
-  );
+  )
 }
 ```
 
@@ -1862,22 +1857,22 @@ function ControlledForm() {
 #### 예시 코드
 
 ```jsx
-import React, { useRef } from 'react';
+import React, { useRef } from 'react'
 
 function UncontrolledForm() {
-  const inputRef = useRef(null);
+  const inputRef = useRef(null)
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log('Submitted value:', inputRef.current.value);
-  };
+    event.preventDefault()
+    console.log('Submitted value:', inputRef.current.value)
+  }
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type='text' defaultValue='' ref={inputRef} />
-      <button type='submit'>Submit</button>
+      <input type="text" defaultValue="" ref={inputRef} />
+      <button type="submit">Submit</button>
     </form>
-  );
+  )
 }
 ```
 

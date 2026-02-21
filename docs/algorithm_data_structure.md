@@ -1,8 +1,8 @@
 # 목차
 
-- [Frequency Counters](#Frequency-Counters)
-- [Multiple Pointers](#Multiple-Pointers)
-- [Sliding Window](#Sliding-Window)
+- [Frequency Counters](#frequency-counters)
+- [Multiple Pointers](#multiple-pointers)
+- [Sliding Window](#sliding-window)
 - [Divide and conquer](#divide-and-conquer)
 - [Recursion](#recursion)
 - [Linear Search](#linear-search)
@@ -56,29 +56,29 @@ Frequency Counter 알고리즘은 자바스크립트에서 다음과 같은 다�
 function charCount(str) {
   // 소문자로 변환하기
   // 문자를 하나씩 떼서 배열 안에 넣기
-  let arr = [];
-  let result = {};
+  let arr = []
+  let result = {}
 
-  arr = str.toLowerCase().split('');
+  arr = str.toLowerCase().split('')
 
   // 배열을 순회하면서 문자의 개수를 세기
   for (let i = 0; i < arr.length; i++) {
     // 0-9, a-z 사이의 문자인지 정규 표현식을 통해 확인하기
 
-    if (!/[0-9a-z]/.test(arr[i])) continue;
+    if (!/[0-9a-z]/.test(arr[i])) continue
 
     if (result[arr[i]] > 0) {
-      result[arr[i]]++;
+      result[arr[i]]++
     } else {
-      result[arr[i]] = 1;
+      result[arr[i]] = 1
     }
   }
 
-  return result;
+  return result
 }
 
-console.log(charCount('Hello')); // { h: 1, e: 1, l: 2, o: 1 }
-console.log(charCount('Your Pin is 1234 !'));
+console.log(charCount('Hello')) // { h: 1, e: 1, l: 2, o: 1 }
+console.log(charCount('Your Pin is 1234 !'))
 
 /*
 {
@@ -113,21 +113,21 @@ console.log(charCount('Your Pin is 1234 !'));
 
 ```js
 function same(arr1, arr2) {
-  if (arr1.length !== arr2.length) return false;
+  if (arr1.length !== arr2.length) return false
 
   for (let i = 0; i < arr1.length; i++) {
-    let correctIndex = arr2.indexOf(arr1[i] ** 2);
-    if (correctIndex === -1) return false;
+    let correctIndex = arr2.indexOf(arr1[i] ** 2)
+    if (correctIndex === -1) return false
 
     // console.log(arr2);
-    arr2.splice(correctIndex, 1);
+    arr2.splice(correctIndex, 1)
   }
-  return true;
+  return true
 }
 
-console.log(same([1, 2, 3], [4, 1, 9])); // true
-console.log(same([1, 2, 3], [1, 9])); // false
-console.log(same([1, 2, 1], [4, 4, 1])); // false
+console.log(same([1, 2, 3], [4, 1, 9])) // true
+console.log(same([1, 2, 3], [1, 9])) // false
+console.log(same([1, 2, 1], [4, 4, 1])) // false
 
 /**
  * 사용한 프로토타입 메서드
@@ -142,36 +142,36 @@ console.log(same([1, 2, 1], [4, 4, 1])); // false
 
 ```js
 function same2(arr1, arr2) {
-  if (arr1.length !== arr2.length) return false;
+  if (arr1.length !== arr2.length) return false
 
-  let frequencyCounter1 = {};
-  let frequencyCounter2 = {};
+  let frequencyCounter1 = {}
+  let frequencyCounter2 = {}
 
   for (let val of arr1) {
-    frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
+    frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1
   }
 
   for (let val of arr2) {
-    frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
+    frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1
   }
 
-  console.log(frequencyCounter1);
-  console.log(frequencyCounter2);
+  console.log(frequencyCounter1)
+  console.log(frequencyCounter2)
 
   for (let key in frequencyCounter1) {
     // { key: value } 중 key 체크
-    if (!(key ** 2 in frequencyCounter2)) return false;
+    if (!(key ** 2 in frequencyCounter2)) return false
 
     // { key: value } 중 value 체크
-    if (frequencyCounter2[key ** 2] !== frequencyCounter1[key]) return false;
+    if (frequencyCounter2[key ** 2] !== frequencyCounter1[key]) return false
   }
 
-  return true;
+  return true
 }
 
-console.log(same2([1, 2, 3], [4, 1, 9])); // true
-console.log(same2([1, 2, 3, 3], [4, 9, 1, 9])); // true
-console.log(same2([1, 2, 3], [1, 9])); // false
+console.log(same2([1, 2, 3], [4, 1, 9])) // true
+console.log(same2([1, 2, 3, 3], [4, 9, 1, 9])) // true
+console.log(same2([1, 2, 3], [1, 9])) // false
 
 /*
 { '1': 1, '2': 1, '3': 1 }
@@ -198,34 +198,34 @@ false
 // time complexity: O(n)
 
 function validAnagram(str1, str2) {
-  let strCounter1 = {};
-  let strCounter2 = {};
+  let strCounter1 = {}
+  let strCounter2 = {}
 
   for (let char of str1) {
-    strCounter1[char] = (strCounter1[char] || 0) + 1;
+    strCounter1[char] = (strCounter1[char] || 0) + 1
   }
 
   for (let char of str2) {
-    strCounter2[char] = (strCounter2[char] || 0) + 1;
+    strCounter2[char] = (strCounter2[char] || 0) + 1
   }
 
   for (let key in strCounter1) {
-    if (!(key in strCounter2)) return false;
+    if (!(key in strCounter2)) return false
 
-    if (strCounter2[key] !== strCounter1[key]) return false;
+    if (strCounter2[key] !== strCounter1[key]) return false
   }
 
-  return true;
+  return true
 }
 
-console.log(validAnagram('', ''));
-console.log(validAnagram('aaz', 'zza'));
-console.log(validAnagram('anagram', 'nagaram'));
-console.log(validAnagram('rat', 'car'));
-console.log(validAnagram('awesome', 'awesom'));
-console.log(validAnagram('amanaplanacanalpanama', 'acanalmanplanpamana'));
-console.log(validAnagram('qwerty', 'qeywrt'));
-console.log(validAnagram('texttwisttime', 'timetwisttext'));
+console.log(validAnagram('', ''))
+console.log(validAnagram('aaz', 'zza'))
+console.log(validAnagram('anagram', 'nagaram'))
+console.log(validAnagram('rat', 'car'))
+console.log(validAnagram('awesome', 'awesom'))
+console.log(validAnagram('amanaplanacanalpanama', 'acanalmanplanpamana'))
+console.log(validAnagram('qwerty', 'qeywrt'))
+console.log(validAnagram('texttwisttime', 'timetwisttext'))
 
 /**
  * validAnagram('', '') // true
@@ -269,17 +269,17 @@ function sumZero(arr) {
   for (let i = 0; i < arr.length; i++) {
     for (let j = i + 1; j < arr.length; j++) {
       if (arr[i] + arr[j] === 0) {
-        return [arr[i], arr[j]];
+        return [arr[i], arr[j]]
       }
     }
   }
-  return undefined;
+  return undefined
 }
 
-console.log(sumZero([-5, -2, -1, 0, 1, 2, 3]));
-console.log(sumZero([-3, -2, -1, 0, 1, 2, 3]));
-console.log(sumZero([-2, 0, 1, 3]));
-console.log(sumZero([1, 2, 3]));
+console.log(sumZero([-5, -2, -1, 0, 1, 2, 3]))
+console.log(sumZero([-3, -2, -1, 0, 1, 2, 3]))
+console.log(sumZero([-2, 0, 1, 3]))
+console.log(sumZero([1, 2, 3]))
 
 // sumZero([-3,-2,-1,0,1,2,3]) >> [-3,3]
 // sumZero([-2,0,1,3]) >> undefined
@@ -292,26 +292,26 @@ console.log(sumZero([1, 2, 3]));
 // time complexity o(n)
 
 function sumZero(arr) {
-  let left = 0;
-  let right = arr.length - 1;
+  let left = 0
+  let right = arr.length - 1
 
   while (left < right) {
-    let sum = arr[left] + arr[right];
+    let sum = arr[left] + arr[right]
     if (sum === 0) {
-      return [arr[left], arr[right]];
+      return [arr[left], arr[right]]
     } else if (sum > 0) {
-      right--;
+      right--
     } else {
-      left++;
+      left++
     }
   }
-  return undefined;
+  return undefined
 }
 
-console.log(sumZero([-5, -2, -1, 0, 1, 2, 3]));
-console.log(sumZero([-3, -2, -1, 0, 1, 2, 3]));
-console.log(sumZero([-2, 0, 1, 3]));
-console.log(sumZero([1, 2, 3]));
+console.log(sumZero([-5, -2, -1, 0, 1, 2, 3]))
+console.log(sumZero([-3, -2, -1, 0, 1, 2, 3]))
+console.log(sumZero([-2, 0, 1, 3]))
+console.log(sumZero([1, 2, 3]))
 
 // sumZero([-3,-2,-1,0,1,2,3]) >> [-3,3]
 // sumZero([-2,0,1,3]) >> undefined
@@ -324,26 +324,26 @@ console.log(sumZero([1, 2, 3]));
 // 정렬된 배열을 받아들이고 배열의 고유 값을 세는 countUniqueValues라는 함수를 구현합니다. 배열에 음수가 있을 수 있지만 항상 정렬됩니다.
 
 function countUniqueValues(arr) {
-  let left = 0;
-  let right = 1;
+  let left = 0
+  let right = 1
 
-  if (arr.length === 0) return 0; // 빈 배열인 경우 0 반환
+  if (arr.length === 0) return 0 // 빈 배열인 경우 0 반환
 
   while (right < arr.length) {
     if (arr[left] !== arr[right]) {
-      left++;
-      arr[left] = arr[right]; // 중복되지 않는 값을 왼쪽으로 옮김
+      left++
+      arr[left] = arr[right] // 중복되지 않는 값을 왼쪽으로 옮김
     }
-    right++;
+    right++
   }
 
-  return left + 1; // left 인덱스는 0부터 시작하므로 1을 더해 유일한 값의 개수를 반환
+  return left + 1 // left 인덱스는 0부터 시작하므로 1을 더해 유일한 값의 개수를 반환
 }
 
-console.log(countUniqueValues([1, 1, 1, 1, 1, 2])); // 2
-console.log(countUniqueValues([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13])); // 7
-console.log(countUniqueValues([])); // 0
-console.log(countUniqueValues([-2, -1, -1, 0, 1])); // 4
+console.log(countUniqueValues([1, 1, 1, 1, 1, 2])) // 2
+console.log(countUniqueValues([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13])) // 7
+console.log(countUniqueValues([])) // 0
+console.log(countUniqueValues([-2, -1, -1, 0, 1])) // 4
 ```
 
 ```
@@ -374,25 +374,25 @@ Sliding Window의 기본 개념은 다음과 같습니다:
 
 ```js
 function maxSubarraySum(arr, num) {
-  if (arr.length < num) return null;
+  if (arr.length < num) return null
 
-  let maxSum = 0;
-  let tempSum = 0;
+  let maxSum = 0
+  let tempSum = 0
 
   for (let i = 0; i < num; i++) {
-    maxSum += arr[i];
+    maxSum += arr[i]
   }
-  tempSum = maxSum;
+  tempSum = maxSum
 
   for (let i = num; i < arr.length; i++) {
-    tempSum = tempSum - arr[i - num] + arr[i];
-    maxSum = Math.max(maxSum, tempSum);
+    tempSum = tempSum - arr[i - num] + arr[i]
+    maxSum = Math.max(maxSum, tempSum)
   }
 
-  return maxSum;
+  return maxSum
 }
 
-console.log(maxSubarraySum([1, 2, 5, 2, 8, 1, 5], 2)); // 10
+console.log(maxSubarraySum([1, 2, 5, 2, 8, 1, 5], 2)) // 10
 ```
 
 ### 시간 복잡도
@@ -426,46 +426,46 @@ Divide and Conquer의 기본 개념은 다음과 같습니다:
 
 ```js
 function merge(arr1, arr2) {
-  let idx1 = 0;
-  let idx2 = 0;
-  let result = [];
+  let idx1 = 0
+  let idx2 = 0
+  let result = []
 
   while (idx1 < arr1.length && idx2 < arr2.length) {
     if (arr1[idx1] < arr2[idx2]) {
-      result.push(arr1[idx1]);
-      idx1++;
+      result.push(arr1[idx1])
+      idx1++
     } else {
-      result.push(arr2[idx2]);
-      idx2++;
+      result.push(arr2[idx2])
+      idx2++
     }
   }
 
   // Remaining elements from arr1
   while (idx1 < arr1.length) {
-    result.push(arr1[idx1]);
-    idx1++;
+    result.push(arr1[idx1])
+    idx1++
   }
 
   // Remaining elements from arr2
   while (idx2 < arr2.length) {
-    result.push(arr2[idx2]);
-    idx2++;
+    result.push(arr2[idx2])
+    idx2++
   }
 
-  return result;
+  return result
 }
 
 function mergeSort(arr) {
-  if (arr.length <= 1) return arr;
+  if (arr.length <= 1) return arr
 
-  let mid = Math.floor(arr.length / 2);
-  let left = mergeSort(arr.slice(0, mid));
-  let right = mergeSort(arr.slice(mid));
+  let mid = Math.floor(arr.length / 2)
+  let left = mergeSort(arr.slice(0, mid))
+  let right = mergeSort(arr.slice(mid))
 
-  return merge(left, right);
+  return merge(left, right)
 }
 
-console.log(mergeSort([8, 3, 5, 4, 7, 6, 1, 2]));
+console.log(mergeSort([8, 3, 5, 4, 7, 6, 1, 2]))
 ```
 
 ### 예제 2: 이진 탐색 (Binary Search)
@@ -474,27 +474,27 @@ console.log(mergeSort([8, 3, 5, 4, 7, 6, 1, 2]));
 
 ```js
 function binarySearch(arr, target) {
-  var start = 0;
-  var end = arr.length - 1;
-  var middle = Math.floor((start + end) / 2);
+  var start = 0
+  var end = arr.length - 1
+  var middle = Math.floor((start + end) / 2)
 
   while (arr[middle] !== target && start <= end) {
     if (target < arr[middle]) {
-      end = middle - 1;
+      end = middle - 1
     } else {
-      start = middle + 1;
+      start = middle + 1
     }
-    middle = Math.floor((start + end) / 2);
+    middle = Math.floor((start + end) / 2)
   }
   if (arr[middle] === target) {
-    return middle;
+    return middle
   }
-  return -1;
+  return -1
 }
 
-let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-console.log(binarySearch(arr, 7)); // 6
-console.log(binarySearch(arr, 11)); // -1
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+console.log(binarySearch(arr, 7)) // 6
+console.log(binarySearch(arr, 11)) // -1
 ```
 
 ### 시간 복잡도
@@ -533,11 +533,11 @@ Divide and Conquer 기법은 다음과 같은 다양한 문제에서 유용하�
 
 ```js
 function factorial(n) {
-  if (n === 0) return 1; // 기본 조건
-  return n * factorial(n - 1); // 재귀 조건
+  if (n === 0) return 1 // 기본 조건
+  return n * factorial(n - 1) // 재귀 조건
 }
 
-console.log(factorial(5)); // 120
+console.log(factorial(5)) // 120
 ```
 
 ### 예제 2: 피보나치 수열
@@ -546,11 +546,11 @@ console.log(factorial(5)); // 120
 
 ```js
 function fibonacci(n) {
-  if (n <= 1) return n; // 기본 조건
-  return fibonacci(n - 1) + fibonacci(n - 2); // 재귀 조건
+  if (n <= 1) return n // 기본 조건
+  return fibonacci(n - 1) + fibonacci(n - 2) // 재귀 조건
 }
 
-console.log(fibonacci(7)); // 13
+console.log(fibonacci(7)) // 13
 ```
 
 ### 예제 3: 배열의 합 계산
@@ -559,12 +559,12 @@ console.log(fibonacci(7)); // 13
 
 ```js
 function sumArray(arr) {
-  if (arr.length === 0) return 0; // 기본 조건
-  return arr[0] + sumArray(arr.slice(1)); // 재귀 조건
+  if (arr.length === 0) return 0 // 기본 조건
+  return arr[0] + sumArray(arr.slice(1)) // 재귀 조건
 }
 
-let arr = [1, 2, 3, 4, 5];
-console.log(sumArray(arr)); // 15
+let arr = [1, 2, 3, 4, 5]
+console.log(sumArray(arr)) // 15
 ```
 
 ### 예제 4: 제곱근 만들기, helper 함수 사용
@@ -574,49 +574,49 @@ console.log(sumArray(arr)); // 15
 
 ```js
 function power(number, cnt) {
-  let result = 1;
-  if (cnt === 0) return 1;
+  let result = 1
+  if (cnt === 0) return 1
 
   function helper(number, cnt) {
-    if (cnt === 0) return;
+    if (cnt === 0) return
 
-    result *= number;
-    cnt--;
+    result *= number
+    cnt--
 
-    helper(number, cnt);
+    helper(number, cnt)
   }
-  helper(number, cnt);
+  helper(number, cnt)
 
-  return result;
+  return result
 }
 
-power(2, 0); // 1
-power(2, 2); // 4
-power(2, 4); // 16
+power(2, 0) // 1
+power(2, 2) // 4
+power(2, 4) // 16
 ```
 
 ### 예제 5: 숫자 배열을 받아 모든 숫자의 곱을 반환하는 함수 만들기, helper 함수 사용
 
 ```js
 function productOfArray(arr) {
-  let result = 1;
-  if (arr.length === 0) return null;
+  let result = 1
+  if (arr.length === 0) return null
 
   function helper(arr) {
-    if (arr.length === 0) return;
+    if (arr.length === 0) return
 
-    result *= arr[0];
+    result *= arr[0]
 
-    helper(arr.slice(1));
+    helper(arr.slice(1))
   }
 
-  helper(arr);
+  helper(arr)
 
-  return result;
+  return result
 }
 
-productOfArray([1, 2, 3]); // 6
-productOfArray([1, 2, 3, 10]); // 60
+productOfArray([1, 2, 3]) // 6
+productOfArray([1, 2, 3, 10]) // 60
 ```
 
 ### 시간 복잡도
@@ -660,15 +660,15 @@ productOfArray([1, 2, 3, 10]); // 60
 function linearSearch(arr, target) {
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] === target) {
-      return i; // 요소를 찾으면 인덱스를 반환
+      return i // 요소를 찾으면 인덱스를 반환
     }
   }
-  return -1; // 요소를 찾지 못하면 -1 반환
+  return -1 // 요소를 찾지 못하면 -1 반환
 }
 
-let arr = [5, 3, 8, 4, 2];
-console.log(linearSearch(arr, 8)); // 2
-console.log(linearSearch(arr, 7)); // -1
+let arr = [5, 3, 8, 4, 2]
+console.log(linearSearch(arr, 8)) // 2
+console.log(linearSearch(arr, 7)) // -1
 ```
 
 ### 시간 복잡도
@@ -721,19 +721,19 @@ Naive String Search의 기본 개념은 다음과 같습니다:
 
 ```js
 function naiveStringSearch(longer, shorter) {
-  let cnt = 0;
+  let cnt = 0
 
   for (let i = 0; i < longer.length; i++) {
     for (let j = 0; j < shorter.length; j++) {
-      if (shorter[j] !== longer[i + j]) break;
-      if (j === shorter.length - 1) cnt++;
+      if (shorter[j] !== longer[i + j]) break
+      if (j === shorter.length - 1) cnt++
     }
   }
 
-  return cnt;
+  return cnt
 }
 
-naiveStringSearch('omaomggfaomg', 'omg'); // 1
+naiveStringSearch('omaomggfaomg', 'omg') // 1
 ```
 
 ### 시간 복잡도
@@ -794,27 +794,27 @@ Naive String Search는 단순하고 구현이 쉬운 문자열 검색 알고리�
 
 ```js
 function binarySearch(arr, target) {
-  var start = 0;
-  var end = arr.length - 1;
-  var middle = Math.floor((start + end) / 2);
+  var start = 0
+  var end = arr.length - 1
+  var middle = Math.floor((start + end) / 2)
 
   while (arr[middle] !== target && start <= end) {
     if (target < arr[middle]) {
-      end = middle - 1;
+      end = middle - 1
     } else {
-      start = middle + 1;
+      start = middle + 1
     }
-    middle = Math.floor((start + end) / 2);
+    middle = Math.floor((start + end) / 2)
   }
   if (arr[middle] === target) {
-    return middle;
+    return middle
   }
-  return -1;
+  return -1
 }
 
-let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-console.log(binarySearch(arr, 7)); // 6
-console.log(binarySearch(arr, 11)); // -1
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+console.log(binarySearch(arr, 7)) // 6
+console.log(binarySearch(arr, 11)) // -1
 ```
 
 ### 시간 복잡도
@@ -849,23 +849,23 @@ console.log(binarySearch(arr, 11)); // -1
 ```js
 function binarySearchRecursive(arr, target, left = 0, right = arr.length - 1) {
   if (left > right) {
-    return -1; // 요소를 찾지 못하면 -1 반환
+    return -1 // 요소를 찾지 못하면 -1 반환
   }
 
-  let mid = Math.floor((left + right) / 2);
+  let mid = Math.floor((left + right) / 2)
 
   if (arr[mid] === target) {
-    return mid; // 요소를 찾으면 인덱스를 반환
+    return mid // 요소를 찾으면 인덱스를 반환
   } else if (arr[mid] < target) {
-    return binarySearchRecursive(arr, target, mid + 1, right); // 오른쪽 부분을 검색
+    return binarySearchRecursive(arr, target, mid + 1, right) // 오른쪽 부분을 검색
   } else {
-    return binarySearchRecursive(arr, target, left, mid - 1); // 왼쪽 부분을 검색
+    return binarySearchRecursive(arr, target, left, mid - 1) // 왼쪽 부분을 검색
   }
 }
 
-let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-console.log(binarySearchRecursive(arr, 7)); // 6
-console.log(binarySearchRecursive(arr, 11)); // -1
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+console.log(binarySearchRecursive(arr, 7)) // 6
+console.log(binarySearchRecursive(arr, 11)) // -1
 ```
 
 ### 결론
@@ -891,22 +891,22 @@ console.log(binarySearchRecursive(arr, 11)); // -1
 
 ```js
 function bubbleSort(arr) {
-  let swaps = true;
+  let swaps = true
   for (let i = arr.length; i > 0; i--) {
     for (let j = 0; j < i - 1; j++) {
       if (arr[j] > arr[j + 1]) {
-        let temp = arr[j];
-        arr[j] = arr[j + 1];
-        arr[j + 1] = temp;
-        swaps = false;
+        let temp = arr[j]
+        arr[j] = arr[j + 1]
+        arr[j + 1] = temp
+        swaps = false
       }
     }
-    if (swaps) break;
+    if (swaps) break
   }
-  return arr;
+  return arr
 }
 
-console.log(bubbleSort([1, 6, 3, 10, 2, 15]));
+console.log(bubbleSort([1, 6, 3, 10, 2, 15]))
 
 // [ 1, 6, 3, 10, 2, 15 ]
 // [ 1, 3, 6, 10, 2, 15 ]
@@ -939,27 +939,27 @@ console.log(bubbleSort([1, 6, 3, 10, 2, 15]));
 
 ```js
 function optimizedBubbleSort(arr) {
-  let n = arr.length;
-  let swapped;
+  let n = arr.length
+  let swapped
 
   do {
-    swapped = false;
+    swapped = false
     for (let i = 0; i < n - 1; i++) {
       if (arr[i] > arr[i + 1]) {
-        let temp = arr[i];
-        arr[i] = arr[i + 1];
-        arr[i + 1] = temp;
-        swapped = true;
+        let temp = arr[i]
+        arr[i] = arr[i + 1]
+        arr[i + 1] = temp
+        swapped = true
       }
     }
-    n--;
-  } while (swapped);
+    n--
+  } while (swapped)
 
-  return arr;
+  return arr
 }
 
-let arr = [3, 2, 1, 4, 5];
-console.log(optimizedBubbleSort(arr)); // [1, 2, 3, 4, 5]
+let arr = [3, 2, 1, 4, 5]
+console.log(optimizedBubbleSort(arr)) // [1, 2, 3, 4, 5]
 ```
 
 이 최적화는 최선의 경우 시간 복잡도를 O(n)으로 줄여줍니다.
@@ -986,27 +986,27 @@ console.log(optimizedBubbleSort(arr)); // [1, 2, 3, 4, 5]
 
 ```js
 function swap(arr, idx1, idx2) {
-  let temp = arr[idx1];
-  arr[idx1] = arr[idx2];
-  arr[idx2] = temp;
+  let temp = arr[idx1]
+  arr[idx1] = arr[idx2]
+  arr[idx2] = temp
 }
 
 function selectionSort(arr) {
   for (let i = 0; i < arr.length; i++) {
-    let tempIdx = i;
+    let tempIdx = i
 
     for (let j = i + 1; j < arr.length; j++) {
       if (arr[j] < arr[tempIdx]) {
-        tempIdx = j;
+        tempIdx = j
       }
     }
 
-    if (i !== tempIdx) swap(arr, i, tempIdx);
+    if (i !== tempIdx) swap(arr, i, tempIdx)
   }
-  return arr;
+  return arr
 }
 
-console.log(selectionSort([0, 2, 34, 22, 10, 19, 17]));
+console.log(selectionSort([0, 2, 34, 22, 10, 19, 17]))
 
 // [ 0, 2, 10, 22, 34, 19, 17 ]
 // [ 0, 2, 10, 17, 34, 19, 22 ]
@@ -1057,20 +1057,20 @@ console.log(selectionSort([0, 2, 34, 22, 10, 19, 17]));
 
 ```js
 function insertionSort(arr) {
-  var currentVal;
+  var currentVal
 
   for (var i = 1; i < arr.length; i++) {
-    currentVal = arr[i];
+    currentVal = arr[i]
 
     for (var j = i - 1; j >= 0 && arr[j] > currentVal; j--) {
-      arr[j + 1] = arr[j];
+      arr[j + 1] = arr[j]
     }
-    arr[j + 1] = currentVal;
+    arr[j + 1] = currentVal
   }
-  return arr;
+  return arr
 }
 
-console.log(insertionSort([2, 1, 9, 76, 4]));
+console.log(insertionSort([2, 1, 9, 76, 4]))
 
 // currentnValue: 1 ,  [ 1, 2, 9, 76, 4 ]
 // currentnValue: 9 ,  [ 1, 2, 9, 76, 4 ]
@@ -1121,46 +1121,46 @@ console.log(insertionSort([2, 1, 9, 76, 4]));
 
 ```js
 function merge(arr1, arr2) {
-  let idx1 = 0;
-  let idx2 = 0;
-  let result = [];
+  let idx1 = 0
+  let idx2 = 0
+  let result = []
 
   while (idx1 < arr1.length && idx2 < arr2.length) {
     if (arr1[idx1] < arr2[idx2]) {
-      result.push(arr1[idx1]);
-      idx1++;
+      result.push(arr1[idx1])
+      idx1++
     } else {
-      result.push(arr2[idx2]);
-      idx2++;
+      result.push(arr2[idx2])
+      idx2++
     }
   }
 
   // Remaining elements from arr1
   while (idx1 < arr1.length) {
-    result.push(arr1[idx1]);
-    idx1++;
+    result.push(arr1[idx1])
+    idx1++
   }
 
   // Remaining elements from arr2
   while (idx2 < arr2.length) {
-    result.push(arr2[idx2]);
-    idx2++;
+    result.push(arr2[idx2])
+    idx2++
   }
 
-  return result;
+  return result
 }
 
 function mergeSort(arr) {
-  if (arr.length <= 1) return arr;
+  if (arr.length <= 1) return arr
 
-  let mid = Math.floor(arr.length / 2);
-  let left = mergeSort(arr.slice(0, mid));
-  let right = mergeSort(arr.slice(mid));
+  let mid = Math.floor(arr.length / 2)
+  let left = mergeSort(arr.slice(0, mid))
+  let right = mergeSort(arr.slice(mid))
 
-  return merge(left, right);
+  return merge(left, right)
 }
 
-console.log(mergeSort([8, 3, 5, 4, 7, 6, 1, 2]));
+console.log(mergeSort([8, 3, 5, 4, 7, 6, 1, 2]))
 
 // [ 8, 3, 5, 4, 7, 6, 1, 2 ]
 // [ 8, 3, 5, 4 ] [ 7, 6, 1, 2 ]
@@ -1222,37 +1222,37 @@ console.log(mergeSort([8, 3, 5, 4, 7, 6, 1, 2]));
 
 ```js
 function swap(arr, idx1, idx2) {
-  let temp = arr[idx1];
-  arr[idx1] = arr[idx2];
-  arr[idx2] = temp;
+  let temp = arr[idx1]
+  arr[idx1] = arr[idx2]
+  arr[idx2] = temp
 }
 
 function pivot(arr, start = 0, end = arr.length + 1) {
-  var pivot = arr[start];
-  var swapIdx = start;
+  var pivot = arr[start]
+  var swapIdx = start
 
   for (var i = start + 1; i < arr.length; i++) {
     if (pivot > arr[i]) {
-      swapIdx++;
-      swap(arr, swapIdx, i);
+      swapIdx++
+      swap(arr, swapIdx, i)
     }
   }
-  swap(arr, start, swapIdx);
-  return swapIdx;
+  swap(arr, start, swapIdx)
+  return swapIdx
 }
 
-console.log(pivot([5, 2, 1, 8, 4, 7, 6, 3])); // 3
+console.log(pivot([5, 2, 1, 8, 4, 7, 6, 3])) // 3
 
 function quickSort(arr, left = 0, right = arr.length - 1) {
   if (left < right) {
-    let pivotIndex = pivot(arr, left, right);
+    let pivotIndex = pivot(arr, left, right)
 
     // left
-    quickSort(arr, left, pivotIndex - 1);
+    quickSort(arr, left, pivotIndex - 1)
     // right
-    quickSort(arr, pivotIndex + 1, right);
+    quickSort(arr, pivotIndex + 1, right)
   }
-  return arr;
+  return arr
 }
 ```
 
@@ -1303,37 +1303,37 @@ LSD 방식은 일반적으로 더 많이 사용됩니다.
 
 ```js
 function getDigit(num, place) {
-  return Math.floor(Math.abs(num) / Math.pow(10, place)) % 10;
+  return Math.floor(Math.abs(num) / Math.pow(10, place)) % 10
 }
 
 function digitCount(num) {
-  if (num === 0) return 1;
-  return Math.floor(Math.log10(Math.abs(num))) + 1;
+  if (num === 0) return 1
+  return Math.floor(Math.log10(Math.abs(num))) + 1
 }
 
 function mostDigits(nums) {
-  let maxDigits = 0;
+  let maxDigits = 0
   for (let num of nums) {
-    maxDigits = Math.max(maxDigits, digitCount(num));
+    maxDigits = Math.max(maxDigits, digitCount(num))
   }
-  return maxDigits;
+  return maxDigits
 }
 
 function radixSort(nums) {
-  let maxDigitCount = mostDigits(nums);
+  let maxDigitCount = mostDigits(nums)
   for (let k = 0; k < maxDigitCount; k++) {
-    let digitBuckets = Array.from({ length: 10 }, () => []);
+    let digitBuckets = Array.from({ length: 10 }, () => [])
     for (let i = 0; i < nums.length; i++) {
-      let digit = getDigit(nums[i], k);
-      digitBuckets[digit].push(nums[i]);
+      let digit = getDigit(nums[i], k)
+      digitBuckets[digit].push(nums[i])
     }
-    nums = [].concat(...digitBuckets);
+    nums = [].concat(...digitBuckets)
   }
-  return nums;
+  return nums
 }
 
-let arr = [170, 45, 75, 90, 802, 24, 2, 66];
-console.log(radixSort(arr)); // [2, 24, 45, 66, 75, 90, 170, 802]
+let arr = [170, 45, 75, 90, 802, 24, 2, 66]
+console.log(radixSort(arr)) // [2, 24, 45, 66, 75, 90, 170, 802]
 ```
 
 <img src="https://blog.kakaocdn.net/dn/bWv449/btsH3qPWkRQ/KCkpY6XxmY1LacDlHXhX80/img.gif" width="480" alt="radix sort">
@@ -1391,63 +1391,63 @@ JavaScript에서 링크드 리스트(Linked List)는 노드(Node)들이 포인�
 ```js
 class Node {
   constructor(data) {
-    this.data = data;
-    this.next = null;
+    this.data = data
+    this.next = null
   }
 }
 
 class SingleLinkedList {
   constructor() {
-    this.length = 0;
-    this.head = null;
-    this.tail = null;
+    this.length = 0
+    this.head = null
+    this.tail = null
   }
 
   push(data) {
-    var newNode = new Node(data);
+    var newNode = new Node(data)
     // list가 비어 있다면, head와 tail을 모두 새 노드로 설정합니다.
     if (!this.head) {
-      this.head = newNode;
-      this.tail = newNode;
+      this.head = newNode
+      this.tail = newNode
     } else {
       // 기존 node - tail의 next에 newNode 삽입
-      this.tail.next = newNode;
+      this.tail.next = newNode
       // 리스트의 끝이므로 tail에 newNode 삽입
-      this.tail = newNode;
+      this.tail = newNode
     }
-    this.length++;
-    return this;
+    this.length++
+    return this
   }
 
   traverse() {
-    var current = this.head;
+    var current = this.head
     while (current) {
-      console.log('current:', current);
-      current = current.next;
+      console.log('current:', current)
+      current = current.next
     }
   }
 
   pop() {
-    if (!this.head) return undefined;
-    let current = this.head;
-    let newTail = this.head;
+    if (!this.head) return undefined
+    let current = this.head
+    let newTail = this.head
 
     // while 문 조건 이해하기
     while (current.next) {
-      newTail = current;
-      current = current.next;
+      newTail = current
+      current = current.next
     }
 
-    this.tail = newTail;
-    this.tail.next = null;
-    this.length--;
+    this.tail = newTail
+    this.tail.next = null
+    this.length--
 
     if (this.length === 0) {
-      this.head = null;
-      this.tail = null;
+      this.head = null
+      this.tail = null
     }
 
-    return current;
+    return current
   }
 
   shift() {
@@ -1457,52 +1457,52 @@ class SingleLinkedList {
     // Decrement the length by 1
     // Return the value of the node removed
 
-    if (!this.head) return undefined;
+    if (!this.head) return undefined
 
-    let currentHead = this.head;
+    let currentHead = this.head
 
-    this.head = currentHead.next;
-    this.length--;
+    this.head = currentHead.next
+    this.length--
 
     if (this.length === 0) {
-      this.tail = null;
+      this.tail = null
     }
 
-    return currentHead;
+    return currentHead
   }
 
   unshift(data) {
     // This function should accept a value
     // Create a new node using the value passed to the function
     // If there is no head property on the list, set the head and tail to be the newly created node
-    let newNode = new Node(data);
+    let newNode = new Node(data)
 
     if (!this.head) {
-      this.head = newNode;
-      this.tail = newNode;
+      this.head = newNode
+      this.tail = newNode
     } else {
-      newNode.next = this.head;
-      this.head = newNode;
+      newNode.next = this.head
+      this.head = newNode
     }
 
-    this.length++;
+    this.length++
 
-    return this;
+    return this
   }
 
   get(index) {
     // 인덱스가 음수이거나 리스트의 길이보다 큰 경우 null을 반환합니다.
-    if (index < 0 || index >= this.length) return null;
+    if (index < 0 || index >= this.length) return null
 
-    let cnt = 0;
-    let currentHead = this.head;
+    let cnt = 0
+    let currentHead = this.head
 
     while (cnt !== index) {
-      currentHead = currentHead.next;
-      cnt++;
+      currentHead = currentHead.next
+      cnt++
     }
 
-    return currentHead;
+    return currentHead
   }
 
   set(index, data) {
@@ -1510,14 +1510,14 @@ class SingleLinkedList {
     // Use your get function to find the specific node
     // If the node is not found, return false
     // If the node is found, set the value of that node to be the value passed to the function and return true
-    if (index < 0 || index >= this.length) return null;
+    if (index < 0 || index >= this.length) return null
 
-    let current = this.get(index);
-    if (!current) return false;
+    let current = this.get(index)
+    if (!current) return false
 
-    current.data = data;
+    current.data = data
 
-    return true;
+    return true
   }
 
   insert(index, data) {
@@ -1530,29 +1530,29 @@ class SingleLinkedList {
     // Increment the length
     // Return true;
 
-    if (index < 0 || index > this.length) return false;
+    if (index < 0 || index > this.length) return false
 
     if (index === this.length) {
       // 'push'
-      this.push(data);
-      return true;
+      this.push(data)
+      return true
     }
 
     if (index === 0) {
       // 'unshift'
-      this.unshift(data);
-      return true;
+      this.unshift(data)
+      return true
     }
 
     // 'normal case'
-    let newNode = new Node(data);
+    let newNode = new Node(data)
 
-    let prevNode = this.get(index - 1);
-    newNode.next = prevNode.next;
-    prevNode.next = newNode;
+    let prevNode = this.get(index - 1)
+    newNode.next = prevNode.next
+    prevNode.next = newNode
 
-    this.length++;
-    return true;
+    this.length++
+    return true
   }
 
   remove(index) {
@@ -1564,27 +1564,27 @@ class SingleLinkedList {
     // Decrement the length
     // Return the value of the node removed
 
-    if (index < 0 || index > this.length) return false;
+    if (index < 0 || index > this.length) return false
 
     if (index === this.length - 1) {
       // 'pop'
-      this.pop();
-      return true;
+      this.pop()
+      return true
     }
 
     if (index === 0) {
       // 'shift'
-      this.shift();
-      return true;
+      this.shift()
+      return true
     }
 
-    let prevNode = this.get(index - 1);
-    let nextNode = prevNode.next.next;
+    let prevNode = this.get(index - 1)
+    let nextNode = prevNode.next.next
 
-    prevNode.next = nextNode;
+    prevNode.next = nextNode
 
-    this.length--;
-    return true;
+    this.length--
+    return true
   }
 
   reverse() {
@@ -1598,47 +1598,47 @@ class SingleLinkedList {
     // Set prev to be the value of the node variable
     // Set the node variable to be the value of the next variable
 
-    let node = this.head;
-    this.head = this.tail;
-    this.tail = node;
+    let node = this.head
+    this.head = this.tail
+    this.tail = node
 
-    let next;
-    let prev = null;
+    let next
+    let prev = null
     for (let i = 0; i < this.length; i++) {
-      next = node.next;
-      node.next = prev;
-      prev = node;
-      node = next;
+      next = node.next
+      node.next = prev
+      prev = node
+      node = next
     }
-    return this;
+    return this
   }
 }
 
-var list = new SingleLinkedList();
+var list = new SingleLinkedList()
 ```
 
 ```js
-list.push('Hi');
-list.push('there');
-list.push('!');
-list.unshift('Yo');
+list.push('Hi')
+list.push('there')
+list.push('!')
+list.unshift('Yo')
 
-console.log(list.set(0, 'Yo Bro'));
+console.log(list.set(0, 'Yo Bro'))
 
-console.log('-- list:', list);
-list.insert(0, 'Wassup');
-console.log('--- list:', list);
-list.insert(5, '💓');
-console.log('--- list', list);
-list.insert(1, '❤️');
-console.log('--- list', list);
+console.log('-- list:', list)
+list.insert(0, 'Wassup')
+console.log('--- list:', list)
+list.insert(5, '💓')
+console.log('--- list', list)
+list.insert(1, '❤️')
+console.log('--- list', list)
 
-list.remove(7);
-console.log('--- list', list);
-list.remove(0);
-console.log('--- list', list);
-list.remove(1);
-console.log('--- list', list);
+list.remove(7)
+console.log('--- list', list)
+list.remove(0)
+console.log('--- list', list)
+list.remove(1)
+console.log('--- list', list)
 ```
 
 ### 배열(Array)와의 차이점
@@ -1698,17 +1698,17 @@ console.log('--- list', list);
 ```js
 class Node {
   constructor(data) {
-    this.data = data;
-    this.next = null;
-    this.prev = null;
+    this.data = data
+    this.next = null
+    this.prev = null
   }
 }
 
 class DoubleLinkedList {
   constructor() {
-    this.length = 0;
-    this.head = null;
-    this.tail = null;
+    this.length = 0
+    this.head = null
+    this.tail = null
   }
 
   push(data) {
@@ -1720,22 +1720,22 @@ class DoubleLinkedList {
     // Increment the length
     // Return the Doubly Linked List
 
-    let newNode = new Node(data);
+    let newNode = new Node(data)
 
     if (!this.head) {
-      this.head = newNode;
-      this.tail = newNode;
+      this.head = newNode
+      this.tail = newNode
     } else {
-      let currentTail = this.tail;
+      let currentTail = this.tail
 
-      this.tail.next = newNode;
-      this.tail = newNode;
-      this.tail.prev = currentTail;
+      this.tail.next = newNode
+      this.tail = newNode
+      this.tail.prev = currentTail
     }
 
-    this.length++;
+    this.length++
 
-    return this;
+    return this
   }
 
   pop() {
@@ -1747,20 +1747,20 @@ class DoubleLinkedList {
     // Decrement the length
     // Return the value removed
 
-    if (!this.head || this.length <= 0) return undefined;
-    let currentTail = this.tail;
+    if (!this.head || this.length <= 0) return undefined
+    let currentTail = this.tail
 
     if (this.length === 1) {
-      this.head = null;
-      this.tail = null;
+      this.head = null
+      this.tail = null
     } else {
-      currentTail.prev.next = null;
-      this.tail = currentTail.prev;
-      currentTail.prev = null;
+      currentTail.prev.next = null
+      this.tail = currentTail.prev
+      currentTail.prev = null
     }
 
-    this.length--;
-    return currentTail;
+    this.length--
+    return currentTail
   }
 
   shift() {
@@ -1773,23 +1773,23 @@ class DoubleLinkedList {
     // Decrement the length
     // Return old head
 
-    if (this.length === 0) return undefined;
-    let currentHead = this.head;
+    if (this.length === 0) return undefined
+    let currentHead = this.head
 
     if (this.length === 1) {
-      this.head = null;
-      this.tail = null;
+      this.head = null
+      this.tail = null
     } else {
-      let newHead = this.head.next;
+      let newHead = this.head.next
 
-      newHead.prev = null;
-      currentHead.next = null;
+      newHead.prev = null
+      currentHead.next = null
 
-      this.head = newHead;
+      this.head = newHead
     }
 
-    this.length--;
-    return currentHead;
+    this.length--
+    return currentHead
   }
   unshift(data) {
     // Create a new node with the value passed to the function
@@ -1800,27 +1800,27 @@ class DoubleLinkedList {
     // Update the head to be the new node
     // Increment the length
     // Return the list
-    let newNode = new Node(data);
+    let newNode = new Node(data)
 
     if (this.length === 0) {
-      this.head = newNode;
-      this.tail = newNode;
+      this.head = newNode
+      this.tail = newNode
     } else {
-      newNode.next = this.head;
-      newNode.next.prev = newNode;
+      newNode.next = this.head
+      newNode.next.prev = newNode
 
-      this.head = newNode;
+      this.head = newNode
     }
 
-    this.length++;
-    return this;
+    this.length++
+    return this
   }
 
   traverse() {
-    var current = this.head;
+    var current = this.head
     while (current) {
-      console.log('current:', current);
-      current = current.next;
+      console.log('current:', current)
+      current = current.next
     }
   }
 
@@ -1831,29 +1831,29 @@ class DoubleLinkedList {
     // If the index is greater than half the length of the list
     // Loop through the list starting from the tail and loop towards the middle
 
-    if (index < 0 || index >= this.length) return null;
+    if (index < 0 || index >= this.length) return null
 
-    let cnt = 0;
-    let currentValue = this.head;
+    let cnt = 0
+    let currentValue = this.head
 
     if (index <= Math.floor(this.length / 2)) {
       // from head to tail
       while (cnt !== index) {
-        currentValue = currentValue.next;
-        cnt++;
+        currentValue = currentValue.next
+        cnt++
       }
     } else {
       // from tail to head
-      cnt = this.length - 1;
-      currentValue = this.tail;
+      cnt = this.length - 1
+      currentValue = this.tail
 
       while (cnt !== index) {
-        currentValue = currentValue.prev;
-        cnt--;
+        currentValue = currentValue.prev
+        cnt--
       }
     }
 
-    return currentValue;
+    return currentValue
   }
 
   set(index, data) {
@@ -1861,14 +1861,14 @@ class DoubleLinkedList {
     // If the get method returns a valid node, set the value of that node to be the value passed to the function
     // Return true
 
-    let currentNode = this.get(index);
+    let currentNode = this.get(index)
 
     if (currentNode.data) {
-      currentNode.data = data;
-      return true;
+      currentNode.data = data
+      return true
     }
 
-    return false;
+    return false
   }
 
   insert(index, data) {
@@ -1877,25 +1877,25 @@ class DoubleLinkedList {
     // If the index is the same as the length, push
     // Use get method to access the index -1
     // Set the next and prev properties on the correct nodes to link everything together
-    if (index < 0 || index > this.length) return false;
+    if (index < 0 || index > this.length) return false
 
-    let newNode = new Node(data);
+    let newNode = new Node(data)
 
     if (index === 0) {
-      this.unshift(newNode);
+      this.unshift(newNode)
     } else if (index === this.length) {
-      this.push(newNode);
+      this.push(newNode)
     } else {
-      let prevNode = this.get(index - 1);
+      let prevNode = this.get(index - 1)
 
-      newNode.prev = prevNode;
-      newNode.next = prevNode.next;
-      prevNode.next = newNode;
-      prevNode.next.next.prev = newNode;
+      newNode.prev = prevNode
+      newNode.next = prevNode.next
+      prevNode.next = newNode
+      prevNode.next.next.prev = newNode
     }
-    this.length++;
+    this.length++
 
-    return newNode;
+    return newNode
   }
 
   remove(index) {
@@ -1907,24 +1907,24 @@ class DoubleLinkedList {
     // Set next and prev to null on the found node
     // Decrement the length;
     // Return the removed node
-    if (index < 0 || index > this.length) return false;
+    if (index < 0 || index > this.length) return false
 
     if (index === 0) {
-      this.shift();
+      this.shift()
     } else if (index === this.length - 1) {
-      this.pop();
+      this.pop()
     } else {
-      let currentNode = this.get(index);
-      let prevNode = currentNode.prev;
+      let currentNode = this.get(index)
+      let prevNode = currentNode.prev
 
-      prevNode.next.next.prev = currentNode.prev;
-      prevNode.next = currentNode.next;
+      prevNode.next.next.prev = currentNode.prev
+      prevNode.next = currentNode.next
 
-      currentNode.prev = null;
-      currentNode.next = null;
+      currentNode.prev = null
+      currentNode.next = null
 
-      this.length--;
-      return currentNode;
+      this.length--
+      return currentNode
     }
   }
 }
@@ -1968,69 +1968,69 @@ class DoubleLinkedList {
 ```js
 class Node {
   constructor(value) {
-    this.value = value;
-    this.next = null;
+    this.value = value
+    this.next = null
   }
 }
 
 class Stack {
   constructor() {
-    this.top = null; // 스택의 맨 위 요소
-    this.size = 0; // 스택의 크기
+    this.top = null // 스택의 맨 위 요소
+    this.size = 0 // 스택의 크기
   }
 
   // 스택에 요소 추가
   push(value) {
-    const newNode = new Node(value);
+    const newNode = new Node(value)
     if (!this.top) {
-      this.top = newNode;
+      this.top = newNode
     } else {
-      newNode.next = this.top;
-      this.top = newNode;
+      newNode.next = this.top
+      this.top = newNode
     }
-    this.size++;
-    return this;
+    this.size++
+    return this
   }
 
   // 스택에서 요소 제거 및 반환
   pop() {
-    if (!this.top) return null;
-    const removedNode = this.top;
-    this.top = this.top.next;
-    this.size--;
-    return removedNode.value;
+    if (!this.top) return null
+    const removedNode = this.top
+    this.top = this.top.next
+    this.size--
+    return removedNode.value
   }
 
   // 스택의 맨 위 요소 반환 (제거하지 않음)
   peek() {
-    if (!this.top) return null;
-    return this.top.value;
+    if (!this.top) return null
+    return this.top.value
   }
 
   // 스택이 비어 있는지 확인
   isEmpty() {
-    return this.size === 0;
+    return this.size === 0
   }
 
   // 스택의 크기 반환
   getSize() {
-    return this.size;
+    return this.size
   }
 }
 
 // 사용 예시
-const stack = new Stack();
-stack.push(10);
-stack.push(20);
-stack.push(30);
+const stack = new Stack()
+stack.push(10)
+stack.push(20)
+stack.push(30)
 
-console.log(stack.peek()); // 30
-console.log(stack.pop()); // 30
-console.log(stack.getSize()); // 2
-console.log(stack.isEmpty()); // false
-console.log(stack.pop()); // 20
-console.log(stack.pop()); // 10
-console.log(stack.isEmpty()); // true
+console.log(stack.peek()) // 30
+console.log(stack.pop()) // 30
+console.log(stack.getSize()) // 2
+console.log(stack.isEmpty()) // false
+console.log(stack.pop()) // 20
+console.log(stack.pop()) // 10
+console.log(stack.isEmpty()) // true
 ```
 
 ### 배열과의 차이점
@@ -2070,27 +2070,27 @@ console.log(stack.isEmpty()); // true
 ```js
 class ArrayQueue {
   constructor() {
-    this.queue = [];
+    this.queue = []
   }
 
   enqueue(value) {
-    this.queue.push(value);
+    this.queue.push(value)
   }
 
   dequeue() {
-    return this.queue.shift();
+    return this.queue.shift()
   }
 
   peek() {
-    return this.queue[0];
+    return this.queue[0]
   }
 
   isEmpty() {
-    return this.queue.length === 0;
+    return this.queue.length === 0
   }
 
   size() {
-    return this.queue.length;
+    return this.queue.length
   }
 }
 ```
@@ -2102,69 +2102,69 @@ class ArrayQueue {
 ```js
 class Node {
   constructor(value) {
-    this.value = value;
-    this.next = null;
+    this.value = value
+    this.next = null
   }
 }
 
 class LinkedListQueue {
   constructor() {
-    this.first = null; // 큐의 맨 앞 요소
-    this.last = null; // 큐의 맨 뒤 요소
-    this.size = 0; // 큐의 크기
+    this.first = null // 큐의 맨 앞 요소
+    this.last = null // 큐의 맨 뒤 요소
+    this.size = 0 // 큐의 크기
   }
 
   enqueue(value) {
-    const newNode = new Node(value);
+    const newNode = new Node(value)
     if (!this.first) {
-      this.first = newNode;
-      this.last = newNode;
+      this.first = newNode
+      this.last = newNode
     } else {
-      this.last.next = newNode;
-      this.last = newNode;
+      this.last.next = newNode
+      this.last = newNode
     }
-    this.size++;
-    return this;
+    this.size++
+    return this
   }
 
   dequeue() {
-    if (!this.first) return null;
-    const removedNode = this.first;
+    if (!this.first) return null
+    const removedNode = this.first
     if (this.first === this.last) {
-      this.last = null;
+      this.last = null
     }
-    this.first = this.first.next;
-    this.size--;
-    return removedNode.value;
+    this.first = this.first.next
+    this.size--
+    return removedNode.value
   }
 
   peek() {
-    if (!this.first) return null;
-    return this.first.value;
+    if (!this.first) return null
+    return this.first.value
   }
 
   isEmpty() {
-    return this.size === 0;
+    return this.size === 0
   }
 
   getSize() {
-    return this.size;
+    return this.size
   }
 }
 
 // 사용 예시
-const queue = new LinkedListQueue();
-queue.enqueue(10);
-queue.enqueue(20);
-queue.enqueue(30);
+const queue = new LinkedListQueue()
+queue.enqueue(10)
+queue.enqueue(20)
+queue.enqueue(30)
 
-console.log(queue.peek()); // 10
-console.log(queue.dequeue()); // 10
-console.log(queue.getSize()); // 2
-console.log(queue.isEmpty()); // false
-console.log(queue.dequeue()); // 20
-console.log(queue.dequeue()); // 30
-console.log(queue.isEmpty()); // true
+console.log(queue.peek()) // 10
+console.log(queue.dequeue()) // 10
+console.log(queue.getSize()) // 2
+console.log(queue.isEmpty()) // false
+console.log(queue.dequeue()) // 20
+console.log(queue.dequeue()) // 30
+console.log(queue.isEmpty()) // true
 ```
 
 이렇게 구현된 큐는 링크드 리스트를 사용하여 동적 크기를 가지며, 요소의 추가와 제거가 O(1) 시간 복잡도로 이루어집니다. 이는 큐의 효율적인 동작을 보장합니다.
@@ -2190,15 +2190,15 @@ console.log(queue.isEmpty()); // true
 ```js
 class Node {
   constructor(value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
+    this.value = value
+    this.left = null
+    this.right = null
   }
 }
 
 class BinarySearchTree {
   constructor() {
-    this.root = null;
+    this.root = null
   }
 
   insert(value) {
@@ -2216,30 +2216,30 @@ class BinarySearchTree {
     // Check to see if there a node to the left
     // If there is, move to that node and repeat these steps
     // If there is not, add that node as the left property
-    let newNode = new Node(value);
+    let newNode = new Node(value)
 
     if (!this.root) {
-      this.root = newNode;
-      return this;
+      this.root = newNode
+      return this
     }
 
-    let current = this.root;
+    let current = this.root
 
     while (true) {
-      if (value === current.value) return undefined;
+      if (value === current.value) return undefined
 
       if (value < current.value) {
         if (current.left === null) {
-          current.left = newNode;
-          return this;
+          current.left = newNode
+          return this
         }
-        current = current.left;
+        current = current.left
       } else if (value > current.value) {
         if (current.right === null) {
-          current.right = newNode;
-          return this;
+          current.right = newNode
+          return this
         }
-        current = current.right;
+        current = current.right
       }
     }
   }
@@ -2259,39 +2259,39 @@ class BinarySearchTree {
     // If there is, move to that node and repeat these steps
     // If there is not, we're done searching!
 
-    if (!this.root) return false;
+    if (!this.root) return false
 
-    let current = this.root;
-    let found = false;
+    let current = this.root
+    let found = false
 
     while (current && !found) {
       if (value < current.value) {
-        current = current.left;
+        current = current.left
       } else if (value > current.value) {
-        current = current.right;
+        current = current.right
       } else {
-        return true;
+        return true
       }
     }
 
-    return false;
+    return false
   }
 }
 
-let tree = new BinarySearchTree();
+let tree = new BinarySearchTree()
 
-console.log('tree is:', tree);
-tree.insert(10);
-tree.insert(5);
-tree.insert(15);
-tree.insert(17);
-tree.insert(7);
-tree.insert(3);
-tree.insert(13);
-console.log('tree is:', tree);
+console.log('tree is:', tree)
+tree.insert(10)
+tree.insert(5)
+tree.insert(15)
+tree.insert(17)
+tree.insert(7)
+tree.insert(3)
+tree.insert(13)
+console.log('tree is:', tree)
 
-console.log(tree.search(13));
-console.log(tree.search(19));
+console.log(tree.search(13))
+console.log(tree.search(19))
 ```
 
 ### 설명
@@ -2331,63 +2331,63 @@ console.log(tree.search(19));
 ```js
 class Node {
   constructor(value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
+    this.value = value
+    this.left = null
+    this.right = null
   }
 }
 
 class BinarySearchTree {
   constructor() {
-    this.root = null;
+    this.root = null
   }
 
   insert(value) {
-    let newNode = new Node(value);
+    let newNode = new Node(value)
 
     if (!this.root) {
-      this.root = newNode;
-      return this;
+      this.root = newNode
+      return this
     }
 
-    let current = this.root;
+    let current = this.root
 
     while (true) {
-      if (value === current.value) return undefined;
+      if (value === current.value) return undefined
 
       if (value < current.value) {
         if (current.left === null) {
-          current.left = newNode;
-          return this;
+          current.left = newNode
+          return this
         }
-        current = current.left;
+        current = current.left
       } else if (value > current.value) {
         if (current.right === null) {
-          current.right = newNode;
-          return this;
+          current.right = newNode
+          return this
         }
-        current = current.right;
+        current = current.right
       }
     }
   }
 
   find(value) {
-    if (!this.root) return false;
+    if (!this.root) return false
 
-    let current = this.root;
-    let found = false;
+    let current = this.root
+    let found = false
 
     while (current && !found) {
       if (value < current.value) {
-        current = current.left;
+        current = current.left
       } else if (value > current.value) {
-        current = current.right;
+        current = current.right
       } else {
-        return true;
+        return true
       }
     }
 
-    return false;
+    return false
   }
 
   BFS() {
@@ -2399,39 +2399,39 @@ class BinarySearchTree {
     // If there is a right property on the node dequeued - add it to the queue
     // Return the variable that stores the values
 
-    let visited = [];
-    let queue = [];
-    let currentNode = this.root;
+    let visited = []
+    let queue = []
+    let currentNode = this.root
 
-    queue.push(currentNode);
+    queue.push(currentNode)
 
     while (queue.length) {
-      currentNode = queue.shift();
-      visited.push(currentNode.value);
+      currentNode = queue.shift()
+      visited.push(currentNode.value)
 
-      if (currentNode.left) queue.push(currentNode.left);
-      if (currentNode.right) queue.push(currentNode.right);
+      if (currentNode.left) queue.push(currentNode.left)
+      if (currentNode.right) queue.push(currentNode.right)
     }
-    return visited;
+    return visited
   }
 }
 
-let tree = new BinarySearchTree();
+let tree = new BinarySearchTree()
 
-console.log('tree is:', tree);
-tree.insert(10);
-tree.insert(5);
-tree.insert(15);
-tree.insert(17);
-tree.insert(7);
-tree.insert(3);
-tree.insert(13);
-console.log('tree is:', tree);
+console.log('tree is:', tree)
+tree.insert(10)
+tree.insert(5)
+tree.insert(15)
+tree.insert(17)
+tree.insert(7)
+tree.insert(3)
+tree.insert(13)
+console.log('tree is:', tree)
 
-console.log(tree.find(13));
-console.log(tree.find(19));
+console.log(tree.find(13))
+console.log(tree.find(19))
 
-console.log('BFS:', tree.BFS());
+console.log('BFS:', tree.BFS())
 ```
 
 ### BFS의 동작 원리
@@ -2466,63 +2466,63 @@ BFS는 너비 우선으로 탐색하여 최단 경로를 찾는 문제에 적합
 ```js
 class Node {
   constructor(value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
+    this.value = value
+    this.left = null
+    this.right = null
   }
 }
 
 class BinarySearchTree {
   constructor() {
-    this.root = null;
+    this.root = null
   }
 
   insert(value) {
-    let newNode = new Node(value);
+    let newNode = new Node(value)
 
     if (!this.root) {
-      this.root = newNode;
-      return this;
+      this.root = newNode
+      return this
     }
 
-    let current = this.root;
+    let current = this.root
 
     while (true) {
-      if (value === current.value) return undefined;
+      if (value === current.value) return undefined
 
       if (value < current.value) {
         if (current.left === null) {
-          current.left = newNode;
-          return this;
+          current.left = newNode
+          return this
         }
-        current = current.left;
+        current = current.left
       } else if (value > current.value) {
         if (current.right === null) {
-          current.right = newNode;
-          return this;
+          current.right = newNode
+          return this
         }
-        current = current.right;
+        current = current.right
       }
     }
   }
 
   find(value) {
-    if (!this.root) return false;
+    if (!this.root) return false
 
-    let current = this.root;
-    let found = false;
+    let current = this.root
+    let found = false
 
     while (current && !found) {
       if (value < current.value) {
-        current = current.left;
+        current = current.left
       } else if (value > current.value) {
-        current = current.right;
+        current = current.right
       } else {
-        return true;
+        return true
       }
     }
 
-    return false;
+    return false
   }
 
   DFS() {
@@ -2535,38 +2535,38 @@ class BinarySearchTree {
     // Invoke the helper function with the current variable
     // Return the array of values
 
-    let visited = [];
-    let currentNode = this.root;
+    let visited = []
+    let currentNode = this.root
 
     function preorder(node) {
-      visited.push(node.value);
+      visited.push(node.value)
 
-      if (node.left) preorder(node.left);
-      if (node.right) preorder(node.right);
+      if (node.left) preorder(node.left)
+      if (node.right) preorder(node.right)
     }
 
-    preorder(currentNode);
+    preorder(currentNode)
 
-    return visited;
+    return visited
   }
 }
 
-let tree = new BinarySearchTree();
+let tree = new BinarySearchTree()
 
-console.log('tree is:', tree);
-tree.insert(10);
-tree.insert(5);
-tree.insert(15);
-tree.insert(17);
-tree.insert(7);
-tree.insert(3);
-tree.insert(13);
-console.log('tree is:', tree);
+console.log('tree is:', tree)
+tree.insert(10)
+tree.insert(5)
+tree.insert(15)
+tree.insert(17)
+tree.insert(7)
+tree.insert(3)
+tree.insert(13)
+console.log('tree is:', tree)
 
-console.log(tree.find(13));
-console.log(tree.find(19));
+console.log(tree.find(13))
+console.log(tree.find(19))
 
-console.log('DFS:', tree.DFS());
+console.log('DFS:', tree.DFS())
 ```
 
 ### DFS의 동작 원리
@@ -2619,14 +2619,14 @@ DFS는 경로 탐색, 사이클 탐지, 강력 연결 요소 찾기 등 다양�
 ```js
 class MaxBinaryHeap {
   constructor() {
-    this.values = [];
+    this.values = []
   }
 
   insert(value) {
     // Push the value into the values property on the heap
     // Bubble the value up to its correct spot!
-    this.values.push(value);
-    this.bubbleUp();
+    this.values.push(value)
+    this.bubbleUp()
   }
 
   bubbleUp() {
@@ -2636,18 +2636,18 @@ class MaxBinaryHeap {
     // Swap the value of the values element at the parentIndex with the value of the element property at the child index
     // Set the index to be th parentIndex, and start over!
 
-    let idx = this.values.length - 1;
-    const element = this.values[idx];
+    let idx = this.values.length - 1
+    const element = this.values[idx]
 
     while (idx > 0) {
-      let parentIdx = Math.floor((idx - 1) / 2);
-      let parentElement = this.values[parentIdx];
+      let parentIdx = Math.floor((idx - 1) / 2)
+      let parentElement = this.values[parentIdx]
 
-      if (element <= parentElement) break;
+      if (element <= parentElement) break
 
-      this.values[parentIdx] = element;
-      this.values[idx] = parentElement;
-      idx = parentIdx;
+      this.values[parentIdx] = element
+      this.values[idx] = parentElement
+      idx = parentIdx
     }
   }
 
@@ -2663,61 +2663,61 @@ class MaxBinaryHeap {
     // The child index you swapped to now becomes the new parent index
     // Keep looping and swapping until neither child is larger than the element
     // Return the old root
-    const max = this.values[0];
-    const end = this.values.pop();
+    const max = this.values[0]
+    const end = this.values.pop()
     if (this.values.length > 0) {
-      this.values[0] = end;
-      this.sinkDown();
+      this.values[0] = end
+      this.sinkDown()
     }
-    return max;
+    return max
   }
 
   sinkDown() {
-    let idx = 0;
-    const length = this.values.length;
-    const element = this.values[0];
+    let idx = 0
+    const length = this.values.length
+    const element = this.values[0]
     while (true) {
-      let leftChildIdx = 2 * idx + 1;
-      let rightChildIdx = 2 * idx + 2;
-      let leftChild, rightChild;
-      let swap = null;
+      let leftChildIdx = 2 * idx + 1
+      let rightChildIdx = 2 * idx + 2
+      let leftChild, rightChild
+      let swap = null
 
       if (leftChildIdx < length) {
-        leftChild = this.values[leftChildIdx];
+        leftChild = this.values[leftChildIdx]
         if (leftChild > element) {
-          swap = leftChildIdx;
+          swap = leftChildIdx
         }
       }
       if (rightChildIdx < length) {
-        rightChild = this.values[rightChildIdx];
+        rightChild = this.values[rightChildIdx]
         if (
           (swap === null && rightChild > element) ||
           (swap !== null && rightChild > leftChild)
         ) {
-          swap = rightChildIdx;
+          swap = rightChildIdx
         }
       }
-      if (swap === null) break;
-      this.values[idx] = this.values[swap];
-      this.values[swap] = element;
-      idx = swap;
+      if (swap === null) break
+      this.values[idx] = this.values[swap]
+      this.values[swap] = element
+      idx = swap
     }
   }
 }
 
-let maxBinaryHeap = new MaxBinaryHeap();
-maxBinaryHeap.insert(41);
-maxBinaryHeap.insert(39);
-maxBinaryHeap.insert(33);
-maxBinaryHeap.insert(18);
-maxBinaryHeap.insert(27);
-maxBinaryHeap.insert(12);
+let maxBinaryHeap = new MaxBinaryHeap()
+maxBinaryHeap.insert(41)
+maxBinaryHeap.insert(39)
+maxBinaryHeap.insert(33)
+maxBinaryHeap.insert(18)
+maxBinaryHeap.insert(27)
+maxBinaryHeap.insert(12)
 
-maxBinaryHeap.insert(55);
+maxBinaryHeap.insert(55)
 // [41,39,33,18,27,12,55]
 //  0  1  2  3  4  5  6
 
-console.log('maxBinaryHeap:', maxBinaryHeap);
+console.log('maxBinaryHeap:', maxBinaryHeap)
 ```
 
 ### 최소 힙의 구현 (자바스크립트 예제)
@@ -2727,14 +2727,14 @@ console.log('maxBinaryHeap:', maxBinaryHeap);
 ```js
 class MinBinaryHeap {
   constructor() {
-    this.values = [];
+    this.values = []
   }
 
   insert(value) {
     // Push the value into the values property on the heap
     // Bubble the value up to its correct spot!
-    this.values.push(value);
-    this.bubbleUp();
+    this.values.push(value)
+    this.bubbleUp()
   }
 
   bubbleUp() {
@@ -2744,18 +2744,18 @@ class MinBinaryHeap {
     // Swap the value of the values element at the parentIndex with the value of the element property at the child index
     // Set the index to be th parentIndex, and start over!
 
-    let idx = this.values.length - 1;
-    const element = this.values[idx];
+    let idx = this.values.length - 1
+    const element = this.values[idx]
 
     while (idx > 0) {
-      let parentIdx = Math.floor((idx - 1) / 2);
-      let parentElement = this.values[parentIdx];
+      let parentIdx = Math.floor((idx - 1) / 2)
+      let parentElement = this.values[parentIdx]
 
-      if (element >= parentElement) break;
+      if (element >= parentElement) break
 
-      this.values[parentIdx] = element;
-      this.values[idx] = parentElement;
-      idx = parentIdx;
+      this.values[parentIdx] = element
+      this.values[idx] = parentElement
+      idx = parentIdx
     }
   }
 
@@ -2771,61 +2771,61 @@ class MinBinaryHeap {
     // The child index you swapped to now becomes the new parent index
     // Keep looping and swapping until neither child is larger than the element
     // Return the old root
-    const max = this.values[0];
-    const end = this.values.pop();
+    const max = this.values[0]
+    const end = this.values.pop()
     if (this.values.length > 0) {
-      this.values[0] = end;
-      this.sinkDown();
+      this.values[0] = end
+      this.sinkDown()
     }
-    return max;
+    return max
   }
 
   sinkDown() {
-    let idx = 0;
-    const length = this.values.length;
-    const element = this.values[0];
+    let idx = 0
+    const length = this.values.length
+    const element = this.values[0]
     while (true) {
-      let leftChildIdx = 2 * idx + 1;
-      let rightChildIdx = 2 * idx + 2;
-      let leftChild, rightChild;
-      let swap = null;
+      let leftChildIdx = 2 * idx + 1
+      let rightChildIdx = 2 * idx + 2
+      let leftChild, rightChild
+      let swap = null
 
       if (leftChildIdx < length) {
-        leftChild = this.values[leftChildIdx];
+        leftChild = this.values[leftChildIdx]
         if (leftChild < element) {
-          swap = leftChildIdx;
+          swap = leftChildIdx
         }
       }
       if (rightChildIdx < length) {
-        rightChild = this.values[rightChildIdx];
+        rightChild = this.values[rightChildIdx]
         if (
           (swap === null && rightChild < element) ||
           (swap !== null && rightChild < leftChild)
         ) {
-          swap = rightChildIdx;
+          swap = rightChildIdx
         }
       }
-      if (swap === null) break;
-      this.values[idx] = this.values[swap];
-      this.values[swap] = element;
-      idx = swap;
+      if (swap === null) break
+      this.values[idx] = this.values[swap]
+      this.values[swap] = element
+      idx = swap
     }
   }
 }
 
-let minBinaryHeap = new MinBinaryHeap();
-minBinaryHeap.insert(41);
-minBinaryHeap.insert(39);
-minBinaryHeap.insert(33);
-minBinaryHeap.insert(18);
-minBinaryHeap.insert(27);
-minBinaryHeap.insert(12);
+let minBinaryHeap = new MinBinaryHeap()
+minBinaryHeap.insert(41)
+minBinaryHeap.insert(39)
+minBinaryHeap.insert(33)
+minBinaryHeap.insert(18)
+minBinaryHeap.insert(27)
+minBinaryHeap.insert(12)
 
-minBinaryHeap.insert(55);
+minBinaryHeap.insert(55)
 // [12, 27, 18, 41, 33, 39, 55]
 //  0  1  2  3  4  5  6
 
-console.log('minBinaryHeap:', minBinaryHeap);
+console.log('minBinaryHeap:', minBinaryHeap)
 ```
 
 ### 이진 힙의 시간 복잡도
@@ -2854,31 +2854,31 @@ console.log('minBinaryHeap:', minBinaryHeap);
 ```js
 class PriorityQueue {
   constructor() {
-    this.values = [];
+    this.values = []
   }
 
   enqueue(value, priority) {
-    this.values.push({ value, priority });
-    this.sort();
+    this.values.push({ value, priority })
+    this.sort()
   }
 
   dequeue() {
-    return this.values.shift();
+    return this.values.shift()
   }
 
   sort() {
-    this.values.sort((a, b) => a.priority - b.priority); // 우선순위가 낮은 순서대로 정렬
+    this.values.sort((a, b) => a.priority - b.priority) // 우선순위가 낮은 순서대로 정렬
   }
 }
 
 // 사용 예시
-let pq = new PriorityQueue();
-pq.enqueue('low priority task', 5);
-pq.enqueue('medium priority task', 3);
-pq.enqueue('high priority task', 1);
+let pq = new PriorityQueue()
+pq.enqueue('low priority task', 5)
+pq.enqueue('medium priority task', 3)
+pq.enqueue('high priority task', 1)
 
-console.log(pq.values); // [{value: "high priority task", priority: 1}, {value: "medium priority task", priority: 3}, {value: "low priority task", priority: 5}]
-console.log(pq.dequeue()); // {value: "high priority task", priority: 1}
+console.log(pq.values) // [{value: "high priority task", priority: 1}, {value: "medium priority task", priority: 3}, {value: "low priority task", priority: 5}]
+console.log(pq.dequeue()) // {value: "high priority task", priority: 1}
 ```
 
 위의 구현은 배열을 사용하여 요소를 정렬합니다. 그러나 이 방식은 정렬하는 데 O(n log n)의 시간이 소요되므로, 더 효율적인 방법은 힙을 사용하는 것입니다.
@@ -2891,8 +2891,8 @@ console.log(pq.dequeue()); // {value: "high priority task", priority: 1}
 ```js
 class Node {
   constructor(value, priority) {
-    this.value = value;
-    this.priority = priority;
+    this.value = value
+    this.priority = priority
   }
 }
 
@@ -2903,80 +2903,80 @@ class PriorityQueue {
   // Dequeue method removes root element, returns it, and rearranges heap using priority
 
   constructor() {
-    this.values = [];
+    this.values = []
   }
   enqueue(val, priority) {
-    let newNode = new Node(val, priority);
-    this.values.push(newNode);
-    this.bubbleUp();
+    let newNode = new Node(val, priority)
+    this.values.push(newNode)
+    this.bubbleUp()
   }
   bubbleUp() {
-    let idx = this.values.length - 1;
-    const element = this.values[idx];
+    let idx = this.values.length - 1
+    const element = this.values[idx]
     while (idx > 0) {
-      let parentIdx = Math.floor((idx - 1) / 2);
-      let parent = this.values[parentIdx];
-      if (element.priority >= parent.priority) break;
-      this.values[parentIdx] = element;
-      this.values[idx] = parent;
-      idx = parentIdx;
+      let parentIdx = Math.floor((idx - 1) / 2)
+      let parent = this.values[parentIdx]
+      if (element.priority >= parent.priority) break
+      this.values[parentIdx] = element
+      this.values[idx] = parent
+      idx = parentIdx
     }
   }
   dequeue() {
-    const min = this.values[0];
-    const end = this.values.pop();
+    const min = this.values[0]
+    const end = this.values.pop()
     if (this.values.length > 0) {
-      this.values[0] = end;
-      this.sinkDown();
+      this.values[0] = end
+      this.sinkDown()
     }
-    return min;
+    return min
   }
   sinkDown() {
-    let idx = 0;
-    const length = this.values.length;
-    const element = this.values[0];
+    let idx = 0
+    const length = this.values.length
+    const element = this.values[0]
     while (true) {
-      let leftChildIdx = 2 * idx + 1;
-      let rightChildIdx = 2 * idx + 2;
-      let leftChild, rightChild;
-      let swap = null;
+      let leftChildIdx = 2 * idx + 1
+      let rightChildIdx = 2 * idx + 2
+      let leftChild, rightChild
+      let swap = null
 
       if (leftChildIdx < length) {
-        leftChild = this.values[leftChildIdx];
+        leftChild = this.values[leftChildIdx]
         if (leftChild.priority < element.priority) {
-          swap = leftChildIdx;
+          swap = leftChildIdx
         }
       }
       if (rightChildIdx < length) {
-        rightChild = this.values[rightChildIdx];
+        rightChild = this.values[rightChildIdx]
         if (
           (swap === null && rightChild.priority < element.priority) ||
           (swap !== null && rightChild.priority < leftChild.priority)
         ) {
-          swap = rightChildIdx;
+          swap = rightChildIdx
         }
       }
-      if (swap === null) break;
-      this.values[idx] = this.values[swap];
-      this.values[swap] = element;
-      idx = swap;
+      if (swap === null) break
+      this.values[idx] = this.values[swap]
+      this.values[swap] = element
+      idx = swap
     }
   }
 }
 
-let ER = new PriorityQueue();
+let ER = new PriorityQueue()
 
-ER.enqueue('common cold', 5);
-ER.enqueue('gunshot wound', 1);
-ER.enqueue('high fever', 4);
-ER.enqueue('broken arm', 2);
-ER.enqueue('glass in foot', 3);
+ER.enqueue('common cold', 5)
+ER.enqueue('gunshot wound', 1)
+ER.enqueue('high fever', 4)
+ER.enqueue('broken arm', 2)
+ER.enqueue('glass in foot', 3)
 
-console.log('ER:', ER.dequeue());
-console.log('ER:', ER.dequeue());
-console.log('ER:', ER.dequeue());
-console.log('ER:', ER.dequeue());
-console.log('ER:', ER.dequeue());
+console.log('ER:', ER.dequeue())
+console.log('ER:', ER.dequeue())
+console.log('ER:', ER.dequeue())
+console.log('ER:', ER.dequeue())
+console.log('ER:', ER.dequeue())
 ```
 
 ### 우선순위 큐의 응용
@@ -3009,14 +3009,14 @@ console.log('ER:', ER.dequeue());
 
 ```js
 function hash(key, arrayLen) {
-  let total = 0;
-  let WEIRD_PRIME = 31;
+  let total = 0
+  let WEIRD_PRIME = 31
   for (let i = 0; i < Math.min(key.length, 100); i++) {
-    let char = key[i];
-    let value = char.charCodeAt(0) - 96;
-    total = (total * WEIRD_PRIME + value) % arrayLen;
+    let char = key[i]
+    let value = char.charCodeAt(0) - 96
+    total = (total * WEIRD_PRIME + value) % arrayLen
   }
-  return total;
+  return total
 }
 ```
 
@@ -3026,21 +3026,21 @@ function hash(key, arrayLen) {
 class HashTable {
   // 소수 값을 기본 값으로 설정한다
   constructor(size = 53) {
-    this.keyMap = new Array(size);
+    this.keyMap = new Array(size)
   }
 
   _hash(key) {
-    let total = 0;
+    let total = 0
     // 소수를 곱하면, 단어간의 충돌 횟수가 현저히 줄어들었음
-    let WEIRD_PRIME = 31;
+    let WEIRD_PRIME = 31
 
     // 키 값의 길이가 100이 넘는다면, 100을 사용하여 루프를 돈다
     for (let i = 0; i < Math.min(key.length, 100); i++) {
-      let char = key[i];
-      let value = char.charCodeAt(0) - 96;
-      total = (total * WEIRD_PRIME + value) % this.keyMap.length;
+      let char = key[i]
+      let value = char.charCodeAt(0) - 96
+      total = (total * WEIRD_PRIME + value) % this.keyMap.length
     }
-    return total;
+    return total
   }
 
   set(key, value) {
@@ -3048,66 +3048,66 @@ class HashTable {
     // Accepts a key and a value
     // Hashes the key
     // Stores the key-value pair in the hash table array via separate chaining
-    let index = this._hash(key);
+    let index = this._hash(key)
 
     if (!this.keyMap[index]) {
-      this.keyMap[index] = [];
+      this.keyMap[index] = []
     }
-    this.keyMap[index].push([key, value]);
+    this.keyMap[index].push([key, value])
   }
 
   get(key) {
     // Accepts a key
     // Hashes the key
     // Retrieves the key-value pair in the hash table
-    let index = this._hash(key);
+    let index = this._hash(key)
     if (this.keyMap[index]) {
       for (let i = 0; i < this.keyMap[index].length; i++) {
         if (this.keyMap[index][i][0] === key) {
-          return this.keyMap[index][i];
+          return this.keyMap[index][i]
         }
       }
     }
-    return undefined;
+    return undefined
   }
 
   keys() {
-    let results = [];
+    let results = []
     for (let key of this.keyMap) {
       if (key) {
         for (let [key, value] of key) {
-          if (!results.includes(key)) results.push(key);
+          if (!results.includes(key)) results.push(key)
         }
       }
     }
-    return results;
+    return results
   }
 
   values() {
-    let results = [];
+    let results = []
     for (let key of this.keyMap) {
       if (key) {
         for (let [key, value] of key) {
-          if (!results.includes(value)) results.push(value);
+          if (!results.includes(value)) results.push(value)
         }
       }
     }
-    return results;
+    return results
   }
 }
 
-let newHashTable = new HashTable();
+let newHashTable = new HashTable()
 
-newHashTable.set('bowow', 'A');
-newHashTable.set('cowow', 'B');
-newHashTable.set('dowow', 'C');
-newHashTable.set('Awwww', 'D');
-newHashTable.set('Awwww', 'D');
-newHashTable.set('Awwww', 'D');
+newHashTable.set('bowow', 'A')
+newHashTable.set('cowow', 'B')
+newHashTable.set('dowow', 'C')
+newHashTable.set('Awwww', 'D')
+newHashTable.set('Awwww', 'D')
+newHashTable.set('Awwww', 'D')
 
-newHashTable.get('Awwww');
-console.log(newHashTable.keys());
-console.log(newHashTable.values());
+newHashTable.get('Awwww')
+console.log(newHashTable.keys())
+console.log(newHashTable.values())
 
 /**
  * newHashTable: HashTable {
@@ -3129,75 +3129,75 @@ console.log(newHashTable.values());
 ```js
 class HashTable {
   constructor(size = 53) {
-    this.keyMap = new Array(size);
+    this.keyMap = new Array(size)
   }
 
   _hash(key) {
-    let total = 0;
-    let WEIRD_PRIME = 31;
+    let total = 0
+    let WEIRD_PRIME = 31
     for (let i = 0; i < Math.min(key.length, 100); i++) {
-      let char = key[i];
-      let value = char.charCodeAt(0) - 96;
-      total = (total * WEIRD_PRIME + value) % this.keyMap.length;
+      let char = key[i]
+      let value = char.charCodeAt(0) - 96
+      total = (total * WEIRD_PRIME + value) % this.keyMap.length
     }
-    return total;
+    return total
   }
 
   set(key, value) {
-    let index = this._hash(key);
+    let index = this._hash(key)
     // 선형 탐사를 사용하여 빈 슬롯을 찾음
     while (this.keyMap[index] !== undefined && this.keyMap[index].key !== key) {
-      index = (index + 1) % this.keyMap.length;
+      index = (index + 1) % this.keyMap.length
     }
-    this.keyMap[index] = { key, value };
+    this.keyMap[index] = { key, value }
   }
 
   get(key) {
-    let index = this._hash(key);
+    let index = this._hash(key)
     // 선형 탐사를 사용하여 키를 찾음
     while (this.keyMap[index] !== undefined) {
       if (this.keyMap[index].key === key) {
-        return this.keyMap[index].value;
+        return this.keyMap[index].value
       }
-      index = (index + 1) % this.keyMap.length;
+      index = (index + 1) % this.keyMap.length
     }
-    return undefined;
+    return undefined
   }
 
   keys() {
-    let keysArr = [];
+    let keysArr = []
     for (let i = 0; i < this.keyMap.length; i++) {
       if (this.keyMap[i]) {
-        keysArr.push(this.keyMap[i].key);
+        keysArr.push(this.keyMap[i].key)
       }
     }
-    return keysArr;
+    return keysArr
   }
 
   values() {
-    let valuesArr = [];
+    let valuesArr = []
     for (let i = 0; i < this.keyMap.length; i++) {
       if (this.keyMap[i]) {
-        valuesArr.push(this.keyMap[i].value);
+        valuesArr.push(this.keyMap[i].value)
       }
     }
-    return valuesArr;
+    return valuesArr
   }
 }
 
 // 사용 예시
-let ht = new HashTable(17);
-ht.set('maroon', '#800000');
-ht.set('yellow', '#FFFF00');
-ht.set('olive', '#808000');
-ht.set('salmon', '#FA8072');
-ht.set('lightcoral', '#F08080');
-ht.set('mediumvioletred', '#C71585');
-ht.set('plum', '#DDA0DD');
+let ht = new HashTable(17)
+ht.set('maroon', '#800000')
+ht.set('yellow', '#FFFF00')
+ht.set('olive', '#808000')
+ht.set('salmon', '#FA8072')
+ht.set('lightcoral', '#F08080')
+ht.set('mediumvioletred', '#C71585')
+ht.set('plum', '#DDA0DD')
 
-console.log(ht.get('yellow')); // #FFFF00
-console.log(ht.keys()); // ["maroon", "yellow", "olive", "salmon", "lightcoral", "mediumvioletred", "plum"]
-console.log(ht.values()); // ["#800000", "#FFFF00", "#808000", "#FA8072", "#F08080", "#C71585", "#DDA0DD"]
+console.log(ht.get('yellow')) // #FFFF00
+console.log(ht.keys()) // ["maroon", "yellow", "olive", "salmon", "lightcoral", "mediumvioletred", "plum"]
+console.log(ht.values()) // ["#800000", "#FFFF00", "#808000", "#FA8072", "#F08080", "#C71585", "#DDA0DD"]
 ```
 
 ### 해시 테이블의 장점
@@ -3314,58 +3314,58 @@ console.log(ht.values()); // ["#800000", "#FFFF00", "#808000", "#FA8072", "#F080
 ```js
 class Graph {
   constructor() {
-    this.adjacencyList = {};
+    this.adjacencyList = {}
   }
 
   addVertex(vertex) {
-    if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
+    if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = []
   }
 
   addEdge(vertex1, vertex2) {
-    if (!this.adjacencyList[vertex1]) this.addVertex(vertex1);
-    if (!this.adjacencyList[vertex2]) this.addVertex(vertex2);
+    if (!this.adjacencyList[vertex1]) this.addVertex(vertex1)
+    if (!this.adjacencyList[vertex2]) this.addVertex(vertex2)
 
-    this.adjacencyList[vertex1].push(vertex2);
-    this.adjacencyList[vertex2].push(vertex1);
+    this.adjacencyList[vertex1].push(vertex2)
+    this.adjacencyList[vertex2].push(vertex1)
   }
 
   removeEdge(vertex1, vertex2) {
     this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(
-      (v) => v !== vertex2
-    );
+      (v) => v !== vertex2,
+    )
     this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(
-      (v) => v !== vertex1
-    );
+      (v) => v !== vertex1,
+    )
   }
 
   removeVertex(vertex) {
     for (let key in this.adjacencyList) {
       if (this.adjacencyList[key].includes(vertex)) {
         this.adjacencyList[key] = this.adjacencyList[key].filter(
-          (v) => v !== vertex
-        );
+          (v) => v !== vertex,
+        )
       }
     }
 
-    delete this.adjacencyList[vertex];
+    delete this.adjacencyList[vertex]
 
-    console.log('after this.adjacencyList[key]:', this.adjacencyList);
+    console.log('after this.adjacencyList[key]:', this.adjacencyList)
   }
 }
 
-let basicGraph = new Graph();
+let basicGraph = new Graph()
 
-basicGraph.addVertex('A');
-basicGraph.addVertex('B');
+basicGraph.addVertex('A')
+basicGraph.addVertex('B')
 
-basicGraph.addEdge('A', 'B');
-basicGraph.addEdge('A', 'C');
-basicGraph.addEdge('A', 'D');
-basicGraph.addEdge('B', 'C');
+basicGraph.addEdge('A', 'B')
+basicGraph.addEdge('A', 'C')
+basicGraph.addEdge('A', 'D')
+basicGraph.addEdge('B', 'C')
 
-basicGraph.removeVertex('A');
+basicGraph.removeVertex('A')
 
-console.log(basicGraph);
+console.log(basicGraph)
 ```
 
 ### 그래프 탐색 알고리즘
@@ -3585,114 +3585,114 @@ const list = {
 ```js
 class PriorityQueue {
   constructor() {
-    this.values = [];
+    this.values = []
   }
   enqueue(val, priority) {
-    this.values.push({ val, priority });
-    this.sort();
+    this.values.push({ val, priority })
+    this.sort()
   }
   dequeue() {
-    return this.values.shift();
+    return this.values.shift()
   }
   sort() {
-    this.values.sort((a, b) => a.priority - b.priority);
+    this.values.sort((a, b) => a.priority - b.priority)
   }
 }
 
 class WeightedGraph {
   constructor() {
-    this.adjacencyList = {};
+    this.adjacencyList = {}
   }
   addVertex(vertex) {
-    if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
+    if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = []
   }
   addEdge(vertex1, vertex2, weight) {
-    this.adjacencyList[vertex1].push({ node: vertex2, weight });
-    this.adjacencyList[vertex2].push({ node: vertex1, weight });
+    this.adjacencyList[vertex1].push({ node: vertex2, weight })
+    this.adjacencyList[vertex2].push({ node: vertex1, weight })
   }
   Dijkstra(start, finish) {
     // nodes dequeue 할 때, 가중치가 낮은 것을 먼저 뽑아 순회하기 위한 우선순위 큐 클래스
-    const nodes = new PriorityQueue();
+    const nodes = new PriorityQueue()
     // distances - 시작 정점을 기준으로 가장 짧은 거리를 저장해두는 객체
-    const distances = {};
+    const distances = {}
     // previous - 최종적으로 최단거리를 기억할 수 있는 객체
-    const previous = {};
+    const previous = {}
     // target - 우리가 실제로 방문하는 노드
-    let target;
+    let target
     // path - 최단 거리를 저장해서 반환할 배열
-    let path = [];
+    let path = []
 
     //build up initial state
     for (let vertex in this.adjacencyList) {
       if (vertex === start) {
-        distances[vertex] = 0;
-        nodes.enqueue(vertex, 0);
+        distances[vertex] = 0
+        nodes.enqueue(vertex, 0)
       } else {
-        distances[vertex] = Infinity;
-        nodes.enqueue(vertex, Infinity);
+        distances[vertex] = Infinity
+        nodes.enqueue(vertex, Infinity)
       }
-      previous[vertex] = null;
+      previous[vertex] = null
     }
 
-    console.log('nodes.values:', nodes.values);
-    console.log('distances:', distances);
-    console.log('previous:', previous);
-    console.log('adjacencyList:', this.adjacencyList);
+    console.log('nodes.values:', nodes.values)
+    console.log('distances:', distances)
+    console.log('previous:', previous)
+    console.log('adjacencyList:', this.adjacencyList)
     // as long as there is something to visit
     while (nodes.values.length) {
-      target = nodes.dequeue().val;
+      target = nodes.dequeue().val
       if (target === finish) {
         //WE ARE DONE
         //BUILD UP PATH TO RETURN AT END
         while (previous[target]) {
-          path.push(target);
-          target = previous[target];
+          path.push(target)
+          target = previous[target]
         }
-        break;
+        break
       }
       if (target || distances[target] !== Infinity) {
         for (let neighbor in this.adjacencyList[target]) {
           //find neighboring node
-          let nextNode = this.adjacencyList[target][neighbor];
+          let nextNode = this.adjacencyList[target][neighbor]
           //calculate new distance to neighboring node
-          let newDistance = distances[target] + nextNode.weight;
+          let newDistance = distances[target] + nextNode.weight
 
-          console.log('nextNode:', nextNode);
-          console.log('newDistance:', newDistance);
+          console.log('nextNode:', nextNode)
+          console.log('newDistance:', newDistance)
 
           if (newDistance < distances[nextNode.node]) {
             //updating new target distance to neighbor
-            distances[nextNode.node] = newDistance;
+            distances[nextNode.node] = newDistance
             //updating previous - How we got to neighbor
-            previous[nextNode.node] = target;
+            previous[nextNode.node] = target
             //enqueue in priority queue with new priority
-            nodes.enqueue(nextNode.node, newDistance);
+            nodes.enqueue(nextNode.node, newDistance)
           }
         }
       }
     }
-    return path.concat(target).reverse();
+    return path.concat(target).reverse()
   }
 }
 
-var graph = new WeightedGraph();
-graph.addVertex('A');
-graph.addVertex('B');
-graph.addVertex('C');
-graph.addVertex('D');
-graph.addVertex('E');
-graph.addVertex('F');
+var graph = new WeightedGraph()
+graph.addVertex('A')
+graph.addVertex('B')
+graph.addVertex('C')
+graph.addVertex('D')
+graph.addVertex('E')
+graph.addVertex('F')
 
-graph.addEdge('A', 'B', 4);
-graph.addEdge('A', 'C', 2);
-graph.addEdge('B', 'E', 3);
-graph.addEdge('C', 'D', 2);
-graph.addEdge('C', 'F', 4);
-graph.addEdge('D', 'E', 3);
-graph.addEdge('D', 'F', 1);
-graph.addEdge('E', 'F', 1);
+graph.addEdge('A', 'B', 4)
+graph.addEdge('A', 'C', 2)
+graph.addEdge('B', 'E', 3)
+graph.addEdge('C', 'D', 2)
+graph.addEdge('C', 'F', 4)
+graph.addEdge('D', 'E', 3)
+graph.addEdge('D', 'F', 1)
+graph.addEdge('E', 'F', 1)
 
-console.log(graph.Dijkstra('A', 'E'));
+console.log(graph.Dijkstra('A', 'E'))
 
 // ["A", "C", "D", "F", "E"]
 ```
@@ -3746,30 +3746,30 @@ console.log(graph.Dijkstra('A', 'E'));
 
 ```js
 function fib(n) {
-  if (n <= 2) return 1;
+  if (n <= 2) return 1
 
-  return fib(n - 1) + fib(n - 2);
+  return fib(n - 1) + fib(n - 2)
 }
 
-console.log(fib(2)); // 13
+console.log(fib(2)) // 13
 ```
 
 ### 메모이제이션을 사용한 피보나치 수열 (탑다운 방식)
 
 ```js
 function fib_memo(n, memo = []) {
-  if (memo[n] !== undefined) return memo[n];
-  if (n <= 2) return 1;
+  if (memo[n] !== undefined) return memo[n]
+  if (n <= 2) return 1
 
-  const res = fib(n - 1, memo) + fib(n - 2, memo);
-  memo[n] = res;
+  const res = fib(n - 1, memo) + fib(n - 2, memo)
+  memo[n] = res
 
-  console.log('memo:', memo);
+  console.log('memo:', memo)
 
-  return res;
+  return res
 }
 
-console.log(fib_memo(10));
+console.log(fib_memo(10))
 
 /**
  * memo: [ <3 empty items>, 2 ]
@@ -3788,18 +3788,18 @@ console.log(fib_memo(10));
 
 ```js
 function fib_tabulation(n) {
-  if (n <= 2) return 1;
-  let fibNums = [0, 1, 1];
+  if (n <= 2) return 1
+  let fibNums = [0, 1, 1]
   for (let i = 3; i <= n; i++) {
-    fibNums[i] = fibNums[i - 1] + fibNums[i - 2];
+    fibNums[i] = fibNums[i - 1] + fibNums[i - 2]
   }
 
-  console.log('fibNums:', fibNums);
+  console.log('fibNums:', fibNums)
 
-  return fibNums[n];
+  return fibNums[n]
 }
 
-console.log(fib_tabulation(10));
+console.log(fib_tabulation(10))
 
 /**
  * fibNums: [
