@@ -16,6 +16,10 @@
     "type": "git",
     "url": "git+https://github.com/junh0328/prepare_frontend_interview.git"
   },
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=9.0.0"
+  },
   "license": "ISC",
   "author": "junhee lee",
   "type": "module",

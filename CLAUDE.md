@@ -10,32 +10,29 @@
 
 ## 레포지토리 구조
 
-### 주요 콘텐츠 파일
-
-- **js.md** - JavaScript 기초 (변수, 데이터 타입, 클로저, async/await, 프로미스 등)
-- **react.md** - React 개념 (훅, 가상 DOM, 파이버, 라이프사이클, 상태 관리)
-- **cs.md** - Computer Science 주제 (네트워킹, HTTP, OS, 프로세스/스레드, 쿠키/세션, CORS, 웹팩)
-- **html_css.md** - HTML/CSS 기초 (시멘틱 태그, 웹 표준, 접근성, CSS 포지셔닝, flexbox/grid)
-- **data_structure.md** - 자료구조 (리스트, 큐, 스택, 해시 테이블, 트리, 힙, 그래프)
-- **algorithm_data_structure.md** - 알고리즘 패턴과 구현 (상세 구현이 포함된 v2)
-
-### 보조 파일
-
-- **question_list.md** - 실제 기업 면접에서 받은 질문들 (A-F 기업) 및 자가 평가 (✅ 답변함 / ❎ 어려웠음)
-- **prompt_engineering.md** - 프롬프트 엔지니어링 가이드 및 실전 사례
-- **README.md** - 주제별로 정리된 모든 질문의 목차
-
-### 디렉토리
-
-- **examples/** - React 및 상태 관리 패턴 구현 예제 코드
-  - **flux_pattern.tsx** - Flux 패턴 구현 예제
-  - **useState.jsx** - useState 훅 예제
-  - **useReducer.tsx** - useReducer 훅 예제
-- **images/** - JavaScript/React 개념의 스크린샷과 다이어그램
-- **cs_images/** - CS 주제 관련 다이어그램
-- **pdf/** - 학습 자료의 PDF 버전
-- **adr/** - Architecture Decision Records (기술 의사결정 기록)
-- **.github/ISSUE_TEMPLATE/** - 기여를 위한 이슈 템플릿
+```
+├── js.md                       # JavaScript 기초 (변수, 클로저, async/await, 프로미스 등)
+├── react.md                    # React 개념 (훅, 가상 DOM, 파이버, 상태 관리)
+├── cs.md                       # CS 주제 (네트워킹, HTTP, OS, 쿠키/세션, CORS, 웹팩)
+├── html_css.md                 # HTML/CSS 기초 (시멘틱 태그, 접근성, flexbox/grid)
+├── data_structure.md           # 자료구조 (리스트, 큐, 스택, 해시 테이블, 트리, 힙, 그래프)
+├── algorithm_data_structure.md # 알고리즘 패턴과 구현 (v2)
+├── question_list.md            # 실제 기업 면접 질문 (A-F 기업) 및 자가 평가
+├── prompt_engineering.md       # 프롬프트 엔지니어링 가이드 및 실전 사례
+├── README.md                   # 주제별 질문 목차
+├── CLAUDE.md                   # Claude Code 작업 가이드 (이 파일)
+├── examples/                   # React 및 상태 관리 패턴 구현 예제
+│   ├── flux_pattern.tsx
+│   ├── useState.jsx
+│   └── useReducer.tsx
+├── images/                     # JavaScript/React 개념 다이어그램
+├── cs_images/                  # CS 주제 관련 다이어그램
+├── pdf/                        # 학습 자료의 PDF 버전
+├── adr/                        # Architecture Decision Records
+├── docs/                       # VitePress 빌드용 (자동 생성, 직접 수정 금지)
+├── scripts/                    # sync-docs.js 등 빌드 스크립트
+└── .github/ISSUE_TEMPLATE/     # 기여를 위한 이슈 템플릿
+```
 
 ## 개발 환경
 

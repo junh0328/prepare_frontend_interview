@@ -41,13 +41,38 @@ CLAUDE CODE와 협업하여 이 핸드북을 개선한 실제 과정을 담은 �
 
 ## contribute
 
-① 클론 받기 / 포크 받기
+### 개발 환경 설정
 
-```
+**필수 도구**: Node.js v22 이상, pnpm
+
+```bash
+# ① 클론 받기 / 포크 받기
 $ git clone https://github.com/junh0328/prepare_frontend_interview.git
+$ cd prepare_frontend_interview
+
+# ② 의존성 설치
+$ pnpm install
+
+# ③ 로컬 개발 서버로 미리보기 (http://localhost:5173)
+$ pnpm run docs:dev
 ```
 
-② 내용 추가 또는 변경하기
+### 배포 구조
+
+이 레포지토리는 VitePress + Vercel로 배포됩니다.
+
+```
+루트 .md 파일 수정 → (pre-commit hook) → docs/ 자동 동기화 → push/PR → Vercel 자동 배포
+```
+
+- **배포 사이트**: https://prepare-frontend-interview.vercel.app/
+- **루트의 `.md` 파일이 원본**입니다. `docs/` 디렉토리는 자동 생성되므로 직접 수정하지 마세요.
+- **커밋 시 pre-commit hook**이 자동 실행됩니다 (포맷팅 → 린트 → docs/ 동기화). 린트 에러가 있으면 커밋이 차단됩니다.
+- **PR을 올리면 Vercel Preview**가 자동 생성되어, 병합 전에 배포 결과를 미리 확인할 수 있습니다.
+
+### 콘텐츠 수정 방법
+
+① 루트의 `.md` 파일에 내용 추가 또는 변경하기
 
 ```
 ex)
@@ -59,7 +84,7 @@ ex)
   - 제네릭이란?
 ```
 
-③ 목차에도 해당 내용 추가하기
+② 목차에도 해당 내용 추가하기
 
 ```
 ex)
@@ -71,7 +96,7 @@ ex)
   - 프로젝트 진행 시에 어떤 상황에서 타입을 쓰고 어떤 상황에서 인터페이스를 썼나요?
 ```
 
-④ 이슈 생성 및 PR 날리기
+③ 이슈 생성 및 PR 날리기
 
 예시 이슈: (https://github.com/junh0328/prepare_frontend_interview/issues/6)
 
@@ -113,6 +138,14 @@ ex)
     - TLS 1.3 핸드셰이크 (1-RTT) 🔥🔥
     - TLS 1.2와의 차이점 🔥
   - HTTPS 인증서 발급 과정에 대해 아나요? 🔥🔥
+
+- `실시간 통신 🔥`
+  - SSE(Server-Sent Events)가 무엇인가요? 🔥
+  - SSE를 사용할 때 메시지의 순서가 보장되나요? 🔥
+  - EventSource와 Fetch + ReadableStream의 차이는 무엇인가요? 🔥
+  - WebSocket이 무엇인가요? 🔥🔥
+  - SSE와 WebSocket의 차이는 뭐가 있나요? 🔥🔥
+  - Polling과 Long Polling에 대해 설명해주세요 🔥
 
 - `운영체제 🔥`
   - 운영체제란 무엇인가요?
@@ -438,13 +471,14 @@ ex)
 - `리액트 파이버 트리`
 - `리액트 파이버와 DOM, Virtual DOM의 관계`
 - `렌더 단계와 커밋 단계에 대해 아나요?`
+- `리액트에서 리렌더링이 발생하는 조건은 무엇인가요 🔥🔥`
 - `React에서 함수 컴포넌트와 클래스 컴포넌트의 차이 🔥`
 - `리액트에서 함수형 컴포넌트라고 부르지 않고 함수 컴포넌트라고 부르는 이유가 무엇인가요 🔥`
 - `props와 state의 차이🔥`
 - `Props가 컴포넌트간에 전달받는 것이라고 했는데 자식에서 부모로도 전달할 수 있는가 🔥`
 - `FLUX에 대해서 아나요? 🔥🔥`
 - `리덕스에 대해서 아나요? 🔥🔥`
-- `리덕스의 기본 원칙은? 🔥🔥`
+- `현대 상태 관리 라이브러리에는 어떤 것들이 있나요? 🔥🔥`
 - `React에서 state의 불변성을 유지하라는 말이 있는데 이에 대해 설명해달라 🔥`
 - `리듀서 내부에서 불변성을 지키는 이유는? 전개 연산자의 단점을 해결할 수 있는 방법은 무엇인가 🔥`
 - `리액트 사용시에 부수효과로 인해 생기는 문제점이 있다면 🔥🔥`
