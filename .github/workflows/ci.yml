@@ -13,8 +13,6 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v4
-        with:
-          version: 9
 
       - uses: actions/setup-node@v4
         with:
@@ -31,6 +29,9 @@ jobs:
 
       - name: Link check
         run: pnpm run lint:links
+
+      - name: Sidebar validation
+        run: pnpm run lint:sidebar
 
       - name: Build docs
         run: pnpm run docs:build

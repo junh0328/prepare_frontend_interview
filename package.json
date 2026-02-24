@@ -16,9 +16,10 @@
     "type": "git",
     "url": "git+https://github.com/junh0328/prepare_frontend_interview.git"
   },
+  "packageManager": "pnpm@10.28.2",
   "engines": {
     "node": ">=22.0.0",
-    "pnpm": ">=9.0.0"
+    "pnpm": ">=10.0.0"
   },
   "license": "ISC",
   "author": "junhee lee",
@@ -32,7 +33,8 @@
     "lint:md": "markdownlint js.md react.md cs.md html_css.md data_structure.md algorithm_data_structure.md",
     "lint:md:fix": "markdownlint --fix js.md react.md cs.md html_css.md data_structure.md algorithm_data_structure.md",
     "lint:links": "find . -maxdepth 1 -name '*.md' ! -name 'README.md' -exec markdown-link-check --config .markdown-link-check.json {} +",
-    "check": "pnpm run format:check && pnpm run lint:md && pnpm run lint:links",
+    "lint:sidebar": "node scripts/validate-sidebar.js",
+    "check": "pnpm run format:check && pnpm run lint:md && pnpm run lint:links && pnpm run lint:sidebar",
     "format": "prettier --write '*.md'",
     "format:check": "prettier --check '*.md'",
     "docs:dev": "vitepress dev docs",
@@ -41,6 +43,8 @@
     "prepare": "husky"
   },
   "devDependencies": {
+    "@commitlint/cli": "^20.4.2",
+    "@commitlint/config-conventional": "^20.4.2",
     "husky": "^9.1.7",
     "markdown-link-check": "^3.14.2",
     "markdownlint-cli": "^0.47.0",

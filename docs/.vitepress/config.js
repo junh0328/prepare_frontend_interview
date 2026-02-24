@@ -43,8 +43,10 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: '개요', link: '/js' },
-            { text: '변수와 데이터 타입', link: '/js#변수와-데이터-타입' },
-            { text: '스코프와 클로저', link: '/js#스코프와-클로저' },
+            { text: '변수', link: '/js#변수' },
+            { text: '데이터 타입', link: '/js#데이터-타입' },
+            { text: '스코프', link: '/js#스코프' },
+            { text: '클로저', link: '/js#클로저' },
             { text: '비동기 프로그래밍', link: '/js#비동기-프로그래밍' },
             { text: '프로토타입', link: '/js#프로토타입' }
           ]
@@ -62,8 +64,7 @@ export default defineConfig({
             { text: 'Hooks', link: '/react#hooks' },
             { text: '상태 관리', link: '/react#상태-관리' },
             { text: 'Next.js', link: '/react#nextjs' },
-            { text: 'Suspense', link: '/react#suspense' },
-            { text: '웹 성능 최적화', link: '/react#웹-성능-최적화' }
+            { text: 'Suspense', link: '/react#suspense' }
           ]
         }
       ],
@@ -81,6 +82,8 @@ export default defineConfig({
             { text: 'CORS', link: '/cs#cors' },
             { text: 'Cache', link: '/cs#cache' },
             { text: 'CDN', link: '/cs#cdn' },
+            { text: '웹 성능 지표', link: '/cs#웹-성능-지표' },
+            { text: '테스트', link: '/cs#테스트' },
             { text: '웹팩', link: '/cs#웹팩' }
           ]
         }
