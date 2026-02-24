@@ -203,6 +203,14 @@ ex)
 - `CDN 🔥`
   - CDN이란 뭔가요?
 
+- `웹 성능 지표 🔥`
+  - Core Web Vitals가 뭔가요?
+  - LCP가 뭔가요?
+  - FCP가 뭔가요?
+  - CLS가 뭔가요?
+  - INP가 뭔가요?
+  - TTFB가 뭔가요?
+
 - `테스트 🔥`
   - 테스트란 무엇인가요?
   - 테스트의 예는 어떤 것들이 있나요?
@@ -476,6 +484,8 @@ ex)
 - `리액트에서 함수형 컴포넌트라고 부르지 않고 함수 컴포넌트라고 부르는 이유가 무엇인가요 🔥`
 - `props와 state의 차이🔥`
 - `Props가 컴포넌트간에 전달받는 것이라고 했는데 자식에서 부모로도 전달할 수 있는가 🔥`
+- `controlled pattern에 대해서 아나요?`
+- `uncontrolled pattern에 대해서 아나요?`
 - `FLUX에 대해서 아나요? 🔥🔥`
 - `리덕스에 대해서 아나요? 🔥🔥`
 - `현대 상태 관리 라이브러리에는 어떤 것들이 있나요? 🔥🔥`
@@ -524,12 +534,6 @@ ex)
 - `Suspense 🔥`
   - suspense가 뭔가요?
   - suspense로 가능한 것은 어떤 것들이 있나요?
-
-- `웹 성능 최적화`
-- `LCP가 뭔가요?`
-- `FCP가 뭔가요?`
-- `controlled pattern에 대해서 아나요?`
-- `uncontrolled pattern에 대해서 아나요?`
 
 ## <a href="./data_structure.md">⑤ 자료구조</a>
 

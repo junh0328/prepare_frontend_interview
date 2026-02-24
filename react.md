@@ -16,6 +16,8 @@
 - [리액트에서 함수형 컴포넌트라고 부르지 않고 함수 컴포넌트라고 부르는 이유가 무엇인가요🔥](#리액트에서-함수형-컴포넌트라고-부르지-않고-함수-컴포넌트라고-부르는-이유가-무엇인가요)
 - [props와 state의 차이🔥](#props와-state의-차이)
 - [Props가 컴포넌트간에 전달받는 것이라고 했는데 자식에서 부모로도 전달할 수 있는가 🔥](#props가-컴포넌트간에-전달받는-것이라고-했는데-자식에서-부모로도-전달할-수-있는가)
+- [controlled pattern에 대해서 아나요?](#controlled-pattern에-대해서-아나요)
+- [uncontrolled pattern에 대해서 아나요?](#uncontrolled-pattern에-대해서-아나요)
 - [FLUX에 대해서 아나요? 🔥🔥](#flux에-대해서-아나요)
 - [리덕스에 대해서 아나요? 🔥](#리덕스에-대해서-아나요)
 - [현대 상태 관리 라이브러리에는 어떤 것들이 있나요? 🔥🔥](#현대-상태-관리-라이브러리에는-어떤-것들이-있나요)
@@ -67,13 +69,6 @@
 
 - `suspense가 뭔가요?`
 - `suspense로 가능한 것은 어떤 것들이 있나요?`
-
-- [웹 성능 최적화](#웹-성능-최적화)
-- [LCP가 뭔가요?](#lcp가-뭔가요)
-- [FCP가 뭔가요?](#fcp가-뭔가요)
-
-- [controlled pattern에 대해서 아나요?](#controlled-pattern에-대해서-아나요)
-- [uncontrolled pattern에 대해서 아나요?](#uncontrolled-pattern에-대해서-아나요)
 
 <hr>
 
@@ -218,7 +213,7 @@ Virtual DOM을 사용한다고 해서 사용하지 않을 때와 비교하여 �
 
 ## React Fiber와 렌더링
 
-📌 **관련 주제**: [React 기초](#react-기초), [컴포넌트](#컴포넌트), [웹 성능 최적화](#웹-성능-최적화)
+📌 **관련 주제**: [React 기초](#react-기초), [컴포넌트](#컴포넌트), [Hooks](#hooks)
 
 ### 리액트 파이버에 대해서 아나요
 
@@ -420,6 +415,117 @@ function Parent() {
   따라서 부모가 함수를 넣어 props로 자식에게 넘겨주면, 자식이 데이터를 파라미터로 넣어 호출하는 방식으로 동작한다. 즉, 부모가 props로 함수를 넣어주면 자식이 그 함수를 이용해 값을 건네주는 방식이다.
 
 <br/>
+
+### controlled pattern에 대해서 아나요?
+
+**Controlled 패턴은 폼 요소의 상태를 React의 state로 관리하여 React가 폼 데이터를 완전히 제어하는 방식입니다.** input의 value 속성을 state와 연결하고 onChange 이벤트로 state를 업데이트하면, UI와 상태의 일관성이 보장됩니다. 이를 통해 즉시 유효성 검사, 조건부 비활성화, 값 포맷팅 등이 가능하며, 복잡한 폼이나 동적인 유효성 검사가 필요한 경우 권장됩니다.
+
+<details>
+<summary>Controlled 패턴 상세 설명 및 예제 보기</summary>
+
+<br/>
+
+#### 주요 특징
+
+1. **상태 관리**: 폼 요소의 값을 React의 state로 관리하고, 사용자 입력에 따라 state를 업데이트합니다.
+2. **값 설정**: 폼 요소의 value 속성을 state 값으로 설정합니다.
+3. **이벤트 핸들링**: onChange 이벤트를 통해 사용자 입력을 감지하고 state를 업데이트합니다.
+
+#### 예시 코드
+
+```jsx
+import React, { useState } from 'react'
+
+function ControlledForm() {
+  const [inputValue, setInputValue] = useState('')
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value)
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    console.log('Submitted value:', inputValue)
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text" value={inputValue} onChange={handleChange} />
+      <button type="submit">Submit</button>
+    </form>
+  )
+}
+```
+
+#### 장점
+
+1. **데이터 일관성**: React가 폼 데이터를 완전히 제어하므로 UI와 상태 간의 일관성을 보장합니다.
+2. **즉시 유효성 검사**: 사용자 입력에 따라 즉시 유효성을 검사하고 피드백을 제공할 수 있습니다.
+3. **조건부 비활성화**: 특정 조건에 따라 폼 요소를 쉽게 비활성화할 수 있습니다.
+4. **값 포맷팅**: 입력값을 즉시 포맷팅하거나 변환할 수 있습니다.
+
+#### 주의사항
+
+1. **성능**: 많은 수의 폼 요소가 있는 경우, 각 입력마다 리렌더링이 발생할 수 있어 성능에 영향을 줄 수 있습니다.
+2. **복잡성**: 간단한 폼의 경우 Uncontrolled 컴포넌트를 사용하는 것이 더 간단할 수 있습니다.
+
+</details>
+
+### uncontrolled pattern에 대해서 아나요?
+
+**Uncontrolled 패턴은 폼 요소의 상태를 React state가 아닌 DOM이 직접 관리하도록 하는 방식입니다.** ref를 사용하여 필요한 시점에만 DOM에서 값을 읽어오며, defaultValue로 초기값을 설정합니다. 간단한 폼이나 file input 처리, 외부 라이브러리 통합 시 유용하지만, 즉각적인 유효성 검사나 동적 UI 변경이 어려워 React 공식 문서에서는 대부분의 경우 Controlled 패턴을 권장합니다.
+
+<details>
+<summary>Uncontrolled 패턴 상세 설명 및 예제 보기</summary>
+
+<br/>
+
+#### 주요 특징
+
+1. **상태 관리**: React의 state를 사용하지 않고 DOM이 자체적으로 상태를 관리합니다. 필요한 경우에만 ref를 통해 DOM에서 값을 읽어옵니다.
+2. **값 설정**: 초기값을 설정하려면 defaultValue 속성을 사용합니다.
+3. **이벤트 핸들링**: onChange 이벤트를 반드시 사용할 필요가 없습니다.
+
+#### 예시 코드
+
+```jsx
+import React, { useRef } from 'react'
+
+function UncontrolledForm() {
+  const inputRef = useRef(null)
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    console.log('Submitted value:', inputRef.current.value)
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text" defaultValue="" ref={inputRef} />
+      <button type="submit">Submit</button>
+    </form>
+  )
+}
+```
+
+#### 장점
+
+1. **간단성**: 간단한 폼의 경우 코드가 더 간결해질 수 있습니다.
+2. **성능**: React의 state를 사용하지 않으므로 입력 시마다 리렌더링이 발생하지 않습니다.
+3. **외부 라이브러리 통합**: React 외부의 DOM 기반 라이브러리와 통합하기 쉽습니다.
+4. **파일 입력**: file input과 같이 읽기 전용 값을 다룰 때 유용합니다.
+
+#### 주의사항
+
+1. **유효성 검사**: 즉각적인 유효성 검사나 입력값 변환이 어렵습니다.
+2. **동적 UI**: 입력값에 따라 UI를 동적으로 변경하기 어렵습니다.
+3. **값 초기화**: 프로그래밍 방식으로 입력값을 초기화하거나 변경하기 어렵습니다.
+
+#### 결론
+
+Controlled와 Uncontrolled 패턴은 각각의 장단점이 있으므로, 상황에 따라 적절한 패턴을 선택하는 것이 중요합니다.
+
+</details>
 
 ## 상태 관리
 
@@ -1448,7 +1554,7 @@ const plusNum = (number) => {
 
 ## Next.js
 
-📌 **관련 주제**: [React 기초](#react-기초), [React Fiber와 렌더링](#react-fiber와-렌더링), [웹 성능 최적화](#웹-성능-최적화)
+📌 **관련 주제**: [React 기초](#react-기초), [React Fiber와 렌더링](#react-fiber와-렌더링), [Suspense](#suspense)
 
 ### SPA가 뭔가요
 
@@ -1884,136 +1990,3 @@ function ProfileTimeline() {
 2. 의도적으로 설계된 로딩 상태를 조정할 수 있도록 해줍니다. suspense는 데이터가 어떻게 불러져야 하는지를 정하지 않고, 앱의 시각적인 로딩 단계를 밀접하게 통제할 수 있도록 해줍니다
 
 3. 경쟁 상태(Race Condition)를 피할 수 있도록 돕습니다. await를 사용하더라도 비동기 코드는 종종 오류가 발생하기 쉽습니다. suspense를 사용하면 데이터를 동기적으로 읽어오는 것처럼 느껴지게 해줍니다.
-
-## 웹 성능 최적화
-
-📌 **관련 주제**: [React Fiber와 렌더링](#react-fiber와-렌더링), [컴포넌트](#컴포넌트), [Next.js](#nextjs)
-
-### LCP가 뭔가요?
-
-LCP(Largest Contentful Paint)는 웹 페이지에서 가장 큰 콘텐츠 요소를 로드하고 사용자가 볼 수 있는 데 걸리는 시간을 측정하는 성능 지표입니다.
-
-이것은 웹 페이지의 로딩 속도에 대한 사용자의 인식을 반영하고 웹 페이지에 대한 사용자의 참여에 영향을 미칠 수 있기 때문에 중요한 지표입니다.
-
-LCP를 개선하기 위해 lazy load, 이미지 크기 및 형식 최적화, CDN(콘텐츠 전송 네트워크) 등의 기술을 사용하여 이미지 및 비디오와 같은 대용량 콘텐츠 요소의 로드를 최적화할 수 있습니다. 또한 HTML, CSS 및 JavaScript 파일의 크기를 줄이고 서버에 대한 요청 수를 최소화하여 웹 페이지의 전체 로드를 최적화할 수 있습니다.
-
-Chrome DevTools의 Lighthouse 검사 또는 WebPageTest와 같은 도구를 사용하여 웹 페이지의 LCP를 측정할 수 있습니다.
-
-### FCP가 뭔가요?
-
-FCP(First Contentful Paint)는 브라우저가 웹 페이지의 첫 번째 콘텐츠 요소를 렌더링하는 데 걸리는 시간을 측정하는 성능 지표입니다. 이 내용 요소는 텍스트, 이미지 또는 사용자가 볼 수 있는 다른 유형의 내용일 수 있습니다.
-
-FCP는 웹 페이지의 로딩 속도에 대한 사용자의 인식을 반영하고 웹 페이지에 대한 사용자의 참여에 영향을 미칠 수 있기 때문에 중요한 지표입니다.
-
-FCP를 개선하기 위해 HTML, CSS 및 JavaScript 파일의 크기를 줄이고 서버에 대한 요청 수를 최소화하여 웹 페이지 로드를 최적화할 수 있습니다. 또한 로드 프로세스에서 우선 순위를 지정하여 위의 내용과 같은 중요한 리소스의 로드를 최적화할 수 있습니다.
-
-### controlled pattern에 대해서 아나요?
-
-**Controlled 패턴은 폼 요소의 상태를 React의 state로 관리하여 React가 폼 데이터를 완전히 제어하는 방식입니다.** input의 value 속성을 state와 연결하고 onChange 이벤트로 state를 업데이트하면, UI와 상태의 일관성이 보장됩니다. 이를 통해 즉시 유효성 검사, 조건부 비활성화, 값 포맷팅 등이 가능하며, 복잡한 폼이나 동적인 유효성 검사가 필요한 경우 권장됩니다.
-
-<details>
-<summary>Controlled 패턴 상세 설명 및 예제 보기</summary>
-
-<br/>
-
-#### 주요 특징
-
-1. **상태 관리**: 폼 요소의 값을 React의 state로 관리하고, 사용자 입력에 따라 state를 업데이트합니다.
-2. **값 설정**: 폼 요소의 value 속성을 state 값으로 설정합니다.
-3. **이벤트 핸들링**: onChange 이벤트를 통해 사용자 입력을 감지하고 state를 업데이트합니다.
-
-#### 예시 코드
-
-```jsx
-import React, { useState } from 'react'
-
-function ControlledForm() {
-  const [inputValue, setInputValue] = useState('')
-
-  const handleChange = (event) => {
-    setInputValue(event.target.value)
-  }
-
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    console.log('Submitted value:', inputValue)
-  }
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" value={inputValue} onChange={handleChange} />
-      <button type="submit">Submit</button>
-    </form>
-  )
-}
-```
-
-#### 장점
-
-1. **데이터 일관성**: React가 폼 데이터를 완전히 제어하므로 UI와 상태 간의 일관성을 보장합니다.
-2. **즉시 유효성 검사**: 사용자 입력에 따라 즉시 유효성을 검사하고 피드백을 제공할 수 있습니다.
-3. **조건부 비활성화**: 특정 조건에 따라 폼 요소를 쉽게 비활성화할 수 있습니다.
-4. **값 포맷팅**: 입력값을 즉시 포맷팅하거나 변환할 수 있습니다.
-
-#### 주의사항
-
-1. **성능**: 많은 수의 폼 요소가 있는 경우, 각 입력마다 리렌더링이 발생할 수 있어 성능에 영향을 줄 수 있습니다.
-2. **복잡성**: 간단한 폼의 경우 Uncontrolled 컴포넌트를 사용하는 것이 더 간단할 수 있습니다.
-
-</details>
-
-### uncontrolled pattern에 대해서 아나요?
-
-**Uncontrolled 패턴은 폼 요소의 상태를 React state가 아닌 DOM이 직접 관리하도록 하는 방식입니다.** ref를 사용하여 필요한 시점에만 DOM에서 값을 읽어오며, defaultValue로 초기값을 설정합니다. 간단한 폼이나 file input 처리, 외부 라이브러리 통합 시 유용하지만, 즉각적인 유효성 검사나 동적 UI 변경이 어려워 React 공식 문서에서는 대부분의 경우 Controlled 패턴을 권장합니다.
-
-<details>
-<summary>Uncontrolled 패턴 상세 설명 및 예제 보기</summary>
-
-<br/>
-
-#### 주요 특징
-
-1. **상태 관리**: React의 state를 사용하지 않고 DOM이 자체적으로 상태를 관리합니다. 필요한 경우에만 ref를 통해 DOM에서 값을 읽어옵니다.
-2. **값 설정**: 초기값을 설정하려면 defaultValue 속성을 사용합니다.
-3. **이벤트 핸들링**: onChange 이벤트를 반드시 사용할 필요가 없습니다.
-
-#### 예시 코드
-
-```jsx
-import React, { useRef } from 'react'
-
-function UncontrolledForm() {
-  const inputRef = useRef(null)
-
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    console.log('Submitted value:', inputRef.current.value)
-  }
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" defaultValue="" ref={inputRef} />
-      <button type="submit">Submit</button>
-    </form>
-  )
-}
-```
-
-#### 장점
-
-1. **간단성**: 간단한 폼의 경우 코드가 더 간결해질 수 있습니다.
-2. **성능**: React의 state를 사용하지 않으므로 입력 시마다 리렌더링이 발생하지 않습니다.
-3. **외부 라이브러리 통합**: React 외부의 DOM 기반 라이브러리와 통합하기 쉽습니다.
-4. **파일 입력**: file input과 같이 읽기 전용 값을 다룰 때 유용합니다.
-
-#### 주의사항
-
-1. **유효성 검사**: 즉각적인 유효성 검사나 입력값 변환이 어렵습니다.
-2. **동적 UI**: 입력값에 따라 UI를 동적으로 변경하기 어렵습니다.
-3. **값 초기화**: 프로그래밍 방식으로 입력값을 초기화하거나 변경하기 어렵습니다.
-
-#### 결론
-
-Controlled와 Uncontrolled 패턴은 각각의 장단점이 있으므로, 상황에 따라 적절한 패턴을 선택하는 것이 중요합니다.
-
-</details>
