@@ -1258,7 +1258,7 @@ useRef는 구성요소가 변경될 때 재렌더를 트리거하지 않아야 �
 <details>
 <summary>setState 비동기 동작에 대한 상세 설명 보기</summary>
 
-[참고자료](https://velog.io/@jinsunee/setState%EA%B0%80-%EB%B9%84%EB%8F%99%EA%B8%B0%ED%95%A8%EC%88%98%EC%9D%B8-%EC%9D%B4%EC%9C%A0)
+<!-- 원본 참고자료(velog/@jinsunee)가 삭제되어 제거됨 -->
 
 ```jsx
 function Example() {

@@ -184,7 +184,7 @@ Queue 구조
 
 <img src="https://camo.githubusercontent.com/a7ee55bf3532f3715605a7e4e5af65ee15822fe0e94a5d414ecfa4059c2e331d/68747470733a2f2f7777772e66756e2d636f64696e672e6f72672f30305f496d616765732f71756575652e706e67" alt="큐">
 
-- 출처: http://www.stoimen.com/blog/2012/06/05/computer-algorithms-stack-and-queue-data-structure/
+<!-- 원본 출처(stoimen.com)가 삭제되어 제거됨 -->
 
 <img src="https://github.com/junh0328/zero_base_algorithm/raw/main/images/queue.gif" alt="그림으로 보는 큐">
 
@@ -560,7 +560,7 @@ Linked List 구조
   - 검색이 많이 필요한 경우
   - 저장, 삭제, 읽기가 빈번한 경우
   - 캐쉬 구현시 (중복 확인이 쉽기 때문)
-  - 캐쉬는 동일한 페이지를 불러오는 경우 https://naver.com, 변경되는 데이터 이외에는
+  - 캐쉬는 동일한 페이지를 불러오는 경우(예: naver.com), 변경되는 데이터 이외에는
   - 사용자의 캐쉬 메모리에 저장하여 서버로부터 불러오는 데이터의 양을 관리하기 위한 메모리이다
 
 <br/>

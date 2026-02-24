@@ -1,6 +1,8 @@
-# 마크다운 포맷 + 린트 검사
+# 마크다운 포맷 자동 수정
 pnpm run format
-pnpm run lint:md
+
+# 포맷·린트·링크 검증
+pnpm run check
 
 # 루트 마크다운 → docs/ 동기화
 pnpm run sync:docs

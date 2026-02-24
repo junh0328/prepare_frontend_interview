@@ -32,6 +32,7 @@
     "lint:md": "markdownlint js.md react.md cs.md html_css.md data_structure.md algorithm_data_structure.md",
     "lint:md:fix": "markdownlint --fix js.md react.md cs.md html_css.md data_structure.md algorithm_data_structure.md",
     "lint:links": "find . -maxdepth 1 -name '*.md' ! -name 'README.md' -exec markdown-link-check --config .markdown-link-check.json {} +",
+    "check": "pnpm run format:check && pnpm run lint:md && pnpm run lint:links",
     "format": "prettier --write '*.md'",
     "format:check": "prettier --check '*.md'",
     "docs:dev": "vitepress dev docs",
