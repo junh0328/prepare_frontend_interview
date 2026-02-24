@@ -111,6 +111,14 @@
   - CDN의 주요 장점은 무엇인가요? 🔥
   - CDN 캐시 무효화(Cache Invalidation)란? 🔥
 
+- [웹 성능 지표 🔥](#웹-성능-지표)
+  - Core Web Vitals가 뭔가요? 🔥🔥
+  - LCP가 뭔가요? 🔥🔥
+  - FCP가 뭔가요? 🔥
+  - CLS가 뭔가요? 🔥🔥
+  - INP가 뭔가요? 🔥
+  - TTFB가 뭔가요? 🔥
+
 - [테스트 🔥](#테스트)
   - 테스트란 무엇인가요? 🔥
   - 테스트의 예는 어떤 것들이 있나요? 🔥
@@ -2145,6 +2153,34 @@ Cache를 사용하는 것
 1. **Purge(삭제)**: 특정 콘텐츠를 즉시 삭제하여 다음 요청 시 원본 서버에서 가져오도록 함
 2. **TTL(Time To Live) 설정**: 캐시 만료 시간을 설정하여 일정 시간 후 자동으로 갱신
 3. **버전 관리(Versioning)**: 파일명에 버전 번호나 해시를 추가 (예: `style.v2.css`, `app.abc123.js`)하여 새 파일로 인식하게 함
+
+## 웹 성능 지표
+
+📌 **관련 주제**: [네트워크](#네트워크), [Cache](#cache), [CDN](#cdn)
+
+### Core Web Vitals가 뭔가요?
+
+Google이 정의한 웹 사용자 경험의 핵심 지표 세트로, **LCP(로딩)**, **CLS(시각적 안정성)**, **INP(상호작용 반응성)** 세 가지로 구성됩니다. Lighthouse, PageSpeed Insights, Chrome DevTools 등으로 측정하며, Google 검색 순위에도 영향을 줍니다. FCP, TTFB 등은 Core Web Vitals를 보완하는 추가 지표입니다. ([web.dev - Web Vitals](https://web.dev/articles/vitals))
+
+### LCP가 뭔가요?
+
+**LCP(Largest Contentful Paint)는 뷰포트 내 가장 큰 콘텐츠 요소(이미지, 비디오, 텍스트 블록)가 렌더링되기까지의 시간**을 측정합니다. 사용자가 "페이지가 로드됐다"고 느끼는 시점과 직결되며, [**2.5초 이내**](https://web.dev/articles/lcp)가 좋은 점수입니다. 개선 방법으로는 이미지 최적화(WebP/AVIF, lazy load, srcset), 렌더 차단 리소스 제거, CDN 활용, 서버 응답 시간 단축 등이 있습니다.
+
+### FCP가 뭔가요?
+
+**FCP(First Contentful Paint)는 브라우저가 첫 번째 텍스트나 이미지를 화면에 렌더링하기까지의 시간**을 측정합니다. 사용자가 "뭔가 시작됐다"고 인식하는 첫 순간이며, [**1.8초 이내**](https://web.dev/articles/fcp)가 좋은 점수입니다. 개선 방법으로는 렌더 차단 CSS/JS 최소화, 폰트 로딩 최적화(`font-display: swap`), 서버 응답 시간 단축, Critical CSS 인라이닝 등이 있습니다.
+
+### CLS가 뭔가요?
+
+**CLS(Cumulative Layout Shift)는 페이지 로드 중 예기치 않은 레이아웃 이동의 누적 점수**를 측정합니다. 버튼을 누르려는 순간 광고가 삽입되어 잘못 클릭하는 경험이 대표적이며, [**0.1 이하**](https://web.dev/articles/cls)가 좋은 점수입니다. 개선 방법으로는 이미지/광고에 width·height 명시, 동적 콘텐츠 삽입 시 공간 예약, 웹폰트 FOUT/FOIT 방지(`font-display: optional`) 등이 있습니다.
+
+### INP가 뭔가요?
+
+**INP(Interaction to Next Paint)는 사용자 상호작용(클릭, 탭, 키 입력) 후 다음 화면 업데이트까지 걸리는 시간**을 측정합니다. 2024년 3월부터 FID(First Input Delay)를 대체하여 Core Web Vitals에 포함되었으며, [**200ms 이내**](https://web.dev/articles/inp)가 좋은 점수입니다. 개선 방법으로는 메인 스레드 차단 최소화(긴 태스크 분할), `requestIdleCallback` 활용, 불필요한 리렌더링 방지 등이 있습니다.
+
+### TTFB가 뭔가요?
+
+**TTFB(Time to First Byte)는 브라우저가 서버에 요청을 보낸 후 첫 번째 바이트를 수신하기까지의 시간**을 측정합니다. 서버 처리 속도와 네트워크 지연의 합산이며, [**0.8초 이내**](https://web.dev/articles/ttfb)가 좋은 점수입니다. 개선 방법으로는 서버 사이드 캐싱, CDN 적용, 데이터베이스 쿼리 최적화, HTTP/2·HTTP/3 적용 등이 있습니다.
 
 ## 테스트
 
