@@ -31,7 +31,7 @@
 ├── commitlint.config.js        # 커밋 메시지 컨벤션 검증 ([타입] 설명 형식)
 ├── adr/                        # Architecture Decision Records
 ├── docs/                       # VitePress 빌드용 (자동 생성, 직접 수정 금지)
-├── scripts/                    # sync-docs.js, validate-sidebar.js 등 빌드/검증 스크립트
+├── scripts/                    # sync-docs.js, validate-sidebar.js, check-external-links.js 등
 └── .github/ISSUE_TEMPLATE/     # 기여를 위한 이슈 템플릿
 ```
 
@@ -93,6 +93,9 @@ pnpm run lint:links
 
 # VitePress sidebar 앵커-헤딩 동기화 검증
 pnpm run lint:sidebar
+
+# 외부 URL 접근 가능성 검증 (soft-fail, 수동 실행)
+pnpm run lint:external-links
 ```
 
 ## 콘텐츠 구성 패턴
