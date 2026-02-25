@@ -31,6 +31,7 @@ export default defineConfig({
           { text: '알고리즘', link: '/algorithm_data_structure' }
         ]
       },
+      { text: '아키텍처', link: '/architecture' },
       { text: '면접 질문 모음', link: '/question_list' },
       { text: '프롬프트 엔지니어링', link: '/prompt_engineering' }
     ],
@@ -120,6 +121,19 @@ export default defineConfig({
           collapsed: false,
           items: [
             { text: '개요', link: '/algorithm_data_structure' }
+          ]
+        }
+      ],
+      '/architecture': [
+        {
+          text: '아키텍처',
+          collapsed: false,
+          items: [
+            { text: '개요', link: '/architecture' },
+            { text: '시스템/인프라 아키텍처', link: '/architecture#시스템인프라-아키텍처' },
+            { text: '프론트엔드 애플리케이션 아키텍처', link: '/architecture#프론트엔드-애플리케이션-아키텍처' },
+            { text: '컴포넌트 설계 아키텍처', link: '/architecture#컴포넌트-설계-아키텍처' },
+            { text: '코드 설계 레벨', link: '/architecture#코드-설계-레벨-관심사-분리의존성-방향' }
           ]
         }
       ],

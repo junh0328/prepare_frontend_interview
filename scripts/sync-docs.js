@@ -14,6 +14,7 @@ const filesToSync = [
   'html_css.md',
   'data_structure.md',
   'algorithm_data_structure.md',
+  'architecture.md',
   'question_list.md',
   'prompt_engineering.md',
 ];
