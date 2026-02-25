@@ -17,6 +17,7 @@
 ├── html_css.md                 # HTML/CSS 기초 (시멘틱 태그, 접근성, flexbox/grid)
 ├── data_structure.md           # 자료구조 (리스트, 큐, 스택, 해시 테이블, 트리, 힙, 그래프)
 ├── algorithm_data_structure.md # 알고리즘 패턴과 구현 (v2)
+├── architecture.md             # 아키텍처 답변 전략 가이드 (시스템/앱/컴포넌트/코드 설계)
 ├── question_list.md            # 실제 기업 면접 질문 (A-F 기업) 및 자가 평가
 ├── prompt_engineering.md       # 프롬프트 엔지니어링 가이드 및 실전 사례
 ├── README.md                   # 주제별 질문 목차

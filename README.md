@@ -535,7 +535,27 @@ ex)
   - suspense가 뭔가요?
   - suspense로 가능한 것은 어떤 것들이 있나요?
 
-## <a href="./data_structure.md">⑤ 자료구조</a>
+## <a href="./architecture.md">⑤ 아키텍처</a>
+
+> 💡 "아키텍처에 대해 고민이 있으신가요?"라는 질문에 대한 **답변 전략 가이드**입니다.
+
+- `시스템/인프라 아키텍처 🔥`
+  - 모놀리식 vs 마이크로서비스 vs BFF
+  - BFF 도입 배경과 인증/권한 통합
+
+- `프론트엔드 애플리케이션 아키텍처 🔥🔥`
+  - 상태의 성격에 따른 도구 분리 (서버 상태 / 전역 클라이언트 상태 / 레거시)
+  - 혼합형 폴더 구조 (feature 기반 + layer 기반)
+
+- `컴포넌트 설계 아키텍처 🔥🔥`
+  - 공통 컴포넌트 래핑 전략 (MUI 래핑)
+  - 비즈니스 로직 배치 기준 (재사용 여부)
+
+- `코드 설계 레벨 (관심사 분리/의존성 방향) 🔥`
+  - 의존성 방향 한 방향 유지 (UI → Business Logic → Data Access)
+  - TypeScript 타입 시스템을 활용한 레이어 간 계약
+
+## <a href="./data_structure.md">⑥ 자료구조</a>
 
 - `자료구조란 무엇인가요 🔥`
   - 효율적으로 데이터를 관리해야 하는 이유 (예)
@@ -553,7 +573,7 @@ ex)
 - `힙 🔥`
 - `그래프 🔥`
 
-## <a href="./algorithm_data_structure.md">⓺ 알고리즘과 자료구조 v2</a>
+## <a href="./algorithm_data_structure.md">⑦ 알고리즘과 자료구조 v2</a>
 
 - `Frequency Counters`
 - `Multiple Pointers`
