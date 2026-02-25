@@ -22,7 +22,9 @@ export default {
   },
   parserPreset: {
     parserOpts: {
-      // [타입] 설명 형식 파싱
+      // WHY: conventional commits의 "type: subject" 대신 "[type] subject" 형식을 사용합니다.
+      // 한국어 커밋 메시지에서 대괄호가 시각적으로 더 명확하고,
+      // 기존 커밋 히스토리와의 일관성을 유지하기 위함입니다.
       headerPattern: /^\[(\w+)\]\s(.+)$/,
       headerCorrespondence: ['type', 'subject'],
     },
