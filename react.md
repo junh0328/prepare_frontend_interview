@@ -529,7 +529,7 @@ Controlled와 Uncontrolled 패턴은 각각의 장단점이 있으므로, 상황
 
 ## 상태 관리
 
-📌 **관련 주제**: [React 기초](#react-기초), [컴포넌트](#컴포넌트), [Hooks](#hooks)
+📌 **관련 주제**: [React 기초](#react-기초), [컴포넌트](#컴포넌트), [Hooks](#hooks), [아키텍처 - 프론트엔드 애플리케이션 아키텍처](./architecture.md#프론트엔드-애플리케이션-아키텍처)
 
 ### FLUX에 대해서 아나요
 

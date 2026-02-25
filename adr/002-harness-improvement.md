@@ -1,6 +1,6 @@
 # ADR-002: 에이전트 협업 환경(Harness) 개선
 
-- **상태**: 승인됨
+- **상태**: 부분 대체됨 (ADR-002a 참고)
 - **날짜**: 2026-02
 - **결정자**: junhee lee
 
@@ -57,3 +57,14 @@ AI 에이전트(Claude Code)와의 협업 빈도가 증가하면서, 에이전�
 - 커밋 시 자동으로 format + lint + sync 실행
 - 에이전트가 CLAUDE.md만으로 빌드/실행/주의사항 파악 가능
 - 기술 결정이 ADR로 추적 가능
+
+## 부분 대체 이력 (2026-02-25)
+
+이후 변경으로 인해 이 ADR의 일부 결정이 대체되었다:
+
+| 원래 결정 | 현재 상태 | 변경 커밋 |
+| --- | --- | --- |
+| "별도 CI 불필요, pre-commit만으로 충분" (근거 #2) | GitHub Actions CI 추가됨 (format:check, lint:md, lint:links, lint:sidebar, docs:build) | `e3d2275` |
+| "markdown-link-check를 pre-commit에 넣지 않음" (트레이드오프) | `check` 스크립트에 `lint:links` 포함 → pre-commit에서 실행됨 | `f8ba1fe` |
+
+**대체 사유**: PR 단위 검증이 필요해졌고(Vercel만으로는 lint/link 검증 불가), `lint:links`의 실행 시간이 허용 범위 내로 확인되어 pre-commit에 통합됨.

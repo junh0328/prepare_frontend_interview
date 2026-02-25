@@ -34,6 +34,7 @@
     "lint:md:fix": "markdownlint --fix js.md react.md cs.md html_css.md data_structure.md algorithm_data_structure.md",
     "lint:links": "find . -maxdepth 1 -name '*.md' ! -name 'README.md' -exec markdown-link-check --config .markdown-link-check.json {} +",
     "lint:sidebar": "node scripts/validate-sidebar.js",
+    "lint:external-links": "node scripts/check-external-links.js",
     "check": "pnpm run format:check && pnpm run lint:md && pnpm run lint:links && pnpm run lint:sidebar",
     "format": "prettier --write '*.md'",
     "format:check": "prettier --check '*.md'",

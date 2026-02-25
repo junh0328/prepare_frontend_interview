@@ -28,10 +28,10 @@
 │   └── useReducer.tsx
 ├── images/                     # JavaScript/React 개념 다이어그램
 ├── cs_images/                  # CS 주제 관련 다이어그램
-├── pdf/                        # 학습 자료의 PDF 버전
+├── commitlint.config.js        # 커밋 메시지 컨벤션 검증 ([타입] 설명 형식)
 ├── adr/                        # Architecture Decision Records
 ├── docs/                       # VitePress 빌드용 (자동 생성, 직접 수정 금지)
-├── scripts/                    # sync-docs.js, validate-sidebar.js 등 빌드/검증 스크립트
+├── scripts/                    # sync-docs.js, validate-sidebar.js, check-external-links.js 등
 └── .github/ISSUE_TEMPLATE/     # 기여를 위한 이슈 템플릿
 ```
 
@@ -69,7 +69,8 @@ pnpm run sync:docs
 루트 .md 파일 → (sync-docs.js) → docs/ → (VitePress) → Vercel 자동 배포
 ```
 
-- **pre-commit hook** (husky): 커밋 시 `sync:docs` 자동 실행 → `docs/*.md` 자동 스테이징
+- **pre-commit hook** (husky): 커밋 시 `format → check (format:check + lint:md + lint:links + lint:sidebar) → sync:docs → git add` 자동 실행
+- **GitHub Actions CI** (`.github/workflows/ci.yml`): push/PR마다 `format:check`, `lint:md`, `lint:links`, `lint:sidebar`, `docs:build` 실행
 - **Vercel**: push/PR마다 `docs:build` 실행, 빌드 실패 시 배포 차단
 
 ### 마크다운 포맷 및 린트
@@ -92,16 +93,40 @@ pnpm run lint:links
 
 # VitePress sidebar 앵커-헤딩 동기화 검증
 pnpm run lint:sidebar
+
+# 외부 URL 접근 가능성 검증 (soft-fail, 수동 실행)
+pnpm run lint:external-links
 ```
 
 ## 콘텐츠 구성 패턴
 
-각 마크다운 파일은 다음과 같은 구조를 따릅니다:
+이 레포지토리에는 두 가지 콘텐츠 포맷이 존재합니다:
+
+### 포맷 A: Q&A 핸드북 (기본)
+
+대부분의 파일(js.md, react.md, cs.md, html_css.md 등)이 사용하는 기본 형식입니다.
+**정답이 있는 개념 설명 질문**에 적합합니다.
 
 1. **목차** - 중요도/빈도를 나타내는 불 이모지 표시(🔥)가 있는 질문들
 2. **섹션** - 관련 개념별로 구성되고 앵커 링크가 있는 주제들
 3. **Q&A 형식** - 각 섹션은 핵심 용어를 포함한 간결한 3-5줄 답변이 이어지는 질문들로 구성
 4. **점진적 깊이** - 기본 개념을 먼저 다루고, 이어서 고급 후속 질문들
+
+### 포맷 B: 답변 전략 가이드
+
+architecture.md가 사용하는 형식입니다.
+**경험 기반의 열린 질문**(정해진 정답 없이 자신의 경험을 구조화하는 방법)에 적합합니다.
+
+1. **답변 예시** - 인용 블록(`>`)으로 실제 면접 답변 스크립트 제시
+2. **꼬리 질문 대비** - 테이블 형태로 예상 질문과 답변 포인트 정리
+3. **코드/구조 예시** - `<details>` 접기로 보충 자료 제공
+
+### 포맷 선택 기준
+
+| 질문 유형                          | 포맷                | 예시                          |
+| ---------------------------------- | ------------------- | ----------------------------- |
+| "X가 뭔가요?" (개념 설명)          | A: Q&A 핸드북       | 클로저, 프로미스, virtual DOM |
+| "어떻게 고민하셨나요?" (경험/전략) | B: 답변 전략 가이드 | 아키텍처, 성능 최적화 경험    |
 
 ### 파일 구조화 및 섹션 구성
 
@@ -313,7 +338,7 @@ README에 따르면 일반적인 면접 질문 빈도:
 - **앵커 링크는 반드시 소문자로 작성하세요** — 마크다운 헤딩의 앵커 ID는 소문자로 생성됩니다. `(#React-기초)` ✗ → `(#react-기초)` ✓. `lint:links`로 검증할 수 있습니다.
 - **앵커 링크의 🔥 이모지 처리** — VitePress는 헤더의 이모지를 앵커 생성 시 제거합니다. 목차에서 앵커 링크를 작성할 때 이모지를 포함하지 않도록 주의하세요.
 - **`<details>` 태그 앞뒤로 빈 줄 필수** — 마크다운 파서가 HTML 블록을 올바르게 인식하려면 `<details>` 및 `</details>` 태그 앞뒤에 빈 줄이 있어야 합니다.
-- **pre-commit hook이 자동 실행됩니다** — 커밋 시 `format → check (lint:md + lint:links + lint:sidebar) → sync:docs → 스테이징` 순서로 실행됩니다. 린트 에러가 있으면 커밋이 차단됩니다.
+- **pre-commit hook이 자동 실행됩니다** — 커밋 시 `format → check (format:check + lint:md + lint:links + lint:sidebar) → sync:docs → 스테이징` 순서로 실행됩니다. 린트 에러가 있으면 커밋이 차단됩니다.
 - **commit-msg hook이 커밋 메시지를 검증합니다** — commitlint가 `[타입] 설명` 형식을 강제합니다. 허용 타입: `docs`, `fix`, `feat`, `chore`. 형식이 맞지 않으면 커밋이 차단됩니다.
 - **개발 환경/도구 변경 시 ADR을 작성하세요** — 새로운 도구 도입, 아키텍처 변경, 워크플로우 변경 등은 `adr/` 디렉토리에 ADR을 작성하여 의사결정 맥락을 기록합니다. 기존 ADR의 결정이 변경되면 상태를 "대체됨"으로 업데이트하세요.
 
