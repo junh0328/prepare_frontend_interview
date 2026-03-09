@@ -48,7 +48,7 @@
     "@commitlint/config-conventional": "^20.4.2",
     "husky": "^9.1.7",
     "markdown-link-check": "^3.14.2",
-    "markdownlint-cli": "^0.47.0",
+    "markdownlint-cli": "^0.48.0",
     "prettier": "^3.8.1",
     "vitepress": "^1.6.4"
   }
