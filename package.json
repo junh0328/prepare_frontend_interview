@@ -49,7 +49,7 @@
     "husky": "^9.1.7",
     "markdown-link-check": "^3.14.2",
     "markdownlint-cli": "^0.48.0",
-    "prettier": "^3.8.1",
+    "prettier": "^3.8.2",
     "vitepress": "^1.6.4"
   }
 }
