@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^20.4.2",
-    "@commitlint/config-conventional": "^20.5.0",
+    "@commitlint/config-conventional": "^21.0.2",
     "husky": "^9.1.7",
     "markdown-link-check": "^3.14.2",
     "markdownlint-cli": "^0.48.0",
