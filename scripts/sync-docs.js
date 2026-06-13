@@ -1,25 +1,10 @@
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDir = join(__dirname, '..');
 const docsDir = join(rootDir, 'docs');
-
-// 동기화할 파일 목록
-// NOTE: 새 콘텐츠 파일 추가 시 이 배열에 수동으로 추가해야 합니다.
-// index.md는 VitePress 전용 frontmatter가 있어 제외합니다.
-const filesToSync = [
-  'cs.md',
-  'js.md',
-  'react.md',
-  'html_css.md',
-  'data_structure.md',
-  'algorithm_data_structure.md',
-  'architecture.md',
-  'question_list.md',
-  'prompt_engineering.md',
-];
 
 // 이미지 확장자를 소문자로 변환하는 함수
 // WHY: 일부 이미지 파일이 .PNG, .JPG 등 대문자 확장자로 커밋되어 있는데,
@@ -81,9 +66,15 @@ function syncFile(fileName, destFileName = fileName) {
 
 console.log('루트 → docs/ 동기화 시작...\n');
 
+// 동적으로 동기화할 파일 목록 생성
+// index.md는 VitePress 전용 frontmatter가 있어 제외합니다.
+const filesToSync = readdirSync(rootDir)
+  .filter((file) => file.endsWith('.md') &&
+                    file !== 'README.md' &&
+                    file !== 'index.md' &&
+                    file !== 'CLAUDE.md');
+
 // 일반 파일 동기화
 filesToSync.forEach((file) => syncFile(file));
-
-// NOTE: index.md는 VitePress 홈페이지용 frontmatter가 있어 동기화하지 않음
 
 console.log('\n동기화 완료!');
